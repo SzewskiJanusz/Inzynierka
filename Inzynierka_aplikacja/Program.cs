@@ -15,7 +15,12 @@ namespace Inzynierka_aplikacja
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            try { Application.Run(new LoginForm()); }
+            catch (System.ObjectDisposedException)
+            {
+                // Do nothing
+            }
+            
         }
     }
 }

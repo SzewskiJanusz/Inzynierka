@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inzynierka_aplikacja.LoginDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +10,14 @@ using System.Windows.Forms;
 
 namespace Inzynierka_aplikacja
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+
+        public MainForm(Login UserLogged)
         {
             InitializeComponent();
         }
