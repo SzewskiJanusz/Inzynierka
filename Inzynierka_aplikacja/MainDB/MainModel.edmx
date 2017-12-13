@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Miejsce_instalacji">
+          <Key>
+            <PropertyRef Name="miejsce_id" />
+          </Key>
+          <Property Name="miejsce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kraj" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Podatnik">
+          <Key>
+            <PropertyRef Name="podatnik_id" />
+          </Key>
+          <Property Name="podatnik_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serwisant_id" Type="int" Nullable="false" />
+          <Property Name="urzad_id" Type="int" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="wojewodztwo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kod_pocztowy" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Serwisant">
+          <Key>
+            <PropertyRef Name="serwisant_id" />
+          </Key>
+          <Property Name="serwisant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="SerwisUrzadzenia">
+          <Key>
+            <PropertyRef Name="serwis_id" />
+          </Key>
+          <Property Name="serwis_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usluga_id" Type="int" Nullable="false" />
+          <Property Name="serwisant_id" Type="int" />
+          <Property Name="urzadzenie_id" Type="int" Nullable="false" />
+          <Property Name="data_przyjecia" Type="datetime" Nullable="false" />
+          <Property Name="data_oddania" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UrzadSkarbowy">
+          <Key>
+            <PropertyRef Name="urzad_id" />
+          </Key>
+          <Property Name="urzad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Urzadzenie">
+          <Key>
+            <PropertyRef Name="urzadzenie_id" />
+          </Key>
+          <Property Name="urzadzenie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="podatnik_id" Type="int" Nullable="false" />
+          <Property Name="miejsce_id" Type="int" Nullable="false" />
+          <Property Name="nr_ewidencyjny" Type="varchar" MaxLength="20" />
+          <Property Name="nr_unikatowy" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="data_uruchomienia" Type="datetime" Nullable="false" />
+          <Property Name="nr_fabryczny" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="usluga_id" />
+          </Key>
+          <Property Name="usluga_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="koszt_brutto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PODATNIK_JEST OBSL_SERWISAN">
+          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="1" />
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="Podatnik">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PODATNIK_ROZLICZA _URZADSKA">
+          <End Role="UrzadSkarbowy" Type="Self.UrzadSkarbowy" Multiplicity="1" />
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UrzadSkarbowy">
+              <PropertyRef Name="urzad_id" />
+            </Principal>
+            <Dependent Role="Podatnik">
+              <PropertyRef Name="urzad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_JEST NAPR_URZADZEN">
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urzadzenie">
+              <PropertyRef Name="urzadzenie_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="urzadzenie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_NAPRAWIA _SERWISAN">
+          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="0..1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_WYKONYWAN_USLUGI">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="usluga_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_URZADZEN_JEST ZAIN_MIEJSCE_">
+          <End Role="Miejsce_instalacji" Type="Self.Miejsce_instalacji" Multiplicity="1" />
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejsce_instalacji">
+              <PropertyRef Name="miejsce_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="miejsce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_URZADZEN_POSIADA_PODATNIK">
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="1" />
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podatnik">
+              <PropertyRef Name="podatnik_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="podatnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InzynierkaDBModelStoreContainer">
+          <EntitySet Name="Miejsce_instalacji" EntityType="Self.Miejsce_instalacji" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podatnik" EntityType="Self.Podatnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serwisant" EntityType="Self.Serwisant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerwisUrzadzenia" EntityType="Self.SerwisUrzadzenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrzadSkarbowy" EntityType="Self.UrzadSkarbowy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urzadzenie" EntityType="Self.Urzadzenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PODATNIK_JEST OBSL_SERWISAN" Association="Self.FK_PODATNIK_JEST OBSL_SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
+            <End Role="Podatnik" EntitySet="Podatnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PODATNIK_ROZLICZA _URZADSKA" Association="Self.FK_PODATNIK_ROZLICZA _URZADSKA">
+            <End Role="UrzadSkarbowy" EntitySet="UrzadSkarbowy" />
+            <End Role="Podatnik" EntitySet="Podatnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_JEST NAPR_URZADZEN" Association="Self.FK_SERWISUR_JEST NAPR_URZADZEN">
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_NAPRAWIA _SERWISAN" Association="Self.FK_SERWISUR_NAPRAWIA _SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_WYKONYWAN_USLUGI" Association="Self.FK_SERWISUR_WYKONYWAN_USLUGI">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URZADZEN_JEST ZAIN_MIEJSCE_" Association="Self.FK_URZADZEN_JEST ZAIN_MIEJSCE_">
+            <End Role="Miejsce_instalacji" EntitySet="Miejsce_instalacji" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URZADZEN_POSIADA_PODATNIK" Association="Self.FK_URZADZEN_POSIADA_PODATNIK">
+            <End Role="Podatnik" EntitySet="Podatnik" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InzynierkaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Miejsce_instalacji">
+          <Key>
+            <PropertyRef Name="miejsce_id" />
+          </Key>
+          <Property Name="miejsce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kraj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" FromRole="Miejsce_instalacji" ToRole="Urzadzenie" />
+        </EntityType>
+        <EntityType Name="Podatnik">
+          <Key>
+            <PropertyRef Name="podatnik_id" />
+          </Key>
+          <Property Name="podatnik_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serwisant_id" Type="Int32" Nullable="false" />
+          <Property Name="urzad_id" Type="Int32" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wojewodztwo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kod_pocztowy" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Serwisant" Relationship="Self.FK_PODATNIK_JEST_OBSL_SERWISAN" FromRole="Podatnik" ToRole="Serwisant" />
+          <NavigationProperty Name="UrzadSkarbowy" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="Podatnik" ToRole="UrzadSkarbowy" />
+          <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Podatnik" ToRole="Urzadzenie" />
+        </EntityType>
+        <EntityType Name="Serwisant">
+          <Key>
+            <PropertyRef Name="serwisant_id" />
+          </Key>
+          <Property Name="serwisant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Podatnik" Relationship="Self.FK_PODATNIK_JEST_OBSL_SERWISAN" FromRole="Serwisant" ToRole="Podatnik" />
+          <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_NAPRAWIA__SERWISAN" FromRole="Serwisant" ToRole="SerwisUrzadzenia" />
+        </EntityType>
+        <EntityType Name="SerwisUrzadzenia">
+          <Key>
+            <PropertyRef Name="serwis_id" />
+          </Key>
+          <Property Name="serwis_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usluga_id" Type="Int32" Nullable="false" />
+          <Property Name="serwisant_id" Type="Int32" />
+          <Property Name="urzadzenie_id" Type="Int32" Nullable="false" />
+          <Property Name="data_przyjecia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_oddania" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Serwisant" Relationship="Self.FK_SERWISUR_NAPRAWIA__SERWISAN" FromRole="SerwisUrzadzenia" ToRole="Serwisant" />
+          <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_SERWISUR_JEST_NAPR_URZADZEN" FromRole="SerwisUrzadzenia" ToRole="Urzadzenie" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_SERWISUR_WYKONYWAN_USLUGI" FromRole="SerwisUrzadzenia" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="UrzadSkarbowy">
+          <Key>
+            <PropertyRef Name="urzad_id" />
+          </Key>
+          <Property Name="urzad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Podatnik" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="UrzadSkarbowy" ToRole="Podatnik" />
+        </EntityType>
+        <EntityType Name="Urzadzenie">
+          <Key>
+            <PropertyRef Name="urzadzenie_id" />
+          </Key>
+          <Property Name="urzadzenie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="podatnik_id" Type="Int32" Nullable="false" />
+          <Property Name="miejsce_id" Type="Int32" Nullable="false" />
+          <Property Name="nr_ewidencyjny" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nr_unikatowy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data_uruchomienia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nr_fabryczny" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Miejsce_instalacji" Relationship="Self.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" FromRole="Urzadzenie" ToRole="Miejsce_instalacji" />
+          <NavigationProperty Name="Podatnik" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Urzadzenie" ToRole="Podatnik" />
+          <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_JEST_NAPR_URZADZEN" FromRole="Urzadzenie" ToRole="SerwisUrzadzenia" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="usluga_id" />
+          </Key>
+          <Property Name="usluga_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="koszt_brutto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_WYKONYWAN_USLUGI" FromRole="Uslugi" ToRole="SerwisUrzadzenia" />
+        </EntityType>
+        <Association Name="FK_URZADZEN_JEST_ZAIN_MIEJSCE_">
+          <End Role="Miejsce_instalacji" Type="Self.Miejsce_instalacji" Multiplicity="1" />
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejsce_instalacji">
+              <PropertyRef Name="miejsce_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="miejsce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PODATNIK_JEST_OBSL_SERWISAN">
+          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="1" />
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="Podatnik">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PODATNIK_ROZLICZA__URZADSKA">
+          <End Role="UrzadSkarbowy" Type="Self.UrzadSkarbowy" Multiplicity="1" />
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UrzadSkarbowy">
+              <PropertyRef Name="urzad_id" />
+            </Principal>
+            <Dependent Role="Podatnik">
+              <PropertyRef Name="urzad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_URZADZEN_POSIADA_PODATNIK">
+          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="1" />
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podatnik">
+              <PropertyRef Name="podatnik_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="podatnik_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_NAPRAWIA__SERWISAN">
+          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="0..1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_JEST_NAPR_URZADZEN">
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urzadzenie">
+              <PropertyRef Name="urzadzenie_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="urzadzenie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERWISUR_WYKONYWAN_USLUGI">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="1" />
+          <End Role="SerwisUrzadzenia" Type="Self.SerwisUrzadzenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="usluga_id" />
+            </Principal>
+            <Dependent Role="SerwisUrzadzenia">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InzynierkaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Miejsce_instalacji" EntityType="Self.Miejsce_instalacji" />
+          <EntitySet Name="Podatnik" EntityType="Self.Podatnik" />
+          <EntitySet Name="Serwisant" EntityType="Self.Serwisant" />
+          <EntitySet Name="SerwisUrzadzenia" EntityType="Self.SerwisUrzadzenia" />
+          <EntitySet Name="UrzadSkarbowy" EntityType="Self.UrzadSkarbowy" />
+          <EntitySet Name="Urzadzenie" EntityType="Self.Urzadzenie" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <AssociationSet Name="FK_URZADZEN_JEST_ZAIN_MIEJSCE_" Association="Self.FK_URZADZEN_JEST_ZAIN_MIEJSCE_">
+            <End Role="Miejsce_instalacji" EntitySet="Miejsce_instalacji" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PODATNIK_JEST_OBSL_SERWISAN" Association="Self.FK_PODATNIK_JEST_OBSL_SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
+            <End Role="Podatnik" EntitySet="Podatnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PODATNIK_ROZLICZA__URZADSKA" Association="Self.FK_PODATNIK_ROZLICZA__URZADSKA">
+            <End Role="UrzadSkarbowy" EntitySet="UrzadSkarbowy" />
+            <End Role="Podatnik" EntitySet="Podatnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URZADZEN_POSIADA_PODATNIK" Association="Self.FK_URZADZEN_POSIADA_PODATNIK">
+            <End Role="Podatnik" EntitySet="Podatnik" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_NAPRAWIA__SERWISAN" Association="Self.FK_SERWISUR_NAPRAWIA__SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_JEST_NAPR_URZADZEN" Association="Self.FK_SERWISUR_JEST_NAPR_URZADZEN">
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERWISUR_WYKONYWAN_USLUGI" Association="Self.FK_SERWISUR_WYKONYWAN_USLUGI">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InzynierkaDBModelStoreContainer" CdmEntityContainer="InzynierkaDBEntities">
+          <EntitySetMapping Name="Miejsce_instalacji">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Miejsce_instalacji">
+              <MappingFragment StoreEntitySet="Miejsce_instalacji">
+                <ScalarProperty Name="miejsce_id" ColumnName="miejsce_id" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podatnik">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Podatnik">
+              <MappingFragment StoreEntitySet="Podatnik">
+                <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
+                <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
+                <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="nip" ColumnName="nip" />
+                <ScalarProperty Name="wojewodztwo" ColumnName="wojewodztwo" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="kod_pocztowy" ColumnName="kod_pocztowy" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serwisant">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Serwisant">
+              <MappingFragment StoreEntitySet="Serwisant">
+                <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerwisUrzadzenia">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.SerwisUrzadzenia">
+              <MappingFragment StoreEntitySet="SerwisUrzadzenia">
+                <ScalarProperty Name="serwis_id" ColumnName="serwis_id" />
+                <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
+                <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
+                <ScalarProperty Name="urzadzenie_id" ColumnName="urzadzenie_id" />
+                <ScalarProperty Name="data_przyjecia" ColumnName="data_przyjecia" />
+                <ScalarProperty Name="data_oddania" ColumnName="data_oddania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrzadSkarbowy">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.UrzadSkarbowy">
+              <MappingFragment StoreEntitySet="UrzadSkarbowy">
+                <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urzadzenie">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Urzadzenie">
+              <MappingFragment StoreEntitySet="Urzadzenie">
+                <ScalarProperty Name="urzadzenie_id" ColumnName="urzadzenie_id" />
+                <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
+                <ScalarProperty Name="miejsce_id" ColumnName="miejsce_id" />
+                <ScalarProperty Name="nr_ewidencyjny" ColumnName="nr_ewidencyjny" />
+                <ScalarProperty Name="nr_unikatowy" ColumnName="nr_unikatowy" />
+                <ScalarProperty Name="data_uruchomienia" ColumnName="data_uruchomienia" />
+                <ScalarProperty Name="nr_fabryczny" ColumnName="nr_fabryczny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="koszt_brutto" ColumnName="koszt_brutto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

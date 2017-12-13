@@ -79,6 +79,42 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainDB\MainModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\MainModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\MainModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Miejsce_instalacji.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Podatnik.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Serwisant.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\SerwisUrzadzenia.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\UrzadSkarbowy.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Urzadzenie.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Uslugi.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +123,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinformViews\ShowClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowClients.Designer.cs">
+      <DependentUpon>ShowClients.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +145,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinformViews\ShowClients.resx">
+      <DependentUpon>ShowClients.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="LoginDB\InzynierkaLogin.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -111,10 +156,25 @@
     <None Include="LoginDB\InzynierkaLogin.edmx.diagram">
       <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="MainDB\MainModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MainModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MainDB\MainModel.edmx.diagram">
+      <DependentUpon>MainModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Inzynierka_aplikacja.LoginDB.InzynierkaDBLoginEntities.datasource" />
     <None Include="Properties\DataSources\Inzynierka_aplikacja.LoginDB.Login.datasource" />
     <None Include="Properties\DataSources\Inzynierka_aplikacja.LoginDB.RememberCred.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.InzynierkaDBEntities.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.Miejsce_instalacji.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.Podatnik.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.Serwisant.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.SerwisUrzadzenia.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.UrzadSkarbowy.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.Urzadzenie.datasource" />
+    <None Include="Properties\DataSources\Inzynierka_aplikacja.MainDB.Uslugi.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,6 +196,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
       <LastGenOutput>InzynierkaLogin.cs</LastGenOutput>
+    </Content>
+    <Content Include="MainDB\MainModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MainModel.edmx</DependentUpon>
+      <LastGenOutput>MainModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MainDB\MainModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MainModel.edmx</DependentUpon>
+      <LastGenOutput>MainModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
