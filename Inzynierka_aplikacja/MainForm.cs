@@ -16,13 +16,16 @@ namespace Inzynierka_aplikacja
         public MainForm()
         {
             InitializeComponent();
+
+            /* User methods */
+     //       InitializeImages();
         }
+
 
         public MainForm(Login UserLogged)
         {
             InitializeComponent();
-
-            contentPanel.Controls.Add(new ShowClients());
+     
             mItemUsername.Text = UserLogged.username;
             mItemPosition.Text = UserLogged.position;
             mItemPosition.Enabled = false;
@@ -55,6 +58,21 @@ namespace Inzynierka_aplikacja
         private void ThreadProc()
         {
             Application.Run(new LoginForm());
+        }
+
+        private void panelClients_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Add(new ShowClients());
+        }
+
+        private void pbClient_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Add(new ShowClients());
+        }
+
+        private void lblClient_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Add(new ShowClients());
         }
     }
 }

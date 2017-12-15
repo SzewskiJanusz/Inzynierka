@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvClient = new System.Windows.Forms.DataGridView();
-            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
+            this.btnShowDevices = new System.Windows.Forms.Button();
+            this.lbl = new System.Windows.Forms.Label();
             this.imieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwiskoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,12 +41,17 @@
             this.kodpocztowyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsClient = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsClient)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvClient
             // 
+            this.dgvClient.AllowUserToOrderColumns = true;
+            this.dgvClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClient.AutoGenerateColumns = false;
             this.dgvClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -59,15 +65,30 @@
             this.telefonDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn});
             this.dgvClient.DataSource = this.bsClient;
-            this.dgvClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClient.Location = new System.Drawing.Point(0, 0);
+            this.dgvClient.Location = new System.Drawing.Point(0, 82);
             this.dgvClient.Name = "dgvClient";
-            this.dgvClient.Size = new System.Drawing.Size(397, 333);
+            this.dgvClient.Size = new System.Drawing.Size(397, 251);
             this.dgvClient.TabIndex = 0;
+            this.dgvClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellClick);
             // 
-            // bsClient
+            // btnShowDevices
             // 
-            this.bsClient.DataSource = typeof(Inzynierka_aplikacja.MainDB.Podatnik);
+            this.btnShowDevices.Location = new System.Drawing.Point(0, 53);
+            this.btnShowDevices.Name = "btnShowDevices";
+            this.btnShowDevices.Size = new System.Drawing.Size(118, 23);
+            this.btnShowDevices.TabIndex = 1;
+            this.btnShowDevices.Text = "Pokaż urządzenia";
+            this.btnShowDevices.UseVisualStyleBackColor = true;
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl.Location = new System.Drawing.Point(-6, 0);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(143, 31);
+            this.lbl.TabIndex = 2;
+            this.lbl.Text = "Podatnicy";
             // 
             // imieDataGridViewTextBoxColumn
             // 
@@ -82,59 +103,74 @@
             this.nazwiskoDataGridViewTextBoxColumn.DataPropertyName = "nazwisko";
             this.nazwiskoDataGridViewTextBoxColumn.HeaderText = "Nazwisko";
             this.nazwiskoDataGridViewTextBoxColumn.Name = "nazwiskoDataGridViewTextBoxColumn";
+            this.nazwiskoDataGridViewTextBoxColumn.Width = 78;
             // 
             // nipDataGridViewTextBoxColumn
             // 
             this.nipDataGridViewTextBoxColumn.DataPropertyName = "nip";
             this.nipDataGridViewTextBoxColumn.HeaderText = "NIP";
             this.nipDataGridViewTextBoxColumn.Name = "nipDataGridViewTextBoxColumn";
+            this.nipDataGridViewTextBoxColumn.Width = 50;
             // 
             // wojewodztwoDataGridViewTextBoxColumn
             // 
             this.wojewodztwoDataGridViewTextBoxColumn.DataPropertyName = "wojewodztwo";
             this.wojewodztwoDataGridViewTextBoxColumn.HeaderText = "Województwo";
             this.wojewodztwoDataGridViewTextBoxColumn.Name = "wojewodztwoDataGridViewTextBoxColumn";
+            this.wojewodztwoDataGridViewTextBoxColumn.Width = 99;
             // 
             // miastoDataGridViewTextBoxColumn
             // 
             this.miastoDataGridViewTextBoxColumn.DataPropertyName = "miasto";
             this.miastoDataGridViewTextBoxColumn.HeaderText = "Miasto";
             this.miastoDataGridViewTextBoxColumn.Name = "miastoDataGridViewTextBoxColumn";
+            this.miastoDataGridViewTextBoxColumn.Width = 63;
             // 
             // ulicaDataGridViewTextBoxColumn
             // 
             this.ulicaDataGridViewTextBoxColumn.DataPropertyName = "ulica";
             this.ulicaDataGridViewTextBoxColumn.HeaderText = "Ulica";
             this.ulicaDataGridViewTextBoxColumn.Name = "ulicaDataGridViewTextBoxColumn";
+            this.ulicaDataGridViewTextBoxColumn.Width = 56;
             // 
             // kodpocztowyDataGridViewTextBoxColumn
             // 
             this.kodpocztowyDataGridViewTextBoxColumn.DataPropertyName = "kod_pocztowy";
             this.kodpocztowyDataGridViewTextBoxColumn.HeaderText = "Kod pocztowy";
             this.kodpocztowyDataGridViewTextBoxColumn.Name = "kodpocztowyDataGridViewTextBoxColumn";
+            this.kodpocztowyDataGridViewTextBoxColumn.Width = 99;
             // 
             // telefonDataGridViewTextBoxColumn
             // 
             this.telefonDataGridViewTextBoxColumn.DataPropertyName = "telefon";
             this.telefonDataGridViewTextBoxColumn.HeaderText = "Telefon";
             this.telefonDataGridViewTextBoxColumn.Name = "telefonDataGridViewTextBoxColumn";
+            this.telefonDataGridViewTextBoxColumn.Width = 68;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "E-mail";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // bsClient
+            // 
+            this.bsClient.DataSource = typeof(Inzynierka_aplikacja.MainDB.Podatnik);
             // 
             // ShowClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnShowDevices);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.dgvClient);
             this.Name = "ShowClients";
-            this.Size = new System.Drawing.Size(397, 333);
+            this.Size = new System.Drawing.Size(396, 333);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsClient)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,5 +186,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kodpocztowyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnShowDevices;
+        private System.Windows.Forms.Label lbl;
     }
 }
