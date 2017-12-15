@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Miejsce_instalacji">
           <Key>
             <PropertyRef Name="miejsce_id" />
@@ -21,6 +21,8 @@
           <Property Name="podatnik_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="serwisant_id" Type="int" Nullable="false" />
           <Property Name="urzad_id" Type="int" Nullable="false" />
+          <Property Name="symbol" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="nip" Type="varchar" MaxLength="10" Nullable="false" />
@@ -60,6 +62,7 @@
           <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kod_pocztowy" Type="varchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <EntityType Name="Urzadzenie">
           <Key>
@@ -202,8 +205,7 @@
             <End Role="Urzadzenie" EntitySet="Urzadzenie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InzynierkaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -236,6 +238,8 @@
           <NavigationProperty Name="Serwisant" Relationship="Self.FK_PODATNIK_JEST_OBSL_SERWISAN" FromRole="Podatnik" ToRole="Serwisant" />
           <NavigationProperty Name="UrzadSkarbowy" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="Podatnik" ToRole="UrzadSkarbowy" />
           <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Podatnik" ToRole="Urzadzenie" />
+          <Property Name="symbol" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Serwisant">
           <Key>
@@ -272,6 +276,7 @@
           <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Podatnik" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="UrzadSkarbowy" ToRole="Podatnik" />
+          <Property Name="kod_pocztowy" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Urzadzenie">
           <Key>
@@ -437,6 +442,8 @@
           <EntitySetMapping Name="Podatnik">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Podatnik">
               <MappingFragment StoreEntitySet="Podatnik">
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="symbol" ColumnName="symbol" />
                 <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
                 <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
                 <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
@@ -478,6 +485,7 @@
           <EntitySetMapping Name="UrzadSkarbowy">
             <EntityTypeMapping TypeName="InzynierkaDBModel.UrzadSkarbowy">
               <MappingFragment StoreEntitySet="UrzadSkarbowy">
+                <ScalarProperty Name="kod_pocztowy" ColumnName="kod_pocztowy" />
                 <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
                 <ScalarProperty Name="nazwa" ColumnName="nazwa" />
                 <ScalarProperty Name="miasto" ColumnName="miasto" />

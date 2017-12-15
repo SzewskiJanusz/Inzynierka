@@ -1,4 +1,5 @@
 ﻿using Inzynierka_aplikacja.LoginDB;
+using Inzynierka_aplikacja.MainDB;
 using Inzynierka_aplikacja.WinformViews;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,21 @@ namespace Inzynierka_aplikacja
             }
         }
 
+        internal static void ClientDevices( DataGridViewRow selRow)
+        {
+            DataGridViewRow row = selRow;
+            string a = row.Cells["nazwa"].Value.ToString();
+            contentPanel.Controls.RemoveAt(0);
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                contentPanel.Controls.Add(new ShowClientDevices(
+                    db.Podatnik.Where(x => x.nazwa == a).
+                    FirstOrDefault()   
+                    ));
+            }
+
+        }
+
         private void BackToLogin()
         {
             System.Threading.Thread t = new System.Threading.Thread
@@ -60,19 +76,25 @@ namespace Inzynierka_aplikacja
             Application.Run(new LoginForm());
         }
 
-        private void panelClients_Click(object sender, EventArgs e)
+
+        private void ShowUsersClick(object sender, EventArgs e)
         {
+            RemoveControls();
             contentPanel.Controls.Add(new ShowClients());
         }
 
-        private void pbClient_Click(object sender, EventArgs e)
+        private void RemoveControls()
         {
-            contentPanel.Controls.Add(new ShowClients());
+            foreach (Control a in contentPanel.Controls)
+            {
+                a.Dispose();
+            }
         }
 
-        private void lblClient_Click(object sender, EventArgs e)
+        private void panelDevices_Click(object sender, EventArgs e)
         {
-            contentPanel.Controls.Add(new ShowClients());
+            RemoveControls();
+            contentPanel.Controls.Add(new ShowDevices());
         }
     }
 }

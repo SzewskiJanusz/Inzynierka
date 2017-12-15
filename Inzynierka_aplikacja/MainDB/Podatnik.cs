@@ -32,6 +32,8 @@ namespace Inzynierka_aplikacja.MainDB
         public string kod_pocztowy { get; set; }
         public string telefon { get; set; }
         public string email { get; set; }
+        public string symbol { get; set; }
+        public string nazwa { get; set; }
     
         public virtual Serwisant Serwisant { get; set; }
         public virtual UrzadSkarbowy UrzadSkarbowy { get; set; }

@@ -40,13 +40,18 @@
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.panelDevices = new System.Windows.Forms.Panel();
+            this.pbDevice = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelClients = new System.Windows.Forms.Panel();
             this.pbClient = new System.Windows.Forms.PictureBox();
             this.lblClient = new System.Windows.Forms.Label();
-            this.contentPanel = new System.Windows.Forms.Panel();
+            contentPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
+            this.panelDevices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.panelClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).BeginInit();
             this.SuspendLayout();
@@ -127,11 +132,45 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.Color.Red;
+            this.leftPanel.Controls.Add(this.panelDevices);
             this.leftPanel.Controls.Add(this.panelClients);
             this.leftPanel.Location = new System.Drawing.Point(0, 52);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(173, 379);
             this.leftPanel.TabIndex = 2;
+            // 
+            // panelDevices
+            // 
+            this.panelDevices.Controls.Add(this.pbDevice);
+            this.panelDevices.Controls.Add(this.label1);
+            this.panelDevices.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelDevices.Location = new System.Drawing.Point(0, 77);
+            this.panelDevices.Name = "panelDevices";
+            this.panelDevices.Size = new System.Drawing.Size(170, 77);
+            this.panelDevices.TabIndex = 1;
+            this.panelDevices.Click += new System.EventHandler(this.panelDevices_Click);
+            // 
+            // pbDevice
+            // 
+            this.pbDevice.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbDevice.ErrorImage")));
+            this.pbDevice.Image = ((System.Drawing.Image)(resources.GetObject("pbDevice.Image")));
+            this.pbDevice.Location = new System.Drawing.Point(60, 3);
+            this.pbDevice.Name = "pbDevice";
+            this.pbDevice.Size = new System.Drawing.Size(43, 42);
+            this.pbDevice.TabIndex = 0;
+            this.pbDevice.TabStop = false;
+            this.pbDevice.Click += new System.EventHandler(this.panelDevices_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(3, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Wszystkie urządzenia";
+            this.label1.Click += new System.EventHandler(this.panelDevices_Click);
             // 
             // panelClients
             // 
@@ -142,7 +181,7 @@
             this.panelClients.Name = "panelClients";
             this.panelClients.Size = new System.Drawing.Size(170, 77);
             this.panelClients.TabIndex = 0;
-            this.panelClients.Click += new System.EventHandler(this.panelClients_Click);
+            this.panelClients.Click += new System.EventHandler(this.ShowUsersClick);
             // 
             // pbClient
             // 
@@ -152,29 +191,29 @@
             this.pbClient.Size = new System.Drawing.Size(43, 42);
             this.pbClient.TabIndex = 0;
             this.pbClient.TabStop = false;
-            this.pbClient.Click += new System.EventHandler(this.pbClient_Click);
+            this.pbClient.Click += new System.EventHandler(this.ShowUsersClick);
             // 
             // lblClient
             // 
             this.lblClient.AutoSize = true;
-            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblClient.Location = new System.Drawing.Point(32, 45);
+            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblClient.Location = new System.Drawing.Point(46, 48);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(108, 26);
+            this.lblClient.Size = new System.Drawing.Size(78, 20);
             this.lblClient.TabIndex = 1;
             this.lblClient.Text = "Podatnicy";
-            this.lblClient.Click += new System.EventHandler(this.lblClient_Click);
+            this.lblClient.Click += new System.EventHandler(this.ShowUsersClick);
             // 
             // contentPanel
             // 
-            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentPanel.BackColor = System.Drawing.Color.White;
-            this.contentPanel.Location = new System.Drawing.Point(179, 52);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(484, 379);
-            this.contentPanel.TabIndex = 3;
+            contentPanel.BackColor = System.Drawing.Color.White;
+            contentPanel.Location = new System.Drawing.Point(179, 52);
+            contentPanel.Name = "contentPanel";
+            contentPanel.Size = new System.Drawing.Size(484, 379);
+            contentPanel.TabIndex = 3;
             // 
             // panel3
             // 
@@ -192,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 454);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(contentPanel);
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -202,6 +241,9 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
+            this.panelDevices.ResumeLayout(false);
+            this.panelDevices.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();
             this.panelClients.ResumeLayout(false);
             this.panelClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).EndInit();
@@ -215,7 +257,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.Panel leftPanel;
-        private System.Windows.Forms.Panel contentPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -228,5 +269,9 @@
         private System.Windows.Forms.PictureBox pbClient;
         private System.Windows.Forms.Panel panelClients;
         private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.Panel panelDevices;
+        private System.Windows.Forms.PictureBox pbDevice;
+        private System.Windows.Forms.Label label1;
+        public static System.Windows.Forms.Panel contentPanel;
     }
 }
