@@ -27,22 +27,16 @@ namespace Inzynierka_aplikacja
         public MainForm(Login UserLogged)
         {
             InitializeComponent();
-     
-            mItemUsername.Text = UserLogged.username;
-            mItemPosition.Text = UserLogged.position;
-            mItemPosition.Enabled = false;
-            mItemUsername.Enabled = false;
 
-            mItemUsername.TextAlign = ContentAlignment.MiddleCenter;
-            mItemPosition.TextAlign = ContentAlignment.MiddleCenter;
-            
+            lblLogged.Text = UserLogged.username;
+            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using(InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
             {
-                var a = db.RememberCred.Where(x => x.lastLoginUsed == mItemUsername.Text).First();
+                var a = db.RememberCred.Where(x => x.lastLoginUsed == lblLogged.Text).First();
 
                 db.RememberCred.Remove(a);
                 BackToLogin();
@@ -85,7 +79,39 @@ namespace Inzynierka_aplikacja
             RemoveControls();
             ShowClients sc = new ShowClients();
             sc.ShowClientDevButtonClicked += ClientDevices;
+            ShowIcons("clients");
             contentPanel.Controls.Add(sc);
+        }
+
+        private void ShowIcons(string v)
+        {
+            switch (v)
+            {
+                case "clients": ShowClientIcons(); break;
+                case "devices": ShowDevicesIcons(); break;
+                case "registry": ShowRegistryIcons(); break;
+                case "przeglady": ShowPrzegladyIcons(); break;
+            }
+        }
+
+        private void ShowPrzegladyIcons()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ShowRegistryIcons()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ShowDevicesIcons()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ShowClientIcons()
+        {
+            throw new NotImplementedException();
         }
 
         private void RemoveControls()

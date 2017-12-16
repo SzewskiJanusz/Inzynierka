@@ -50,9 +50,9 @@
             this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lbl.Location = new System.Drawing.Point(-6, 0);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(143, 31);
+            this.lbl.Size = new System.Drawing.Size(170, 31);
             this.lbl.TabIndex = 2;
-            this.lbl.Text = "Podatnicy";
+            this.lbl.Text = "Kontrahenci";
             // 
             // dgvClient
             // 

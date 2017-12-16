@@ -33,7 +33,7 @@ namespace Inzynierka_aplikacja.WinformViews
             String query = "SELECT " +
             "u.nr_unikatowy AS 'Nr.unikatowy', m.kraj AS 'Kraj', " +
             "m.miasto AS 'Miasto', m.ulica AS 'Ulica', u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
-            "u.nr_fabryczny AS 'Nr.fabryczny', u.data_uruchomienia AS 'Data uruchomienia' " +
+            "u.nr_fabryczny AS 'Nr.fabryczny', u.data_uruchomienia AS 'Data uruchomienia', " +
             "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
             "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
             "FROM Urzadzenie u " +
