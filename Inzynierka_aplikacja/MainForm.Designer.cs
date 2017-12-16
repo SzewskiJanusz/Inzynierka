@@ -48,12 +48,17 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panelRegistry = new System.Windows.Forms.Panel();
+            this.pbRegistry = new System.Windows.Forms.PictureBox();
+            this.lblRegistry = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panelDevices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.panelClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).BeginInit();
+            this.panelRegistry.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -132,6 +137,7 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.Color.Red;
+            this.leftPanel.Controls.Add(this.panelRegistry);
             this.leftPanel.Controls.Add(this.panelDevices);
             this.leftPanel.Controls.Add(this.panelClients);
             this.leftPanel.Location = new System.Drawing.Point(0, 52);
@@ -225,6 +231,39 @@
             this.panel3.Size = new System.Drawing.Size(663, 19);
             this.panel3.TabIndex = 4;
             // 
+            // panelRegistry
+            // 
+            this.panelRegistry.Controls.Add(this.pbRegistry);
+            this.panelRegistry.Controls.Add(this.lblRegistry);
+            this.panelRegistry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelRegistry.Location = new System.Drawing.Point(1, 151);
+            this.panelRegistry.Name = "panelRegistry";
+            this.panelRegistry.Size = new System.Drawing.Size(170, 77);
+            this.panelRegistry.TabIndex = 2;
+            this.panelRegistry.Click += new System.EventHandler(this.ShowRegistry_Click);
+            // 
+            // pbRegistry
+            // 
+            this.pbRegistry.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbRegistry.ErrorImage")));
+            this.pbRegistry.Image = ((System.Drawing.Image)(resources.GetObject("pbRegistry.Image")));
+            this.pbRegistry.Location = new System.Drawing.Point(60, 3);
+            this.pbRegistry.Name = "pbRegistry";
+            this.pbRegistry.Size = new System.Drawing.Size(43, 42);
+            this.pbRegistry.TabIndex = 0;
+            this.pbRegistry.TabStop = false;
+            this.pbRegistry.Click += new System.EventHandler(this.ShowRegistry_Click);
+            // 
+            // lblRegistry
+            // 
+            this.lblRegistry.AutoSize = true;
+            this.lblRegistry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblRegistry.Location = new System.Drawing.Point(21, 48);
+            this.lblRegistry.Name = "lblRegistry";
+            this.lblRegistry.Size = new System.Drawing.Size(130, 20);
+            this.lblRegistry.TabIndex = 1;
+            this.lblRegistry.Text = "Wykonane usługi";
+            this.lblRegistry.Click += new System.EventHandler(this.ShowRegistry_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +286,9 @@
             this.panelClients.ResumeLayout(false);
             this.panelClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).EndInit();
+            this.panelRegistry.ResumeLayout(false);
+            this.panelRegistry.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +315,8 @@
         private System.Windows.Forms.PictureBox pbDevice;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Panel contentPanel;
+        private System.Windows.Forms.Panel panelRegistry;
+        private System.Windows.Forms.PictureBox pbRegistry;
+        private System.Windows.Forms.Label lblRegistry;
     }
 }

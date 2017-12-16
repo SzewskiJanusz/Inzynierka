@@ -22,7 +22,24 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void LoadDevices()
         {
-            var result = SQL.DoQuery("SELECT * FROM Urzadzenie;");
+            string query =
+                "SELECT " +
+                "u.nr_unikatowy AS 'Nr.unikatowy', " +
+                "p.nazwa AS 'Właściciel urządzenia', " +
+                "mi.kraj AS 'Kraj instalacji', " +
+                "mi.wojewodztwo AS 'Województwo', " +
+                "mi.miasto AS 'Miasto', " +
+                "mi.ulica AS 'Ulica', " +
+                "u.nr_fabryczny AS 'Nr.fabryczny', " +
+                "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
+                "u.data_uruchomienia AS 'Data uruchomienia', " +
+                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
+                "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
+                "FROM Urzadzenie u " +
+                "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id; ";
+
+            var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
         }
     }

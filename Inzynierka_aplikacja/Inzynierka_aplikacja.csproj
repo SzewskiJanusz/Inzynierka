@@ -124,6 +124,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL.cs" />
+    <Compile Include="WinformViews\CRUD\Registry\AddRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Registry\AddRegistry.Designer.cs">
+      <DependentUpon>AddRegistry.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\ShowClientDevices.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +148,12 @@
     <Compile Include="WinformViews\ShowDevices.Designer.cs">
       <DependentUpon>ShowDevices.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\ShowRegistry.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowRegistry.Designer.cs">
+      <DependentUpon>ShowRegistry.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +170,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinformViews\CRUD\Registry\AddRegistry.resx">
+      <DependentUpon>AddRegistry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowClientDevices.resx">
       <DependentUpon>ShowClientDevices.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowDevices.resx">
       <DependentUpon>ShowDevices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowRegistry.resx">
+      <DependentUpon>ShowRegistry.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="LoginDB\InzynierkaLogin.edmx">

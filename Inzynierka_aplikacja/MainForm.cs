@@ -101,5 +101,12 @@ namespace Inzynierka_aplikacja
             RemoveControls();
             contentPanel.Controls.Add(new ShowDevices());
         }
+
+        private void ShowRegistry_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            contentPanel.Controls.Add(new ShowRegistry());
+        }
+
     }
 }
