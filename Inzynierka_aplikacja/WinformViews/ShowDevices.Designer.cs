@@ -40,10 +40,12 @@
             this.dgvDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDevices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevices.Location = new System.Drawing.Point(0, 81);
             this.dgvDevices.Name = "dgvDevices";
-            this.dgvDevices.Size = new System.Drawing.Size(296, 177);
+            this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDevices.Size = new System.Drawing.Size(635, 388);
             this.dgvDevices.TabIndex = 0;
             // 
             // lbl
@@ -63,7 +65,7 @@
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.dgvDevices);
             this.Name = "ShowDevices";
-            this.Size = new System.Drawing.Size(296, 258);
+            this.Size = new System.Drawing.Size(638, 472);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

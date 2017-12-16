@@ -14,14 +14,15 @@ namespace Inzynierka_aplikacja
 {
     public partial class MainForm : Form
     {
+
         public MainForm()
         {
             InitializeComponent();
 
             /* User methods */
      //       InitializeImages();
+            
         }
-
 
         public MainForm(Login UserLogged)
         {
@@ -48,17 +49,19 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        internal static void ClientDevices( DataGridViewRow selRow)
+        private void ClientDevices(object sender, EventArgs e)
         {
-            DataGridViewRow row = selRow;
+            DataGridViewRow row = ShowClients.selectedRow;
             string a = row.Cells["nazwa"].Value.ToString();
-            contentPanel.Controls.RemoveAt(0);
+            RemoveControls();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                contentPanel.Controls.Add(new ShowClientDevices(
+                ShowClientDevices cdev = new ShowClientDevices(
                     db.Podatnik.Where(x => x.nazwa == a).
-                    FirstOrDefault()   
-                    ));
+                    FirstOrDefault()
+                    );
+               
+                contentPanel.Controls.Add(cdev);
             }
 
         }
@@ -80,7 +83,9 @@ namespace Inzynierka_aplikacja
         private void ShowUsersClick(object sender, EventArgs e)
         {
             RemoveControls();
-            contentPanel.Controls.Add(new ShowClients());
+            ShowClients sc = new ShowClients();
+            sc.ShowClientDevButtonClicked += ClientDevices;
+            contentPanel.Controls.Add(sc);
         }
 
         private void RemoveControls()

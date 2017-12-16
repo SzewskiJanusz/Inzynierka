@@ -16,6 +16,7 @@ namespace Inzynierka_aplikacja.WinformViews
         public ShowDevices()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             LoadDevices();
         }
 

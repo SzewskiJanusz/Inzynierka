@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvClientDev = new System.Windows.Forms.DataGridView();
             this.lbl = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.dgvClientDev = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientDev)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lbl.Location = new System.Drawing.Point(-3, 0);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(406, 31);
+            this.lbl.TabIndex = 5;
+            this.lbl.Text = "Urządzenia fiskalne podatnika";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblUsername.Location = new System.Drawing.Point(147, 45);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(0, 31);
+            this.lblUsername.TabIndex = 6;
             // 
             // dgvClientDev
             // 
@@ -44,44 +62,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientDev.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvClientDev.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientDev.Location = new System.Drawing.Point(3, 77);
+            this.dgvClientDev.Location = new System.Drawing.Point(3, 105);
+            this.dgvClientDev.MultiSelect = false;
             this.dgvClientDev.Name = "dgvClientDev";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientDev.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvClientDev.Size = new System.Drawing.Size(394, 254);
-            this.dgvClientDev.TabIndex = 3;
-            // 
-            // lbl
-            // 
-            this.lbl.AutoSize = true;
-            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbl.Location = new System.Drawing.Point(-3, -2);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(406, 31);
-            this.lbl.TabIndex = 5;
-            this.lbl.Text = "Urządzenia fiskalne podatnika";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUsername.Location = new System.Drawing.Point(148, 29);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(0, 31);
-            this.lblUsername.TabIndex = 6;
+            this.dgvClientDev.ReadOnly = true;
+            this.dgvClientDev.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientDev.Size = new System.Drawing.Size(390, 223);
+            this.dgvClientDev.TabIndex = 7;
             // 
             // ShowClientDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.dgvClientDev);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lbl);
             this.Name = "ShowClientDevices";
             this.Size = new System.Drawing.Size(397, 331);
@@ -92,9 +86,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvClientDev;
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label lblUsername;
+        public System.Windows.Forms.DataGridView dgvClientDev;
     }
 }

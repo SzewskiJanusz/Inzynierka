@@ -46,7 +46,7 @@
             this.panelClients = new System.Windows.Forms.Panel();
             this.pbClient = new System.Windows.Forms.PictureBox();
             this.lblClient = new System.Windows.Forms.Label();
-            contentPanel = new System.Windows.Forms.Panel();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
@@ -206,14 +206,14 @@
             // 
             // contentPanel
             // 
-            contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            contentPanel.BackColor = System.Drawing.Color.White;
-            contentPanel.Location = new System.Drawing.Point(179, 52);
-            contentPanel.Name = "contentPanel";
-            contentPanel.Size = new System.Drawing.Size(484, 379);
-            contentPanel.TabIndex = 3;
+            this.contentPanel.BackColor = System.Drawing.Color.White;
+            this.contentPanel.Location = new System.Drawing.Point(179, 52);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(484, 379);
+            this.contentPanel.TabIndex = 3;
             // 
             // panel3
             // 
@@ -231,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 454);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(contentPanel);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -272,6 +272,6 @@
         private System.Windows.Forms.Panel panelDevices;
         private System.Windows.Forms.PictureBox pbDevice;
         private System.Windows.Forms.Label label1;
-        public static System.Windows.Forms.Panel contentPanel;
+        public System.Windows.Forms.Panel contentPanel;
     }
 }

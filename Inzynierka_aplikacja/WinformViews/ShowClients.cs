@@ -12,6 +12,17 @@ namespace Inzynierka_aplikacja.WinformViews
 {
     public partial class ShowClients : UserControl
     {
+        public event EventHandler ShowClientDevButtonClicked;
+        public static DataGridViewRow selectedRow;
+
+
+        protected virtual void ShowClientDevClick(EventArgs e)
+        {
+            var handler = ShowClientDevButtonClicked;
+            if (handler != null)
+                handler(this, e);
+        }
+
         public ShowClients()
         {
             InitializeComponent();
@@ -41,7 +52,8 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             if (dgvClient.SelectedRows.Count != 0)
             {
-                MainForm.ClientDevices(dgvClient.SelectedRows[0]);
+                selectedRow = dgvClient.SelectedRows[0];
+                ShowClientDevClick(e);
             }
             
         }
