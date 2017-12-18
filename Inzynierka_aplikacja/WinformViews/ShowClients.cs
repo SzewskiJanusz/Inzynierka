@@ -27,7 +27,7 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            btnShowDevices.Enabled = false;
+            linklblShowClientDevices.Visible = false;
             LoadClients();
         }
 
@@ -45,7 +45,7 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void dgvClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnShowDevices.Enabled = true;
+            linklblShowClientDevices.Visible = true;
         }
 
         private void btnShowDevices_Click(object sender, EventArgs e)

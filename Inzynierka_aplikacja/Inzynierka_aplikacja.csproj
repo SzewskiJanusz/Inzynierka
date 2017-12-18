@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionManager.cs" />
     <Compile Include="LoginDB\InzynierkaLogin.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,11 +125,48 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL.cs" />
+    <Compile Include="ToolstripIcons.cs" />
+    <Compile Include="WinformViews\CRUD\Clients\AddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Clients\AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Clients\ShowClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Clients\ShowClient.Designer.cs">
+      <DependentUpon>ShowClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\AddDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\AddDevice.Designer.cs">
+      <DependentUpon>AddDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\ShowDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\ShowDevice.Designer.cs">
+      <DependentUpon>ShowDevice.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\CRUD\Registry\AddRegistry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinformViews\CRUD\Registry\AddRegistry.Designer.cs">
       <DependentUpon>AddRegistry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Registry\ShowRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Registry\ShowRegistry.Designer.cs">
+      <DependentUpon>ShowRegistry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Revenue\AddRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Revenue\AddRevenue.Designer.cs">
+      <DependentUpon>AddRevenue.cs</DependentUpon>
     </Compile>
     <Compile Include="WinformViews\ShowClientDevices.cs">
       <SubType>UserControl</SubType>
@@ -154,6 +192,12 @@
     <Compile Include="WinformViews\ShowRegistry.Designer.cs">
       <DependentUpon>ShowRegistry.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\ShowRevenues.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowRevenues.Designer.cs">
+      <DependentUpon>ShowRevenues.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +214,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WinformViews\CRUD\Clients\AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Registry\AddRegistry.resx">
       <DependentUpon>AddRegistry.cs</DependentUpon>
     </EmbeddedResource>

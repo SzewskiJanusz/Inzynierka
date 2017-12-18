@@ -28,21 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnShowDevices = new System.Windows.Forms.Button();
             this.lbl = new System.Windows.Forms.Label();
             this.dgvClient = new System.Windows.Forms.DataGridView();
+            this.linklblShowClientDevices = new System.Windows.Forms.LinkLabel();
+            this.linklblAdd = new System.Windows.Forms.LinkLabel();
+            this.linklblFind = new System.Windows.Forms.LinkLabel();
+            this.linklblEdit = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnShowDevices
-            // 
-            this.btnShowDevices.Location = new System.Drawing.Point(0, 53);
-            this.btnShowDevices.Name = "btnShowDevices";
-            this.btnShowDevices.Size = new System.Drawing.Size(118, 23);
-            this.btnShowDevices.TabIndex = 1;
-            this.btnShowDevices.Text = "Pokaż urządzenia";
-            this.btnShowDevices.UseVisualStyleBackColor = true;
-            this.btnShowDevices.Click += new System.EventHandler(this.btnShowDevices_Click);
             // 
             // lbl
             // 
@@ -72,12 +65,69 @@
             this.dgvClient.TabIndex = 3;
             this.dgvClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellClick);
             // 
+            // linklblShowClientDevices
+            // 
+            this.linklblShowClientDevices.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblShowClientDevices.AutoSize = true;
+            this.linklblShowClientDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linklblShowClientDevices.LinkColor = System.Drawing.Color.Black;
+            this.linklblShowClientDevices.Location = new System.Drawing.Point(3, 50);
+            this.linklblShowClientDevices.Name = "linklblShowClientDevices";
+            this.linklblShowClientDevices.Size = new System.Drawing.Size(121, 17);
+            this.linklblShowClientDevices.TabIndex = 4;
+            this.linklblShowClientDevices.TabStop = true;
+            this.linklblShowClientDevices.Text = "Pokaż urządzenia";
+            this.linklblShowClientDevices.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblShowClientDevices.Click += new System.EventHandler(this.btnShowDevices_Click);
+            // 
+            // linklblAdd
+            // 
+            this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblAdd.AutoSize = true;
+            this.linklblAdd.LinkColor = System.Drawing.Color.Black;
+            this.linklblAdd.Location = new System.Drawing.Point(204, 54);
+            this.linklblAdd.Name = "linklblAdd";
+            this.linklblAdd.Size = new System.Drawing.Size(35, 13);
+            this.linklblAdd.TabIndex = 5;
+            this.linklblAdd.TabStop = true;
+            this.linklblAdd.Text = "Dodaj";
+            this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // linklblFind
+            // 
+            this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblFind.AutoSize = true;
+            this.linklblFind.LinkColor = System.Drawing.Color.Black;
+            this.linklblFind.Location = new System.Drawing.Point(329, 54);
+            this.linklblFind.Name = "linklblFind";
+            this.linklblFind.Size = new System.Drawing.Size(53, 13);
+            this.linklblFind.TabIndex = 6;
+            this.linklblFind.TabStop = true;
+            this.linklblFind.Text = "Wyszukaj";
+            this.linklblFind.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // linklblEdit
+            // 
+            this.linklblEdit.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblEdit.AutoSize = true;
+            this.linklblEdit.LinkColor = System.Drawing.Color.Black;
+            this.linklblEdit.Location = new System.Drawing.Point(263, 54);
+            this.linklblEdit.Name = "linklblEdit";
+            this.linklblEdit.Size = new System.Drawing.Size(43, 13);
+            this.linklblEdit.TabIndex = 7;
+            this.linklblEdit.TabStop = true;
+            this.linklblEdit.Text = "Popraw";
+            this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
             // ShowClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linklblEdit);
+            this.Controls.Add(this.linklblFind);
+            this.Controls.Add(this.linklblAdd);
+            this.Controls.Add(this.linklblShowClientDevices);
             this.Controls.Add(this.dgvClient);
-            this.Controls.Add(this.btnShowDevices);
             this.Controls.Add(this.lbl);
             this.Name = "ShowClients";
             this.Size = new System.Drawing.Size(396, 333);
@@ -88,8 +138,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnShowDevices;
         private System.Windows.Forms.Label lbl;
         public System.Windows.Forms.DataGridView dgvClient;
+        private System.Windows.Forms.LinkLabel linklblShowClientDevices;
+        private System.Windows.Forms.LinkLabel linklblAdd;
+        private System.Windows.Forms.LinkLabel linklblFind;
+        private System.Windows.Forms.LinkLabel linklblEdit;
     }
 }

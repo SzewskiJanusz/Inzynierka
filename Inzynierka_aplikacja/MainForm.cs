@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,10 +19,6 @@ namespace Inzynierka_aplikacja
         public MainForm()
         {
             InitializeComponent();
-
-            /* User methods */
-     //       InitializeImages();
-            
         }
 
         public MainForm(Login UserLogged)
@@ -30,6 +27,8 @@ namespace Inzynierka_aplikacja
 
             lblLogged.Text = UserLogged.username;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+
+            SetDefaultToolStripIcons();
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,7 +110,12 @@ namespace Inzynierka_aplikacja
 
         private void ShowClientIcons()
         {
-            throw new NotImplementedException();
+            ToolStripButton[] icons = ToolstripIcons.GetInstance().GetClient();
+            foreach(ToolStripButton b in icons)
+            {
+                toolStrip.Items.Add(b);
+                b.Click += GoToHomePage;
+            }
         }
 
         private void RemoveControls()
@@ -133,6 +137,23 @@ namespace Inzynierka_aplikacja
             RemoveControls();
             contentPanel.Controls.Add(new ShowRegistry());
         }
+
+        private void SetDefaultToolStripIcons()
+        {
+            toolStrip.Items.Clear();
+            RemoveControls();
+
+            ToolStripButton home = new ToolStripButton(Image.FromFile(@"Assets\home.png"));
+            home.Click += GoToHomePage;
+            toolStrip.Items.Add(home);
+        }
+
+
+        private void GoToHomePage(object sender, EventArgs e)
+        {
+            SetDefaultToolStripIcons();
+        }
+
 
     }
 }

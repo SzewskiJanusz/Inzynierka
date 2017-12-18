@@ -32,10 +32,18 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zmieńHasłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.widokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.narzędziaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.panelPrzeglad = new System.Windows.Forms.Panel();
+            this.pbPrzeglad = new System.Windows.Forms.PictureBox();
+            this.lblPrzeglad = new System.Windows.Forms.Label();
             this.panelRegistry = new System.Windows.Forms.Panel();
             this.pbRegistry = new System.Windows.Forms.PictureBox();
             this.lblRegistry = new System.Windows.Forms.Label();
@@ -47,20 +55,12 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panelPrzeglad = new System.Windows.Forms.Panel();
-            this.pbPrzeglad = new System.Windows.Forms.PictureBox();
-            this.lblPrzeglad = new System.Windows.Forms.Label();
-            this.widokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.narzędziaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblLogged = new System.Windows.Forms.Label();
             this.lblTodaysDate = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
+            this.panelPrzeglad.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).BeginInit();
             this.panelRegistry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).BeginInit();
             this.panelDevices.SuspendLayout();
@@ -68,8 +68,6 @@
             this.panelClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panelPrzeglad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -100,26 +98,54 @@
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
             // 
             // zmieńHasłoToolStripMenuItem
             // 
             this.zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
-            this.zmieńHasłoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zmieńHasłoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
+            // 
+            // widokToolStripMenuItem
+            // 
+            this.widokToolStripMenuItem.Name = "widokToolStripMenuItem";
+            this.widokToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.widokToolStripMenuItem.Text = "Widok";
+            // 
+            // dodajToolStripMenuItem
+            // 
+            this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
+            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.dodajToolStripMenuItem.Text = "Dodaj";
+            // 
+            // narzędziaToolStripMenuItem
+            // 
+            this.narzędziaToolStripMenuItem.Name = "narzędziaToolStripMenuItem";
+            this.narzędziaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.narzędziaToolStripMenuItem.Text = "Narzędzia";
+            // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
             // toolStrip
             // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(663, 25);
@@ -135,10 +161,40 @@
             this.leftPanel.Controls.Add(this.panelRegistry);
             this.leftPanel.Controls.Add(this.panelDevices);
             this.leftPanel.Controls.Add(this.panelClients);
-            this.leftPanel.Location = new System.Drawing.Point(0, 52);
+            this.leftPanel.Location = new System.Drawing.Point(0, 66);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(173, 379);
+            this.leftPanel.Size = new System.Drawing.Size(173, 365);
             this.leftPanel.TabIndex = 2;
+            // 
+            // panelPrzeglad
+            // 
+            this.panelPrzeglad.Controls.Add(this.pbPrzeglad);
+            this.panelPrzeglad.Controls.Add(this.lblPrzeglad);
+            this.panelPrzeglad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelPrzeglad.Location = new System.Drawing.Point(1, 222);
+            this.panelPrzeglad.Name = "panelPrzeglad";
+            this.panelPrzeglad.Size = new System.Drawing.Size(170, 77);
+            this.panelPrzeglad.TabIndex = 3;
+            // 
+            // pbPrzeglad
+            // 
+            this.pbPrzeglad.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.ErrorImage")));
+            this.pbPrzeglad.Image = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.Image")));
+            this.pbPrzeglad.Location = new System.Drawing.Point(60, 3);
+            this.pbPrzeglad.Name = "pbPrzeglad";
+            this.pbPrzeglad.Size = new System.Drawing.Size(43, 42);
+            this.pbPrzeglad.TabIndex = 0;
+            this.pbPrzeglad.TabStop = false;
+            // 
+            // lblPrzeglad
+            // 
+            this.lblPrzeglad.AutoSize = true;
+            this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblPrzeglad.Location = new System.Drawing.Point(15, 48);
+            this.lblPrzeglad.Name = "lblPrzeglad";
+            this.lblPrzeglad.Size = new System.Drawing.Size(152, 20);
+            this.lblPrzeglad.TabIndex = 1;
+            this.lblPrzeglad.Text = "Najbliższe przeglądy";
             // 
             // panelRegistry
             // 
@@ -244,9 +300,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.contentPanel.BackColor = System.Drawing.Color.White;
-            this.contentPanel.Location = new System.Drawing.Point(179, 52);
+            this.contentPanel.Location = new System.Drawing.Point(179, 66);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(484, 379);
+            this.contentPanel.Size = new System.Drawing.Size(484, 365);
             this.contentPanel.TabIndex = 3;
             // 
             // panel3
@@ -260,60 +316,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(663, 19);
             this.panel3.TabIndex = 4;
-            // 
-            // panelPrzeglad
-            // 
-            this.panelPrzeglad.Controls.Add(this.pbPrzeglad);
-            this.panelPrzeglad.Controls.Add(this.lblPrzeglad);
-            this.panelPrzeglad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelPrzeglad.Location = new System.Drawing.Point(1, 222);
-            this.panelPrzeglad.Name = "panelPrzeglad";
-            this.panelPrzeglad.Size = new System.Drawing.Size(170, 77);
-            this.panelPrzeglad.TabIndex = 3;
-            // 
-            // pbPrzeglad
-            // 
-            this.pbPrzeglad.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.ErrorImage")));
-            this.pbPrzeglad.Image = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.Image")));
-            this.pbPrzeglad.Location = new System.Drawing.Point(60, 3);
-            this.pbPrzeglad.Name = "pbPrzeglad";
-            this.pbPrzeglad.Size = new System.Drawing.Size(43, 42);
-            this.pbPrzeglad.TabIndex = 0;
-            this.pbPrzeglad.TabStop = false;
-            // 
-            // lblPrzeglad
-            // 
-            this.lblPrzeglad.AutoSize = true;
-            this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPrzeglad.Location = new System.Drawing.Point(15, 48);
-            this.lblPrzeglad.Name = "lblPrzeglad";
-            this.lblPrzeglad.Size = new System.Drawing.Size(152, 20);
-            this.lblPrzeglad.TabIndex = 1;
-            this.lblPrzeglad.Text = "Najbliższe przeglądy";
-            // 
-            // widokToolStripMenuItem
-            // 
-            this.widokToolStripMenuItem.Name = "widokToolStripMenuItem";
-            this.widokToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.widokToolStripMenuItem.Text = "Widok";
-            // 
-            // dodajToolStripMenuItem
-            // 
-            this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
-            this.dodajToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.dodajToolStripMenuItem.Text = "Dodaj";
-            // 
-            // narzędziaToolStripMenuItem
-            // 
-            this.narzędziaToolStripMenuItem.Name = "narzędziaToolStripMenuItem";
-            this.narzędziaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.narzędziaToolStripMenuItem.Text = "Narzędzia";
-            // 
-            // pomocToolStripMenuItem
-            // 
-            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
             // lblLogged
             // 
@@ -337,20 +339,6 @@
             this.lblTodaysDate.TabIndex = 0;
             this.lblTodaysDate.Text = "test";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,9 +354,10 @@
             this.Text = "Aplikacja";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
+            this.panelPrzeglad.ResumeLayout(false);
+            this.panelPrzeglad.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).EndInit();
             this.panelRegistry.ResumeLayout(false);
             this.panelRegistry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).EndInit();
@@ -380,9 +369,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panelPrzeglad.ResumeLayout(false);
-            this.panelPrzeglad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,6 +404,5 @@
         private System.Windows.Forms.Label lblLogged;
         private System.Windows.Forms.Label lblTodaysDate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
