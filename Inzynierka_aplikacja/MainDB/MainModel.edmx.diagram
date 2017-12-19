@@ -7,7 +7,7 @@
       <Diagram DiagramId="45c5c5037afb4c01b787303102fd696d" Name="Diagram1">
         <EntityTypeShape EntityType="InzynierkaDBModel.Miejsce_instalacji" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.Podatnik" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Serwisant" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Serwisant" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.SerwisUrzadzenia" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.UrzadSkarbowy" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.Urzadzenie" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
@@ -19,6 +19,10 @@
         <AssociationConnector Association="InzynierkaDBModel.FK_SERWISUR_NAPRAWIA__SERWISAN" ManuallyRouted="false" />
         <AssociationConnector Association="InzynierkaDBModel.FK_SERWISUR_JEST_NAPR_URZADZEN" ManuallyRouted="false" />
         <AssociationConnector Association="InzynierkaDBModel.FK_SERWISUR_WYKONYWAN_USLUGI" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Pracownik" Width="1.5" PointX="0.75" PointY="2" />
+        <AssociationConnector Association="InzynierkaDBModel.FK_PODATNIK_JEST_OBSL_SERWISAN1" />
+        <AssociationConnector Association="InzynierkaDBModel.FK_SERWISUR_NAPRAWIA__SERWISAN1" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Handlowcy" Width="1.5" PointX="7.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -27,6 +27,8 @@ namespace Inzynierka_aplikacja.MainDB
         public string nr_unikatowy { get; set; }
         public System.DateTime data_uruchomienia { get; set; }
         public string nr_fabryczny { get; set; }
+        public System.DateTime ostatni_przeglad { get; set; }
+        public System.DateTime nastepny_przeglad { get; set; }
     
         public virtual Miejsce_instalacji Miejsce_instalacji { get; set; }
         public virtual Podatnik Podatnik { get; set; }

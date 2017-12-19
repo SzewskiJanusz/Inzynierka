@@ -1,6 +1,7 @@
 ﻿using Inzynierka_aplikacja.LoginDB;
 using Inzynierka_aplikacja.MainDB;
 using Inzynierka_aplikacja.WinformViews;
+using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,15 +30,22 @@ namespace Inzynierka_aplikacja
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
+         
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using(InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
-            {
-                var a = db.RememberCred.Where(x => x.lastLoginUsed == lblLogged.Text).First();
-
-                db.RememberCred.Remove(a);
+            {   
+                try
+                {
+                    var a = db.RememberCred.Where(x => x.lastLoginUsed == lblLogged.Text).First();
+                    db.RememberCred.Remove(a);
+                    db.SaveChanges();
+                }
+                catch (InvalidOperationException)
+                {
+                }
                 BackToLogin();
             }
         }
@@ -69,7 +77,11 @@ namespace Inzynierka_aplikacja
 
         private void ThreadProc()
         {
-            Application.Run(new LoginForm());
+            try { Application.Run(new LoginForm()); }
+            catch (System.ObjectDisposedException)
+            {
+                // Do nothing
+            }
         }
 
 
@@ -111,11 +123,13 @@ namespace Inzynierka_aplikacja
         private void ShowClientIcons()
         {
             ToolStripButton[] icons = ToolstripIcons.GetInstance().GetClient();
-            foreach(ToolStripButton b in icons)
+            for (int i = 0; i < 3; i++)
             {
-                toolStrip.Items.Add(b);
-                b.Click += GoToHomePage;
+                toolStrip.Items.Add(icons[i]);
             }
+            icons[0].Click += AddClient;
+         //   icons[2].Click += GoToHomePage;
+
         }
 
         private void RemoveControls()
@@ -152,6 +166,19 @@ namespace Inzynierka_aplikacja
         private void GoToHomePage(object sender, EventArgs e)
         {
             SetDefaultToolStripIcons();
+        }
+
+        private void AddClient(object sender, EventArgs e)
+        {
+            AddClient f = new AddClient();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.Podatnik.Add(f.nowyPodatnik);
+                    db.SaveChanges();
+                }
+            }
         }
 
 

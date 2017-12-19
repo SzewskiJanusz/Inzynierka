@@ -80,6 +80,9 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainDB\Handlowcy.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainDB\MainModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

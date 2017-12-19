@@ -12,17 +12,12 @@ namespace Inzynierka_aplikacja.MainDB
     using System;
     using System.Collections.Generic;
     
-    public partial class SerwisUrzadzenia
+    public partial class Handlowcy
     {
-        public int serwis_id { get; set; }
-        public int usluga_id { get; set; }
-        public Nullable<int> serwisant_id { get; set; }
-        public int urzadzenie_id { get; set; }
-        public System.DateTime data_przyjecia { get; set; }
-        public System.DateTime data_oddania { get; set; }
-    
-        public virtual Serwisant Serwisant { get; set; }
-        public virtual Urzadzenie Urzadzenie { get; set; }
-        public virtual Uslugi Uslugi { get; set; }
+        public int handlowiec_id { get; set; }
+        public string imie { get; set; }
+        public string nazwisko { get; set; }
+        public string telefon { get; set; }
+        public string email { get; set; }
     }
 }

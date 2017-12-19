@@ -24,6 +24,7 @@ namespace Inzynierka_aplikacja.MainDB
         public string kraj { get; set; }
         public string miasto { get; set; }
         public string ulica { get; set; }
+        public string wojewodztwo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Urzadzenie> Urzadzenie { get; set; }

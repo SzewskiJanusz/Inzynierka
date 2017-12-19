@@ -14,7 +14,8 @@ namespace Inzynierka_aplikacja.WinformViews
     {
         public event EventHandler ShowClientDevButtonClicked;
         public static DataGridViewRow selectedRow;
-
+        private List<int> indexesOfRows = new List<int>();
+        private int FindClickNumber;
 
         protected virtual void ShowClientDevClick(EventArgs e)
         {
@@ -29,7 +30,9 @@ namespace Inzynierka_aplikacja.WinformViews
             this.Dock = DockStyle.Fill;
             linklblShowClientDevices.Visible = false;
             LoadClients();
-        }
+            indexesOfRows = new List<int>();
+            FindClickNumber = 0;
+    }
 
         private void LoadClients()
         {
@@ -57,5 +60,47 @@ namespace Inzynierka_aplikacja.WinformViews
             }
             
         }
+
+        private void linklblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tbxFind.Visible = true;
+            btnFind.Visible = true;
+        }
+
+        private void tbxFind_TextChanged(object sender, EventArgs e)
+        {
+            indexesOfRows.Clear();
+
+            foreach (DataGridViewRow row in dgvClient.Rows)
+            {
+                for (int i = 0; i < dgvClient.Columns.Count; i++)
+                {
+                    string str = row.Cells[i].Value.ToString().ToLower();
+                    if (str.Contains(tbxFind.Text.ToLower()))
+                    {
+                        indexesOfRows.Add(row.Index);
+                        break;
+                    }
+                }
+            }
+
+            FindClickNumber = 0;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+           
+            if (FindClickNumber < indexesOfRows.Count)
+            {
+                dgvClient.Rows[indexesOfRows[FindClickNumber]].Selected = true;
+                FindClickNumber++;
+            }
+            else
+            {
+                FindClickNumber = 0;
+            }
+                
+        }
+
     }
 }

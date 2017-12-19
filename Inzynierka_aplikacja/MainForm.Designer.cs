@@ -190,11 +190,11 @@
             // 
             this.lblPrzeglad.AutoSize = true;
             this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPrzeglad.Location = new System.Drawing.Point(15, 48);
+            this.lblPrzeglad.Location = new System.Drawing.Point(25, 48);
             this.lblPrzeglad.Name = "lblPrzeglad";
-            this.lblPrzeglad.Size = new System.Drawing.Size(152, 20);
+            this.lblPrzeglad.Size = new System.Drawing.Size(126, 20);
             this.lblPrzeglad.TabIndex = 1;
-            this.lblPrzeglad.Text = "Najbliższe przeglądy";
+            this.lblPrzeglad.Text = "Najbliższe usługi";
             // 
             // panelRegistry
             // 

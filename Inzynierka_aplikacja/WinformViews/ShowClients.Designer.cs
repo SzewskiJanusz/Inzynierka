@@ -34,6 +34,8 @@
             this.linklblAdd = new System.Windows.Forms.LinkLabel();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.linklblEdit = new System.Windows.Forms.LinkLabel();
+            this.tbxFind = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +63,10 @@
             this.dgvClient.Name = "dgvClient";
             this.dgvClient.ReadOnly = true;
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClient.Size = new System.Drawing.Size(390, 248);
+            this.dgvClient.Size = new System.Drawing.Size(531, 248);
             this.dgvClient.TabIndex = 3;
             this.dgvClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellClick);
+            this.dgvClient.Sorted += new System.EventHandler(this.tbxFind_TextChanged);
             // 
             // linklblShowClientDevices
             // 
@@ -105,6 +108,7 @@
             this.linklblFind.TabStop = true;
             this.linklblFind.Text = "Wyszukaj";
             this.linklblFind.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblFind.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblFind_LinkClicked);
             // 
             // linklblEdit
             // 
@@ -119,10 +123,32 @@
             this.linklblEdit.Text = "Popraw";
             this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
             // 
+            // tbxFind
+            // 
+            this.tbxFind.Location = new System.Drawing.Point(207, 12);
+            this.tbxFind.Name = "tbxFind";
+            this.tbxFind.Size = new System.Drawing.Size(175, 20);
+            this.tbxFind.TabIndex = 8;
+            this.tbxFind.Visible = false;
+            this.tbxFind.TextChanged += new System.EventHandler(this.tbxFind_TextChanged);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(406, 12);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(128, 24);
+            this.btnFind.TabIndex = 9;
+            this.btnFind.Text = "Znajdź następny";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Visible = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
             // ShowClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.tbxFind);
             this.Controls.Add(this.linklblEdit);
             this.Controls.Add(this.linklblFind);
             this.Controls.Add(this.linklblAdd);
@@ -130,7 +156,7 @@
             this.Controls.Add(this.dgvClient);
             this.Controls.Add(this.lbl);
             this.Name = "ShowClients";
-            this.Size = new System.Drawing.Size(396, 333);
+            this.Size = new System.Drawing.Size(537, 333);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,5 +170,7 @@
         private System.Windows.Forms.LinkLabel linklblAdd;
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.LinkLabel linklblEdit;
+        private System.Windows.Forms.TextBox tbxFind;
+        private System.Windows.Forms.Button btnFind;
     }
 }
