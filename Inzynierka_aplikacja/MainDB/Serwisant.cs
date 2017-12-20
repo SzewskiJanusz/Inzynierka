@@ -19,6 +19,7 @@ namespace Inzynierka_aplikacja.MainDB
         {
             this.Podatnik = new HashSet<Podatnik>();
             this.SerwisUrzadzenia = new HashSet<SerwisUrzadzenia>();
+            this.Urzadzenie = new HashSet<Urzadzenie>();
         }
     
         public int serwisant_id { get; set; }
@@ -26,10 +27,13 @@ namespace Inzynierka_aplikacja.MainDB
         public string nazwisko { get; set; }
         public string telefon { get; set; }
         public string email { get; set; }
+        public string haslohash { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podatnik> Podatnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Urzadzenie> Urzadzenie { get; set; }
     }
 }

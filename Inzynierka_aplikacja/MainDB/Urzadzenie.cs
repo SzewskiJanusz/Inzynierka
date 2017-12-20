@@ -29,10 +29,12 @@ namespace Inzynierka_aplikacja.MainDB
         public string nr_fabryczny { get; set; }
         public System.DateTime ostatni_przeglad { get; set; }
         public System.DateTime nastepny_przeglad { get; set; }
+        public int serwisant_id { get; set; }
     
         public virtual Miejsce_instalacji Miejsce_instalacji { get; set; }
         public virtual Podatnik Podatnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
+        public virtual Serwisant Serwisant { get; set; }
     }
 }

@@ -7,16 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Inzynierka_aplikacja.LoginDB
+namespace Inzynierka_aplikacja.MainDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class Handlowiec
     {
-        public int login_id { get; set; }
-        public string username { get; set; }
-        public string hashedPassword { get; set; }
-        public string position { get; set; }
+        public int handlowiec_id { get; set; }
+        public string imie { get; set; }
+        public string nazwisko { get; set; }
+        public string telefon { get; set; }
+        public string haslohash { get; set; }
+        public string email { get; set; }
     }
 }

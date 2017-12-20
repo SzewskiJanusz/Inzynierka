@@ -1,4 +1,4 @@
-﻿using Inzynierka_aplikacja.LoginDB;
+﻿using Inzynierka_aplikacja.MainDB;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,8 +10,9 @@ namespace Inzynierka_aplikacja
 {
     public partial class LoginForm : Form
     {
-        private Login UserToLogin { get; set; }
-
+        private Handlowiec HandlowiecToLogin { get; set; }
+        private Administrator AdminToLogin { get; set; }
+        private Serwisant SerwisantToLogin { get; set; }
 
         public LoginForm()
         {
@@ -34,9 +35,9 @@ namespace Inzynierka_aplikacja
             bool isOk = true;
             try
             {
-                using (InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
-                    db.Login.FirstOrDefault();
+                    db.Serwisant.FirstOrDefault();
                 }
             }
             catch (System.Data.Entity.Core.EntityException)
@@ -49,11 +50,23 @@ namespace Inzynierka_aplikacja
 
         private List<string> GetEmployeesToCombobox()
         {
-            using (InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 try
                 {
-                    return db.Login.Where(x => x.username != "admin").Select(x => x.username).ToList();
+                    List<string> handlowcy = db.Handlowiec.Select(x => x.imie + " " + x.nazwisko).ToList();
+                    List<string> serwisanci = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+                    List<string> wszyscy = new List<string>();
+                    foreach(string h in handlowcy)
+                    {
+                        wszyscy.Add(h);
+                    }
+                    foreach (string s in serwisanci)
+                    {
+                        wszyscy.Add(s);
+                    }
+
+                    return wszyscy;
                 }
                 catch (Exception)
                 {
@@ -66,15 +79,35 @@ namespace Inzynierka_aplikacja
 
         private bool IfAnyLoginWasRemembered()
         {
-            RememberCred a = new RememberCred();
-            using (InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+            PamiecLogowania a = new PamiecLogowania();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                a = db.RememberCred.FirstOrDefault();
+                a = db.PamiecLogowania.FirstOrDefault();
                 
                 if (a != null)
                 {
-                    UserToLogin = db.Login.Where(x => x.username == a.lastLoginUsed).First();
-                    return true;     
+                    bool czyToHandlowiec = db.Handlowiec.Any(x => x.imie + " " + x.nazwisko == a.zapamietany);
+                    if (czyToHandlowiec)
+                    {
+                        HandlowiecToLogin = db.Handlowiec.Where(x => x.imie + " " + x.nazwisko == a.zapamietany).First();
+                        return true;
+                    }
+
+                    bool czyToSerwisant = db.Serwisant.Any(x => x.imie + " " + x.nazwisko == a.zapamietany);
+                    if (czyToSerwisant)
+                    {
+                        SerwisantToLogin = db.Serwisant.Where(x => x.imie + " " + x.nazwisko == a.zapamietany).First();
+                        return true;
+                    }
+
+                    bool czyToAdmin = db.Administrator.Any(x => x.login == a.zapamietany);
+                    if (czyToAdmin)
+                    {
+                        AdminToLogin = db.Administrator.Where(x => x.login == a.zapamietany).First();
+                        return true;
+                    }
+
+
                 }
             }
             return false;

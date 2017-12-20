@@ -53,34 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionManager.cs" />
-    <Compile Include="LoginDB\InzynierkaLogin.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InzynierkaLogin.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoginDB\InzynierkaLogin.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InzynierkaLogin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoginDB\InzynierkaLogin.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginDB\Login.cs">
-      <DependentUpon>InzynierkaLogin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoginDB\RememberCred.cs">
-      <DependentUpon>InzynierkaLogin.tt</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainDB\Handlowcy.cs">
+    <Compile Include="MainDB\Administrator.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Handlowiec.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\MainModel.Context.cs">
@@ -99,6 +81,9 @@
       <DependentUpon>MainModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Miejsce_instalacji.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\PamiecLogowania.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Podatnik.cs">
@@ -236,13 +221,6 @@
       <DependentUpon>ShowRegistry.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EntityDeploy Include="LoginDB\InzynierkaLogin.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>InzynierkaLogin.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="LoginDB\InzynierkaLogin.edmx.diagram">
-      <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
-    </None>
     <EntityDeploy Include="MainDB\MainModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MainModel.Designer.cs</LastGenOutput>
@@ -274,16 +252,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="LoginDB\InzynierkaLogin.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>InzynierkaLogin.Context.cs</LastGenOutput>
-      <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
-    </Content>
-    <Content Include="LoginDB\InzynierkaLogin.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>InzynierkaLogin.edmx</DependentUpon>
-      <LastGenOutput>InzynierkaLogin.cs</LastGenOutput>
-    </Content>
     <Content Include="MainDB\MainModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MainModel.edmx</DependentUpon>

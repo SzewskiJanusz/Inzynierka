@@ -22,7 +22,10 @@
         <EntityTypeShape EntityType="InzynierkaDBModel.Pracownik" Width="1.5" PointX="0.75" PointY="2" />
         <AssociationConnector Association="InzynierkaDBModel.FK_PODATNIK_JEST_OBSL_SERWISAN1" />
         <AssociationConnector Association="InzynierkaDBModel.FK_SERWISUR_NAPRAWIA__SERWISAN1" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Handlowcy" Width="1.5" PointX="7.375" PointY="5.75" />
+        <AssociationConnector Association="InzynierkaDBModel.FK_URZADZEN_ZAJMUJE_S_SERWISAN" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Administrator" Width="1.5" PointX="5.875" PointY="8.875" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Handlowiec" Width="1.5" PointX="4" PointY="8.75" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.PamiecLogowania" Width="1.5" PointX="7.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

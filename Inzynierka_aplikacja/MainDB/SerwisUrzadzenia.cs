@@ -19,7 +19,7 @@ namespace Inzynierka_aplikacja.MainDB
         public Nullable<int> serwisant_id { get; set; }
         public int urzadzenie_id { get; set; }
         public System.DateTime data_przyjecia { get; set; }
-        public System.DateTime data_oddania { get; set; }
+        public Nullable<System.DateTime> data_oddania { get; set; }
     
         public virtual Serwisant Serwisant { get; set; }
         public virtual Urzadzenie Urzadzenie { get; set; }

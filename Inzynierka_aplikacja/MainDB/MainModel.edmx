@@ -5,7 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Handlowcy">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="haslohash" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Handlowiec">
           <Key>
             <PropertyRef Name="handlowiec_id" />
           </Key>
@@ -13,7 +21,8 @@
           <Property Name="imie" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="haslohash" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Miejsce_instalacji">
           <Key>
@@ -23,17 +32,20 @@
           <Property Name="kraj" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="wojewodztwo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PamiecLogowania">
+          <Key>
+            <PropertyRef Name="cred_id" />
+          </Key>
+          <Property Name="cred_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zapamietany" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Podatnik">
           <Key>
             <PropertyRef Name="podatnik_id" />
           </Key>
           <Property Name="podatnik_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="serwisant_id" Type="int" Nullable="false" />
           <Property Name="urzad_id" Type="int" Nullable="false" />
-          <Property Name="symbol" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="nazwa" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="imie" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nip" Type="varchar" MaxLength="10" Nullable="false" />
@@ -49,10 +61,11 @@
             <PropertyRef Name="serwisant_id" />
           </Key>
           <Property Name="serwisant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="haslohash" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="SerwisUrzadzenia">
           <Key>
@@ -62,18 +75,17 @@
           <Property Name="usluga_id" Type="int" Nullable="false" />
           <Property Name="serwisant_id" Type="int" />
           <Property Name="urzadzenie_id" Type="int" Nullable="false" />
-          <Property Name="data_przyjecia" Type="date" Nullable="false" />
-          <Property Name="data_oddania" Type="date" Nullable="false" />
+          <Property Name="data_przyjecia" Type="datetime" Nullable="false" />
+          <Property Name="data_oddania" Type="datetime" />
         </EntityType>
         <EntityType Name="UrzadSkarbowy">
           <Key>
             <PropertyRef Name="urzad_id" />
           </Key>
           <Property Name="urzad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="kod_pocztowy" Type="varchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <EntityType Name="Urzadzenie">
           <Key>
@@ -81,34 +93,21 @@
           </Key>
           <Property Name="urzadzenie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="podatnik_id" Type="int" Nullable="false" />
+          <Property Name="serwisant_id" Type="int" Nullable="false" />
           <Property Name="miejsce_id" Type="int" Nullable="false" />
           <Property Name="nr_ewidencyjny" Type="varchar" MaxLength="20" />
           <Property Name="nr_unikatowy" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="data_uruchomienia" Type="datetime" Nullable="false" />
           <Property Name="nr_fabryczny" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ostatni_przeglad" Type="date" Nullable="false" />
-          <Property Name="nastepny_przeglad" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Uslugi">
           <Key>
             <PropertyRef Name="usluga_id" />
           </Key>
           <Property Name="usluga_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="koszt_brutto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <Association Name="FK_PODATNIK_JEST OBSL_SERWISAN">
-          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="1" />
-          <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Serwisant">
-              <PropertyRef Name="serwisant_id" />
-            </Principal>
-            <Dependent Role="Podatnik">
-              <PropertyRef Name="serwisant_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PODATNIK_ROZLICZA _URZADSKA">
           <End Role="UrzadSkarbowy" Type="Self.UrzadSkarbowy" Multiplicity="1" />
           <End Role="Podatnik" Type="Self.Podatnik" Multiplicity="*" />
@@ -181,19 +180,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_URZADZEN_ZAJMUJE S_SERWISAN">
+          <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="1" />
+          <End Role="Urzadzenie" Type="Self.Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="InzynierkaDBModelStoreContainer">
-          <EntitySet Name="Handlowcy" EntityType="Self.Handlowcy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Handlowiec" EntityType="Self.Handlowiec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Miejsce_instalacji" EntityType="Self.Miejsce_instalacji" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PamiecLogowania" EntityType="Self.PamiecLogowania" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Podatnik" EntityType="Self.Podatnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Serwisant" EntityType="Self.Serwisant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SerwisUrzadzenia" EntityType="Self.SerwisUrzadzenia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrzadSkarbowy" EntityType="Self.UrzadSkarbowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Urzadzenie" EntityType="Self.Urzadzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_PODATNIK_JEST OBSL_SERWISAN" Association="Self.FK_PODATNIK_JEST OBSL_SERWISAN">
-            <End Role="Serwisant" EntitySet="Serwisant" />
-            <End Role="Podatnik" EntitySet="Podatnik" />
-          </AssociationSet>
           <AssociationSet Name="FK_PODATNIK_ROZLICZA _URZADSKA" Association="Self.FK_PODATNIK_ROZLICZA _URZADSKA">
             <End Role="UrzadSkarbowy" EntitySet="UrzadSkarbowy" />
             <End Role="Podatnik" EntitySet="Podatnik" />
@@ -216,6 +225,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_URZADZEN_POSIADA_PODATNIK" Association="Self.FK_URZADZEN_POSIADA_PODATNIK">
             <End Role="Podatnik" EntitySet="Podatnik" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_URZADZEN_ZAJMUJE S_SERWISAN" Association="Self.FK_URZADZEN_ZAJMUJE S_SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
             <End Role="Urzadzenie" EntitySet="Urzadzenie" />
           </AssociationSet>
         </EntityContainer>
@@ -261,12 +274,14 @@
             <PropertyRef Name="serwisant_id" />
           </Key>
           <Property Name="serwisant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Podatnik" Relationship="Self.FK_PODATNIK_JEST_OBSL_SERWISAN" FromRole="Serwisant" ToRole="Podatnik" />
           <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_NAPRAWIA__SERWISAN" FromRole="Serwisant" ToRole="SerwisUrzadzenia" />
+          <Property Name="haslohash" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Urzadzenie" Relationship="InzynierkaDBModel.FK_URZADZEN_ZAJMUJE_S_SERWISAN" FromRole="Serwisant" ToRole="Urzadzenie" />
         </EntityType>
         <EntityType Name="SerwisUrzadzenia">
           <Key>
@@ -276,8 +291,8 @@
           <Property Name="usluga_id" Type="Int32" Nullable="false" />
           <Property Name="serwisant_id" Type="Int32" />
           <Property Name="urzadzenie_id" Type="Int32" Nullable="false" />
-          <Property Name="data_przyjecia" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="data_oddania" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="data_przyjecia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="data_oddania" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Serwisant" Relationship="Self.FK_SERWISUR_NAPRAWIA__SERWISAN" FromRole="SerwisUrzadzenia" ToRole="Serwisant" />
           <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_SERWISUR_JEST_NAPR_URZADZEN" FromRole="SerwisUrzadzenia" ToRole="Urzadzenie" />
           <NavigationProperty Name="Uslugi" Relationship="Self.FK_SERWISUR_WYKONYWAN_USLUGI" FromRole="SerwisUrzadzenia" ToRole="Uslugi" />
@@ -292,6 +307,7 @@
           <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Podatnik" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="UrzadSkarbowy" ToRole="Podatnik" />
           <Property Name="kod_pocztowy" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Urzadzenie">
           <Key>
@@ -309,6 +325,8 @@
           <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_JEST_NAPR_URZADZEN" FromRole="Urzadzenie" ToRole="SerwisUrzadzenia" />
           <Property Name="ostatni_przeglad" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="nastepny_przeglad" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="serwisant_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Serwisant" Relationship="InzynierkaDBModel.FK_URZADZEN_ZAJMUJE_S_SERWISAN" FromRole="Urzadzenie" ToRole="Serwisant" />
         </EntityType>
         <EntityType Name="Uslugi">
           <Key>
@@ -318,6 +336,7 @@
           <Property Name="nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="koszt_brutto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_WYKONYWAN_USLUGI" FromRole="Uslugi" ToRole="SerwisUrzadzenia" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_URZADZEN_JEST_ZAIN_MIEJSCE_">
           <End Role="Miejsce_instalacji" Type="Self.Miejsce_instalacji" Multiplicity="1" />
@@ -439,9 +458,35 @@
             <End Role="Uslugi" EntitySet="Uslugi" />
             <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
           </AssociationSet>
-          <EntitySet Name="Handlowcy" EntityType="InzynierkaDBModel.Handlowcy" />
+          <AssociationSet Name="FK_URZADZEN_ZAJMUJE_S_SERWISAN" Association="InzynierkaDBModel.FK_URZADZEN_ZAJMUJE_S_SERWISAN">
+            <End Role="Serwisant" EntitySet="Serwisant" />
+            <End Role="Urzadzenie" EntitySet="Urzadzenie" />
+          </AssociationSet>
+          <EntitySet Name="Administrator" EntityType="InzynierkaDBModel.Administrator" />
+          <EntitySet Name="Handlowiec" EntityType="InzynierkaDBModel.Handlowiec" />
+          <EntitySet Name="PamiecLogowania" EntityType="InzynierkaDBModel.PamiecLogowania" />
         </EntityContainer>
-        <EntityType Name="Handlowcy">
+        <Association Name="FK_URZADZEN_ZAJMUJE_S_SERWISAN">
+          <End Type="InzynierkaDBModel.Serwisant" Role="Serwisant" Multiplicity="1" />
+          <End Type="InzynierkaDBModel.Urzadzenie" Role="Urzadzenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serwisant">
+              <PropertyRef Name="serwisant_id" />
+            </Principal>
+            <Dependent Role="Urzadzenie">
+              <PropertyRef Name="serwisant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="haslohash" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Handlowiec">
           <Key>
             <PropertyRef Name="handlowiec_id" />
           </Key>
@@ -449,7 +494,15 @@
           <Property Name="imie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nazwisko" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefon" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="haslohash" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PamiecLogowania">
+          <Key>
+            <PropertyRef Name="cred_id" />
+          </Key>
+          <Property Name="cred_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zapamietany" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -460,7 +513,6 @@
           <EntitySetMapping Name="Miejsce_instalacji">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Miejsce_instalacji">
               <MappingFragment StoreEntitySet="Miejsce_instalacji">
-                <ScalarProperty Name="wojewodztwo" ColumnName="wojewodztwo" />
                 <ScalarProperty Name="miejsce_id" ColumnName="miejsce_id" />
                 <ScalarProperty Name="kraj" ColumnName="kraj" />
                 <ScalarProperty Name="miasto" ColumnName="miasto" />
@@ -471,10 +523,7 @@
           <EntitySetMapping Name="Podatnik">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Podatnik">
               <MappingFragment StoreEntitySet="Podatnik">
-                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
-                <ScalarProperty Name="symbol" ColumnName="symbol" />
                 <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
-                <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
                 <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
                 <ScalarProperty Name="imie" ColumnName="imie" />
                 <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
@@ -491,6 +540,7 @@
           <EntitySetMapping Name="Serwisant">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Serwisant">
               <MappingFragment StoreEntitySet="Serwisant">
+                <ScalarProperty Name="haslohash" ColumnName="haslohash" />
                 <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
                 <ScalarProperty Name="imie" ColumnName="imie" />
                 <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
@@ -514,9 +564,8 @@
           <EntitySetMapping Name="UrzadSkarbowy">
             <EntityTypeMapping TypeName="InzynierkaDBModel.UrzadSkarbowy">
               <MappingFragment StoreEntitySet="UrzadSkarbowy">
-                <ScalarProperty Name="kod_pocztowy" ColumnName="kod_pocztowy" />
+                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
-                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
                 <ScalarProperty Name="miasto" ColumnName="miasto" />
                 <ScalarProperty Name="ulica" ColumnName="ulica" />
               </MappingFragment>
@@ -525,8 +574,7 @@
           <EntitySetMapping Name="Urzadzenie">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Urzadzenie">
               <MappingFragment StoreEntitySet="Urzadzenie">
-                <ScalarProperty Name="nastepny_przeglad" ColumnName="nastepny_przeglad" />
-                <ScalarProperty Name="ostatni_przeglad" ColumnName="ostatni_przeglad" />
+                <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />
                 <ScalarProperty Name="urzadzenie_id" ColumnName="urzadzenie_id" />
                 <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
                 <ScalarProperty Name="miejsce_id" ColumnName="miejsce_id" />
@@ -540,20 +588,38 @@
           <EntitySetMapping Name="Uslugi">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Uslugi">
               <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
-                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
                 <ScalarProperty Name="koszt_brutto" ColumnName="koszt_brutto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Handlowcy">
-            <EntityTypeMapping TypeName="InzynierkaDBModel.Handlowcy">
-              <MappingFragment StoreEntitySet="Handlowcy">
+          <EntitySetMapping Name="Administrator">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="haslohash" ColumnName="haslohash" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Handlowiec">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.Handlowiec">
+              <MappingFragment StoreEntitySet="Handlowiec">
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="haslohash" ColumnName="haslohash" />
                 <ScalarProperty Name="telefon" ColumnName="telefon" />
                 <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
                 <ScalarProperty Name="imie" ColumnName="imie" />
                 <ScalarProperty Name="handlowiec_id" ColumnName="handlowiec_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PamiecLogowania">
+            <EntityTypeMapping TypeName="InzynierkaDBModel.PamiecLogowania">
+              <MappingFragment StoreEntitySet="PamiecLogowania">
+                <ScalarProperty Name="zapamietany" ColumnName="zapamietany" />
+                <ScalarProperty Name="cred_id" ColumnName="cred_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

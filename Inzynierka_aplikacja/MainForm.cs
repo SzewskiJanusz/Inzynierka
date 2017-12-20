@@ -35,7 +35,7 @@ namespace Inzynierka_aplikacja
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+            using(InzynierkaDBEntities db = new InzynierkaDBEntities())
             {   
                 try
                 {

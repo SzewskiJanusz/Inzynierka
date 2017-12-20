@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Inzynierka_aplikacja.LoginDB
+namespace Inzynierka_aplikacja.MainDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RememberCred
+    public partial class Administrator
     {
-        public int cred_id { get; set; }
-        public string lastLoginUsed { get; set; }
+        public int admin_id { get; set; }
+        public string login { get; set; }
+        public string haslohash { get; set; }
     }
 }
