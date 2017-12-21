@@ -56,6 +56,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.gbBasics.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
@@ -73,6 +75,8 @@
             // 
             // gbBasics
             // 
+            this.gbBasics.Controls.Add(this.textBox10);
+            this.gbBasics.Controls.Add(this.label12);
             this.gbBasics.Controls.Add(this.textBox6);
             this.gbBasics.Controls.Add(this.label6);
             this.gbBasics.Controls.Add(this.textBox5);
@@ -88,7 +92,7 @@
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gbBasics.Location = new System.Drawing.Point(18, 70);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(494, 265);
+            this.gbBasics.Size = new System.Drawing.Size(494, 302);
             this.gbBasics.TabIndex = 6;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Podstawowe informacje";
@@ -208,9 +212,9 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(18, 351);
+            this.groupBox1.Location = new System.Drawing.Point(18, 378);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(494, 229);
+            this.groupBox1.Size = new System.Drawing.Size(494, 236);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Miejsce siedziby firmy";
@@ -304,7 +308,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(379, 614);
+            this.btnAdd.Location = new System.Drawing.Point(379, 630);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(133, 28);
             this.btnAdd.TabIndex = 8;
@@ -316,11 +320,28 @@
             // 
             this.errorPrv.ContainerControl = this;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(6, 266);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 24);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Telefon";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(126, 266);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(144, 23);
+            this.textBox10.TabIndex = 18;
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 654);
+            this.ClientSize = new System.Drawing.Size(543, 681);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbBasics);
@@ -366,5 +387,7 @@
         private System.Windows.Forms.ErrorProvider errorPrv;
         private System.Windows.Forms.ComboBox cboxRevenue;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label12;
     }
 }

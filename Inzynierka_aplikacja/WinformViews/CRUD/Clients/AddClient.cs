@@ -12,15 +12,18 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
 {
     public partial class AddClient : Form
     {
-        public Podatnik nowyPodatnik;
+        public Podatnik nowyPodatnik { get; set; }
 
         public AddClient()
         {
             InitializeComponent();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-       //         cboxSerwis.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
                 cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
+                var states = SQL.GetStates();
+                comboBox1.ValueMember = "nazwa";
+                comboBox1.DisplayMember = "nazwa";
+                comboBox1.DataSource = states;
             }
            
         }
@@ -160,18 +163,26 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
         {
             if (ValidateData())
             {
+                int urzadID = 0;
+                using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    urzadID = db.UrzadSkarbowy.Where(x => x.nazwa == cboxRevenue.SelectedValue.ToString()).
+                        Select(x=>x.urzad_id).First();
+                }
                 nowyPodatnik = new Podatnik()
                 {
+                    urzad_id = urzadID,
                     imie = textBox1.Text,
                     nazwisko = textBox2.Text,
                     nip = textBox3.Text,
                     nazwa = textBox4.Text,
                     symbol = textBox5.Text,
                     telefon = textBox6.Text,
-                    wojewodztwo = comboBox1.SelectedItem.ToString(),
+                    wojewodztwo = comboBox1.SelectedValue.ToString(),
                     miasto = textBox7.Text,
                     ulica = textBox8.Text,
-                    kod_pocztowy = textBox9.Text
+                    kod_pocztowy = textBox9.Text,
+                    email = textBox10.Text
                 };
                 this.DialogResult = DialogResult.OK; 
             }

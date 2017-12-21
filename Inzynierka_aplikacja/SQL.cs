@@ -27,5 +27,21 @@ namespace Inzynierka_aplikacja
             sqlc.Connection.Close();
             return result;
         }
+
+        public static DataTable GetStates()
+        {
+            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Janusz\Desktop\STUDIA\Inzynierka\Inzynierka_aplikacja\Inzynierka_aplikacja\SupportLocalDB\Wojewodztwa.mdf;Integrated Security=True";
+
+            DataTable result = new DataTable(); // deklaracja i utworzenie instancji obiektu DataTable o nazwie dt
+            SqlDataReader dr; // deklaracja obiektu SqlDataReader o nazwie dr
+            SqlCommand sqlc; // Deklaracja obiektu SqlCOmmand
+            sqlc = new SqlCommand("SELECT nazwa FROM Wojewodztwo");
+            sqlc.Connection = new SqlConnection(constr);
+            sqlc.Connection.Open();
+            dr = sqlc.ExecuteReader(); //wykonanie zapytanie i utworzenie wskaznika dr
+            result.Load(dr); //zaladowanie danych do obiektu DataTAble
+            sqlc.Connection.Close();
+            return result;
+        }
     }
 }
