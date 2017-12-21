@@ -25,15 +25,15 @@ namespace Inzynierka_aplikacja.MainDB
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Administrator> Administrator { get; set; }
+        public virtual DbSet<Handlowiec> Handlowiec { get; set; }
         public virtual DbSet<Miejsce_instalacji> Miejsce_instalacji { get; set; }
+        public virtual DbSet<PamiecLogowania> PamiecLogowania { get; set; }
         public virtual DbSet<Podatnik> Podatnik { get; set; }
         public virtual DbSet<Serwisant> Serwisant { get; set; }
         public virtual DbSet<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
         public virtual DbSet<UrzadSkarbowy> UrzadSkarbowy { get; set; }
         public virtual DbSet<Urzadzenie> Urzadzenie { get; set; }
         public virtual DbSet<Uslugi> Uslugi { get; set; }
-        public virtual DbSet<Administrator> Administrator { get; set; }
-        public virtual DbSet<Handlowiec> Handlowiec { get; set; }
-        public virtual DbSet<PamiecLogowania> PamiecLogowania { get; set; }
     }
 }

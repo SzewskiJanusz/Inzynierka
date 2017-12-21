@@ -21,8 +21,9 @@ namespace Inzynierka_aplikacja.MainDB
         }
     
         public int podatnik_id { get; set; }
-        public int serwisant_id { get; set; }
         public int urzad_id { get; set; }
+        public string nazwa { get; set; }
+        public string symbol { get; set; }
         public string imie { get; set; }
         public string nazwisko { get; set; }
         public string nip { get; set; }
@@ -32,10 +33,7 @@ namespace Inzynierka_aplikacja.MainDB
         public string kod_pocztowy { get; set; }
         public string telefon { get; set; }
         public string email { get; set; }
-        public string symbol { get; set; }
-        public string nazwa { get; set; }
     
-        public virtual Serwisant Serwisant { get; set; }
         public virtual UrzadSkarbowy UrzadSkarbowy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Urzadzenie> Urzadzenie { get; set; }

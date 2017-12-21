@@ -27,7 +27,6 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "p.nazwa AS 'Właściciel urządzenia', " +
                 "mi.kraj AS 'Kraj instalacji', " +
-                "mi.wojewodztwo AS 'Województwo', " +
                 "mi.miasto AS 'Miasto', " +
                 "mi.ulica AS 'Ulica', " +
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +

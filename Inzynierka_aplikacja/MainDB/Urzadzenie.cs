@@ -22,6 +22,7 @@ namespace Inzynierka_aplikacja.MainDB
     
         public int urzadzenie_id { get; set; }
         public int podatnik_id { get; set; }
+        public int serwisant_id { get; set; }
         public int miejsce_id { get; set; }
         public string nr_ewidencyjny { get; set; }
         public string nr_unikatowy { get; set; }
@@ -29,12 +30,11 @@ namespace Inzynierka_aplikacja.MainDB
         public string nr_fabryczny { get; set; }
         public System.DateTime ostatni_przeglad { get; set; }
         public System.DateTime nastepny_przeglad { get; set; }
-        public int serwisant_id { get; set; }
     
         public virtual Miejsce_instalacji Miejsce_instalacji { get; set; }
         public virtual Podatnik Podatnik { get; set; }
+        public virtual Serwisant Serwisant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
-        public virtual Serwisant Serwisant { get; set; }
     }
 }

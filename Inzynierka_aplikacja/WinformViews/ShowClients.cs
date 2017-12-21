@@ -38,10 +38,9 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             string query = "SELECT " +
             "p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', p.imie AS 'Imię', p.nazwisko AS 'Nazwisko', " +
-            "p.nip AS 'NIP', s.imie + ' ' + s.nazwisko AS 'Serwisant',p.wojewodztwo AS 'Województwo', " +
+            "p.nip AS 'NIP',p.wojewodztwo AS 'Województwo', " +
             "p.miasto AS 'Miasto', p.ulica AS 'Ulica',p.email AS 'E-mail' " +
-            "FROM Podatnik p " +
-            "INNER JOIN Serwisant s ON s.serwisant_id = p.serwisant_id; ";
+            "FROM Podatnik p ";
 
             dgvClient.DataSource = SQL.DoQuery(query);
         }

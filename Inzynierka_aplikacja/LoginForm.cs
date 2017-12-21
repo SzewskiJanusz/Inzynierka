@@ -129,38 +129,65 @@ namespace Inzynierka_aplikacja
 
         private bool CheckIfUserExists(string user, string hashedPwd)
         {
-            Login a = new Login();
+            Handlowiec checkH = new Handlowiec();
+            Serwisant checkS = new Serwisant();
+            Administrator checkA = new Administrator();
 
-            using (InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 try
                 {
-                    a = db.Login.Where(x => x.username == user && x.hashedPassword == hashedPwd).First();
+                    checkH = db.Handlowiec.Where(x => x.imie + " " + x.nazwisko == user && x.haslohash == hashedPwd).First();
                 }
                 catch (InvalidOperationException)
                 {
-                    a = null;
+                    checkH = null;
+                }
+
+                try
+                {
+                    checkS = db.Serwisant.Where(x => x.imie + " " + x.nazwisko == user && x.haslohash == hashedPwd).First();
+                }
+                catch (InvalidOperationException)
+                {
+                    checkS = null;
+                }
+
+                try
+                {
+                    checkA = db.Administrator.Where(x => x.login == user && x.haslohash == hashedPwd).First();
+                }
+                catch (InvalidOperationException)
+                {
+                    checkA = null;
                 }
             }
-            UserToLogin = a;
+            if (checkH != null) { HandlowiecToLogin = checkH; }
+            else if (checkS != null) { SerwisantToLogin = checkS; }
+            else if (checkA != null) { AdminToLogin = checkA; }
 
-            if (a != null)
+            if (checkH != null || checkS != null || checkA != null)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
+               
         }
 
         private void LoginUser(string user, bool @checked)
         {
             if (@checked)
             {
-                RememberCred a = new RememberCred
+                PamiecLogowania a = new PamiecLogowania
                 {
-                    lastLoginUsed = user
+                    zapamietany = user
                 };
-                using (InzynierkaDBLoginEntities db = new InzynierkaDBLoginEntities())
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
-                    db.RememberCred.Add(a);
+                    db.PamiecLogowania.Add(a);
                     db.SaveChanges();
                 }
             }
@@ -190,7 +217,10 @@ namespace Inzynierka_aplikacja
 
         private void ThreadProc()
         {
-            Application.Run(new MainForm(UserToLogin));
+            if (HandlowiecToLogin != null) { Application.Run(new MainForm(HandlowiecToLogin)); }
+            else if (SerwisantToLogin != null) { Application.Run(new MainForm(SerwisantToLogin)); }
+            else if (AdminToLogin != null) { Application.Run(new MainForm(AdminToLogin)); }
+
         }
     }
 }

@@ -17,7 +17,6 @@ namespace Inzynierka_aplikacja.MainDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Serwisant()
         {
-            this.Podatnik = new HashSet<Podatnik>();
             this.SerwisUrzadzenia = new HashSet<SerwisUrzadzenia>();
             this.Urzadzenie = new HashSet<Urzadzenie>();
         }
@@ -29,8 +28,6 @@ namespace Inzynierka_aplikacja.MainDB
         public string email { get; set; }
         public string haslohash { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Podatnik> Podatnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

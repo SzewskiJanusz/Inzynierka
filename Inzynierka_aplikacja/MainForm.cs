@@ -1,5 +1,4 @@
-﻿using Inzynierka_aplikacja.LoginDB;
-using Inzynierka_aplikacja.MainDB;
+﻿using Inzynierka_aplikacja.MainDB;
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using System;
@@ -22,15 +21,47 @@ namespace Inzynierka_aplikacja
             InitializeComponent();
         }
 
-        public MainForm(Login UserLogged)
+        public MainForm(Handlowiec logged)
         {
             InitializeComponent();
+            Init(logged);   
+        }
 
-            lblLogged.Text = UserLogged.username;
+        public MainForm(Serwisant logged)
+        {
+            InitializeComponent();
+            Init(logged);
+        }
+
+        public MainForm(Administrator logged)
+        {
+            InitializeComponent();
+            Init(logged);
+        }
+
+
+        private void Init(Handlowiec handlowiec)
+        {
+            lblLogged.Text = handlowiec.imie + " " + handlowiec.nazwisko;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
-         
+        }
+
+        private void Init(Serwisant serwisant)
+        {
+            lblLogged.Text = serwisant.imie + " " + serwisant.nazwisko;
+            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+
+            SetDefaultToolStripIcons();
+        }
+
+        private void Init(Administrator admin)
+        {
+            lblLogged.Text = admin.login;
+            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+
+            SetDefaultToolStripIcons();
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,8 +70,8 @@ namespace Inzynierka_aplikacja
             {   
                 try
                 {
-                    var a = db.RememberCred.Where(x => x.lastLoginUsed == lblLogged.Text).First();
-                    db.RememberCred.Remove(a);
+                    var a = db.PamiecLogowania.Where(x => x.zapamietany == lblLogged.Text).First();
+                    db.PamiecLogowania.Remove(a);
                     db.SaveChanges();
                 }
                 catch (InvalidOperationException)

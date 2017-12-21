@@ -19,7 +19,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             InitializeComponent();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                cboxSerwis.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+       //         cboxSerwis.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
                 cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
             }
            

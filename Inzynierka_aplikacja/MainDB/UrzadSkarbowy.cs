@@ -24,8 +24,6 @@ namespace Inzynierka_aplikacja.MainDB
         public string nazwa { get; set; }
         public string miasto { get; set; }
         public string ulica { get; set; }
-        public string kod_pocztowy { get; set; }
-        public string login { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Podatnik> Podatnik { get; set; }
