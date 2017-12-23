@@ -28,6 +28,37 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
            
         }
 
+        public AddClient(Podatnik p)
+        {
+            InitializeComponent();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
+                var states = SQL.GetStates();
+                comboBox1.ValueMember = "nazwa";
+                comboBox1.DisplayMember = "nazwa";
+                comboBox1.DataSource = states;
+                SetDataFromEdited(p);
+                btnAdd.Text = "Zapisz";
+            }
+
+        }
+
+        private void SetDataFromEdited(Podatnik p)
+        {
+            textBox1.Text = p.imie;
+            textBox2.Text = p.nazwisko;
+            textBox3.Text = p.nip;
+            textBox4.Text = p.nazwa;
+            textBox5.Text = p.symbol;
+            textBox6.Text = p.telefon;
+            comboBox1.SelectedText = p.wojewodztwo;
+            textBox7.Text = p.miasto;
+            textBox8.Text = p.ulica;
+            textBox9.Text = p.kod_pocztowy;
+            textBox10.Text = p.email;
+        }
+
         private bool ValidateData()
         {
             bool check = true;
@@ -156,6 +187,13 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 check = false;
             }
 
+            //EMAIL
+            if (textBox10.Text.Length > 100)
+            {
+                errorPrv.SetError(textBox10, "E-mail jest za długi");
+                check = false;
+            }
+
             return check;
         }
 
@@ -178,7 +216,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                     nazwa = textBox4.Text,
                     symbol = textBox5.Text,
                     telefon = textBox6.Text,
-                    wojewodztwo = comboBox1.SelectedValue.ToString(),
+                    wojewodztwo = comboBox1.SelectedItem.ToString(),
                     miasto = textBox7.Text,
                     ulica = textBox8.Text,
                     kod_pocztowy = textBox9.Text,

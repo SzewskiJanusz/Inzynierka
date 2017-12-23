@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.gbBasics = new System.Windows.Forms.GroupBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -56,8 +58,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.gbBasics.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
@@ -96,6 +96,23 @@
             this.gbBasics.TabIndex = 6;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Podstawowe informacje";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(126, 266);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(144, 23);
+            this.textBox10.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(6, 266);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(63, 24);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "E-mail";
             // 
             // textBox6
             // 
@@ -319,23 +336,6 @@
             // errorPrv
             // 
             this.errorPrv.ContainerControl = this;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(6, 266);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 24);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Telefon";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(126, 266);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(144, 23);
-            this.textBox10.TabIndex = 18;
             // 
             // AddClient
             // 

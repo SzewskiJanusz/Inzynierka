@@ -13,6 +13,8 @@ namespace Inzynierka_aplikacja.WinformViews
     public partial class ShowClients : UserControl
     {
         public event EventHandler ShowClientDevButtonClicked;
+        public event EventHandler AddClientButtonClicked;
+        public event EventHandler EditClientButtonClicked;
         public static DataGridViewRow selectedRow;
         private List<int> indexesOfRows = new List<int>();
         private int FindClickNumber;
@@ -20,6 +22,20 @@ namespace Inzynierka_aplikacja.WinformViews
         protected virtual void ShowClientDevClick(EventArgs e)
         {
             var handler = ShowClientDevButtonClicked;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        protected virtual void AddClientClick(EventArgs e)
+        {
+            var handler = AddClientButtonClicked;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        protected virtual void EditClientClick(EventArgs e)
+        {
+            var handler = EditClientButtonClicked;
             if (handler != null)
                 handler(this, e);
         }
@@ -32,7 +48,7 @@ namespace Inzynierka_aplikacja.WinformViews
             LoadClients();
             indexesOfRows = new List<int>();
             FindClickNumber = 0;
-    }
+        }
 
         private void LoadClients()
         {
@@ -101,5 +117,19 @@ namespace Inzynierka_aplikacja.WinformViews
                 
         }
 
+        private void linklblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddClientClick(e);
+        }
+
+        private void linklblEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgvClient.SelectedRows.Count != 0)
+            {
+                selectedRow = dgvClient.SelectedRows[0];
+                EditClientClick(e);
+                LoadClients();
+            }
+        }
     }
 }

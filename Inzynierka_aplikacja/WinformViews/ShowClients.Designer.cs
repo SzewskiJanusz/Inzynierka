@@ -95,6 +95,7 @@
             this.linklblAdd.TabStop = true;
             this.linklblAdd.Text = "Dodaj";
             this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblAdd_LinkClicked);
             // 
             // linklblFind
             // 
@@ -122,6 +123,7 @@
             this.linklblEdit.TabStop = true;
             this.linklblEdit.Text = "Popraw";
             this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblEdit_LinkClicked);
             // 
             // tbxFind
             // 

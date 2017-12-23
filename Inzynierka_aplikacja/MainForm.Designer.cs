@@ -36,8 +36,14 @@
             this.zmieńHasłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.widokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontrahenciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ądzeniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usługiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.najbliższeUsługiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.narzędziaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontrahentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.urzadzenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usługęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
@@ -57,6 +63,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblLogged = new System.Windows.Forms.Label();
             this.lblTodaysDate = new System.Windows.Forms.Label();
+            this.plikPomocyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panelPrzeglad.SuspendLayout();
@@ -76,7 +84,6 @@
             this.użytkownikToolStripMenuItem,
             this.widokToolStripMenuItem,
             this.dodajToolStripMenuItem,
-            this.narzędziaToolStripMenuItem,
             this.pomocToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -121,24 +128,76 @@
             // 
             // widokToolStripMenuItem
             // 
+            this.widokToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kontrahenciToolStripMenuItem,
+            this.ądzeniaToolStripMenuItem,
+            this.usługiToolStripMenuItem,
+            this.najbliższeUsługiToolStripMenuItem});
             this.widokToolStripMenuItem.Name = "widokToolStripMenuItem";
             this.widokToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.widokToolStripMenuItem.Text = "Widok";
             // 
+            // kontrahenciToolStripMenuItem
+            // 
+            this.kontrahenciToolStripMenuItem.Name = "kontrahenciToolStripMenuItem";
+            this.kontrahenciToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.kontrahenciToolStripMenuItem.Text = "Kontrahenci";
+            this.kontrahenciToolStripMenuItem.Click += new System.EventHandler(this.ShowUsersClick);
+            // 
+            // ądzeniaToolStripMenuItem
+            // 
+            this.ądzeniaToolStripMenuItem.Name = "ądzeniaToolStripMenuItem";
+            this.ądzeniaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.ądzeniaToolStripMenuItem.Text = "Urzadzenia";
+            this.ądzeniaToolStripMenuItem.Click += new System.EventHandler(this.panelDevices_Click);
+            // 
+            // usługiToolStripMenuItem
+            // 
+            this.usługiToolStripMenuItem.Name = "usługiToolStripMenuItem";
+            this.usługiToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.usługiToolStripMenuItem.Text = "Historia usług";
+            this.usługiToolStripMenuItem.Click += new System.EventHandler(this.ShowRegistry_Click);
+            // 
+            // najbliższeUsługiToolStripMenuItem
+            // 
+            this.najbliższeUsługiToolStripMenuItem.Name = "najbliższeUsługiToolStripMenuItem";
+            this.najbliższeUsługiToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.najbliższeUsługiToolStripMenuItem.Text = "Najbliższe usługi";
+            // 
             // dodajToolStripMenuItem
             // 
+            this.dodajToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kontrahentaToolStripMenuItem,
+            this.urzadzenieToolStripMenuItem,
+            this.usługęToolStripMenuItem});
             this.dodajToolStripMenuItem.Name = "dodajToolStripMenuItem";
             this.dodajToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.dodajToolStripMenuItem.Text = "Dodaj";
             // 
-            // narzędziaToolStripMenuItem
+            // kontrahentaToolStripMenuItem
             // 
-            this.narzędziaToolStripMenuItem.Name = "narzędziaToolStripMenuItem";
-            this.narzędziaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.narzędziaToolStripMenuItem.Text = "Narzędzia";
+            this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
+            this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
+            // 
+            // urzadzenieToolStripMenuItem
+            // 
+            this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
+            // 
+            // usługęToolStripMenuItem
+            // 
+            this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usługęToolStripMenuItem.Text = "Usługę";
             // 
             // pomocToolStripMenuItem
             // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.plikPomocyToolStripMenuItem,
+            this.informacjeToolStripMenuItem});
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomocToolStripMenuItem.Text = "Pomoc";
@@ -339,6 +398,18 @@
             this.lblTodaysDate.TabIndex = 0;
             this.lblTodaysDate.Text = "test";
             // 
+            // plikPomocyToolStripMenuItem
+            // 
+            this.plikPomocyToolStripMenuItem.Name = "plikPomocyToolStripMenuItem";
+            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.plikPomocyToolStripMenuItem.Text = "Plik pomocy";
+            // 
+            // informacjeToolStripMenuItem
+            // 
+            this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
+            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.informacjeToolStripMenuItem.Text = "Informacje";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,10 +470,18 @@
         private System.Windows.Forms.Label lblPrzeglad;
         private System.Windows.Forms.ToolStripMenuItem widokToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem narzędziaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.Label lblLogged;
         private System.Windows.Forms.Label lblTodaysDate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem kontrahenciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ądzeniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usługiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem najbliższeUsługiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kontrahentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem urzadzenieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usługęToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem plikPomocyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informacjeToolStripMenuItem;
     }
 }
