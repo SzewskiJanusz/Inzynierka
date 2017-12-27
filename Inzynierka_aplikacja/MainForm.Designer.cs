@@ -45,6 +45,8 @@
             this.urzadzenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usługęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plikPomocyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
             this.panelPrzeglad = new System.Windows.Forms.Panel();
@@ -63,8 +65,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblLogged = new System.Windows.Forms.Label();
             this.lblTodaysDate = new System.Windows.Forms.Label();
-            this.plikPomocyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panelPrzeglad.SuspendLayout();
@@ -177,20 +177,20 @@
             // kontrahentaToolStripMenuItem
             // 
             this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
-            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
             this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
             // 
             // urzadzenieToolStripMenuItem
             // 
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
-            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
             // 
             // usługęToolStripMenuItem
             // 
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
-            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
             // 
             // pomocToolStripMenuItem
@@ -201,6 +201,18 @@
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomocToolStripMenuItem.Text = "Pomoc";
+            // 
+            // plikPomocyToolStripMenuItem
+            // 
+            this.plikPomocyToolStripMenuItem.Name = "plikPomocyToolStripMenuItem";
+            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.plikPomocyToolStripMenuItem.Text = "Plik pomocy";
+            // 
+            // informacjeToolStripMenuItem
+            // 
+            this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
+            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.informacjeToolStripMenuItem.Text = "Informacje";
             // 
             // toolStrip
             // 
@@ -216,8 +228,8 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.leftPanel.Controls.Add(this.panelPrzeglad);
             this.leftPanel.Controls.Add(this.panelRegistry);
+            this.leftPanel.Controls.Add(this.panelPrzeglad);
             this.leftPanel.Controls.Add(this.panelDevices);
             this.leftPanel.Controls.Add(this.panelClients);
             this.leftPanel.Location = new System.Drawing.Point(0, 66);
@@ -230,9 +242,9 @@
             this.panelPrzeglad.Controls.Add(this.pbPrzeglad);
             this.panelPrzeglad.Controls.Add(this.lblPrzeglad);
             this.panelPrzeglad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelPrzeglad.Location = new System.Drawing.Point(1, 222);
+            this.panelPrzeglad.Location = new System.Drawing.Point(0, 148);
             this.panelPrzeglad.Name = "panelPrzeglad";
-            this.panelPrzeglad.Size = new System.Drawing.Size(170, 77);
+            this.panelPrzeglad.Size = new System.Drawing.Size(170, 76);
             this.panelPrzeglad.TabIndex = 3;
             // 
             // pbPrzeglad
@@ -260,7 +272,7 @@
             this.panelRegistry.Controls.Add(this.pbRegistry);
             this.panelRegistry.Controls.Add(this.lblRegistry);
             this.panelRegistry.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelRegistry.Location = new System.Drawing.Point(1, 151);
+            this.panelRegistry.Location = new System.Drawing.Point(0, 219);
             this.panelRegistry.Name = "panelRegistry";
             this.panelRegistry.Size = new System.Drawing.Size(170, 77);
             this.panelRegistry.TabIndex = 2;
@@ -397,18 +409,6 @@
             this.lblTodaysDate.Size = new System.Drawing.Size(24, 13);
             this.lblTodaysDate.TabIndex = 0;
             this.lblTodaysDate.Text = "test";
-            // 
-            // plikPomocyToolStripMenuItem
-            // 
-            this.plikPomocyToolStripMenuItem.Name = "plikPomocyToolStripMenuItem";
-            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.plikPomocyToolStripMenuItem.Text = "Plik pomocy";
-            // 
-            // informacjeToolStripMenuItem
-            // 
-            this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
-            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.informacjeToolStripMenuItem.Text = "Informacje";
             // 
             // MainForm
             // 

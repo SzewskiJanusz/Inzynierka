@@ -66,6 +66,7 @@
             this.dgvClient.Size = new System.Drawing.Size(531, 248);
             this.dgvClient.TabIndex = 3;
             this.dgvClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellClick);
+            this.dgvClient.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClient_DataBindingComplete);
             this.dgvClient.Sorted += new System.EventHandler(this.tbxFind_TextChanged);
             // 
             // linklblShowClientDevices

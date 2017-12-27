@@ -50,7 +50,7 @@ namespace Inzynierka_aplikacja.WinformViews
             FindClickNumber = 0;
         }
 
-        private void LoadClients()
+        public void LoadClients()
         {
             string query = "SELECT " +
             "p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', p.imie AS 'Imię', p.nazwisko AS 'Nazwisko', " +
@@ -64,6 +64,7 @@ namespace Inzynierka_aplikacja.WinformViews
         private void dgvClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             linklblShowClientDevices.Visible = true;
+            selectedRow = dgvClient.SelectedRows[0];
         }
 
         private void btnShowDevices_Click(object sender, EventArgs e)
@@ -130,6 +131,11 @@ namespace Inzynierka_aplikacja.WinformViews
                 EditClientClick(e);
                 LoadClients();
             }
+        }
+
+        private void dgvClient_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvClient.ClearSelection();
         }
     }
 }

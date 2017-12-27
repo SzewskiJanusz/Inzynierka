@@ -220,6 +220,9 @@
     <EmbeddedResource Include="WinformViews\CRUD\Clients\AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\Clients\ShowClient.resx">
+      <DependentUpon>ShowClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Registry\AddRegistry.resx">
       <DependentUpon>AddRegistry.cs</DependentUpon>
     </EmbeddedResource>

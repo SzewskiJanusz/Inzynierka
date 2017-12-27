@@ -164,8 +164,25 @@ namespace Inzynierka_aplikacja
             }
             icons[0].Click += AddClient;
             icons[1].Click += EditClient;
-         //   icons[2].Click += GoToHomePage;
+            icons[2].Click += ClientDetails;
 
+        }
+
+        private void ClientDetails(object sender, EventArgs e)
+        {
+            Podatnik p = new Podatnik();
+            String imie = ShowClients.selectedRow.Cells["Imię"].Value.ToString();
+            String nazwisko = ShowClients.selectedRow.Cells["Nazwisko"].Value.ToString();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                p =
+                db.Podatnik.Where(x => x.imie + x.nazwisko ==
+                imie + nazwisko
+                ).First();
+            }
+            ShowClient f = new ShowClient(p);
+            if (f.ShowDialog() == DialogResult.Cancel)
+                f.Dispose();
         }
 
         private void RemoveControls()
@@ -250,6 +267,7 @@ namespace Inzynierka_aplikacja
                     "email = '" + f.nowyPodatnik.email + "' " +
                     "WHERE podatnik_id = "+id+";";
                 SQL.DoQuery(updateQuery);
+
             }
         }
     }
