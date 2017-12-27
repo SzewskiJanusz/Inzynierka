@@ -17,6 +17,7 @@ namespace Inzynierka_aplikacja
 {
     public partial class MainForm : Form
     {
+        public static List<List<ToolStripButton>> icons;
 
         public MainForm()
         {
@@ -48,6 +49,7 @@ namespace Inzynierka_aplikacja
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
+            SetAllIcons();
         }
 
         private void Init(Serwisant serwisant)
@@ -56,6 +58,7 @@ namespace Inzynierka_aplikacja
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
+            SetAllIcons();
         }
 
         private void Init(Administrator admin)
@@ -64,6 +67,18 @@ namespace Inzynierka_aplikacja
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
+            SetAllIcons();
+        }
+
+        private void SetAllIcons()
+        {
+            icons = new List<List<ToolStripButton>>();
+
+            icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
+
+            icons[0][0].Click += AddClient;
+            icons[0][1].Click += EditClient;
+            icons[0][2].Click += ClientDetails;
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,18 +175,12 @@ namespace Inzynierka_aplikacja
 
         private void ShowClientIcons()
         {
-            ToolStripButton[] icons = ToolstripIcons.GetInstance().GetClient();
+            SetDefaultToolStripIcons();
+
             for (int i = 0; i < 3; i++)
             {
-                toolStrip.Items.Add(icons[i]);
+                toolStrip.Items.Add(icons[0][i]);
             }
-            icons[0].Click -= AddClient;
-            icons[0].Click += AddClient;
-            icons[1].Click -= EditClient;
-            icons[1].Click += EditClient;
-            icons[2].Click -= ClientDetails;
-            icons[2].Click += ClientDetails;
-
         }
 
         private void ClientDetails(object sender, EventArgs e)
