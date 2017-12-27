@@ -122,8 +122,11 @@ namespace Inzynierka_aplikacja
         {
             RemoveControls();
             ShowClients sc = new ShowClients();
+            sc.ShowClientDevButtonClicked -= ClientDevices;
             sc.ShowClientDevButtonClicked += ClientDevices;
+            sc.AddClientButtonClicked -= AddClient;
             sc.AddClientButtonClicked += AddClient;
+            sc.EditClientButtonClicked -= EditClient;
             sc.EditClientButtonClicked += EditClient;
             ShowIcons("clients");
             contentPanel.Controls.Add(sc);
@@ -162,8 +165,11 @@ namespace Inzynierka_aplikacja
             {
                 toolStrip.Items.Add(icons[i]);
             }
+            icons[0].Click -= AddClient;
             icons[0].Click += AddClient;
+            icons[1].Click -= EditClient;
             icons[1].Click += EditClient;
+            icons[2].Click -= ClientDetails;
             icons[2].Click += ClientDetails;
 
         }

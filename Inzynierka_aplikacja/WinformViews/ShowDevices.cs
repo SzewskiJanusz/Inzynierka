@@ -13,6 +13,10 @@ namespace Inzynierka_aplikacja.WinformViews
 {
     public partial class ShowDevices : UserControl
     {
+        public static DataGridViewRow selectedRow;
+        private List<int> indexesOfRows = new List<int>();
+        private int FindClickNumber;
+
         public ShowDevices()
         {
             InitializeComponent();
@@ -40,6 +44,42 @@ namespace Inzynierka_aplikacja.WinformViews
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+        }
+
+        private void linklblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linklblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tbxFind.Visible = true;
+            btnFind.Visible = true;
+        }
+
+        private void tbxFind_TextChanged(object sender, EventArgs e)
+        {
+            indexesOfRows.Clear();
+
+            foreach (DataGridViewRow row in dgvDevices.Rows)
+            {
+                for (int i = 0; i < dgvDevices.Columns.Count; i++)
+                {
+                    string str = row.Cells[i].Value.ToString().ToLower();
+                    if (str.Contains(tbxFind.Text.ToLower()))
+                    {
+                        indexesOfRows.Add(row.Index);
+                        break;
+                    }
+                }
+            }
+
+            FindClickNumber = 0;
+        }
+
+        private void dgvDevices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvDevices.ClearSelection();
         }
     }
 }
