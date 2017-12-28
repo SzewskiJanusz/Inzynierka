@@ -219,7 +219,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                     nazwa = textBox4.Text,
                     symbol = textBox5.Text,
                     telefon = textBox6.Text,
-                    wojewodztwo = comboBox1.SelectedItem.ToString(),
+                    wojewodztwo = comboBox1.SelectedValue.ToString(),
                     miasto = textBox7.Text,
                     ulica = textBox8.Text,
                     kod_pocztowy = textBox9.Text,

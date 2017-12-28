@@ -43,5 +43,7 @@ namespace Inzynierka_aplikacja.WinformViews
          
             dgvClientDev.DataSource = SQL.DoQuery(query);
         }
+
+
     }
 }
