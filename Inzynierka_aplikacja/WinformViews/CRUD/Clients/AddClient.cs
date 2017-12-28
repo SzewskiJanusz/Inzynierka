@@ -24,6 +24,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 comboBox1.ValueMember = "nazwa";
                 comboBox1.DisplayMember = "nazwa";
                 comboBox1.DataSource = states;
+                this.Text = "Dodaj kontrahenta";
             }
            
         }
@@ -40,6 +41,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 comboBox1.DataSource = states;
                 SetDataFromEdited(p);
                 btnAdd.Text = "Zapisz";
+                label1.Text = "Edytuj kontrahenta";
+                this.Text = "Edytuj kontrahenta";
             }
 
         }

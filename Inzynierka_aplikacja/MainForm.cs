@@ -176,7 +176,8 @@ namespace Inzynierka_aplikacja
         private void ShowClientIcons()
         {
             SetDefaultToolStripIcons();
-
+            icons[0][1].Visible = false;
+            icons[0][2].Visible = false;
             for (int i = 0; i < 3; i++)
             {
                 toolStrip.Items.Add(icons[0][i]);

@@ -44,8 +44,8 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            linklblShowClientDevices.Visible = false;
             LoadClients();
+            HideLabelsAndIcons();
             indexesOfRows = new List<int>();
             FindClickNumber = 0;
         }
@@ -63,8 +63,11 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void dgvClient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            linklblShowClientDevices.Visible = true;
-            selectedRow = dgvClient.SelectedRows[0];
+            if (e.RowIndex != -1)
+            {
+                selectedRow = dgvClient.SelectedRows[0];
+                ShowLabelsAndIcons();
+            }
         }
 
         private void btnShowDevices_Click(object sender, EventArgs e)
@@ -130,7 +133,24 @@ namespace Inzynierka_aplikacja.WinformViews
                 selectedRow = dgvClient.SelectedRows[0];
                 EditClientClick(e);
                 LoadClients();
+                HideLabelsAndIcons();
             }
+        }
+
+        private void HideLabelsAndIcons()
+        {
+            MainForm.icons[0][1].Visible = false;
+            MainForm.icons[0][2].Visible = false;
+            linklblEdit.Enabled = false;
+            linklblShowClientDevices.Visible = false;
+        }
+
+        private void ShowLabelsAndIcons()
+        {
+            linklblShowClientDevices.Visible = true;
+            linklblEdit.Enabled = true;
+            MainForm.icons[0][1].Visible = true;
+            MainForm.icons[0][2].Visible = true;
         }
 
         private void dgvClient_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
