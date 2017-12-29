@@ -48,10 +48,13 @@
             this.dgvDevices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevices.Location = new System.Drawing.Point(0, 81);
+            this.dgvDevices.MultiSelect = false;
             this.dgvDevices.Name = "dgvDevices";
+            this.dgvDevices.ReadOnly = true;
             this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevices.Size = new System.Drawing.Size(635, 388);
             this.dgvDevices.TabIndex = 0;
+            this.dgvDevices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.dgvDevices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDevices_DataBindingComplete);
             // 
             // lbl
@@ -66,17 +69,18 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(486, 51);
+            this.btnFind.Location = new System.Drawing.Point(387, 51);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(128, 24);
             this.btnFind.TabIndex = 14;
             this.btnFind.Text = "Znajdź następny";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Visible = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // tbxFind
             // 
-            this.tbxFind.Location = new System.Drawing.Point(287, 51);
+            this.tbxFind.Location = new System.Drawing.Point(206, 51);
             this.tbxFind.Name = "tbxFind";
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 13;
@@ -95,6 +99,7 @@
             this.linklblEdit.TabStop = true;
             this.linklblEdit.Text = "Popraw";
             this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblEdit_LinkClicked_1);
             // 
             // linklblFind
             // 

@@ -75,6 +75,11 @@ namespace Inzynierka_aplikacja
             }
         }
 
+        public ToolStripButton[] GetDevices()
+        {
+            return devices;
+        }
+
         private static void CreateRegistryIcons()
         {
             throw new NotImplementedException();

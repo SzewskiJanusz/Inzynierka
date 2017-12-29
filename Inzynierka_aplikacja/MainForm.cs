@@ -1,6 +1,7 @@
 ﻿using Inzynierka_aplikacja.MainDB;
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
+using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,10 +76,15 @@ namespace Inzynierka_aplikacja
             icons = new List<List<ToolStripButton>>();
 
             icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
+            icons.Add(ToolstripIcons.GetInstance().GetDevices().ToList());
 
             icons[0][0].Click += AddClient;
             icons[0][1].Click += EditClient;
             icons[0][2].Click += ClientDetails;
+
+            icons[1][0].Click += AddDevice;
+            icons[1][1].Click += EditDevice;
+            icons[1][2].Click += DeviceDetails;
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,7 +176,13 @@ namespace Inzynierka_aplikacja
 
         private void ShowDevicesIcons()
         {
-            throw new NotImplementedException();
+            SetDefaultToolStripIcons();
+            icons[1][1].Visible = false;
+            icons[1][2].Visible = false;
+            for (int i = 0; i < 3; i++)
+            {
+                toolStrip.Items.Add(icons[1][i]);
+            }
         }
 
         private void ShowClientIcons()
@@ -187,13 +199,13 @@ namespace Inzynierka_aplikacja
         private void ClientDetails(object sender, EventArgs e)
         {
             Podatnik p = new Podatnik();
-            String imie = ShowClients.selectedRow.Cells["Imię"].Value.ToString();
-            String nazwisko = ShowClients.selectedRow.Cells["Nazwisko"].Value.ToString();
+
+            String nip = ShowClients.selectedRow.Cells["NIP"].Value.ToString();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 p =
-                db.Podatnik.Where(x => x.imie + x.nazwisko ==
-                imie + nazwisko
+                db.Podatnik.Where(x => x.nip ==
+                nip
                 ).First();
             }
             ShowClient f = new ShowClient(p);
@@ -209,10 +221,16 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        private void panelDevices_Click(object sender, EventArgs e)
+        private void ShowDevicesClick(object sender, EventArgs e)
         {
             RemoveControls();
-            contentPanel.Controls.Add(new ShowDevices());
+            ShowDevices sd = new ShowDevices();
+            sd.AddDeviceButtonClicked -= AddDevice;
+            sd.AddDeviceButtonClicked += AddDevice;
+            sd.EditDeviceButtonClicked -= EditDevice;
+            sd.EditDeviceButtonClicked += EditDevice;
+            ShowIcons("devices");
+            contentPanel.Controls.Add(sd);
         }
 
         private void ShowRegistry_Click(object sender, EventArgs e)
@@ -285,6 +303,69 @@ namespace Inzynierka_aplikacja
                 SQL.DoQuery(updateQuery);
 
             }
+        }
+
+        private void AddDevice(object sender, EventArgs e)
+        {
+            AddDevice f = new AddDevice();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.Urzadzenie.Add(f.NewDevice);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        private void EditDevice(object sender, EventArgs e)
+        {
+            Urzadzenie edited = new Urzadzenie();
+            String nrUnikatowy = ShowDevices.selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                edited =
+                db.Urzadzenie.Where(x => x.nr_unikatowy ==
+                    nrUnikatowy
+                ).First();
+            }
+
+            AddDevice f = new AddDevice(edited);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                int id = edited.urzadzenie_id;
+                string updateQuery =
+                    "UPDATE Urzadzenie SET " +
+                    "podatnik_id = " + f.NewDevice.podatnik_id + ", " +
+                    "serwisant_id = '" + f.NewDevice.serwisant_id + "', " +
+                    "miejsce_id = '" + f.NewDevice.miejsce_id + "', " +
+                    "nr_ewidencyjny = '" + f.NewDevice.nr_ewidencyjny + "', " +
+                    "nr_unikatowy = '" + f.NewDevice.nr_unikatowy + "', " +
+                    "data_uruchomienia = '" + f.NewDevice.data_uruchomienia + "', " +
+                    "nr_fabryczny = '" + f.NewDevice.nr_fabryczny + "', " +
+                    "ostatni_przeglad = '" + f.NewDevice.ostatni_przeglad + "', " +
+                    "nastepny_przeglad = '" + f.NewDevice.nastepny_przeglad + "' " +
+                    "WHERE urzadzenie_id = " + id + ";";
+                SQL.DoQuery(updateQuery);
+
+            }
+        }
+
+        private void DeviceDetails(object sender, EventArgs e)
+        {
+            Urzadzenie edited = new Urzadzenie();
+            String nrUnikatowy = ShowDevices.selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                edited =
+                db.Urzadzenie.Where(x => x.nr_unikatowy ==
+                    nrUnikatowy
+                ).First();
+            }
+
+            ShowDevice f = new ShowDevice(edited);
+            if (f.ShowDialog() == DialogResult.Cancel)
+                f.Dispose();
         }
     }
 }

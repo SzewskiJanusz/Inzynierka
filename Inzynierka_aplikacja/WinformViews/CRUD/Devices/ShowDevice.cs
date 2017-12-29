@@ -11,7 +11,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 {
     public partial class ShowDevice : Form
     {
-        public ShowDevice()
+        public ShowDevice(MainDB.Urzadzenie edited)
         {
             InitializeComponent();
         }

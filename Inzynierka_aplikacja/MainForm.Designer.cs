@@ -149,7 +149,7 @@
             this.ądzeniaToolStripMenuItem.Name = "ądzeniaToolStripMenuItem";
             this.ądzeniaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.ądzeniaToolStripMenuItem.Text = "Urzadzenia";
-            this.ądzeniaToolStripMenuItem.Click += new System.EventHandler(this.panelDevices_Click);
+            this.ądzeniaToolStripMenuItem.Click += new System.EventHandler(this.ShowDevicesClick);
             // 
             // usługiToolStripMenuItem
             // 
@@ -309,7 +309,7 @@
             this.panelDevices.Name = "panelDevices";
             this.panelDevices.Size = new System.Drawing.Size(170, 77);
             this.panelDevices.TabIndex = 1;
-            this.panelDevices.Click += new System.EventHandler(this.panelDevices_Click);
+            this.panelDevices.Click += new System.EventHandler(this.ShowDevicesClick);
             // 
             // pbDevice
             // 
@@ -320,7 +320,7 @@
             this.pbDevice.Size = new System.Drawing.Size(43, 42);
             this.pbDevice.TabIndex = 0;
             this.pbDevice.TabStop = false;
-            this.pbDevice.Click += new System.EventHandler(this.panelDevices_Click);
+            this.pbDevice.Click += new System.EventHandler(this.ShowDevicesClick);
             // 
             // label1
             // 
@@ -331,7 +331,7 @@
             this.label1.Size = new System.Drawing.Size(162, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Wszystkie urządzenia";
-            this.label1.Click += new System.EventHandler(this.panelDevices_Click);
+            this.label1.Click += new System.EventHandler(this.ShowDevicesClick);
             // 
             // panelClients
             // 

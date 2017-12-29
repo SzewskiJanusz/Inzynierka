@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -30,6 +30,7 @@
           </Key>
           <Property Name="miejsce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kraj" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="wojewodztwo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="miasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -56,7 +57,7 @@
           <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="kod_pocztowy" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Serwisant">
           <Key>
@@ -236,8 +237,7 @@
             <End Role="Urzadzenie" EntitySet="Urzadzenie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InzynierkaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -269,6 +269,7 @@
           <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" FromRole="Miejsce_instalacji" ToRole="Urzadzenie" />
+          <Property Name="wojewodztwo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PamiecLogowania">
           <Key>
@@ -293,7 +294,7 @@
           <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="kod_pocztowy" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UrzadSkarbowy" Relationship="Self.FK_PODATNIK_ROZLICZA__URZADSKA" FromRole="Podatnik" ToRole="UrzadSkarbowy" />
           <NavigationProperty Name="Urzadzenie" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Podatnik" ToRole="Urzadzenie" />
         </EntityType>
@@ -516,6 +517,7 @@
           <EntitySetMapping Name="Miejsce_instalacji">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Miejsce_instalacji">
               <MappingFragment StoreEntitySet="Miejsce_instalacji">
+                <ScalarProperty Name="wojewodztwo" ColumnName="wojewodztwo" />
                 <ScalarProperty Name="miejsce_id" ColumnName="miejsce_id" />
                 <ScalarProperty Name="kraj" ColumnName="kraj" />
                 <ScalarProperty Name="miasto" ColumnName="miasto" />
