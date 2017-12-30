@@ -319,6 +319,15 @@ namespace Inzynierka_aplikacja
                 using (InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
                     db.Urzadzenie.Add(f.NewDevice);
+                    SerwisUrzadzenia su = new SerwisUrzadzenia()
+                    {
+                        urzadzenie_id = f.NewDevice.urzadzenie_id,
+                        serwisant_id = f.NewDevice.serwisant_id,
+                        usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x=>x.usluga_id).First(),
+                        data_przyjecia = f.NewDevice.nastepny_przeglad,
+                        data_oddania = f.NewDevice.nastepny_przeglad
+                    };
+                    db.SerwisUrzadzenia.Add(su);
                     db.SaveChanges();
                 }
             }
@@ -372,6 +381,12 @@ namespace Inzynierka_aplikacja
             ShowDevice f = new ShowDevice(edited);
             if (f.ShowDialog() == DialogResult.Cancel)
                 f.Dispose();
+        }
+
+        private void ShowServices_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            contentPanel.Controls.Add(new ShowServices());
         }
     }
 }

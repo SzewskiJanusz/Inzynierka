@@ -201,6 +201,12 @@
     <Compile Include="WinformViews\ShowRevenues.Designer.cs">
       <DependentUpon>ShowRevenues.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\ShowServices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowServices.Designer.cs">
+      <DependentUpon>ShowServices.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowRegistry.resx">
       <DependentUpon>ShowRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowServices.resx">
+      <DependentUpon>ShowServices.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="MainDB\MainModel.edmx">

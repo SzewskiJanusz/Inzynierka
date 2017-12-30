@@ -49,12 +49,12 @@
             this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.panelPrzeglad = new System.Windows.Forms.Panel();
-            this.pbPrzeglad = new System.Windows.Forms.PictureBox();
-            this.lblPrzeglad = new System.Windows.Forms.Label();
             this.panelRegistry = new System.Windows.Forms.Panel();
             this.pbRegistry = new System.Windows.Forms.PictureBox();
             this.lblRegistry = new System.Windows.Forms.Label();
+            this.panelPrzeglad = new System.Windows.Forms.Panel();
+            this.pbPrzeglad = new System.Windows.Forms.PictureBox();
+            this.lblPrzeglad = new System.Windows.Forms.Label();
             this.panelDevices = new System.Windows.Forms.Panel();
             this.pbDevice = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,10 +67,10 @@
             this.lblTodaysDate = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
-            this.panelPrzeglad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).BeginInit();
             this.panelRegistry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).BeginInit();
+            this.panelPrzeglad.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).BeginInit();
             this.panelDevices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.panelClients.SuspendLayout();
@@ -237,36 +237,6 @@
             this.leftPanel.Size = new System.Drawing.Size(173, 365);
             this.leftPanel.TabIndex = 2;
             // 
-            // panelPrzeglad
-            // 
-            this.panelPrzeglad.Controls.Add(this.pbPrzeglad);
-            this.panelPrzeglad.Controls.Add(this.lblPrzeglad);
-            this.panelPrzeglad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelPrzeglad.Location = new System.Drawing.Point(0, 148);
-            this.panelPrzeglad.Name = "panelPrzeglad";
-            this.panelPrzeglad.Size = new System.Drawing.Size(170, 76);
-            this.panelPrzeglad.TabIndex = 3;
-            // 
-            // pbPrzeglad
-            // 
-            this.pbPrzeglad.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.ErrorImage")));
-            this.pbPrzeglad.Image = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.Image")));
-            this.pbPrzeglad.Location = new System.Drawing.Point(60, 3);
-            this.pbPrzeglad.Name = "pbPrzeglad";
-            this.pbPrzeglad.Size = new System.Drawing.Size(43, 42);
-            this.pbPrzeglad.TabIndex = 0;
-            this.pbPrzeglad.TabStop = false;
-            // 
-            // lblPrzeglad
-            // 
-            this.lblPrzeglad.AutoSize = true;
-            this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPrzeglad.Location = new System.Drawing.Point(25, 48);
-            this.lblPrzeglad.Name = "lblPrzeglad";
-            this.lblPrzeglad.Size = new System.Drawing.Size(126, 20);
-            this.lblPrzeglad.TabIndex = 1;
-            this.lblPrzeglad.Text = "Najbliższe usługi";
-            // 
             // panelRegistry
             // 
             this.panelRegistry.Controls.Add(this.pbRegistry);
@@ -299,6 +269,39 @@
             this.lblRegistry.TabIndex = 1;
             this.lblRegistry.Text = "Wykonane usługi";
             this.lblRegistry.Click += new System.EventHandler(this.ShowRegistry_Click);
+            // 
+            // panelPrzeglad
+            // 
+            this.panelPrzeglad.Controls.Add(this.pbPrzeglad);
+            this.panelPrzeglad.Controls.Add(this.lblPrzeglad);
+            this.panelPrzeglad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelPrzeglad.Location = new System.Drawing.Point(0, 148);
+            this.panelPrzeglad.Name = "panelPrzeglad";
+            this.panelPrzeglad.Size = new System.Drawing.Size(170, 76);
+            this.panelPrzeglad.TabIndex = 3;
+            this.panelPrzeglad.Click += new System.EventHandler(this.ShowServices_Click);
+            // 
+            // pbPrzeglad
+            // 
+            this.pbPrzeglad.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.ErrorImage")));
+            this.pbPrzeglad.Image = ((System.Drawing.Image)(resources.GetObject("pbPrzeglad.Image")));
+            this.pbPrzeglad.Location = new System.Drawing.Point(60, 3);
+            this.pbPrzeglad.Name = "pbPrzeglad";
+            this.pbPrzeglad.Size = new System.Drawing.Size(43, 42);
+            this.pbPrzeglad.TabIndex = 0;
+            this.pbPrzeglad.TabStop = false;
+            this.pbPrzeglad.Click += new System.EventHandler(this.ShowServices_Click);
+            // 
+            // lblPrzeglad
+            // 
+            this.lblPrzeglad.AutoSize = true;
+            this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblPrzeglad.Location = new System.Drawing.Point(25, 48);
+            this.lblPrzeglad.Name = "lblPrzeglad";
+            this.lblPrzeglad.Size = new System.Drawing.Size(126, 20);
+            this.lblPrzeglad.TabIndex = 1;
+            this.lblPrzeglad.Text = "Najbliższe usługi";
+            this.lblPrzeglad.Click += new System.EventHandler(this.ShowServices_Click);
             // 
             // panelDevices
             // 
@@ -426,12 +429,12 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
-            this.panelPrzeglad.ResumeLayout(false);
-            this.panelPrzeglad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).EndInit();
             this.panelRegistry.ResumeLayout(false);
             this.panelRegistry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).EndInit();
+            this.panelPrzeglad.ResumeLayout(false);
+            this.panelPrzeglad.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrzeglad)).EndInit();
             this.panelDevices.ResumeLayout(false);
             this.panelDevices.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();
