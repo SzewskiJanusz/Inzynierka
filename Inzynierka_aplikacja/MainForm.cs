@@ -109,16 +109,21 @@ namespace Inzynierka_aplikacja
             DataGridViewRow row = ShowClients.selectedRow;
             string a = row.Cells["nazwa"].Value.ToString();
             RemoveControls();
+            
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                ShowClientDevices cdev = new ShowClientDevices(
+                ShowDevices sd = new ShowDevices(
                     db.Podatnik.Where(x => x.nazwa == a).
                     FirstOrDefault()
                     );
-               
-                contentPanel.Controls.Add(cdev);
-            }
 
+                sd.AddDeviceButtonClicked -= AddDevice;
+                sd.AddDeviceButtonClicked += AddDevice;
+                sd.EditDeviceButtonClicked -= EditDevice;
+                sd.EditDeviceButtonClicked += EditDevice;
+                ShowIcons("devices");
+                contentPanel.Controls.Add(sd);
+            }
         }
 
         private void BackToLogin()
@@ -232,6 +237,7 @@ namespace Inzynierka_aplikacja
             ShowIcons("devices");
             contentPanel.Controls.Add(sd);
         }
+
 
         private void ShowRegistry_Click(object sender, EventArgs e)
         {
@@ -347,7 +353,7 @@ namespace Inzynierka_aplikacja
                     "nastepny_przeglad = '" + f.NewDevice.nastepny_przeglad + "' " +
                     "WHERE urzadzenie_id = " + id + ";";
                 SQL.DoQuery(updateQuery);
-
+                
             }
         }
 

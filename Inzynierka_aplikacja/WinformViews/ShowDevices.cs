@@ -35,6 +35,9 @@ namespace Inzynierka_aplikacja.WinformViews
             podatnikID = p.podatnik_id;
             LoadClientDevices();
             HideLabelsAndIcons();
+
+            lbl.Text = "Urządzenia kontrahenta: " + p.nazwa;
+
         }
 
         protected virtual void AddDeviceClick(EventArgs e)
@@ -68,7 +71,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
-                "WHERE podatnik_id = " + podatnikID + ";";
+                "WHERE p.podatnik_id = " + podatnikID + ";";
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;

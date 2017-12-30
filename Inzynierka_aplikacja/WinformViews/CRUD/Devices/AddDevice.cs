@@ -36,31 +36,34 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             {
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
                 comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+
+                comboBox3.DataSource = SQL.GetStates();
+
+                comboBox3.ValueMember = "nazwa";
+                comboBox3.DisplayMember = "nazwa";
+
+                SetDataFromEdited(u, db);
             }
-
-            comboBox1.ValueMember = "nazwa";
-            comboBox1.DisplayMember = "nazwa";
-
-            comboBox2.ValueMember = "serwisant";
-            comboBox2.DisplayMember = "serwisant";
-
-            SetDataFromEdited(u);
+            
             btnAdd.Text = "Zapisz";
             label1.Text = "Edytuj urządzenie";
             this.Text = "Edytuj urządzenie";
         }
 
-        private void SetDataFromEdited(Urzadzenie u)
+        private void SetDataFromEdited(Urzadzenie u, InzynierkaDBEntities db)
         {
+            Miejsce_instalacji mi = new Miejsce_instalacji();
+            mi = db.Miejsce_instalacji.Where(x => x.miejsce_id == u.miejsce_id).First();
+
             textBox1.Text = u.nr_unikatowy;
             textBox2.Text = u.nr_fabryczny;
             textBox3.Text = u.nr_ewidencyjny;
-            comboBox1.SelectedText = u.Podatnik.nazwa;
-            comboBox2.SelectedText = u.Serwisant.imie + " " + u.Serwisant.nazwisko;
-            comboBox3.SelectedText = u.Miejsce_instalacji.wojewodztwo;
-            textBox4.Text = u.Miejsce_instalacji.kraj;
-            textBox5.Text = u.Miejsce_instalacji.miasto;
-            textBox6.Text = u.Miejsce_instalacji.ulica;
+            comboBox1.SelectedText = db.Podatnik.Where(x => x.podatnik_id == u.podatnik_id).Select(x=>x.nazwa).First();
+            comboBox2.SelectedText = db.Serwisant.Where(x => x.serwisant_id == u.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
+            comboBox3.SelectedText = mi.wojewodztwo;
+            textBox4.Text = mi.kraj;
+            textBox5.Text = mi.miasto;
+            textBox6.Text = mi.ulica;
         }
 
         private bool ValidateData()
