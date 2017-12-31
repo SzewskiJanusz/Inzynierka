@@ -57,13 +57,14 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadServices()
         {
             string query =
-            "SELECT nastepny_przeglad AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
             "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
             "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
-            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id;" ;
+            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+            "WHERE s.serwisant_id = " + MainForm.serwisantID + ";";
 
             dgvServices.DataSource = SQL.DoQuery(query);
         }
@@ -124,6 +125,54 @@ namespace Inzynierka_aplikacja.WinformViews
         private void dgvServices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvServices.ClearSelection();
+        }
+
+        private void linklblShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string query =
+            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
+            "FROM SerwisUrzadzenia su " +
+            "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
+            "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id ;";
+
+            dgvServices.DataSource = SQL.DoQuery(query);
+        }
+
+        private void tbxFind_TextChanged(object sender, EventArgs e)
+        {
+            indexesOfRows.Clear();
+
+            foreach (DataGridViewRow row in dgvServices.Rows)
+            {
+                for (int i = 0; i < dgvServices.Columns.Count; i++)
+                {
+                    string str = row.Cells[i].Value.ToString().ToLower();
+                    if (str.Contains(tbxFind.Text.ToLower()))
+                    {
+                        indexesOfRows.Add(row.Index);
+                        break;
+                    }
+                }
+            }
+
+            FindClickNumber = 0;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (FindClickNumber < indexesOfRows.Count)
+            {
+                dgvServices.Rows[indexesOfRows[FindClickNumber]].Selected = true;
+                FindClickNumber++;
+                ShowLabelsAndIcons();
+            }
+            else
+            {
+                FindClickNumber = 0;
+            }
         }
     }
 }

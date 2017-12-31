@@ -113,6 +113,7 @@ namespace Inzynierka_aplikacja.WinformViews
             {
                 dgvClient.Rows[indexesOfRows[FindClickNumber]].Selected = true;
                 FindClickNumber++;
+                ShowLabelsAndIcons();
             }
             else
             {

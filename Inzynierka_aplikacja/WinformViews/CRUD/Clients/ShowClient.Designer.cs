@@ -50,14 +50,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.cboxRevenue = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gbBasics = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.linklblAdd = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbBasics.SuspendLayout();
@@ -67,7 +66,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(164, 66);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(144, 23);
+            this.textBox7.Size = new System.Drawing.Size(210, 23);
             this.textBox7.TabIndex = 23;
             // 
             // textBox9
@@ -200,7 +199,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(164, 110);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(144, 23);
+            this.textBox8.Size = new System.Drawing.Size(210, 23);
             this.textBox8.TabIndex = 22;
             // 
             // label11
@@ -237,19 +236,11 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Nazwisko";
             // 
-            // cboxRevenue
-            // 
-            this.cboxRevenue.FormattingEnabled = true;
-            this.cboxRevenue.Location = new System.Drawing.Point(164, 189);
-            this.cboxRevenue.Name = "cboxRevenue";
-            this.cboxRevenue.Size = new System.Drawing.Size(294, 24);
-            this.cboxRevenue.TabIndex = 20;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(5, 189);
+            this.label13.Location = new System.Drawing.Point(5, 192);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(143, 24);
             this.label13.TabIndex = 19;
@@ -257,9 +248,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboxRevenue);
+            this.groupBox1.Controls.Add(this.textBox12);
+            this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.textBox9);
@@ -268,20 +259,26 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 404);
+            this.groupBox1.Location = new System.Drawing.Point(12, 372);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(494, 236);
+            this.groupBox1.Size = new System.Drawing.Size(494, 226);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Miejsce siedziby firmy";
             // 
-            // comboBox1
+            // textBox12
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(164, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(144, 24);
-            this.comboBox1.TabIndex = 25;
+            this.textBox12.Location = new System.Drawing.Point(164, 192);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(210, 23);
+            this.textBox12.TabIndex = 25;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(164, 22);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(210, 23);
+            this.textBox11.TabIndex = 24;
             // 
             // label2
             // 
@@ -310,9 +307,9 @@
             this.gbBasics.Controls.Add(this.label3);
             this.gbBasics.Controls.Add(this.label2);
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gbBasics.Location = new System.Drawing.Point(12, 87);
+            this.gbBasics.Location = new System.Drawing.Point(12, 56);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(494, 302);
+            this.gbBasics.Size = new System.Drawing.Size(494, 310);
             this.gbBasics.TabIndex = 10;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Podstawowe informacje";
@@ -327,26 +324,11 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Kontrahent - podgląd";
             // 
-            // linklblAdd
-            // 
-            this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.AutoSize = true;
-            this.linklblAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(12, 55);
-            this.linklblAdd.Name = "linklblAdd";
-            this.linklblAdd.Size = new System.Drawing.Size(225, 20);
-            this.linklblAdd.TabIndex = 12;
-            this.linklblAdd.TabStop = true;
-            this.linklblAdd.Text = "Pokaż urządzenia kontrahenta";
-            this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
             // ShowClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 668);
-            this.Controls.Add(this.linklblAdd);
+            this.ClientSize = new System.Drawing.Size(526, 610);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbBasics);
             this.Controls.Add(this.label1);
@@ -385,13 +367,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ErrorProvider errorPrv;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboxRevenue;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox gbBasics;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linklblAdd;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox11;
     }
 }

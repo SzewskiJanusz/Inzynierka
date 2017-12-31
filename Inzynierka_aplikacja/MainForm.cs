@@ -2,6 +2,7 @@
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
+using Inzynierka_aplikacja.WinformViews.CRUD.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace Inzynierka_aplikacja
     public partial class MainForm : Form
     {
         public static List<List<ToolStripButton>> icons;
+
+        public static int serwisantID = -1;
 
         public MainForm()
         {
@@ -57,7 +60,7 @@ namespace Inzynierka_aplikacja
         {
             lblLogged.Text = serwisant.imie + " " + serwisant.nazwisko;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
-
+            serwisantID = serwisant.serwisant_id;
             SetDefaultToolStripIcons();
             SetAllIcons();
         }
@@ -214,6 +217,7 @@ namespace Inzynierka_aplikacja
                 ).First();
             }
             ShowClient f = new ShowClient(p);
+
             if (f.ShowDialog() == DialogResult.Cancel)
                 f.Dispose();
         }
@@ -386,7 +390,23 @@ namespace Inzynierka_aplikacja
         private void ShowServices_Click(object sender, EventArgs e)
         {
             RemoveControls();
-            contentPanel.Controls.Add(new ShowServices());
+            ShowServices serv = new ShowServices();
+            serv.AddServiceButtonClicked -= AddService;
+            serv.AddServiceButtonClicked += AddService;
+            contentPanel.Controls.Add(serv);
+        }
+
+        private void AddService(object sender, EventArgs e)
+        {
+            AddService f = new AddService();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.SerwisUrzadzenia.Add(f.NewService);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

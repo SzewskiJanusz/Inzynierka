@@ -15,20 +15,21 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
         public ShowClient(Podatnik p)
         {
             InitializeComponent();
-            foreach(Control a in Controls)
+            SetDataFromEdited(p);
+            foreach (Control a in Controls)
             {
                 if (a is GroupBox)
                 {
                     foreach(Control b in a.Controls)
                     {
-                        if (b is TextBox || b is ComboBox)
+                        if (b is TextBox)
                         {
                             b.Enabled = false;
                         }
                     }
                 }
             }
-            SetDataFromEdited(p);
+            
         }
 
         private void SetDataFromEdited(Podatnik p)
@@ -39,13 +40,19 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox4.Text = p.nazwa;
             textBox5.Text = p.symbol;
             textBox6.Text = p.telefon;
-            comboBox1.SelectedText = p.wojewodztwo;
+            textBox11.Text = p.wojewodztwo;
             textBox7.Text = p.miasto;
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;
             textBox10.Text = p.email;
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                textBox12.Text = db.UrzadSkarbowy.
+                    Where(x => x.urzad_id == p.urzad_id).
+                    Select(x => x.nazwa).First();
+            }
+            
         }
-
 
     }
 }

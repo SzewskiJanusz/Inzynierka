@@ -180,6 +180,7 @@ namespace Inzynierka_aplikacja.WinformViews
             {
                 dgvDevices.Rows[indexesOfRows[FindClickNumber]].Selected = true;
                 FindClickNumber++;
+                ShowLabelsAndIcons();
             }
             else
             {

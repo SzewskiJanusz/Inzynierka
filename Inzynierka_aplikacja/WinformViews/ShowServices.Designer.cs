@@ -36,6 +36,7 @@
             this.dgvServices = new System.Windows.Forms.DataGridView();
             this.btnFind = new System.Windows.Forms.Button();
             this.tbxFind = new System.Windows.Forms.TextBox();
+            this.linklblShowAll = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,12 +69,12 @@
             this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.AutoSize = true;
             this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(247, 54);
+            this.linklblAdd.Location = new System.Drawing.Point(231, 54);
             this.linklblAdd.Name = "linklblAdd";
-            this.linklblAdd.Size = new System.Drawing.Size(35, 13);
+            this.linklblAdd.Size = new System.Drawing.Size(48, 13);
             this.linklblAdd.TabIndex = 7;
             this.linklblAdd.TabStop = true;
-            this.linklblAdd.Text = "Dodaj";
+            this.linklblAdd.Text = "Zaplanuj";
             this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblAdd_LinkClicked);
             // 
@@ -84,10 +85,10 @@
             this.linklblEdit.LinkColor = System.Drawing.Color.Black;
             this.linklblEdit.Location = new System.Drawing.Point(310, 54);
             this.linklblEdit.Name = "linklblEdit";
-            this.linklblEdit.Size = new System.Drawing.Size(36, 13);
+            this.linklblEdit.Size = new System.Drawing.Size(43, 13);
             this.linklblEdit.TabIndex = 8;
             this.linklblEdit.TabStop = true;
-            this.linklblEdit.Text = "Edytuj";
+            this.linklblEdit.Text = "Popraw";
             this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblEdit_LinkClicked);
             // 
@@ -133,6 +134,7 @@
             this.btnFind.Text = "Znajdź następny";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Visible = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // tbxFind
             // 
@@ -141,11 +143,27 @@
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 11;
             this.tbxFind.Visible = false;
+            this.tbxFind.TextChanged += new System.EventHandler(this.tbxFind_TextChanged);
+            // 
+            // linklblShowAll
+            // 
+            this.linklblShowAll.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.AutoSize = true;
+            this.linklblShowAll.LinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.Location = new System.Drawing.Point(463, 54);
+            this.linklblShowAll.Name = "linklblShowAll";
+            this.linklblShowAll.Size = new System.Drawing.Size(129, 13);
+            this.linklblShowAll.TabIndex = 13;
+            this.linklblShowAll.TabStop = true;
+            this.linklblShowAll.Text = "Wyświetl wszystkie usługi";
+            this.linklblShowAll.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblShowAll_LinkClicked);
             // 
             // ShowServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linklblShowAll);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tbxFind);
             this.Controls.Add(this.dgvServices);
@@ -172,5 +190,6 @@
         public System.Windows.Forms.DataGridView dgvServices;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox tbxFind;
+        private System.Windows.Forms.LinkLabel linklblShowAll;
     }
 }
