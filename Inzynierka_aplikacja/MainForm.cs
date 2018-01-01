@@ -328,8 +328,7 @@ namespace Inzynierka_aplikacja
                         urzadzenie_id = f.NewDevice.urzadzenie_id,
                         serwisant_id = f.NewDevice.serwisant_id,
                         usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x=>x.usluga_id).First(),
-                        data_przyjecia = f.NewDevice.nastepny_przeglad,
-                        data_oddania = f.NewDevice.nastepny_przeglad
+                        data_przyjecia = f.NewDevice.nastepny_przeglad
                     };
                     db.SerwisUrzadzenia.Add(su);
                     db.SaveChanges();
@@ -393,6 +392,8 @@ namespace Inzynierka_aplikacja
             ShowServices serv = new ShowServices();
             serv.AddServiceButtonClicked -= AddService;
             serv.AddServiceButtonClicked += AddService;
+            serv.ShowServiceButtonClicked -= ShowServiceDetails;
+            serv.ShowServiceButtonClicked += ShowServiceDetails;
             contentPanel.Controls.Add(serv);
         }
 
@@ -407,6 +408,24 @@ namespace Inzynierka_aplikacja
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void ShowServiceDetails(object sender, EventArgs e)
+        {
+            String nrUnikatowy = ShowServices.selectedRow.Cells["Numer unikatowy urządzenia"].Value.ToString();
+            String nazwaUslugi = ShowServices.selectedRow.Cells["Nazwa usługi"].Value.ToString();
+            int deviceID = 0;
+            int serviceID = 0;
+            SerwisUrzadzenia su;
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                deviceID = db.Urzadzenie.Where(x => x.nr_unikatowy == nrUnikatowy).Select(x => x.urzadzenie_id).First();
+                serviceID = db.Uslugi.Where(x => x.nazwa == nazwaUslugi).Select(x => x.usluga_id).First();
+                su = db.SerwisUrzadzenia.Where(x => x.urzadzenie_id == deviceID && x.usluga_id == serviceID).First();
+            }
+           
+            ShowService f = new ShowService(su);
+            f.ShowDialog();
         }
     }
 }

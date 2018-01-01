@@ -21,19 +21,15 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadRegistry()
         {
             string query =
-            "SELECT " +
-            "usl.nazwa AS 'Typ usługi', "+
-            "su.data_przyjecia AS 'Data przyjęcia', "+
-            "su.data_oddania AS 'Data oddania', "+
-            "p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Nr.unikatowy urządzenia', " +
-            "u.nr_fabryczny AS 'Nr.fabryczny', " +
-            "u.nr_ewidencyjny AS 'Nr.ewidencyjny' " +
+            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
-            "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id; ";
+            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+            "WHERE s.serwisant_id = " + MainForm.serwisantID + " AND " +
+            "su.data_oddania IS NOT NULL;";
 
             dgvRegistry.DataSource = SQL.DoQuery(query);
         }
