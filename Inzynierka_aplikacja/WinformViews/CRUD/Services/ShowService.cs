@@ -12,6 +12,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
 {
     public partial class ShowService : Form
     {
+        private SerwisUrzadzenia serv;
+
         public ShowService(SerwisUrzadzenia s)
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
             }
 
             SetDataFromEdited(s);
-       
+            serv = s;
         }
 
         private void SetDataFromEdited(SerwisUrzadzenia s)
@@ -60,6 +62,17 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
         private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void linklblDone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DoneService ds = new DoneService(serv);
+
+            if (ds.ShowDialog() == DialogResult.OK)
+            {
+                string query = "UPDATE SerwisUrzadzenia SET data_oddania = '" + ds.dtime + "' WHERE serwis_id = " + serv.serwis_id + ";";
+                SQL.DoQuery(query);
+            }
         }
     }
 }

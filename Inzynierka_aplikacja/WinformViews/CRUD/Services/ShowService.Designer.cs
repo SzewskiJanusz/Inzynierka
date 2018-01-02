@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.linklblAdd = new System.Windows.Forms.LinkLabel();
+            this.linklblDone = new System.Windows.Forms.LinkLabel();
             this.gbBasics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.SuspendLayout();
@@ -177,26 +177,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // linklblAdd
+            // linklblDone
             // 
-            this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.AutoSize = true;
-            this.linklblAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(12, 41);
-            this.linklblAdd.Name = "linklblAdd";
-            this.linklblAdd.Size = new System.Drawing.Size(153, 17);
-            this.linklblAdd.TabIndex = 29;
-            this.linklblAdd.TabStop = true;
-            this.linklblAdd.Text = "Oznacz jako wykonana";
-            this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblDone.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblDone.AutoSize = true;
+            this.linklblDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.linklblDone.LinkColor = System.Drawing.Color.Black;
+            this.linklblDone.Location = new System.Drawing.Point(12, 41);
+            this.linklblDone.Name = "linklblDone";
+            this.linklblDone.Size = new System.Drawing.Size(153, 17);
+            this.linklblDone.TabIndex = 29;
+            this.linklblDone.TabStop = true;
+            this.linklblDone.Text = "Oznacz jako wykonana";
+            this.linklblDone.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblDone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblDone_LinkClicked);
             // 
             // ShowService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 356);
-            this.Controls.Add(this.linklblAdd);
+            this.Controls.Add(this.linklblDone);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbBasics);
             this.Controls.Add(this.label1);
@@ -225,6 +226,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.LinkLabel linklblAdd;
+        private System.Windows.Forms.LinkLabel linklblDone;
     }
 }

@@ -64,7 +64,8 @@ namespace Inzynierka_aplikacja.WinformViews
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
             "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
             "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
-            "WHERE s.serwisant_id = " + MainForm.serwisantID + ";";
+            "WHERE s.serwisant_id = " + MainForm.serwisantID + " AND " +
+            "su.data_oddania IS NULL;";
 
             dgvServices.DataSource = SQL.DoQuery(query);
         }
