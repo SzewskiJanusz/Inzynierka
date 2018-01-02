@@ -80,6 +80,7 @@ namespace Inzynierka_aplikacja
 
             icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetDevices().ToList());
+            icons.Add(ToolstripIcons.GetInstance().GetServices().ToList());
 
             icons[0][0].Click += AddClient;
             icons[0][1].Click += EditClient;
@@ -88,6 +89,9 @@ namespace Inzynierka_aplikacja
             icons[1][0].Click += AddDevice;
             icons[1][1].Click += EditDevice;
             icons[1][2].Click += DeviceDetails;
+
+            icons[2][0].Click += AddService;
+            icons[2][1].Click += ShowServiceDetails;
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,13 +172,19 @@ namespace Inzynierka_aplikacja
                 case "clients": ShowClientIcons(); break;
                 case "devices": ShowDevicesIcons(); break;
                 case "registry": ShowRegistryIcons(); break;
-                case "przeglady": ShowPrzegladyIcons(); break;
+                case "services": ShowServiceIcons(); break;
             }
         }
 
-        private void ShowPrzegladyIcons()
+        private void ShowServiceIcons()
         {
-            throw new NotImplementedException();
+            SetDefaultToolStripIcons();
+            icons[2][1].Visible = false;
+            icons[2][2].Visible = false;
+            for (int i = 0; i < 3; i++)
+            {
+                toolStrip.Items.Add(icons[2][i]);
+            }
         }
 
         private void ShowRegistryIcons()
@@ -394,6 +404,7 @@ namespace Inzynierka_aplikacja
             serv.AddServiceButtonClicked += AddService;
             serv.ShowServiceButtonClicked -= ShowServiceDetails;
             serv.ShowServiceButtonClicked += ShowServiceDetails;
+            ShowIcons("services");
             contentPanel.Controls.Add(serv);
         }
 

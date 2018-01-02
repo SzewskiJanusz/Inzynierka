@@ -9,7 +9,7 @@ namespace Inzynierka_aplikacja
         private ToolStripButton[] client;
         private ToolStripButton[] devices;
         private ToolStripButton[] registry;
-        private ToolStripButton[] przeglady;
+        private ToolStripButton[] services;
 
         private ToolStripButton home;
 
@@ -36,7 +36,7 @@ namespace Inzynierka_aplikacja
             CreateClientIcons();
             CreateDevicesIcons();
            // CreateRegistryIcons();
-           // CreatePrzegladyIcons();
+            CreateServiceIcons();
         }
 
         private void CreateClientIcons()
@@ -80,16 +80,31 @@ namespace Inzynierka_aplikacja
             return devices;
         }
 
-        private static void CreateRegistryIcons()
+        private void CreateRegistryIcons()
         {
             throw new NotImplementedException();
         }
 
-        private static void CreatePrzegladyIcons()
+        private void CreateServiceIcons()
         {
-            throw new NotImplementedException();
+            string[] images =
+            {
+                @"Assets\add.png",
+                @"Assets\edit.png",
+                @"Assets\find.png"
+            };
+            services = new ToolStripButton[3];
+            for (int i = 0; i < 3; i++)
+            {
+                services[i] = new ToolStripButton(Image.FromFile(images[i]));
+            }
         }
-  
-        
+
+        public ToolStripButton[] GetServices()
+        {
+            return services;
+        }
+
+
     }
 }

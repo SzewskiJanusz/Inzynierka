@@ -80,17 +80,23 @@ namespace Inzynierka_aplikacja.WinformViews
             
         }
 
+        private void HideLabelsAndIcons()
+        {
+            MainForm.icons[2][1].Visible = false;
+            MainForm.icons[2][2].Visible = false;
+            linklblShow.Enabled = false;
+            linklblEdit.Enabled = false;
+        }
+
         private void ShowLabelsAndIcons()
         {
+            MainForm.icons[2][1].Visible = true;
+            MainForm.icons[2][2].Visible = true;
             linklblShow.Enabled = true;
             linklblEdit.Enabled = true;
         }
 
-        private void HideLabelsAndIcons()
-        {
-            linklblShow.Enabled = false;
-            linklblEdit.Enabled = false;
-        }
+
 
         private void linklblShow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -132,12 +138,13 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             string query =
             "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', s.imie + ' '+ s.nazwisko AS 'Serwisant', usl.nazwa AS 'Nazwa usługi' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
             "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
-            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id ;";
+            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+            "WHERE su.data_oddania IS NULL; ";
 
             dgvServices.DataSource = SQL.DoQuery(query);
         }
@@ -175,5 +182,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 FindClickNumber = 0;
             }
         }
+
+       
     }
 }

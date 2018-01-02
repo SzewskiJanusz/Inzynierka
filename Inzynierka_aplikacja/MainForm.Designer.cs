@@ -163,6 +163,7 @@
             this.najbliższeUsługiToolStripMenuItem.Name = "najbliższeUsługiToolStripMenuItem";
             this.najbliższeUsługiToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.najbliższeUsługiToolStripMenuItem.Text = "Najbliższe usługi";
+            this.najbliższeUsługiToolStripMenuItem.Click += new System.EventHandler(this.ShowServices_Click);
             // 
             // dodajToolStripMenuItem
             // 
@@ -177,21 +178,23 @@
             // kontrahentaToolStripMenuItem
             // 
             this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
-            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
             this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
             // 
             // urzadzenieToolStripMenuItem
             // 
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
-            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
+            this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.AddDevice);
             // 
             // usługęToolStripMenuItem
             // 
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
-            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
+            this.usługęToolStripMenuItem.Click += new System.EventHandler(this.AddService);
             // 
             // pomocToolStripMenuItem
             // 

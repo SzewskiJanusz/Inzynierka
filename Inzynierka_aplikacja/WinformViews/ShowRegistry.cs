@@ -21,7 +21,7 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadRegistry()
         {
             string query =
-            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "SELECT su.data_oddania AS 'Data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
             "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
@@ -30,6 +30,21 @@ namespace Inzynierka_aplikacja.WinformViews
             "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
             "WHERE s.serwisant_id = " + MainForm.serwisantID + " AND " +
             "su.data_oddania IS NOT NULL;";
+
+            dgvRegistry.DataSource = SQL.DoQuery(query);
+        }
+
+        private void linklblShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string query =
+            "SELECT su.data_oddania AS 'Data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia',s.imie + ' '+ s.nazwisko AS 'Serwisant',  usl.nazwa AS 'Nazwa usługi' " +
+            "FROM SerwisUrzadzenia su " +
+            "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
+            "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+            "WHERE su.data_oddania IS NOT NULL;";
 
             dgvRegistry.DataSource = SQL.DoQuery(query);
         }

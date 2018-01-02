@@ -30,7 +30,11 @@
         {
             this.dgvRegistry = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.linklblShowAll = new System.Windows.Forms.LinkLabel();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.tbxFind = new System.Windows.Forms.TextBox();
+            this.linklblFind = new System.Windows.Forms.LinkLabel();
+            this.linklblShow = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +47,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRegistry.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistry.Location = new System.Drawing.Point(3, 102);
+            this.dgvRegistry.Location = new System.Drawing.Point(3, 97);
             this.dgvRegistry.Name = "dgvRegistry";
             this.dgvRegistry.ReadOnly = true;
-            this.dgvRegistry.Size = new System.Drawing.Size(392, 255);
+            this.dgvRegistry.Size = new System.Drawing.Size(595, 260);
             this.dgvRegistry.TabIndex = 0;
             // 
             // label1
@@ -59,24 +63,77 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Wykonane usługi";
             // 
-            // btnAdd
+            // linklblShowAll
             // 
-            this.btnAdd.Location = new System.Drawing.Point(9, 73);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Dodaj";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.linklblShowAll.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.AutoSize = true;
+            this.linklblShowAll.LinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.Location = new System.Drawing.Point(468, 66);
+            this.linklblShowAll.Name = "linklblShowAll";
+            this.linklblShowAll.Size = new System.Drawing.Size(95, 13);
+            this.linklblShowAll.TabIndex = 18;
+            this.linklblShowAll.TabStop = true;
+            this.linklblShowAll.Text = "Wyświetl wszystko";
+            this.linklblShowAll.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblShowAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblShowAll_LinkClicked);
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(471, 24);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(128, 24);
+            this.btnFind.TabIndex = 17;
+            this.btnFind.Text = "Znajdź następny";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Visible = false;
+            // 
+            // tbxFind
+            // 
+            this.tbxFind.Location = new System.Drawing.Point(290, 24);
+            this.tbxFind.Name = "tbxFind";
+            this.tbxFind.Size = new System.Drawing.Size(175, 20);
+            this.tbxFind.TabIndex = 16;
+            this.tbxFind.Visible = false;
+            // 
+            // linklblFind
+            // 
+            this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblFind.AutoSize = true;
+            this.linklblFind.LinkColor = System.Drawing.Color.Black;
+            this.linklblFind.Location = new System.Drawing.Point(386, 66);
+            this.linklblFind.Name = "linklblFind";
+            this.linklblFind.Size = new System.Drawing.Size(53, 13);
+            this.linklblFind.TabIndex = 15;
+            this.linklblFind.TabStop = true;
+            this.linklblFind.Text = "Wyszukaj";
+            this.linklblFind.VisitedLinkColor = System.Drawing.Color.Black;
+            // 
+            // linklblShow
+            // 
+            this.linklblShow.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblShow.AutoSize = true;
+            this.linklblShow.LinkColor = System.Drawing.Color.Black;
+            this.linklblShow.Location = new System.Drawing.Point(8, 66);
+            this.linklblShow.Name = "linklblShow";
+            this.linklblShow.Size = new System.Drawing.Size(100, 13);
+            this.linklblShow.TabIndex = 14;
+            this.linklblShow.TabStop = true;
+            this.linklblShow.Text = "Wyświetl szczegóły";
+            this.linklblShow.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // ShowRegistry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.linklblShowAll);
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.tbxFind);
+            this.Controls.Add(this.linklblFind);
+            this.Controls.Add(this.linklblShow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvRegistry);
             this.Name = "ShowRegistry";
-            this.Size = new System.Drawing.Size(398, 360);
+            this.Size = new System.Drawing.Size(601, 360);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistry)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -87,6 +144,10 @@
 
         private System.Windows.Forms.DataGridView dgvRegistry;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.LinkLabel linklblShowAll;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox tbxFind;
+        private System.Windows.Forms.LinkLabel linklblFind;
+        private System.Windows.Forms.LinkLabel linklblShow;
     }
 }
