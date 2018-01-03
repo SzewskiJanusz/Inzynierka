@@ -26,6 +26,33 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                 
         }
 
+        public AddService(SerwisUrzadzenia su)
+        {
+            InitializeComponent();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                cbxClient.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                cbxDevice.DataSource = db.Urzadzenie.Select(x => x.nr_unikatowy).ToList();
+                cboxService.DataSource = db.Uslugi.Select(x => x.nazwa).ToList();
+            }
+
+            SetDataFromEdited(su);
+            this.Text = "Edytuj usługę";
+        }
+
+        private void SetDataFromEdited(SerwisUrzadzenia s)
+        {
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                cboxService.SelectedText = db.Uslugi.Where(x => x.usluga_id == s.usluga_id).Select(x => x.nazwa).First();
+                cbxDevice.SelectedText = db.Urzadzenie.Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nr_unikatowy).First();
+                int podID = db.Urzadzenie.Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.podatnik_id).First();
+                cbxClient.SelectedText = db.Podatnik.Where(x => x.podatnik_id == podID).Select(x => x.nazwa).First();
+            }
+            dtpDate.Value = s.data_przyjecia;
+            cbxClient.Enabled = false;
+        }
+
         private bool ValidateData()
         {
             bool check = true;

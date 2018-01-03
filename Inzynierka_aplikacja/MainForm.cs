@@ -404,6 +404,8 @@ namespace Inzynierka_aplikacja
             serv.AddServiceButtonClicked += AddService;
             serv.ShowServiceButtonClicked -= ShowServiceDetails;
             serv.ShowServiceButtonClicked += ShowServiceDetails;
+            serv.EditServiceButtonClicked -= EditService;
+            serv.EditServiceButtonClicked += EditService;
             ShowIcons("services");
             contentPanel.Controls.Add(serv);
         }
@@ -437,6 +439,40 @@ namespace Inzynierka_aplikacja
            
             ShowService f = new ShowService(su);
             f.ShowDialog();
+        }
+
+
+        private void EditService(object sender, EventArgs e)
+        {
+            String nrUnikatowy = ShowServices.selectedRow.Cells["Numer unikatowy urządzenia"].Value.ToString();
+            String nazwaUslugi = ShowServices.selectedRow.Cells["Nazwa usługi"].Value.ToString();
+            int deviceID = 0;
+            int serviceID = 0;
+            SerwisUrzadzenia su;
+
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                deviceID = db.Urzadzenie.Where(x => x.nr_unikatowy == nrUnikatowy).Select(x => x.urzadzenie_id).First();
+                serviceID = db.Uslugi.Where(x => x.nazwa == nazwaUslugi).Select(x => x.usluga_id).First();
+                su = db.SerwisUrzadzenia.Where(x => x.urzadzenie_id == deviceID && x.usluga_id == serviceID).First();
+            }
+
+            AddService f = new AddService(su);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    string updateQuery =
+                    "UPDATE SerwisUrzadzenia SET " +
+                    "usluga_id = " + f.NewService.usluga_id + ", " +
+                    "serwisant_id = " + f.NewService.serwisant_id + ", " +
+                    "urzadzenie_id = " + f.NewService.urzadzenie_id + ", " +
+                    "data_przyjecia = '" + f.NewService.data_przyjecia + "', " +
+                    "data_oddania = '" + f.NewService.data_oddania + "'" +
+                    "WHERE serwis_id = " +su.serwis_id + ";";
+                    SQL.DoQuery(updateQuery);
+                }
+            }
         }
     }
 }

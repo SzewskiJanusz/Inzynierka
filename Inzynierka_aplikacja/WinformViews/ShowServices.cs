@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Inzynierka_aplikacja.MainDB;
 
 namespace Inzynierka_aplikacja.WinformViews
 {
@@ -54,6 +55,7 @@ namespace Inzynierka_aplikacja.WinformViews
             FindClickNumber = 0;
         }
 
+        
         private void LoadServices()
         {
             string query =
