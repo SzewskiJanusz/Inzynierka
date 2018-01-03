@@ -37,7 +37,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
             }
 
             SetDataFromEdited(su);
-            this.Text = "Edytuj usługę";
+            this.Text = "Edytowanie usługi";
+            this.label1.Text = "Edytuj usługę";
         }
 
         private void SetDataFromEdited(SerwisUrzadzenia s)

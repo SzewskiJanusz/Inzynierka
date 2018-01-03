@@ -167,7 +167,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "AddService";
-            this.Text = "Form1";
+            this.Text = "Planowanie usługi";
             this.gbBasics.ResumeLayout(false);
             this.gbBasics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).EndInit();

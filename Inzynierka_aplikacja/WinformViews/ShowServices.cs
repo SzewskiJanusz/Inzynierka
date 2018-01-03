@@ -149,6 +149,7 @@ namespace Inzynierka_aplikacja.WinformViews
             "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
             "WHERE su.data_oddania IS NULL; ";
 
+            linklblEdit.Visible = false;
             dgvServices.DataSource = SQL.DoQuery(query);
         }
 
