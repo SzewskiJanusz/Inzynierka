@@ -61,7 +61,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void linklblDone_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

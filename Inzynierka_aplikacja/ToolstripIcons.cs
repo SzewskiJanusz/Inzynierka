@@ -35,7 +35,7 @@ namespace Inzynierka_aplikacja
         {
             CreateClientIcons();
             CreateDevicesIcons();
-           // CreateRegistryIcons();
+            CreateRegistryIcons();
             CreateServiceIcons();
         }
 
@@ -82,7 +82,19 @@ namespace Inzynierka_aplikacja
 
         private void CreateRegistryIcons()
         {
-            throw new NotImplementedException();
+            string[] images =
+            {
+                @"Assets\find.png"
+            };
+            registry = new ToolStripButton[1];
+
+            registry[0] = new ToolStripButton(Image.FromFile(images[0]));
+
+        }
+
+        public ToolStripButton[] GetRegistry()
+        {
+            return registry;
         }
 
         private void CreateServiceIcons()

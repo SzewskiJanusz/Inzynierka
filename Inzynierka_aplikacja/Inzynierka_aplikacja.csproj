@@ -207,11 +207,11 @@
     <Compile Include="WinformViews\ShowDevices.Designer.cs">
       <DependentUpon>ShowDevices.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinformViews\ShowRegistry.cs">
+    <Compile Include="WinformViews\ShowRegistryService.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WinformViews\ShowRegistry.Designer.cs">
-      <DependentUpon>ShowRegistry.cs</DependentUpon>
+    <Compile Include="WinformViews\ShowRegistryService.Designer.cs">
+      <DependentUpon>ShowRegistryService.cs</DependentUpon>
     </Compile>
     <Compile Include="WinformViews\ShowRevenues.cs">
       <SubType>UserControl</SubType>
@@ -256,6 +256,9 @@
     <EmbeddedResource Include="WinformViews\CRUD\Registry\AddRegistry.resx">
       <DependentUpon>AddRegistry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\Registry\ShowRegistry.resx">
+      <DependentUpon>ShowRegistry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Services\AddService.resx">
       <DependentUpon>AddService.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,8 +277,8 @@
     <EmbeddedResource Include="WinformViews\ShowDevices.resx">
       <DependentUpon>ShowDevices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinformViews\ShowRegistry.resx">
-      <DependentUpon>ShowRegistry.cs</DependentUpon>
+    <EmbeddedResource Include="WinformViews\ShowRegistryService.resx">
+      <DependentUpon>ShowRegistryService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowServices.resx">
       <DependentUpon>ShowServices.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace Inzynierka_aplikacja.WinformViews
 {
-    partial class ShowRegistry
+    partial class ShowRegistryService
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,30 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvRegistry = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.linklblShowAll = new System.Windows.Forms.LinkLabel();
             this.btnFind = new System.Windows.Forms.Button();
             this.tbxFind = new System.Windows.Forms.TextBox();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.linklblShow = new System.Windows.Forms.LinkLabel();
+            this.dgvRegistry = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistry)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvRegistry
-            // 
-            this.dgvRegistry.AllowUserToAddRows = false;
-            this.dgvRegistry.AllowUserToDeleteRows = false;
-            this.dgvRegistry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvRegistry.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistry.Location = new System.Drawing.Point(3, 97);
-            this.dgvRegistry.Name = "dgvRegistry";
-            this.dgvRegistry.ReadOnly = true;
-            this.dgvRegistry.Size = new System.Drawing.Size(595, 260);
-            this.dgvRegistry.TabIndex = 0;
             // 
             // label1
             // 
@@ -120,19 +105,39 @@
             this.linklblShow.TabStop = true;
             this.linklblShow.Text = "Wyświetl szczegóły";
             this.linklblShow.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblShow_LinkClicked);
             // 
-            // ShowRegistry
+            // dgvRegistry
+            // 
+            this.dgvRegistry.AllowUserToAddRows = false;
+            this.dgvRegistry.AllowUserToDeleteRows = false;
+            this.dgvRegistry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRegistry.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvRegistry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegistry.Location = new System.Drawing.Point(3, 97);
+            this.dgvRegistry.MultiSelect = false;
+            this.dgvRegistry.Name = "dgvRegistry";
+            this.dgvRegistry.ReadOnly = true;
+            this.dgvRegistry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRegistry.Size = new System.Drawing.Size(595, 260);
+            this.dgvRegistry.TabIndex = 19;
+            this.dgvRegistry.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistry_CellClick);
+            this.dgvRegistry.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRegistry_DataBindingComplete);
+            // 
+            // ShowRegistryService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvRegistry);
             this.Controls.Add(this.linklblShowAll);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tbxFind);
             this.Controls.Add(this.linklblFind);
             this.Controls.Add(this.linklblShow);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvRegistry);
-            this.Name = "ShowRegistry";
+            this.Name = "ShowRegistryService";
             this.Size = new System.Drawing.Size(601, 360);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistry)).EndInit();
             this.ResumeLayout(false);
@@ -141,13 +146,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvRegistry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linklblShowAll;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox tbxFind;
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.LinkLabel linklblShow;
+        private System.Windows.Forms.DataGridView dgvRegistry;
     }
 }

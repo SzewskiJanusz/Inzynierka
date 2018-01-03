@@ -2,6 +2,7 @@
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
+using Inzynierka_aplikacja.WinformViews.CRUD.Registry;
 using Inzynierka_aplikacja.WinformViews.CRUD.Services;
 using System;
 using System.Collections.Generic;
@@ -81,6 +82,7 @@ namespace Inzynierka_aplikacja
             icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetDevices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetServices().ToList());
+            icons.Add(ToolstripIcons.GetInstance().GetRegistry().ToList());
 
             icons[0][0].Click += AddClient;
             icons[0][1].Click += EditClient;
@@ -91,7 +93,11 @@ namespace Inzynierka_aplikacja
             icons[1][2].Click += DeviceDetails;
 
             icons[2][0].Click += AddService;
-            icons[2][1].Click += ShowServiceDetails;
+            icons[2][1].Click += EditService;
+            icons[2][2].Click += ShowServiceDetails;
+
+            icons[3][0].Click += ShowDoneService;
+
         }
 
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,7 +195,10 @@ namespace Inzynierka_aplikacja
 
         private void ShowRegistryIcons()
         {
-            throw new NotImplementedException();
+            SetDefaultToolStripIcons();
+            icons[3][0].Visible = false;
+            toolStrip.Items.Add(icons[3][0]);
+
         }
 
         private void ShowDevicesIcons()
@@ -256,7 +265,25 @@ namespace Inzynierka_aplikacja
         private void ShowRegistry_Click(object sender, EventArgs e)
         {
             RemoveControls();
-            contentPanel.Controls.Add(new ShowRegistry());
+            ShowRegistryService sr = new ShowRegistryService();
+            sr.ShowServiceButtonClicked -= ShowDoneService;
+            sr.ShowServiceButtonClicked += ShowDoneService;
+            ShowIcons("registry");
+            contentPanel.Controls.Add(sr);
+        }
+
+        private void ShowDoneService(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(ShowRegistryService.selectedRow.Cells["id"].Value.ToString());
+            SerwisUrzadzenia su;
+            using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                su = db.SerwisUrzadzenia.Where(x => x.serwis_id == id).First();
+            }
+            ShowRegistry sr = new ShowRegistry(su);
+
+            if (sr.ShowDialog() == DialogResult.Cancel)
+                sr.Dispose();
         }
 
         private void SetDefaultToolStripIcons()
