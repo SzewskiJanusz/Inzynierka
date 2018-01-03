@@ -446,6 +446,7 @@ namespace Inzynierka_aplikacja
         {
             String nrUnikatowy = ShowServices.selectedRow.Cells["Numer unikatowy urządzenia"].Value.ToString();
             String nazwaUslugi = ShowServices.selectedRow.Cells["Nazwa usługi"].Value.ToString();
+            int rowID = Convert.ToInt32(ShowServices.selectedRow.Cells["id"].Value.ToString());
             int deviceID = 0;
             int serviceID = 0;
             SerwisUrzadzenia su;
@@ -454,7 +455,7 @@ namespace Inzynierka_aplikacja
             {
                 deviceID = db.Urzadzenie.Where(x => x.nr_unikatowy == nrUnikatowy).Select(x => x.urzadzenie_id).First();
                 serviceID = db.Uslugi.Where(x => x.nazwa == nazwaUslugi).Select(x => x.usluga_id).First();
-                su = db.SerwisUrzadzenia.Where(x => x.urzadzenie_id == deviceID && x.usluga_id == serviceID).First();
+                su = db.SerwisUrzadzenia.Where(x => x.serwis_id == rowID).First();
             }
 
             AddService f = new AddService(su);
@@ -467,8 +468,7 @@ namespace Inzynierka_aplikacja
                     "usluga_id = " + f.NewService.usluga_id + ", " +
                     "serwisant_id = " + f.NewService.serwisant_id + ", " +
                     "urzadzenie_id = " + f.NewService.urzadzenie_id + ", " +
-                    "data_przyjecia = '" + f.NewService.data_przyjecia + "', " +
-                    "data_oddania = '" + f.NewService.data_oddania + "'" +
+                    "data_przyjecia = '" + f.NewService.data_przyjecia + "'" +
                     "WHERE serwis_id = " +su.serwis_id + ";";
                     SQL.DoQuery(updateQuery);
                 }

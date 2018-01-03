@@ -59,7 +59,7 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadServices()
         {
             string query =
-            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+            "SELECT su.serwis_id AS 'id', su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
             "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
@@ -70,6 +70,7 @@ namespace Inzynierka_aplikacja.WinformViews
             "su.data_oddania IS NULL;";
 
             dgvServices.DataSource = SQL.DoQuery(query);
+            dgvServices.Columns[0].Visible = false;
         }
 
         private void dgvService_CellClick(object sender, DataGridViewCellEventArgs e)
