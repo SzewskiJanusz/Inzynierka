@@ -35,6 +35,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
+                cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact(db.UrzadSkarbowy.Where(x => x.urzad_id == p.urzad_id).Select(x => x.nazwa).First());
                 var states = SQL.GetStates();
                 comboBox1.ValueMember = "nazwa";
                 comboBox1.DisplayMember = "nazwa";
@@ -58,7 +59,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;
             textBox10.Text = p.email;
-            cboxRevenue.SelectedValue = p.wojewodztwo;
+            // US selected in constructor
         }
 
         private bool ValidateData()

@@ -169,8 +169,6 @@ namespace Inzynierka_aplikacja
             sc.AddClientButtonClicked += AddClient;
             sc.EditClientButtonClicked -= EditClient;
             sc.EditClientButtonClicked += EditClient;
-            sc.ShowClientPlacesButtonClicked -= ClientPlaces;
-            sc.ShowClientPlacesButtonClicked += ClientPlaces;
             ShowIcons("clients");
             contentPanel.Controls.Add(sc);
         }
