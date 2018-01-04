@@ -160,6 +160,7 @@
             this.linkShowLocations.TabStop = true;
             this.linkShowLocations.Text = "Pokaż miejsca instalacji";
             this.linkShowLocations.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkShowLocations.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkShowLocations_LinkClicked);
             // 
             // ShowClients
             // 

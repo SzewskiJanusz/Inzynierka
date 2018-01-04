@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="62f383d4c0a4463bb62ebb69e6ab72d8" Name="Diagram1">
-        <EntityTypeShape EntityType="InzynierkaDBModel.Administrator" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Handlowiec" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="250a13f7523b426695b3e31a7828523d" Name="Diagram1">
+        <EntityTypeShape EntityType="InzynierkaDBModel.Administrator" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Handlowiec" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.Miejsce_instalacji" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.PamiecLogowania" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Podatnik" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Serwisant" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.SerwisUrzadzenia" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.UrzadSkarbowy" Width="1.5" PointX="1.5" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Urzadzenie" Width="1.75" PointX="6" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Uslugi" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.PamiecLogowania" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Podatnik" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Serwisant" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.SerwisUrzadzenia" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.UrzadSkarbowy" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Urzadzenie" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Uslugi" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
         <AssociationConnector Association="InzynierkaDBModel.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" ManuallyRouted="false" />
         <AssociationConnector Association="InzynierkaDBModel.FK_PODATNIK_ROZLICZA__URZADSKA" ManuallyRouted="false" />
         <AssociationConnector Association="InzynierkaDBModel.FK_URZADZEN_POSIADA_PODATNIK" ManuallyRouted="false" />

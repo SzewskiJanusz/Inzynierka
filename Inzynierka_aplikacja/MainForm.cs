@@ -163,12 +163,38 @@ namespace Inzynierka_aplikacja
             ShowClients sc = new ShowClients();
             sc.ShowClientDevButtonClicked -= ClientDevices;
             sc.ShowClientDevButtonClicked += ClientDevices;
+            sc.ShowClientPlacesButtonClicked -= ClientPlaces;
+            sc.ShowClientPlacesButtonClicked += ClientPlaces;
             sc.AddClientButtonClicked -= AddClient;
             sc.AddClientButtonClicked += AddClient;
             sc.EditClientButtonClicked -= EditClient;
             sc.EditClientButtonClicked += EditClient;
+            sc.ShowClientPlacesButtonClicked -= ClientPlaces;
+            sc.ShowClientPlacesButtonClicked += ClientPlaces;
             ShowIcons("clients");
             contentPanel.Controls.Add(sc);
+        }
+
+        private void ClientPlaces(object sender, EventArgs e)
+        {
+            DataGridViewRow row = ShowClients.selectedRow;
+            string a = row.Cells["nazwa"].Value.ToString();
+            RemoveControls();
+
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                ShowPlaces sp = new ShowPlaces(
+                    db.Podatnik.Where(x => x.nazwa == a).
+                    FirstOrDefault()
+                    );
+
+              //  sp.AddDeviceButtonClicked -= AddDevice;
+               // sp.AddDeviceButtonClicked += AddDevice;
+               // sp.EditDeviceButtonClicked -= EditDevice;
+              //  sp.EditDeviceButtonClicked += EditDevice;
+                ShowIcons("devices");
+                contentPanel.Controls.Add(sp);
+            }
         }
 
         private void ShowIcons(string v)
@@ -335,8 +361,6 @@ namespace Inzynierka_aplikacja
                     "urzad_id = "+ f.nowyPodatnik.urzad_id+ ", "+
                     "nazwa = '" + f.nowyPodatnik.nazwa + "', " +
                     "symbol = '" + f.nowyPodatnik.symbol + "', " +
-                    "imie = '" + f.nowyPodatnik.imie + "', " +
-                    "nazwisko = '" + f.nowyPodatnik.nazwisko + "', " +
                     "nip = '"+ f.nowyPodatnik.nip + "', " +
                     "wojewodztwo = '" + f.nowyPodatnik.wojewodztwo + "', " +
                     "miasto = '" + f.nowyPodatnik.miasto + "', " +

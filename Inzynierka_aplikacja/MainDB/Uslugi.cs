@@ -22,7 +22,7 @@ namespace Inzynierka_aplikacja.MainDB
     
         public int usluga_id { get; set; }
         public string nazwa { get; set; }
-        public decimal koszt_brutto { get; set; }
+        public Nullable<decimal> koszt_brutto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }

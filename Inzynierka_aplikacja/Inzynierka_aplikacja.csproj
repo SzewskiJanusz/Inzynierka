@@ -213,6 +213,12 @@
     <Compile Include="WinformViews\ShowDevices.Designer.cs">
       <DependentUpon>ShowDevices.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\ShowPlaces.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowPlaces.Designer.cs">
+      <DependentUpon>ShowPlaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\ShowRegistryService.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowDevices.resx">
       <DependentUpon>ShowDevices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowPlaces.resx">
+      <DependentUpon>ShowPlaces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowRegistryService.resx">
       <DependentUpon>ShowRegistryService.cs</DependentUpon>

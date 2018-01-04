@@ -34,8 +34,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
 
         private void SetDataFromEdited(Podatnik p)
         {
-            textBox1.Text = p.imie;
-            textBox2.Text = p.nazwisko;
             textBox3.Text = p.nip;
             textBox4.Text = p.nazwa;
             textBox5.Text = p.symbol;

@@ -13,6 +13,7 @@ namespace Inzynierka_aplikacja.WinformViews
     public partial class ShowClients : UserControl
     {
         public event EventHandler ShowClientDevButtonClicked;
+        public event EventHandler ShowClientPlacesButtonClicked;
         public event EventHandler AddClientButtonClicked;
         public event EventHandler EditClientButtonClicked;
         public static DataGridViewRow selectedRow;
@@ -40,6 +41,13 @@ namespace Inzynierka_aplikacja.WinformViews
                 handler(this, e);
         }
 
+        protected virtual void ShowClientPlacesClick(EventArgs e)
+        {
+            var handler = EditClientButtonClicked;
+            if (handler != null)
+                handler(this, e);
+        }
+
         public ShowClients()
         {
             InitializeComponent();
@@ -53,7 +61,7 @@ namespace Inzynierka_aplikacja.WinformViews
         public void LoadClients()
         {
             string query = "SELECT " +
-            "p.podatnik_id AS 'id', p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', p.imie AS 'Imię', p.nazwisko AS 'Nazwisko', " +
+            "p.podatnik_id AS 'id', p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', " +
             "p.nip AS 'NIP',p.wojewodztwo AS 'Województwo', " +
             "p.miasto AS 'Miasto', p.ulica AS 'Ulica',p.email AS 'E-mail' " +
             "FROM Podatnik p ";
@@ -158,6 +166,15 @@ namespace Inzynierka_aplikacja.WinformViews
         private void dgvClient_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvClient.ClearSelection();
+        }
+
+        private void linkShowLocations_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgvClient.SelectedRows.Count != 0)
+            {
+                selectedRow = dgvClient.SelectedRows[0];
+                ShowClientPlacesClick(e);
+            }
         }
     }
 }
