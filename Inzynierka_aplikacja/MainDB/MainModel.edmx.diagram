@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="InzynierkaDBModel.Serwisant" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.SerwisUrzadzenia" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.UrzadSkarbowy" Width="1.5" PointX="1.5" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzynierkaDBModel.Urzadzenie" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzynierkaDBModel.Urzadzenie" Width="1.75" PointX="6" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InzynierkaDBModel.Uslugi" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <AssociationConnector Association="InzynierkaDBModel.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" ManuallyRouted="false" />
         <AssociationConnector Association="InzynierkaDBModel.FK_PODATNIK_ROZLICZA__URZADSKA" ManuallyRouted="false" />

@@ -49,8 +49,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
 
         private void SetDataFromEdited(Podatnik p)
         {
-            textBox1.Text = p.imie;
-            textBox2.Text = p.nazwisko;
             textBox3.Text = p.nip;
             textBox4.Text = p.nazwa;
             textBox5.Text = p.symbol;
@@ -65,43 +63,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
         private bool ValidateData()
         {
             bool check = true;
-            // IMIĘ
-            if (textBox1.Text == "")
-            {
-                errorPrv.SetError(textBox1, "Wpisz imię!");
-                check = false;
-            }
-            else
-            if (char.IsLower(textBox1.Text[0]))
-            {
-                errorPrv.SetError(textBox1, "Imię musi zaczynać się z dużej litery");
-                check = false;
-            }
-
-            if (textBox1.Text.Length > 50)
-            {
-                errorPrv.SetError(textBox1, "Imię jest za długie");
-                check = false;
-            }
-
-            // NAZWISKO
-            if (textBox2.Text == "")
-            {
-                errorPrv.SetError(textBox2, "Wpisz nazwisko");
-                check = false;
-            }
-            else
-            if (char.IsLower(textBox2.Text[0]))
-            {
-                errorPrv.SetError(textBox2, "Nazwisko musi zaczynać się z dużej litery");
-                check = false;
-            }
-
-            if (textBox2.Text.Length > 50)
-            {
-                errorPrv.SetError(textBox2, "Nazwisko jest za długie");
-                check = false;
-            }
 
             // NIP
             if (textBox3.Text.Any(x => char.IsLetter(x)) || textBox3.Text.Length != 10)
@@ -213,8 +174,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 nowyPodatnik = new Podatnik()
                 {
                     urzad_id = urzadID,
-                    imie = textBox1.Text,
-                    nazwisko = textBox2.Text,
                     nip = textBox3.Text,
                     nazwa = textBox4.Text,
                     symbol = textBox5.Text,

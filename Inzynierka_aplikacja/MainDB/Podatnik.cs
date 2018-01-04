@@ -24,8 +24,6 @@ namespace Inzynierka_aplikacja.MainDB
         public int urzad_id { get; set; }
         public string nazwa { get; set; }
         public string symbol { get; set; }
-        public string imie { get; set; }
-        public string nazwisko { get; set; }
         public string nip { get; set; }
         public string wojewodztwo { get; set; }
         public string miasto { get; set; }

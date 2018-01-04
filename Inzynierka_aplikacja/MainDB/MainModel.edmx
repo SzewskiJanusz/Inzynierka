@@ -286,8 +286,6 @@
           <Property Name="urzad_id" Type="Int32" Nullable="false" />
           <Property Name="nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="wojewodztwo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="miasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
@@ -540,8 +538,6 @@
                 <ScalarProperty Name="urzad_id" ColumnName="urzad_id" />
                 <ScalarProperty Name="nazwa" ColumnName="nazwa" />
                 <ScalarProperty Name="symbol" ColumnName="symbol" />
-                <ScalarProperty Name="imie" ColumnName="imie" />
-                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
                 <ScalarProperty Name="nip" ColumnName="nip" />
                 <ScalarProperty Name="wojewodztwo" ColumnName="wojewodztwo" />
                 <ScalarProperty Name="miasto" ColumnName="miasto" />
