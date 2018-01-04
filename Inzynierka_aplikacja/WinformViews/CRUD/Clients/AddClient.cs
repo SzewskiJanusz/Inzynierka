@@ -53,11 +53,12 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox4.Text = p.nazwa;
             textBox5.Text = p.symbol;
             textBox6.Text = p.telefon;
-            comboBox1.SelectedText = p.wojewodztwo;
+            comboBox1.SelectedValue = p.wojewodztwo;
             textBox7.Text = p.miasto;
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;
             textBox10.Text = p.email;
+            cboxRevenue.SelectedValue = p.wojewodztwo;
         }
 
         private bool ValidateData()
