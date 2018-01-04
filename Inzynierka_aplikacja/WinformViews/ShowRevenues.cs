@@ -14,6 +14,17 @@ namespace Inzynierka_aplikacja.WinformViews
         public ShowRevenues()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
+            LoadRevenues();
+        }
+
+        private void LoadRevenues()
+        {
+            string query = "SELECT urzad_id AS 'id', nazwa AS " +
+                "'Nazwa urzędu skarbowego' FROM UrzadSkarbowy;";
+            dgvRevenues.DataSource = SQL.DoQuery(query);
+            dgvRevenues.Columns[0].Visible = false;
+            dgvRevenues.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

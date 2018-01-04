@@ -231,6 +231,12 @@
     <Compile Include="WinformViews\ShowServices.Designer.cs">
       <DependentUpon>ShowServices.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\ShowStates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowStates.Designer.cs">
+      <DependentUpon>ShowStates.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,8 +295,14 @@
     <EmbeddedResource Include="WinformViews\ShowRegistryService.resx">
       <DependentUpon>ShowRegistryService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowRevenues.resx">
+      <DependentUpon>ShowRevenues.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowServices.resx">
       <DependentUpon>ShowServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowStates.resx">
+      <DependentUpon>ShowStates.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="MainDB\MainModel.edmx">
@@ -350,6 +362,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WinformViews\CRUD\States\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

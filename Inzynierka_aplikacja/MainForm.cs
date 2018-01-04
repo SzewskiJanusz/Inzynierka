@@ -506,5 +506,21 @@ namespace Inzynierka_aplikacja
         {
             new Information().ShowDialog();
         }
+
+        private void USToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            ShowRevenues rev = new ShowRevenues();
+
+            contentPanel.Controls.Add(rev);
+        }
+
+        private void województwaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            ShowStates stat = new ShowStates();
+
+            contentPanel.Controls.Add(stat);
+        }
     }
 }
