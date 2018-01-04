@@ -227,12 +227,13 @@ namespace Inzynierka_aplikacja
         {
             Podatnik p = new Podatnik();
 
-            String nip = ShowClients.selectedRow.Cells["NIP"].Value.ToString();
+            int podID = Convert.ToInt32(ShowClients.selectedRow.Cells["Id"].
+                Value.ToString());
+
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 p =
-                db.Podatnik.Where(x => x.nip ==
-                nip
+                db.Podatnik.Where(x => x.podatnik_id == podID
                 ).First();
             }
             ShowClient f = new ShowClient(p);
@@ -318,14 +319,11 @@ namespace Inzynierka_aplikacja
         private void EditClient(object sender, EventArgs e)
         { 
             Podatnik edited = new Podatnik();
-            String imie = ShowClients.selectedRow.Cells["Imię"].Value.ToString();
-            String nazwisko = ShowClients.selectedRow.Cells["Nazwisko"].Value.ToString();
+            int podID = Convert.ToInt32(ShowClients.selectedRow.Cells["Id"].Value.ToString());
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 edited = 
-                db.Podatnik.Where(x=>x.imie + x.nazwisko ==
-                imie+nazwisko
-                ).First();
+                db.Podatnik.Where(x=>x.podatnik_id == podID).First();
             }
             
             AddClient f = new AddClient(edited);
@@ -452,16 +450,11 @@ namespace Inzynierka_aplikacja
 
         private void ShowServiceDetails(object sender, EventArgs e)
         {
-            String nrUnikatowy = ShowServices.selectedRow.Cells["Numer unikatowy urządzenia"].Value.ToString();
-            String nazwaUslugi = ShowServices.selectedRow.Cells["Nazwa usługi"].Value.ToString();
-            int deviceID = 0;
-            int serviceID = 0;
+            int rowID = Convert.ToInt32(ShowServices.selectedRow.Cells["id"].Value.ToString());
             SerwisUrzadzenia su;
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                deviceID = db.Urzadzenie.Where(x => x.nr_unikatowy == nrUnikatowy).Select(x => x.urzadzenie_id).First();
-                serviceID = db.Uslugi.Where(x => x.nazwa == nazwaUslugi).Select(x => x.usluga_id).First();
-                su = db.SerwisUrzadzenia.Where(x => x.urzadzenie_id == deviceID && x.usluga_id == serviceID).First();
+                su = su = db.SerwisUrzadzenia.Where(x => x.serwis_id == rowID).First();
             }
            
             ShowService f = new ShowService(su);
@@ -471,17 +464,11 @@ namespace Inzynierka_aplikacja
 
         private void EditService(object sender, EventArgs e)
         {
-            String nrUnikatowy = ShowServices.selectedRow.Cells["Numer unikatowy urządzenia"].Value.ToString();
-            String nazwaUslugi = ShowServices.selectedRow.Cells["Nazwa usługi"].Value.ToString();
             int rowID = Convert.ToInt32(ShowServices.selectedRow.Cells["id"].Value.ToString());
-            int deviceID = 0;
-            int serviceID = 0;
             SerwisUrzadzenia su;
 
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                deviceID = db.Urzadzenie.Where(x => x.nr_unikatowy == nrUnikatowy).Select(x => x.urzadzenie_id).First();
-                serviceID = db.Uslugi.Where(x => x.nazwa == nazwaUslugi).Select(x => x.usluga_id).First();
                 su = db.SerwisUrzadzenia.Where(x => x.serwis_id == rowID).First();
             }
 

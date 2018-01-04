@@ -53,12 +53,13 @@ namespace Inzynierka_aplikacja.WinformViews
         public void LoadClients()
         {
             string query = "SELECT " +
-            "p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', p.imie AS 'Imię', p.nazwisko AS 'Nazwisko', " +
+            "p.podatnik_id AS 'id', p.symbol AS 'Symbol', p.nazwa AS 'Nazwa', p.imie AS 'Imię', p.nazwisko AS 'Nazwisko', " +
             "p.nip AS 'NIP',p.wojewodztwo AS 'Województwo', " +
             "p.miasto AS 'Miasto', p.ulica AS 'Ulica',p.email AS 'E-mail' " +
             "FROM Podatnik p ";
 
             dgvClient.DataSource = SQL.DoQuery(query);
+            dgvClient.Columns[0].Visible = false;
         }
 
         private void dgvClient_CellClick(object sender, DataGridViewCellEventArgs e)
