@@ -501,5 +501,10 @@ namespace Inzynierka_aplikacja
                 }
             }
         }
+
+        private void informacjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Information().ShowDialog();
+        }
     }
 }

@@ -178,21 +178,21 @@
             // kontrahentaToolStripMenuItem
             // 
             this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
-            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
             this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
             // 
             // urzadzenieToolStripMenuItem
             // 
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
-            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
             this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.AddDevice);
             // 
             // usługęToolStripMenuItem
             // 
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
-            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
             this.usługęToolStripMenuItem.Click += new System.EventHandler(this.AddService);
             // 
@@ -208,14 +208,15 @@
             // plikPomocyToolStripMenuItem
             // 
             this.plikPomocyToolStripMenuItem.Name = "plikPomocyToolStripMenuItem";
-            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.plikPomocyToolStripMenuItem.Text = "Plik pomocy";
             // 
             // informacjeToolStripMenuItem
             // 
             this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
-            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.informacjeToolStripMenuItem.Text = "Informacje";
+            this.informacjeToolStripMenuItem.Click += new System.EventHandler(this.informacjeToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
