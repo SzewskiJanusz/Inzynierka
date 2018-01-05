@@ -13,7 +13,7 @@ namespace Inzynierka_aplikacja.WinformViews
 {
     public partial class ShowPlaces : UserControl
     {
-        public event EventHandler AddPlaceButtonClicked;
+        public event EventHandler AddDeviceButtonClicked;
         public event EventHandler EditPlaceButtonClicked;
         public event EventHandler ShowClientDevButtonClicked;
         public static DataGridViewRow selectedRow;
@@ -29,9 +29,9 @@ namespace Inzynierka_aplikacja.WinformViews
                 handler(this, e);
         }
 
-        protected virtual void AddPlaceClick(EventArgs e)
+        protected virtual void AddDeviceClick(EventArgs e)
         {
-            var handler = AddPlaceButtonClicked;
+            var handler = AddDeviceButtonClicked;
             if (handler != null)
                 handler(this, e);
         }
@@ -84,13 +84,14 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadClientPlaces(Podatnik p)
         {
             string query =
-                "SELECT mi.miejsce_id AS 'id', mi.miasto AS 'Miasto', mi.ulica AS 'Ulica', mi.wojewodztwo AS 'Wojewodztwo', "+
+                "SELECT DISTINCT mi.miejsce_id AS 'id', mi.miasto AS 'Miasto', mi.ulica AS 'Ulica', mi.wojewodztwo AS 'Wojewodztwo', "+
                 "mi.kraj AS 'Kraj' FROM Miejsce_instalacji mi "+
                 "INNER JOIN Urzadzenie u ON u.miejsce_id = mi.miejsce_id "+
                 "WHERE u.podatnik_id = "+p.podatnik_id+" ;";
 
             var result = SQL.DoQuery(query);
             dgvPlaces.DataSource = result;
+            dgvPlaces.Columns[0].Visible = false;
         }
 
         private void HideLabelsAndIcons()
@@ -98,6 +99,7 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[1][1].Visible = false;
             MainForm.icons[1][2].Visible = false;
             linklblShowClientDevices.Enabled = false;
+            linkEditDevice.Enabled = false;
         }
 
         private void ShowLabelsAndIcons()
@@ -105,21 +107,13 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[1][1].Visible = true;
             MainForm.icons[1][2].Visible = true;
             linklblShowClientDevices.Enabled = true;
-        }
-
-        private void linklblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            AddPlaceClick(e);
-        }
-
-        private void linklblEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            EditPlaceClick(e);
+            linkEditDevice.Enabled = true;
         }
 
         private void linklblShowClientDevices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ShowClientDevClick(e);
+
         }
 
         private void dgvPlaces_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,6 +129,60 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             dgvPlaces.ClearSelection();
             HideLabelsAndIcons();
+        }
+
+        private void linkAddDevice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddDeviceClick(e);
+            LoadClientPlaces(podatnik);
+        }
+
+        private void linkEditDevice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EditPlaceClick(e);
+            LoadClientPlaces(podatnik);
+        }
+
+        private void linklblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tbxFind.Visible = true;
+            btnFind.Visible = true;
+        }
+
+        private void tbxFind_TextChanged(object sender, EventArgs e)
+        {
+            indexesOfRows.Clear();
+
+            foreach (DataGridViewRow row in dgvPlaces.Rows)
+            {
+                for (int i = 0; i < dgvPlaces.Columns.Count; i++)
+                {
+                    string str = row.Cells[i].Value.ToString().ToLower();
+                    if (str.Contains(tbxFind.Text.ToLower()))
+                    {
+                        indexesOfRows.Add(row.Index);
+                        break;
+                    }
+                }
+            }
+
+            FindClickNumber = 0;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+
+            if (FindClickNumber < indexesOfRows.Count)
+            {
+                dgvPlaces.Rows[indexesOfRows[FindClickNumber]].Selected = true;
+                FindClickNumber++;
+                ShowLabelsAndIcons();
+            }
+            else
+            {
+                FindClickNumber = 0;
+            }
+
         }
     }
 }

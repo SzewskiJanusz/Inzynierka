@@ -29,6 +29,23 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             this.Text = "Dodaj urządzenie";
         }
 
+        public AddDevice(Podatnik p)
+        {
+            InitializeComponent();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+            }
+            comboBox3.DataSource = SQL.GetStates();
+
+            comboBox3.ValueMember = "nazwa";
+            comboBox3.DisplayMember = "nazwa";
+            comboBox1.SelectedText = p.nazwa;
+            comboBox1.Enabled = false;
+            this.Text = "Dodaj urządzenie";
+        }
+
         public AddDevice(Urzadzenie u)
         {
             InitializeComponent();
@@ -50,6 +67,34 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             this.Text = "Edytuj urządzenie";
         }
 
+        public AddDevice(Miejsce_instalacji mi)
+        {
+            InitializeComponent();
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+            }
+           
+            comboBox3.DataSource = SQL.GetStates();
+
+            comboBox3.ValueMember = "nazwa";
+            comboBox3.DisplayMember = "nazwa";
+
+            textBox4.Text = mi.kraj;
+            comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
+            textBox5.Text = mi.miasto;
+            textBox6.Text = mi.ulica;
+
+            textBox4.Enabled = false;
+            comboBox3.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
+            this.Text = "Dodaj urządzenie";
+        }
+
+
+
         private void SetDataFromEdited(Urzadzenie u, InzynierkaDBEntities db)
         {
             Miejsce_instalacji mi = new Miejsce_instalacji();
@@ -60,7 +105,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             textBox3.Text = u.nr_ewidencyjny;
             comboBox1.SelectedText = db.Podatnik.Where(x => x.podatnik_id == u.podatnik_id).Select(x=>x.nazwa).First();
             comboBox2.SelectedText = db.Serwisant.Where(x => x.serwisant_id == u.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
-            comboBox3.SelectedText = mi.wojewodztwo;
+            comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
             textBox4.Text = mi.kraj;
             textBox5.Text = mi.miasto;
             textBox6.Text = mi.ulica;
@@ -190,9 +235,10 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                             Select(x => x.serwisant_id).First();
                     try
                     {
+                        string woj = comboBox3.SelectedValue.ToString();
                         miejID = db.Miejsce_instalacji.Where(x =>
                         x.kraj == textBox4.Text &&
-                        x.wojewodztwo == comboBox3.SelectedText &&
+                        x.wojewodztwo == woj &&
                         x.miasto == textBox5.Text &&
                         x.ulica == textBox6.Text).Select(x => x.miejsce_id)
                         .First();

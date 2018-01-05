@@ -2,6 +2,7 @@
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
+using Inzynierka_aplikacja.WinformViews.CRUD.Places;
 using Inzynierka_aplikacja.WinformViews.CRUD.Registry;
 using Inzynierka_aplikacja.WinformViews.CRUD.Services;
 using System;
@@ -88,8 +89,8 @@ namespace Inzynierka_aplikacja
             icons[0][1].Click += EditClient;
             icons[0][2].Click += ClientDetails;
 
-            icons[1][0].Click += AddDevice;
-            icons[1][1].Click += EditDevice;
+            icons[1][0].Click += AddDeviceClick;
+            icons[1][1].Click += EditDeviceClick;
             icons[1][2].Click += DeviceDetails;
 
             icons[2][0].Click += AddService;
@@ -130,10 +131,10 @@ namespace Inzynierka_aplikacja
                     FirstOrDefault()
                     );
 
-                sd.AddDeviceButtonClicked -= AddDevice;
-                sd.AddDeviceButtonClicked += AddDevice;
-                sd.EditDeviceButtonClicked -= EditDevice;
-                sd.EditDeviceButtonClicked += EditDevice;
+                sd.AddDeviceButtonClicked -= AddDeviceClick;
+                sd.AddDeviceButtonClicked += AddDeviceClick;
+                sd.EditDeviceButtonClicked -= EditDeviceClick;
+                sd.EditDeviceButtonClicked += EditDeviceClick;
                 ShowIcons("devices");
                 contentPanel.Controls.Add(sd);
             }
@@ -184,14 +185,60 @@ namespace Inzynierka_aplikacja
                 p = db.Podatnik.Where(x => x.podatnik_id == id).First();
             }
             ShowPlaces sp = new ShowPlaces(p);
-            sp.AddPlaceButtonClicked -= AddDevPlace;
-            sp.AddPlaceButtonClicked += AddDevPlace;
-            sp.EditPlaceButtonClicked -= EditDevPlace;
-            sp.EditPlaceButtonClicked += EditDevPlace;
+            sp.AddDeviceButtonClicked -= AddClientDeviceClick;
+            sp.AddDeviceButtonClicked += AddClientDeviceClick;
+            sp.EditPlaceButtonClicked -= EditPlaceClick;
+            sp.EditPlaceButtonClicked += EditPlaceClick;
             sp.ShowClientDevButtonClicked -= ClientPlaceDevices;
             sp.ShowClientDevButtonClicked += ClientPlaceDevices;
             ShowIcons("devices");
             contentPanel.Controls.Add(sp);
+        }
+
+        private void EditPlaceClick(object sender, EventArgs e)
+        {
+            DataGridViewRow row = ShowPlaces.selectedRow;
+            int id = Convert.ToInt32(row.Cells["id"].Value.ToString());
+            Miejsce_instalacji mi;
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                mi = db.Miejsce_instalacji.
+                    Where(x => x.miejsce_id == id).First();
+            }
+            AddPlace f = new AddPlace(mi);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                string updateQuery =
+                    "UPDATE Miejsce_instalacji SET " +
+                    "kraj = '" + f.NewPlace.kraj + "' ," +
+                    "wojewodztwo = '" + f.NewPlace.wojewodztwo + "' ," +
+                    "miasto = '" + f.NewPlace.miasto + "' ," +
+                    "ulica = '" + f.NewPlace.ulica + "' " +
+                    "WHERE miejsce_id = " + id + ";";
+                SQL.DoQuery(updateQuery);
+            }
+        }
+
+        private void AddClientDeviceClick(object sender, EventArgs e)
+        {
+            AddDevice f = new AddDevice(ShowPlaces.podatnik);
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.Urzadzenie.Add(f.NewDevice);
+                    SerwisUrzadzenia su = new SerwisUrzadzenia()
+                    {
+                        urzadzenie_id = f.NewDevice.urzadzenie_id,
+                        serwisant_id = f.NewDevice.serwisant_id,
+                        usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
+                        data_przyjecia = f.NewDevice.nastepny_przeglad
+                    };
+                    db.SerwisUrzadzenia.Add(su);
+                    db.SaveChanges();
+                }
+            }
         }
 
         private void ShowIcons(string v)
@@ -277,10 +324,10 @@ namespace Inzynierka_aplikacja
         {
             RemoveControls();
             ShowDevices sd = new ShowDevices();
-            sd.AddDeviceButtonClicked -= AddDevice;
-            sd.AddDeviceButtonClicked += AddDevice;
-            sd.EditDeviceButtonClicked -= EditDevice;
-            sd.EditDeviceButtonClicked += EditDevice;
+            sd.AddDeviceButtonClicked -= AddDeviceClick;
+            sd.AddDeviceButtonClicked += AddDeviceClick;
+            sd.EditDeviceButtonClicked -= EditDeviceClick;
+            sd.EditDeviceButtonClicked += EditDeviceClick;
             ShowIcons("devices");
             contentPanel.Controls.Add(sd);
         }
@@ -371,9 +418,21 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        private void AddDevice(object sender, EventArgs e)
+        private void AddDeviceClick(object sender, EventArgs e)
         {
-            AddDevice f = new AddDevice();
+            AddDevice f;
+            if (ShowDevices.miejsceID == 0)
+            {
+                f = new AddDevice();
+            }
+            else
+            {
+                using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    f = new AddDevice(db.Miejsce_instalacji.Where(x=>x.miejsce_id == ShowDevices.miejsceID).First());
+                }
+            }
+
             if (f.ShowDialog() == DialogResult.OK)
             {
                 using (InzynierkaDBEntities db = new InzynierkaDBEntities())
@@ -392,7 +451,7 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        private void EditDevice(object sender, EventArgs e)
+        private void EditDeviceClick(object sender, EventArgs e)
         {
             Urzadzenie edited = new Urzadzenie();
             String nrUnikatowy = ShowDevices.selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
@@ -544,10 +603,10 @@ namespace Inzynierka_aplikacja
                   ShowPlaces.podatnik, 
                   db.Miejsce_instalacji.Where(x => x.miejsce_id == miejID).First());
 
-                sd.AddDeviceButtonClicked -= AddDevice;
-                sd.AddDeviceButtonClicked += AddDevice;
-                sd.EditDeviceButtonClicked -= EditDevice;
-                sd.EditDeviceButtonClicked += EditDevice;
+                sd.AddDeviceButtonClicked -= AddDeviceClick;
+                sd.AddDeviceButtonClicked += AddDeviceClick;
+                sd.EditDeviceButtonClicked -= EditDeviceClick;
+                sd.EditDeviceButtonClicked += EditDeviceClick;
                 ShowIcons("devices");
                 contentPanel.Controls.Add(sd);
             }

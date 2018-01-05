@@ -30,7 +30,6 @@
         {
             this.lbl = new System.Windows.Forms.Label();
             this.dgvClient = new System.Windows.Forms.DataGridView();
-            this.linklblShowClientDevices = new System.Windows.Forms.LinkLabel();
             this.linklblAdd = new System.Windows.Forms.LinkLabel();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.linklblEdit = new System.Windows.Forms.LinkLabel();
@@ -69,21 +68,6 @@
             this.dgvClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClient_CellClick);
             this.dgvClient.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClient_DataBindingComplete);
             this.dgvClient.Sorted += new System.EventHandler(this.tbxFind_TextChanged);
-            // 
-            // linklblShowClientDevices
-            // 
-            this.linklblShowClientDevices.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linklblShowClientDevices.AutoSize = true;
-            this.linklblShowClientDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.linklblShowClientDevices.LinkColor = System.Drawing.Color.Black;
-            this.linklblShowClientDevices.Location = new System.Drawing.Point(3, 50);
-            this.linklblShowClientDevices.Name = "linklblShowClientDevices";
-            this.linklblShowClientDevices.Size = new System.Drawing.Size(121, 17);
-            this.linklblShowClientDevices.TabIndex = 4;
-            this.linklblShowClientDevices.TabStop = true;
-            this.linklblShowClientDevices.Text = "Pokaż urządzenia";
-            this.linklblShowClientDevices.VisitedLinkColor = System.Drawing.Color.Black;
-            this.linklblShowClientDevices.Click += new System.EventHandler(this.btnShowDevices_Click);
             // 
             // linklblAdd
             // 
@@ -153,7 +137,7 @@
             this.linkShowLocations.AutoSize = true;
             this.linkShowLocations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.linkShowLocations.LinkColor = System.Drawing.Color.Black;
-            this.linkShowLocations.Location = new System.Drawing.Point(140, 50);
+            this.linkShowLocations.Location = new System.Drawing.Point(8, 50);
             this.linkShowLocations.Name = "linkShowLocations";
             this.linkShowLocations.Size = new System.Drawing.Size(156, 17);
             this.linkShowLocations.TabIndex = 10;
@@ -172,7 +156,6 @@
             this.Controls.Add(this.linklblEdit);
             this.Controls.Add(this.linklblFind);
             this.Controls.Add(this.linklblAdd);
-            this.Controls.Add(this.linklblShowClientDevices);
             this.Controls.Add(this.dgvClient);
             this.Controls.Add(this.lbl);
             this.Name = "ShowClients";
@@ -186,7 +169,6 @@
         #endregion
         private System.Windows.Forms.Label lbl;
         public System.Windows.Forms.DataGridView dgvClient;
-        private System.Windows.Forms.LinkLabel linklblShowClientDevices;
         private System.Windows.Forms.LinkLabel linklblAdd;
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.LinkLabel linklblEdit;

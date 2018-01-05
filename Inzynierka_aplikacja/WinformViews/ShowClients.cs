@@ -152,12 +152,12 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[0][1].Visible = false;
             MainForm.icons[0][2].Visible = false;
             linklblEdit.Enabled = false;
-            linklblShowClientDevices.Visible = false;
+            linkShowLocations.Visible = false;
         }
 
         private void ShowLabelsAndIcons()
         {
-            linklblShowClientDevices.Visible = true;
+            linkShowLocations.Visible = true;
             linklblEdit.Enabled = true;
             MainForm.icons[0][1].Visible = true;
             MainForm.icons[0][2].Visible = true;

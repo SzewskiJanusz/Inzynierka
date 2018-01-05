@@ -19,7 +19,7 @@ namespace Inzynierka_aplikacja.WinformViews
         private List<int> indexesOfRows = new List<int>();
         private int FindClickNumber;
         private int podatnikID;
-        private int miejsceID;
+        public static int miejsceID = 0;
 
         public ShowDevices()
         {
@@ -27,6 +27,7 @@ namespace Inzynierka_aplikacja.WinformViews
             this.Dock = DockStyle.Fill;
             LoadDevices();
             HideLabelsAndIcons();
+            lblClient.Text = "";
         }
 
         public ShowDevices(Podatnik p)
@@ -217,6 +218,7 @@ namespace Inzynierka_aplikacja.WinformViews
             if (FindClickNumber < indexesOfRows.Count)
             {
                 dgvDevices.Rows[indexesOfRows[FindClickNumber]].Selected = true;
+                selectedRow = dgvDevices.Rows[indexesOfRows[FindClickNumber]];
                 FindClickNumber++;
                 ShowLabelsAndIcons();
             }

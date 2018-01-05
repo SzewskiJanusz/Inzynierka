@@ -289,6 +289,9 @@
     <EmbeddedResource Include="WinformViews\CRUD\Devices\ShowDevice.resx">
       <DependentUpon>ShowDevice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\Places\AddPlace.resx">
+      <DependentUpon>AddPlace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Registry\AddRegistry.resx">
       <DependentUpon>AddRegistry.cs</DependentUpon>
     </EmbeddedResource>

@@ -212,7 +212,7 @@
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
             this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
-            this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.AddDevice);
+            this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.AddDeviceClick);
             // 
             // usługęToolStripMenuItem
             // 

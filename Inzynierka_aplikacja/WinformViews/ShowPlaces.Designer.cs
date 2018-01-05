@@ -35,26 +35,30 @@
             this.linklblShowClientDevices = new System.Windows.Forms.LinkLabel();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.lblClient = new System.Windows.Forms.Label();
+            this.linkAddDevice = new System.Windows.Forms.LinkLabel();
+            this.linkEditDevice = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaces)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(551, 93);
+            this.btnFind.Location = new System.Drawing.Point(579, 94);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(128, 24);
+            this.btnFind.Size = new System.Drawing.Size(100, 24);
             this.btnFind.TabIndex = 21;
             this.btnFind.Text = "Znajdź następny";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Visible = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // tbxFind
             // 
-            this.tbxFind.Location = new System.Drawing.Point(370, 93);
+            this.tbxFind.Location = new System.Drawing.Point(398, 94);
             this.tbxFind.Name = "tbxFind";
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 20;
             this.tbxFind.Visible = false;
+            this.tbxFind.TextChanged += new System.EventHandler(this.tbxFind_TextChanged);
             // 
             // lbl
             // 
@@ -105,13 +109,14 @@
             this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblFind.AutoSize = true;
             this.linklblFind.LinkColor = System.Drawing.Color.Black;
-            this.linklblFind.Location = new System.Drawing.Point(292, 96);
+            this.linklblFind.Location = new System.Drawing.Point(320, 97);
             this.linklblFind.Name = "linklblFind";
             this.linklblFind.Size = new System.Drawing.Size(53, 13);
             this.linklblFind.TabIndex = 18;
             this.linklblFind.TabStop = true;
             this.linklblFind.Text = "Wyszukaj";
             this.linklblFind.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblFind.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblFind_LinkClicked);
             // 
             // lblClient
             // 
@@ -124,10 +129,40 @@
             this.lblClient.TabIndex = 23;
             this.lblClient.Text = "test";
             // 
+            // linkAddDevice
+            // 
+            this.linkAddDevice.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkAddDevice.AutoSize = true;
+            this.linkAddDevice.LinkColor = System.Drawing.Color.Black;
+            this.linkAddDevice.Location = new System.Drawing.Point(223, 97);
+            this.linkAddDevice.Name = "linkAddDevice";
+            this.linkAddDevice.Size = new System.Drawing.Size(64, 13);
+            this.linkAddDevice.TabIndex = 24;
+            this.linkAddDevice.TabStop = true;
+            this.linkAddDevice.Text = "Dodaj nowe";
+            this.linkAddDevice.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkAddDevice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddDevice_LinkClicked);
+            // 
+            // linkEditDevice
+            // 
+            this.linkEditDevice.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkEditDevice.AutoSize = true;
+            this.linkEditDevice.LinkColor = System.Drawing.Color.Black;
+            this.linkEditDevice.Location = new System.Drawing.Point(152, 97);
+            this.linkEditDevice.Name = "linkEditDevice";
+            this.linkEditDevice.Size = new System.Drawing.Size(36, 13);
+            this.linkEditDevice.TabIndex = 25;
+            this.linkEditDevice.TabStop = true;
+            this.linkEditDevice.Text = "Edytuj";
+            this.linkEditDevice.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkEditDevice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditDevice_LinkClicked);
+            // 
             // ShowPlaces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkEditDevice);
+            this.Controls.Add(this.linkAddDevice);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.linklblShowClientDevices);
             this.Controls.Add(this.btnFind);
@@ -152,5 +187,7 @@
         private System.Windows.Forms.LinkLabel linklblShowClientDevices;
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.LinkLabel linkAddDevice;
+        private System.Windows.Forms.LinkLabel linkEditDevice;
     }
 }
