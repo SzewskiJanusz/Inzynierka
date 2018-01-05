@@ -19,6 +19,7 @@ namespace Inzynierka_aplikacja.WinformViews
         private List<int> indexesOfRows = new List<int>();
         private int FindClickNumber;
         private int podatnikID;
+        private int miejsceID;
 
         public ShowDevices()
         {
@@ -40,6 +41,20 @@ namespace Inzynierka_aplikacja.WinformViews
 
         }
 
+        public ShowDevices(Podatnik p, Miejsce_instalacji mi)
+        {
+            InitializeComponent();
+            this.Dock = DockStyle.Fill;
+            podatnikID = p.podatnik_id;
+            miejsceID = mi.miejsce_id;
+            LoadClientPlacesDevices();
+            HideLabelsAndIcons();
+
+            lbl.Text = "Urządzenia kontrahenta: ";
+            lblClient.Text = p.nazwa + " " + mi.miasto + " " + mi.ulica + " " + mi.wojewodztwo;
+
+        }
+
         protected virtual void AddDeviceClick(EventArgs e)
         {
             var handler = AddDeviceButtonClicked;
@@ -52,6 +67,29 @@ namespace Inzynierka_aplikacja.WinformViews
             var handler = EditDeviceButtonClicked;
             if (handler != null)
                 handler(this, e);
+        }
+
+        private void LoadClientPlacesDevices()
+        {
+            string query =
+                "SELECT " +
+                "u.nr_unikatowy AS 'Nr.unikatowy', " +
+                "p.nazwa AS 'Właściciel urządzenia', " +
+                "mi.kraj AS 'Kraj instalacji', " +
+                "mi.miasto AS 'Miasto', " +
+                "mi.ulica AS 'Ulica', " +
+                "u.nr_fabryczny AS 'Nr.fabryczny', " +
+                "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
+                "u.data_uruchomienia AS 'Data uruchomienia', " +
+                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
+                "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
+                "FROM Urzadzenie u " +
+                "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
+                "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = "+miejsceID+";";
+
+            var result = SQL.DoQuery(query);
+            dgvDevices.DataSource = result;
         }
 
         private void LoadClientDevices()

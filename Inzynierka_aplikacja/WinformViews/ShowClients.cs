@@ -43,7 +43,7 @@ namespace Inzynierka_aplikacja.WinformViews
 
         protected virtual void ShowClientPlacesClick(EventArgs e)
         {
-            var handler = EditClientButtonClicked;
+            var handler = ShowClientPlacesButtonClicked;
             if (handler != null)
                 handler(this, e);
         }

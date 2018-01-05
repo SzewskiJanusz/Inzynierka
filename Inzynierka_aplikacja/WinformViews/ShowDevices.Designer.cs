@@ -35,6 +35,7 @@
             this.linklblEdit = new System.Windows.Forms.LinkLabel();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.linklblAdd = new System.Windows.Forms.LinkLabel();
+            this.lblClient = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,12 +48,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDevices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDevices.Location = new System.Drawing.Point(0, 81);
+            this.dgvDevices.Location = new System.Drawing.Point(0, 105);
             this.dgvDevices.MultiSelect = false;
             this.dgvDevices.Name = "dgvDevices";
             this.dgvDevices.ReadOnly = true;
             this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevices.Size = new System.Drawing.Size(635, 388);
+            this.dgvDevices.Size = new System.Drawing.Size(635, 364);
             this.dgvDevices.TabIndex = 0;
             this.dgvDevices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.dgvDevices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDevices_DataBindingComplete);
@@ -69,7 +70,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(387, 51);
+            this.btnFind.Location = new System.Drawing.Point(387, 75);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(128, 24);
             this.btnFind.TabIndex = 14;
@@ -80,7 +81,7 @@
             // 
             // tbxFind
             // 
-            this.tbxFind.Location = new System.Drawing.Point(206, 51);
+            this.tbxFind.Location = new System.Drawing.Point(206, 75);
             this.tbxFind.Name = "tbxFind";
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 13;
@@ -92,7 +93,7 @@
             this.linklblEdit.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblEdit.AutoSize = true;
             this.linklblEdit.LinkColor = System.Drawing.Color.Black;
-            this.linklblEdit.Location = new System.Drawing.Point(62, 51);
+            this.linklblEdit.Location = new System.Drawing.Point(62, 75);
             this.linklblEdit.Name = "linklblEdit";
             this.linklblEdit.Size = new System.Drawing.Size(43, 13);
             this.linklblEdit.TabIndex = 12;
@@ -106,7 +107,7 @@
             this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblFind.AutoSize = true;
             this.linklblFind.LinkColor = System.Drawing.Color.Black;
-            this.linklblFind.Location = new System.Drawing.Point(128, 51);
+            this.linklblFind.Location = new System.Drawing.Point(128, 75);
             this.linklblFind.Name = "linklblFind";
             this.linklblFind.Size = new System.Drawing.Size(53, 13);
             this.linklblFind.TabIndex = 11;
@@ -120,7 +121,7 @@
             this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.AutoSize = true;
             this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(3, 51);
+            this.linklblAdd.Location = new System.Drawing.Point(3, 75);
             this.linklblAdd.Name = "linklblAdd";
             this.linklblAdd.Size = new System.Drawing.Size(35, 13);
             this.linklblAdd.TabIndex = 10;
@@ -129,10 +130,22 @@
             this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblAdd_LinkClicked);
             // 
+            // lblClient
+            // 
+            this.lblClient.AutoSize = true;
+            this.lblClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblClient.Location = new System.Drawing.Point(3, 31);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(59, 31);
+            this.lblClient.TabIndex = 24;
+            this.lblClient.Text = "test";
+            // 
             // ShowDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblClient);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tbxFind);
             this.Controls.Add(this.linklblEdit);
@@ -157,5 +170,6 @@
         private System.Windows.Forms.LinkLabel linklblEdit;
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.LinkLabel linklblAdd;
+        private System.Windows.Forms.Label lblClient;
     }
 }

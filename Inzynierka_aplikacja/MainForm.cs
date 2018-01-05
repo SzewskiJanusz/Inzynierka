@@ -176,23 +176,22 @@ namespace Inzynierka_aplikacja
         private void ClientPlaces(object sender, EventArgs e)
         {
             DataGridViewRow row = ShowClients.selectedRow;
-            string a = row.Cells["nazwa"].Value.ToString();
+            int id = Convert.ToInt32(row.Cells["id"].Value.ToString());
             RemoveControls();
-
+            Podatnik p;
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                ShowPlaces sp = new ShowPlaces(
-                    db.Podatnik.Where(x => x.nazwa == a).
-                    FirstOrDefault()
-                    );
-
-              //  sp.AddDeviceButtonClicked -= AddDevice;
-               // sp.AddDeviceButtonClicked += AddDevice;
-               // sp.EditDeviceButtonClicked -= EditDevice;
-              //  sp.EditDeviceButtonClicked += EditDevice;
-                ShowIcons("devices");
-                contentPanel.Controls.Add(sp);
+                p = db.Podatnik.Where(x => x.podatnik_id == id).First();
             }
+            ShowPlaces sp = new ShowPlaces(p);
+            sp.AddPlaceButtonClicked -= AddDevPlace;
+            sp.AddPlaceButtonClicked += AddDevPlace;
+            sp.EditPlaceButtonClicked -= EditDevPlace;
+            sp.EditPlaceButtonClicked += EditDevPlace;
+            sp.ShowClientDevButtonClicked -= ClientPlaceDevices;
+            sp.ShowClientDevButtonClicked += ClientPlaceDevices;
+            ShowIcons("devices");
+            contentPanel.Controls.Add(sp);
         }
 
         private void ShowIcons(string v)
@@ -530,6 +529,38 @@ namespace Inzynierka_aplikacja
             ShowStates stat = new ShowStates();
 
             contentPanel.Controls.Add(stat);
+        }
+
+
+        private void ClientPlaceDevices(object sender, EventArgs e)
+        {
+            DataGridViewRow row = ShowPlaces.selectedRow;
+            int miejID = Convert.ToInt32(row.Cells["id"].Value.ToString());
+            RemoveControls();
+
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                ShowDevices sd = new ShowDevices(
+                  ShowPlaces.podatnik, 
+                  db.Miejsce_instalacji.Where(x => x.miejsce_id == miejID).First());
+
+                sd.AddDeviceButtonClicked -= AddDevice;
+                sd.AddDeviceButtonClicked += AddDevice;
+                sd.EditDeviceButtonClicked -= EditDevice;
+                sd.EditDeviceButtonClicked += EditDevice;
+                ShowIcons("devices");
+                contentPanel.Controls.Add(sd);
+            }
+        }
+
+        private void EditDevPlace(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void AddDevPlace(object sender, EventArgs e)
+        {
+            
         }
     }
 }
