@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InzynierkaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -102,6 +102,7 @@
           <Property Name="nr_fabryczny" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ostatni_przeglad" Type="date" Nullable="false" />
           <Property Name="nastepny_przeglad" Type="date" Nullable="false" />
+          <Property Name="data_likwidacji" Type="date" />
         </EntityType>
         <EntityType Name="Uslugi">
           <Key>
@@ -235,8 +236,7 @@
             <End Role="Urzadzenie" EntitySet="Urzadzenie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InzynierkaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -350,6 +350,7 @@
           <NavigationProperty Name="Podatnik" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Urzadzenie" ToRole="Podatnik" />
           <NavigationProperty Name="Serwisant" Relationship="Self.FK_URZADZEN_ZAJMUJE_S_SERWISAN" FromRole="Urzadzenie" ToRole="Serwisant" />
           <NavigationProperty Name="SerwisUrzadzenia" Relationship="Self.FK_SERWISUR_JEST_NAPR_URZADZEN" FromRole="Urzadzenie" ToRole="SerwisUrzadzenia" />
+          <Property Name="data_likwidacji" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Uslugi">
           <Key>
@@ -584,6 +585,7 @@
           <EntitySetMapping Name="Urzadzenie">
             <EntityTypeMapping TypeName="InzynierkaDBModel.Urzadzenie">
               <MappingFragment StoreEntitySet="Urzadzenie">
+                <ScalarProperty Name="data_likwidacji" ColumnName="data_likwidacji" />
                 <ScalarProperty Name="urzadzenie_id" ColumnName="urzadzenie_id" />
                 <ScalarProperty Name="podatnik_id" ColumnName="podatnik_id" />
                 <ScalarProperty Name="serwisant_id" ColumnName="serwisant_id" />

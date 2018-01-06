@@ -165,6 +165,18 @@
     <Compile Include="WinformViews\CRUD\Devices\ShowDevice.Designer.cs">
       <DependentUpon>ShowDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\VaporationComplete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\VaporationComplete.Designer.cs">
+      <DependentUpon>VaporationComplete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\VaporationConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\VaporationConfirmation.Designer.cs">
+      <DependentUpon>VaporationConfirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\CRUD\Places\AddPlace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Devices\ShowDevice.resx">
       <DependentUpon>ShowDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\Devices\VaporationComplete.resx">
+      <DependentUpon>VaporationComplete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\Devices\VaporationConfirmation.resx">
+      <DependentUpon>VaporationConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Places\AddPlace.resx">
       <DependentUpon>AddPlace.cs</DependentUpon>

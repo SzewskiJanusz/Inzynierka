@@ -65,6 +65,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             btnAdd.Text = "Zapisz";
             label1.Text = "Edytuj urządzenie";
             this.Text = "Edytuj urządzenie";
+
         }
 
         public AddDevice(Miejsce_instalacji mi)
@@ -292,6 +293,11 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             }
 
             return mi_ID; 
+        }
+
+        private void linklblVaporate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

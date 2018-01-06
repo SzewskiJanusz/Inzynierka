@@ -30,6 +30,7 @@ namespace Inzynierka_aplikacja.MainDB
         public string nr_fabryczny { get; set; }
         public System.DateTime ostatni_przeglad { get; set; }
         public System.DateTime nastepny_przeglad { get; set; }
+        public Nullable<System.DateTime> data_likwidacji { get; set; }
     
         public virtual Miejsce_instalacji Miejsce_instalacji { get; set; }
         public virtual Podatnik Podatnik { get; set; }

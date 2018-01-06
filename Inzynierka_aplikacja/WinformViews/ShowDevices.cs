@@ -87,7 +87,8 @@ namespace Inzynierka_aplikacja.WinformViews
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
-                "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = "+miejsceID+";";
+                "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = "+miejsceID+" " +
+                "AND u.data_likwidacji IS NULL;";
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
@@ -110,7 +111,8 @@ namespace Inzynierka_aplikacja.WinformViews
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
-                "WHERE p.podatnik_id = " + podatnikID + ";";
+                "WHERE p.podatnik_id = " + podatnikID + "" +
+                "AND u.data_likwidacji IS NULL;";
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
@@ -132,7 +134,8 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id; ";
+                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id; " +
+                "WHERE u.data_likwidacji IS NULL;";
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;

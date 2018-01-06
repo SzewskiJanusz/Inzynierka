@@ -12,10 +12,13 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 {
     public partial class ShowDevice : Form
     {
+        private Urzadzenie urzadzenieEdytowane;
+
         public ShowDevice(MainDB.Urzadzenie edited)
         {
             InitializeComponent();
             SetDataFromEdited(edited);
+            urzadzenieEdytowane = edited;
             foreach (Control a in Controls)
             {
                 if (a is GroupBox)
@@ -50,6 +53,40 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             textBox4.Text = mi.kraj;
             textBox5.Text = mi.miasto;
             textBox6.Text = mi.ulica;
+        }
+
+        private void linklblVaporate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (panelVaporate.Visible == false)
+            {
+                panelVaporate.Visible = true;
+            }
+            else
+            {
+                panelVaporate.Visible = false;
+            }
+
+                
+        }
+
+        /// <summary>
+        /// Likwidacja urządzenia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVaporate_Click(object sender, EventArgs e)
+        {
+            VaporationConfirmation vc = new VaporationConfirmation();
+
+            if (vc.ShowDialog() == DialogResult.OK)
+            {
+                string query = "UPDATE Urzadzenie SET data_likwidacji = " +
+                    "'" + dtpVaporate.Value + "' WHERE urzadzenie_id = " +
+                    "" + urzadzenieEdytowane.urzadzenie_id + ";";
+
+                SQL.DoQuery(query);
+                new VaporationComplete().ShowDialog();
+            }
         }
     }
 }

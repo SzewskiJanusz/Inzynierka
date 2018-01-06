@@ -36,8 +36,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -51,13 +54,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.panelVaporate = new System.Windows.Forms.Panel();
+            this.dtpVaporate = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.linklblVaporate = new System.Windows.Forms.LinkLabel();
+            this.btnVaporate = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbBasics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
+            this.panelVaporate.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -129,6 +135,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Miejsce instalacji urządzenia";
             // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(190, 84);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(242, 23);
+            this.textBox9.TabIndex = 35;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -152,6 +165,20 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane obsługi urządzenia";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(190, 77);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(242, 23);
+            this.textBox8.TabIndex = 34;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(190, 34);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(242, 23);
+            this.textBox7.TabIndex = 33;
             // 
             // label10
             // 
@@ -273,32 +300,65 @@
             // 
             this.errorPrv.ContainerControl = this;
             // 
-            // textBox7
+            // panelVaporate
             // 
-            this.textBox7.Location = new System.Drawing.Point(190, 34);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(242, 23);
-            this.textBox7.TabIndex = 33;
+            this.panelVaporate.Controls.Add(this.btnVaporate);
+            this.panelVaporate.Controls.Add(this.dtpVaporate);
+            this.panelVaporate.Controls.Add(this.label12);
+            this.panelVaporate.Location = new System.Drawing.Point(22, 620);
+            this.panelVaporate.Name = "panelVaporate";
+            this.panelVaporate.Size = new System.Drawing.Size(422, 80);
+            this.panelVaporate.TabIndex = 20;
+            this.panelVaporate.Visible = false;
             // 
-            // textBox8
+            // dtpVaporate
             // 
-            this.textBox8.Location = new System.Drawing.Point(190, 77);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(242, 23);
-            this.textBox8.TabIndex = 34;
+            this.dtpVaporate.Location = new System.Drawing.Point(180, 13);
+            this.dtpVaporate.Name = "dtpVaporate";
+            this.dtpVaporate.Size = new System.Drawing.Size(242, 20);
+            this.dtpVaporate.TabIndex = 15;
             // 
-            // textBox9
+            // label12
             // 
-            this.textBox9.Location = new System.Drawing.Point(190, 84);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(242, 23);
-            this.textBox9.TabIndex = 35;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(3, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 24);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Data likwidacji";
+            // 
+            // linklblVaporate
+            // 
+            this.linklblVaporate.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblVaporate.AutoSize = true;
+            this.linklblVaporate.LinkColor = System.Drawing.Color.Black;
+            this.linklblVaporate.Location = new System.Drawing.Point(19, 604);
+            this.linklblVaporate.Name = "linklblVaporate";
+            this.linklblVaporate.Size = new System.Drawing.Size(102, 13);
+            this.linklblVaporate.TabIndex = 19;
+            this.linklblVaporate.TabStop = true;
+            this.linklblVaporate.Text = "Zlikwiduj urządzenie";
+            this.linklblVaporate.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblVaporate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblVaporate_LinkClicked);
+            // 
+            // btnVaporate
+            // 
+            this.btnVaporate.Location = new System.Drawing.Point(255, 39);
+            this.btnVaporate.Name = "btnVaporate";
+            this.btnVaporate.Size = new System.Drawing.Size(106, 31);
+            this.btnVaporate.TabIndex = 21;
+            this.btnVaporate.Text = "Likwiduj";
+            this.btnVaporate.UseVisualStyleBackColor = true;
+            this.btnVaporate.Click += new System.EventHandler(this.btnVaporate_Click);
             // 
             // ShowDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 609);
+            this.ClientSize = new System.Drawing.Size(522, 712);
+            this.Controls.Add(this.panelVaporate);
+            this.Controls.Add(this.linklblVaporate);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbBasics);
@@ -312,6 +372,8 @@
             this.gbBasics.ResumeLayout(false);
             this.gbBasics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).EndInit();
+            this.panelVaporate.ResumeLayout(false);
+            this.panelVaporate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,5 +406,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorPrv;
+        private System.Windows.Forms.Panel panelVaporate;
+        private System.Windows.Forms.Button btnVaporate;
+        private System.Windows.Forms.DateTimePicker dtpVaporate;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.LinkLabel linklblVaporate;
     }
 }
