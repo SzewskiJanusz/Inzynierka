@@ -81,7 +81,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             if (vc.ShowDialog() == DialogResult.OK)
             {
                 string query = "UPDATE Urzadzenie SET data_likwidacji = " +
-                    "'" + dtpVaporate.Value + "' WHERE urzadzenie_id = " +
+                    "'" + dtpVaporate.Value + "' " +
+                    "nastepny_przeglad = ' ' " +
+                    "WHERE urzadzenie_id = " +
                     "" + urzadzenieEdytowane.urzadzenie_id + ";";
 
                 SQL.DoQuery(query);

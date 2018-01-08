@@ -87,6 +87,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
+                "u.data_likwidacji AS 'Data likwidacji', " +
                 "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
                 "FROM Urzadzenie u " +
@@ -99,8 +100,26 @@ namespace Inzynierka_aplikacja.WinformViews
                 query += "AND u.data_likwidacji IS NULL;";
             }
 
-            var result = SQL.DoQuery(query);
+                var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+
+            if (!vaporated)
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = false;
+            }
+            else
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = true;
+                foreach (DataGridViewRow row in dgvDevices.Rows)
+                {
+                    if (row.Cells["Data likwidacji"].Value.ToString() != "")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+            }
+
+            
             QueryUsed = 1;
         }
 
@@ -116,6 +135,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
+                "u.data_likwidacji AS 'Data likwidacji', " +
                 "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
                 "FROM Urzadzenie u " +
@@ -123,14 +143,30 @@ namespace Inzynierka_aplikacja.WinformViews
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
                 "WHERE p.podatnik_id = " + podatnikID + " ";
 
-
             if (!vaporated)
             {
                 query += "AND u.data_likwidacji IS NULL;";
             }
 
-            var result = SQL.DoQuery(query);
+                var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+
+            if (!vaporated)
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = false;
+            }
+            else
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = true;
+                foreach (DataGridViewRow row in dgvDevices.Rows)
+                {
+                    if (row.Cells["Data likwidacji"].Value.ToString() != "")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+            }
+
             QueryUsed = 2;
         }
 
@@ -146,6 +182,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
+                "u.data_likwidacji AS 'Data likwidacji', " +
                 "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
                 "FROM Urzadzenie u " +
@@ -154,12 +191,28 @@ namespace Inzynierka_aplikacja.WinformViews
 
             if (!vaporated)
             {
-                query += "WHERE u.data_likwidacji IS NULL;";
+                query += "AND u.data_likwidacji IS NULL;";
             }
-                
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+
+            if (!vaporated)
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = false;
+            }
+            else
+            {
+                dgvDevices.Columns["Data likwidacji"].Visible = true;
+                foreach (DataGridViewRow row in dgvDevices.Rows)
+                {
+                    if (row.Cells["Data likwidacji"].Value.ToString() != "")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+            }
+
             QueryUsed = 3;
         }
 
