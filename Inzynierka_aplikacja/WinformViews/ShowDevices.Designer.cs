@@ -36,6 +36,7 @@
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.linklblAdd = new System.Windows.Forms.LinkLabel();
             this.lblClient = new System.Windows.Forms.Label();
+            this.linkVaporated = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.dgvDevices.Name = "dgvDevices";
             this.dgvDevices.ReadOnly = true;
             this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevices.Size = new System.Drawing.Size(635, 364);
+            this.dgvDevices.Size = new System.Drawing.Size(670, 364);
             this.dgvDevices.TabIndex = 0;
             this.dgvDevices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.dgvDevices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDevices_DataBindingComplete);
@@ -141,10 +142,25 @@
             this.lblClient.TabIndex = 24;
             this.lblClient.Text = "test";
             // 
+            // linkVaporated
+            // 
+            this.linkVaporated.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkVaporated.AutoSize = true;
+            this.linkVaporated.LinkColor = System.Drawing.Color.Black;
+            this.linkVaporated.Location = new System.Drawing.Point(556, 78);
+            this.linkVaporated.Name = "linkVaporated";
+            this.linkVaporated.Size = new System.Drawing.Size(103, 13);
+            this.linkVaporated.TabIndex = 25;
+            this.linkVaporated.TabStop = true;
+            this.linkVaporated.Text = "Pokaż zlikwidowane";
+            this.linkVaporated.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linkVaporated.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkVaporated_LinkClicked);
+            // 
             // ShowDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkVaporated);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.tbxFind);
@@ -154,7 +170,7 @@
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.dgvDevices);
             this.Name = "ShowDevices";
-            this.Size = new System.Drawing.Size(638, 472);
+            this.Size = new System.Drawing.Size(673, 472);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,5 +187,6 @@
         private System.Windows.Forms.LinkLabel linklblFind;
         private System.Windows.Forms.LinkLabel linklblAdd;
         private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.LinkLabel linkVaporated;
     }
 }

@@ -20,12 +20,15 @@ namespace Inzynierka_aplikacja.WinformViews
         private int FindClickNumber;
         private int podatnikID;
         public static int miejsceID = 0;
+        private int QueryUsed;
+        private bool ShowVaporated;
 
         public ShowDevices()
         {
             InitializeComponent();
+            ShowVaporated = false;
             this.Dock = DockStyle.Fill;
-            LoadDevices();
+            LoadDevices(ShowVaporated);
             HideLabelsAndIcons();
             lblClient.Text = "";
         }
@@ -33,9 +36,10 @@ namespace Inzynierka_aplikacja.WinformViews
         public ShowDevices(Podatnik p)
         {
             InitializeComponent();
+            ShowVaporated = false;
             this.Dock = DockStyle.Fill;
             podatnikID = p.podatnik_id;
-            LoadClientDevices();
+            LoadClientDevices(ShowVaporated);
             HideLabelsAndIcons();
 
             lbl.Text = "Urządzenia kontrahenta: " + p.nazwa;
@@ -45,10 +49,11 @@ namespace Inzynierka_aplikacja.WinformViews
         public ShowDevices(Podatnik p, Miejsce_instalacji mi)
         {
             InitializeComponent();
+            ShowVaporated = false;
             this.Dock = DockStyle.Fill;
             podatnikID = p.podatnik_id;
             miejsceID = mi.miejsce_id;
-            LoadClientPlacesDevices();
+            LoadClientPlacesDevices(ShowVaporated);
             HideLabelsAndIcons();
 
             lbl.Text = "Urządzenia kontrahenta: ";
@@ -70,7 +75,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 handler(this, e);
         }
 
-        private void LoadClientPlacesDevices()
+        private void LoadClientPlacesDevices(bool vaporated)
         {
             string query =
                 "SELECT " +
@@ -87,14 +92,19 @@ namespace Inzynierka_aplikacja.WinformViews
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
-                "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = "+miejsceID+" " +
-                "AND u.data_likwidacji IS NULL;";
+                "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = " + miejsceID + " ";
+
+            if (!vaporated)
+            {
+                query += "AND u.data_likwidacji IS NULL;";
+            }
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+            QueryUsed = 1;
         }
 
-        private void LoadClientDevices()
+        private void LoadClientDevices(bool vaporated)
         {
             string query =
                 "SELECT " +
@@ -111,14 +121,20 @@ namespace Inzynierka_aplikacja.WinformViews
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
-                "WHERE p.podatnik_id = " + podatnikID + "" +
-                "AND u.data_likwidacji IS NULL;";
+                "WHERE p.podatnik_id = " + podatnikID + " ";
+
+
+            if (!vaporated)
+            {
+                query += "AND u.data_likwidacji IS NULL;";
+            }
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+            QueryUsed = 2;
         }
 
-        private void LoadDevices()
+        private void LoadDevices(bool vaporated)
         {
             string query =
                 "SELECT " +
@@ -134,11 +150,17 @@ namespace Inzynierka_aplikacja.WinformViews
                 "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id; " +
-                "WHERE u.data_likwidacji IS NULL;";
+                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id ";
+
+            if (!vaporated)
+            {
+                query += "WHERE u.data_likwidacji IS NULL;";
+            }
+                
 
             var result = SQL.DoQuery(query);
             dgvDevices.DataSource = result;
+            QueryUsed = 3;
         }
 
         private void linklblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -181,11 +203,11 @@ namespace Inzynierka_aplikacja.WinformViews
                 EditDeviceClick(e);
                 if (podatnikID == -1)
                 {
-                    LoadDevices();
+                    LoadDevices(ShowVaporated);
                 }
                 else
                 {
-                    LoadClientDevices();
+                    LoadClientDevices(ShowVaporated);
                 }
 
                 HideLabelsAndIcons();
@@ -237,6 +259,26 @@ namespace Inzynierka_aplikacja.WinformViews
             {
                 selectedRow = dgvDevices.SelectedRows[0];
                 ShowLabelsAndIcons();
+            }
+        }
+
+        private void linkVaporated_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (ShowVaporated)
+            {
+                ShowVaporated = false;
+            }
+            else
+            {
+                ShowVaporated = true;
+            }
+
+            switch (QueryUsed)
+            {
+                case 1: LoadClientPlacesDevices(ShowVaporated);  break;
+                case 2: LoadClientDevices(ShowVaporated); break;
+                case 3: LoadDevices(ShowVaporated);  break;
+                default: break;
             }
         }
     }

@@ -61,7 +61,12 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
                 SetDataFromEdited(u, db);
             }
-            
+
+            textBox4.Enabled = false;
+            comboBox3.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
+
             btnAdd.Text = "Zapisz";
             label1.Text = "Edytuj urządzenie";
             this.Text = "Edytuj urządzenie";
