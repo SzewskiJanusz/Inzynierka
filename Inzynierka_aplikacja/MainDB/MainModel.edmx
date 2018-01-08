@@ -101,7 +101,7 @@
           <Property Name="data_uruchomienia" Type="datetime" Nullable="false" />
           <Property Name="nr_fabryczny" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ostatni_przeglad" Type="date" Nullable="false" />
-          <Property Name="nastepny_przeglad" Type="date" Nullable="false" />
+          <Property Name="nastepny_przeglad" Type="date" />
           <Property Name="data_likwidacji" Type="date" />
         </EntityType>
         <EntityType Name="Uslugi">
@@ -345,7 +345,7 @@
           <Property Name="data_uruchomienia" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="nr_fabryczny" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ostatni_przeglad" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="nastepny_przeglad" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nastepny_przeglad" Type="DateTime" Nullable="true" Precision="0" />
           <NavigationProperty Name="Miejsce_instalacji" Relationship="Self.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" FromRole="Urzadzenie" ToRole="Miejsce_instalacji" />
           <NavigationProperty Name="Podatnik" Relationship="Self.FK_URZADZEN_POSIADA_PODATNIK" FromRole="Urzadzenie" ToRole="Podatnik" />
           <NavigationProperty Name="Serwisant" Relationship="Self.FK_URZADZEN_ZAJMUJE_S_SERWISAN" FromRole="Urzadzenie" ToRole="Serwisant" />

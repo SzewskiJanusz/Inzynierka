@@ -80,13 +80,21 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
             if (vc.ShowDialog() == DialogResult.OK)
             {
-                string query = "UPDATE Urzadzenie SET data_likwidacji = " +
-                    "'" + dtpVaporate.Value + "' " +
-                    "nastepny_przeglad = ' ' " +
+                // ustaw datę likwidacji i wyczyść następny przegląd
+                string query_update = "UPDATE Urzadzenie SET data_likwidacji = " +
+                    "'" + dtpVaporate.Value + "' ," +
+                    "nastepny_przeglad = NULL " +
                     "WHERE urzadzenie_id = " +
                     "" + urzadzenieEdytowane.urzadzenie_id + ";";
 
-                SQL.DoQuery(query);
+                SQL.DoQuery(query_update);
+
+                // usuń wszystkie usługi związane z tym urządzeniem
+                string query_delete =
+                    "DELETE SerwisUrzadzenia WHERE urzadzenie_id = "+urzadzenieEdytowane.urzadzenie_id +";";
+
+                SQL.DoQuery(query_delete);
+
                 new VaporationComplete().ShowDialog();
             }
         }

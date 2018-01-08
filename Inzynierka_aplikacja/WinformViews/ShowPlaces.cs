@@ -70,7 +70,7 @@ namespace Inzynierka_aplikacja.WinformViews
                                 urzadzenie_id = f.NewDevice.urzadzenie_id,
                                 serwisant_id = f.NewDevice.serwisant_id,
                                 usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
-                                data_przyjecia = f.NewDevice.nastepny_przeglad
+                                data_przyjecia = (DateTime)f.NewDevice.nastepny_przeglad
                             };
                             db.SerwisUrzadzenia.Add(su);
                             db.SaveChanges();
