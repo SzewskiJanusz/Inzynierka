@@ -219,6 +219,12 @@
     <Compile Include="WinformViews\CRUD\Services\ShowService.Designer.cs">
       <DependentUpon>ShowService.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.Designer.cs">
+      <DependentUpon>AddUsluga.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\ShowClientDevices.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -266,6 +272,12 @@
     </Compile>
     <Compile Include="WinformViews\ShowStates.Designer.cs">
       <DependentUpon>ShowStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\ShowUslugi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinformViews\ShowUslugi.Designer.cs">
+      <DependentUpon>ShowUslugi.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
@@ -325,6 +337,9 @@
     <EmbeddedResource Include="WinformViews\CRUD\Services\ShowService.resx">
       <DependentUpon>ShowService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.resx">
+      <DependentUpon>AddUsluga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowClientDevices.resx">
       <DependentUpon>ShowClientDevices.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowStates.resx">
       <DependentUpon>ShowStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\ShowUslugi.resx">
+      <DependentUpon>ShowUslugi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="MainDB\MainModel.edmx">

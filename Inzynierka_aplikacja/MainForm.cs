@@ -5,6 +5,7 @@ using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
 using Inzynierka_aplikacja.WinformViews.CRUD.Places;
 using Inzynierka_aplikacja.WinformViews.CRUD.Registry;
 using Inzynierka_aplikacja.WinformViews.CRUD.Services;
+using Inzynierka_aplikacja.WinformViews.CRUD.Uslugi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,6 +85,8 @@ namespace Inzynierka_aplikacja
             icons.Add(ToolstripIcons.GetInstance().GetDevices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetServices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetRegistry().ToList());
+            icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
+
 
             icons[0][0].Click += AddClient;
             icons[0][1].Click += EditClient;
@@ -98,6 +101,11 @@ namespace Inzynierka_aplikacja
             icons[2][2].Click += ShowServiceDetails;
 
             icons[3][0].Click += ShowDoneService;
+
+            icons[4][0].Click += AddUslugaClick;
+            icons[4][1].Click += EditUslugaClick;
+
+
 
         }
 
@@ -620,6 +628,57 @@ namespace Inzynierka_aplikacja
         private void AddDevPlace(object sender, EventArgs e)
         {
             
+        }
+
+        private void ShowUslugi_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            ShowUslugi su = new ShowUslugi();
+            su.AddUslugaButtonClicked -= AddUslugaClick;
+            su.AddUslugaButtonClicked += AddUslugaClick;
+            su.EditUslugaButtonClicked -= EditUslugaClick;
+            su.EditUslugaButtonClicked += EditUslugaClick;
+
+            ShowIcons("clients");
+            contentPanel.Controls.Add(su);
+        }
+
+        private void EditUslugaClick(object sender, EventArgs e)
+        {
+            int rowID = Convert.ToInt32(ShowUslugi.selectedRow.Cells["id"].Value.ToString());
+            Uslugi u;
+
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                u = db.Uslugi.Where(x => x.usluga_id == rowID).First();
+            }
+
+            AddUsluga f = new AddUsluga(u);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    string updateQuery =
+                    "UPDATE Uslugi SET " +
+                    "nazwa = '" + f.nowaUsluga.nazwa + "', " +
+                    "koszt_brutto = " + f.nowaUsluga.koszt_brutto + " " +
+                    "WHERE usluga_id = " + u.usluga_id + ";";
+                    SQL.DoQuery(updateQuery);
+                }
+            }
+        }
+
+        private void AddUslugaClick(object sender, EventArgs e)
+        {
+            AddUsluga f = new AddUsluga();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.Uslugi.Add(f.nowaUsluga);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

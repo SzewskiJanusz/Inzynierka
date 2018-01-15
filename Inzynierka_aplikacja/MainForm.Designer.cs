@@ -52,6 +52,9 @@
             this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.panelUslugi = new System.Windows.Forms.Panel();
+            this.pbUslugi = new System.Windows.Forms.PictureBox();
+            this.lblUslugi = new System.Windows.Forms.Label();
             this.panelRegistry = new System.Windows.Forms.Panel();
             this.pbRegistry = new System.Windows.Forms.PictureBox();
             this.lblRegistry = new System.Windows.Forms.Label();
@@ -70,6 +73,8 @@
             this.lblTodaysDate = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
+            this.panelUslugi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUslugi)).BeginInit();
             this.panelRegistry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).BeginInit();
             this.panelPrzeglad.SuspendLayout();
@@ -203,21 +208,21 @@
             // kontrahentaToolStripMenuItem
             // 
             this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
-            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
             this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
             // 
             // urzadzenieToolStripMenuItem
             // 
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
-            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
             this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.AddDeviceClick);
             // 
             // usługęToolStripMenuItem
             // 
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
-            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
             this.usługęToolStripMenuItem.Click += new System.EventHandler(this.AddService);
             // 
@@ -257,14 +262,48 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.leftPanel.Controls.Add(this.panelUslugi);
             this.leftPanel.Controls.Add(this.panelRegistry);
             this.leftPanel.Controls.Add(this.panelPrzeglad);
             this.leftPanel.Controls.Add(this.panelDevices);
             this.leftPanel.Controls.Add(this.panelClients);
             this.leftPanel.Location = new System.Drawing.Point(0, 66);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(173, 365);
+            this.leftPanel.Size = new System.Drawing.Size(173, 382);
             this.leftPanel.TabIndex = 2;
+            // 
+            // panelUslugi
+            // 
+            this.panelUslugi.Controls.Add(this.pbUslugi);
+            this.panelUslugi.Controls.Add(this.lblUslugi);
+            this.panelUslugi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelUslugi.Location = new System.Drawing.Point(0, 302);
+            this.panelUslugi.Name = "panelUslugi";
+            this.panelUslugi.Size = new System.Drawing.Size(170, 77);
+            this.panelUslugi.TabIndex = 4;
+            this.panelUslugi.Click += new System.EventHandler(this.ShowUslugi_Click);
+            // 
+            // pbUslugi
+            // 
+            this.pbUslugi.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbUslugi.ErrorImage")));
+            this.pbUslugi.Image = ((System.Drawing.Image)(resources.GetObject("pbUslugi.Image")));
+            this.pbUslugi.Location = new System.Drawing.Point(60, 3);
+            this.pbUslugi.Name = "pbUslugi";
+            this.pbUslugi.Size = new System.Drawing.Size(43, 42);
+            this.pbUslugi.TabIndex = 0;
+            this.pbUslugi.TabStop = false;
+            this.pbUslugi.Click += new System.EventHandler(this.ShowUslugi_Click);
+            // 
+            // lblUslugi
+            // 
+            this.lblUslugi.AutoSize = true;
+            this.lblUslugi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblUslugi.Location = new System.Drawing.Point(21, 48);
+            this.lblUslugi.Name = "lblUslugi";
+            this.lblUslugi.Size = new System.Drawing.Size(125, 20);
+            this.lblUslugi.TabIndex = 1;
+            this.lblUslugi.Text = "Dostępne usługi";
+            this.lblUslugi.Click += new System.EventHandler(this.ShowUslugi_Click);
             // 
             // panelRegistry
             // 
@@ -405,7 +444,7 @@
             this.contentPanel.BackColor = System.Drawing.Color.White;
             this.contentPanel.Location = new System.Drawing.Point(179, 66);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(484, 365);
+            this.contentPanel.Size = new System.Drawing.Size(484, 382);
             this.contentPanel.TabIndex = 3;
             // 
             // panel3
@@ -415,7 +454,7 @@
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.lblLogged);
             this.panel3.Controls.Add(this.lblTodaysDate);
-            this.panel3.Location = new System.Drawing.Point(0, 437);
+            this.panel3.Location = new System.Drawing.Point(0, 454);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(663, 19);
             this.panel3.TabIndex = 4;
@@ -446,7 +485,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 454);
+            this.ClientSize = new System.Drawing.Size(663, 471);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.leftPanel);
@@ -458,6 +497,9 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
+            this.panelUslugi.ResumeLayout(false);
+            this.panelUslugi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUslugi)).EndInit();
             this.panelRegistry.ResumeLayout(false);
             this.panelRegistry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRegistry)).EndInit();
@@ -518,5 +560,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem USToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem województwaToolStripMenuItem;
+        private System.Windows.Forms.Panel panelUslugi;
+        private System.Windows.Forms.PictureBox pbUslugi;
+        private System.Windows.Forms.Label lblUslugi;
     }
 }
