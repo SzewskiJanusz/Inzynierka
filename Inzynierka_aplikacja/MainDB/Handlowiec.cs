@@ -20,5 +20,6 @@ namespace Inzynierka_aplikacja.MainDB
         public string telefon { get; set; }
         public string haslohash { get; set; }
         public string email { get; set; }
+        public string salt { get; set; }
     }
 }

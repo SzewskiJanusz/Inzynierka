@@ -67,7 +67,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionManager.cs" />
     <Compile Include="Information.cs">
       <SubType>Form</SubType>
     </Compile>

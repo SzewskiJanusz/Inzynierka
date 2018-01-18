@@ -27,6 +27,7 @@ namespace Inzynierka_aplikacja.MainDB
         public string telefon { get; set; }
         public string email { get; set; }
         public string haslohash { get; set; }
+        public string salt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }

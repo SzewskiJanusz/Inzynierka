@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -116,10 +117,13 @@ namespace Inzynierka_aplikacja
         private void button1_Click(object sender, EventArgs e)
         {
             string user = comboBox1.Text;
-            string hashedPwd = SHA256Hasher(textBox1.Text);
-            if (CheckIfUserExists(user, hashedPwd))
+            string plainPwd = textBox1.Text;
+            if (CheckIfUserExists(user))
             {
-                LoginUser(user, cboxRemember.Checked);
+                if (CheckPassword(plainPwd))
+                {
+                    LoginUser(user, cboxRemember.Checked);
+                }      
             }
             else
             {
@@ -127,17 +131,55 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        private bool CheckIfUserExists(string user, string hashedPwd)
+        private bool CheckPassword(string plainPwd)
+        {
+            string hashedPwdWithSalt = "";
+            if (AdminToLogin != null)
+            {
+                hashedPwdWithSalt = SHA256Hasher(plainPwd, AdminToLogin.salt);
+                if (AdminToLogin.haslohash == hashedPwdWithSalt)
+                {
+                    return true;
+                }
+
+            }
+
+            if (SerwisantToLogin != null)
+            {
+                hashedPwdWithSalt = SHA256Hasher(plainPwd, SerwisantToLogin.salt);
+                if (SerwisantToLogin.haslohash == hashedPwdWithSalt)
+                {
+                    return true;
+                }
+
+            }
+
+            if (HandlowiecToLogin != null)
+            {
+                hashedPwdWithSalt = SHA256Hasher(plainPwd, HandlowiecToLogin.salt);
+                if (HandlowiecToLogin.haslohash == hashedPwdWithSalt)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private bool CheckIfUserExists(string user)
         {
             Handlowiec checkH = new Handlowiec();
             Serwisant checkS = new Serwisant();
             Administrator checkA = new Administrator();
 
+
+
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 try
                 {
-                    checkH = db.Handlowiec.Where(x => x.imie + " " + x.nazwisko == user && x.haslohash == hashedPwd).First();
+                    checkH = db.Handlowiec.Where(x => x.imie + " " + x.nazwisko == user).First();
                 }
                 catch (InvalidOperationException)
                 {
@@ -146,7 +188,7 @@ namespace Inzynierka_aplikacja
 
                 try
                 {
-                    checkS = db.Serwisant.Where(x => x.imie + " " + x.nazwisko == user && x.haslohash == hashedPwd).First();
+                    checkS = db.Serwisant.Where(x => x.imie + " " + x.nazwisko == user).First();
                 }
                 catch (InvalidOperationException)
                 {
@@ -155,7 +197,7 @@ namespace Inzynierka_aplikacja
 
                 try
                 {
-                    checkA = db.Administrator.Where(x => x.login == user && x.haslohash == hashedPwd).First();
+                    checkA = db.Administrator.Where(x => x.login == user).First();
                 }
                 catch (InvalidOperationException)
                 {
@@ -195,16 +237,29 @@ namespace Inzynierka_aplikacja
             ChangeForm();
         }
 
-        private string SHA256Hasher(string randomString)
+        private string SHA256Hasher(string passwd, string salt)
         {
             System.Security.Cryptography.SHA256Managed crypt = new System.Security.Cryptography.SHA256Managed();
             System.Text.StringBuilder hash = new System.Text.StringBuilder();
-            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString), 0, Encoding.UTF8.GetByteCount(randomString));
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(passwd+salt), 0, Encoding.UTF8.GetByteCount(passwd + salt));
             foreach (byte theByte in crypto)
             {
                 hash.Append(theByte.ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        private string RandomizeSalt()
+        {
+            string token = "";
+            using (RandomNumberGenerator rng = new RNGCryptoServiceProvider())
+            {
+                byte[] tokenData = new byte[48];
+                rng.GetBytes(tokenData);
+
+                token = Convert.ToBase64String(tokenData);
+            }
+            return token;
         }
 
         private void ChangeForm()
