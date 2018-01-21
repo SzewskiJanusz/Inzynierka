@@ -29,12 +29,15 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
         public AddService(SerwisUrzadzenia su)
         {
             InitializeComponent();
+
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                cbxClient.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
-                cbxDevice.DataSource = db.Urzadzenie.Select(x => x.nr_unikatowy).ToList();
+                int podID = db.Urzadzenie.Where(x => x.urzadzenie_id == su.urzadzenie_id).Select(x => x.podatnik_id).First();
+                cbxClient.DataSource = db.Podatnik.Where(x=>x.podatnik_id == podID).Select(x => x.nazwa).ToList();
+                cbxDevice.DataSource = db.Urzadzenie.Where(x=>x.podatnik_id == podID).Select(x => x.nr_unikatowy).ToList();
                 cboxService.DataSource = db.Uslugi.Select(x => x.nazwa).ToList();
             }
+            cbxClient.Enabled = false;
 
             SetDataFromEdited(su);
             this.Text = "Edytowanie usługi";

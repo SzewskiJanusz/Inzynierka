@@ -224,12 +224,6 @@
     <Compile Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.Designer.cs">
       <DependentUpon>AddUsluga.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinformViews\ShowClientDevices.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WinformViews\ShowClientDevices.Designer.cs">
-      <DependentUpon>ShowClientDevices.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinformViews\ShowClients.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -338,9 +332,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.resx">
       <DependentUpon>AddUsluga.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinformViews\ShowClientDevices.resx">
-      <DependentUpon>ShowClientDevices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowClients.resx">
       <DependentUpon>ShowClients.cs</DependentUpon>

@@ -288,7 +288,12 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void linklblEdit_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            EditDeviceClick(e);
+            if (dgvDevices.SelectedRows.Count != 0)
+            {
+                selectedRow = dgvDevices.SelectedRows[0];
+                EditDeviceClick(e);
+                HideLabelsAndIcons();
+            }
         }
 
         private void btnFind_Click(object sender, EventArgs e)
