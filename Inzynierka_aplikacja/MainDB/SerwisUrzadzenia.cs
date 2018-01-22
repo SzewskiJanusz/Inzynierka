@@ -20,6 +20,7 @@ namespace Inzynierka_aplikacja.MainDB
         public int urzadzenie_id { get; set; }
         public System.DateTime data_przyjecia { get; set; }
         public Nullable<System.DateTime> data_oddania { get; set; }
+        public Nullable<decimal> cena { get; set; }
     
         public virtual Serwisant Serwisant { get; set; }
         public virtual Urzadzenie Urzadzenie { get; set; }

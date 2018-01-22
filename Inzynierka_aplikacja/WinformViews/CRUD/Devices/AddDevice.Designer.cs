@@ -55,6 +55,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbxPrzegladTime = new System.Windows.Forms.ComboBox();
+            this.tbxMonths = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbBasics.SuspendLayout();
@@ -128,6 +131,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbxMonths);
+            this.groupBox1.Controls.Add(this.cbxPrzegladTime);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label10);
@@ -135,7 +141,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(12, 279);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(494, 110);
+            this.groupBox1.Size = new System.Drawing.Size(532, 164);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane obsługi urządzenia";
@@ -168,7 +174,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(311, 603);
+            this.btnAdd.Location = new System.Drawing.Point(311, 675);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(133, 28);
             this.btnAdd.TabIndex = 12;
@@ -189,7 +195,7 @@
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gbBasics.Location = new System.Drawing.Point(12, 63);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(494, 210);
+            this.gbBasics.Size = new System.Drawing.Size(532, 210);
             this.gbBasics.TabIndex = 10;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Dane urządzenia";
@@ -232,9 +238,9 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 395);
+            this.groupBox2.Location = new System.Drawing.Point(12, 449);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(494, 202);
+            this.groupBox2.Size = new System.Drawing.Size(532, 220);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Miejsce instalacji urządzenia";
@@ -308,11 +314,37 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "Kraj";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(6, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(287, 24);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Czas do planowanego przeglądu";
+            // 
+            // cbxPrzegladTime
+            // 
+            this.cbxPrzegladTime.FormattingEnabled = true;
+            this.cbxPrzegladTime.Location = new System.Drawing.Point(299, 127);
+            this.cbxPrzegladTime.Name = "cbxPrzegladTime";
+            this.cbxPrzegladTime.Size = new System.Drawing.Size(189, 24);
+            this.cbxPrzegladTime.TabIndex = 26;
+            this.cbxPrzegladTime.SelectedIndexChanged += new System.EventHandler(this.cbxPrzegladTime_SelectedIndexChanged);
+            // 
+            // tbxMonths
+            // 
+            this.tbxMonths.Location = new System.Drawing.Point(498, 127);
+            this.tbxMonths.Name = "tbxMonths";
+            this.tbxMonths.Size = new System.Drawing.Size(28, 23);
+            this.tbxMonths.TabIndex = 15;
+            // 
             // AddDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 641);
+            this.ClientSize = new System.Drawing.Size(554, 715);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdd);
@@ -360,5 +392,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbxPrzegladTime;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbxMonths;
     }
 }

@@ -59,7 +59,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 NoDevicesWarning ndw = new NoDevicesWarning();
                 if (ndw.ShowDialog() == DialogResult.OK)
                 {
-                    AddDevice f = new AddDevice();
+                    AddDevice f = new AddDevice(p);
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         using (InzynierkaDBEntities db = new InzynierkaDBEntities())

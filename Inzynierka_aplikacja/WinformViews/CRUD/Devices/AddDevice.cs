@@ -26,6 +26,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
             comboBox3.ValueMember = "nazwa";
             comboBox3.DisplayMember = "nazwa";
+
+            PrepareConservationTime();
             this.Text = "Dodaj urządzenie";
         }
 
@@ -42,6 +44,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             comboBox3.ValueMember = "nazwa";
             comboBox3.DisplayMember = "nazwa";
             comboBox1.Enabled = false;
+            PrepareConservationTime();
             this.Text = "Dodaj urządzenie";
         }
 
@@ -95,10 +98,31 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             textBox5.Enabled = false;
             textBox6.Enabled = false;
             comboBox1.Enabled = false;
+
+            PrepareConservationTime();
             this.Text = "Dodaj urządzenie";
         }
 
+        private void PrepareConservationTime()
+        {
+            var time = new List<ConservationTime>();
+            time.Add(new ConservationTime() { Name = "Wprowadź liczbę miesięcy", Value = "custom" });
+            time.Add(new ConservationTime() { Name = "Co 3 miesiące", Value = "3" });
+            time.Add(new ConservationTime() { Name = "Co 6 miesięcy", Value = "6" });
+            time.Add(new ConservationTime() { Name = "Co 12 miesięcy", Value = "12" });
+            time.Add(new ConservationTime() { Name = "Co 15 miesięcy", Value = "15" });
+            time.Add(new ConservationTime() { Name = "Co 18 miesięcy", Value = "18" });
+            time.Add(new ConservationTime() { Name = "Co 24 miesiące", Value = "24" });
 
+
+            cbxPrzegladTime.DataSource = time;
+            cbxPrzegladTime.DisplayMember = "Name";
+            cbxPrzegladTime.ValueMember = "Value";
+            cbxPrzegladTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            // CO 24 miesiące
+            cbxPrzegladTime.SelectedValue = "24";
+            tbxMonths.Visible = false;
+        }
 
         private void SetDataFromEdited(Urzadzenie u, InzynierkaDBEntities db)
         {
@@ -256,7 +280,26 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
                 }
 
-                DateTime nextPrzeglad = dateTimePicker1.Value.AddYears(2);
+                int months = 0;
+                try
+                {
+                    months = Convert.ToInt32(cbxPrzegladTime.SelectedValue);
+                }
+                catch (FormatException)
+                {
+                    try
+                    {
+                        months = Convert.ToInt32(tbxMonths.Text);
+                    }
+                    catch(FormatException)
+                    {
+                        errorPrv.SetError(tbxMonths, "Niewłaściwe dane");
+                    }
+                }
+
+
+
+                DateTime nextPrzeglad = dateTimePicker1.Value.AddMonths(months);
 
                 NewDevice = new Urzadzenie()
                 {
@@ -303,6 +346,18 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
         private void linklblVaporate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void cbxPrzegladTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxPrzegladTime.SelectedValue == "custom")
+            {
+                tbxMonths.Visible = true;
+            }
+            else
+            {
+                tbxMonths.Visible = false;
+            }
         }
     }
 }

@@ -152,6 +152,7 @@
     <Compile Include="WinformViews\CRUD\Devices\AddDevice.Designer.cs">
       <DependentUpon>AddDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\CRUD\Devices\ConservationTime.cs" />
     <Compile Include="WinformViews\CRUD\Devices\NoDevicesWarning.cs">
       <SubType>Form</SubType>
     </Compile>
