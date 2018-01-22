@@ -96,9 +96,7 @@ namespace Inzynierka_aplikacja
             icons[1][1].Click += EditDeviceClick;
             icons[1][2].Click += DeviceDetails;
 
-            icons[2][0].Click += AddService;
-            icons[2][1].Click += EditService;
-            icons[2][2].Click += ShowServiceDetails;
+            icons[2][0].Click += ShowServiceDetails;
 
             icons[3][0].Click += ShowDoneService;
 
@@ -516,28 +514,12 @@ namespace Inzynierka_aplikacja
         {
             RemoveControls();
             ShowServices serv = new ShowServices();
-            serv.AddServiceButtonClicked -= AddService;
-            serv.AddServiceButtonClicked += AddService;
             serv.ShowServiceButtonClicked -= ShowServiceDetails;
             serv.ShowServiceButtonClicked += ShowServiceDetails;
-            serv.EditServiceButtonClicked -= EditService;
-            serv.EditServiceButtonClicked += EditService;
             ShowIcons("services");
             contentPanel.Controls.Add(serv);
         }
 
-        private void AddService(object sender, EventArgs e)
-        {
-            AddService f = new AddService();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-                {
-                    db.SerwisUrzadzenia.Add(f.NewService);
-                    db.SaveChanges();
-                }
-            }
-        }
 
         private void ShowServiceDetails(object sender, EventArgs e)
         {
@@ -552,33 +534,6 @@ namespace Inzynierka_aplikacja
             f.ShowDialog();
         }
 
-
-        private void EditService(object sender, EventArgs e)
-        {
-            int rowID = Convert.ToInt32(ShowServices.selectedRow.Cells["id"].Value.ToString());
-            SerwisUrzadzenia su;
-
-            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-            {
-                su = db.SerwisUrzadzenia.Where(x => x.serwis_id == rowID).First();
-            }
-
-            AddService f = new AddService(su);
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-                {
-                    string updateQuery =
-                    "UPDATE SerwisUrzadzenia SET " +
-                    "usluga_id = " + f.NewService.usluga_id + ", " +
-                    "serwisant_id = " + f.NewService.serwisant_id + ", " +
-                    "urzadzenie_id = " + f.NewService.urzadzenie_id + ", " +
-                    "data_przyjecia = '" + f.NewService.data_przyjecia + "'" +
-                    "WHERE serwis_id = " +su.serwis_id + ";";
-                    SQL.DoQuery(updateQuery);
-                }
-            }
-        }
 
         private void informacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {

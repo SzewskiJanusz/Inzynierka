@@ -201,12 +201,6 @@
     <Compile Include="WinformViews\CRUD\Revenue\AddRevenue.Designer.cs">
       <DependentUpon>AddRevenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="WinformViews\CRUD\Services\AddService.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinformViews\CRUD\Services\AddService.Designer.cs">
-      <DependentUpon>AddService.cs</DependentUpon>
-    </Compile>
     <Compile Include="WinformViews\CRUD\Services\DoneService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,12 +315,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Registry\ShowRegistry.resx">
       <DependentUpon>ShowRegistry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinformViews\CRUD\Services\AddService.resx">
-      <DependentUpon>AddService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinformViews\CRUD\Services\DoneService.resx">
-      <DependentUpon>DoneService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\Services\ShowService.resx">
       <DependentUpon>ShowService.cs</DependentUpon>

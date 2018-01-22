@@ -224,7 +224,6 @@
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
             this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
-            this.usługęToolStripMenuItem.Click += new System.EventHandler(this.AddService);
             // 
             // pomocToolStripMenuItem
             // 

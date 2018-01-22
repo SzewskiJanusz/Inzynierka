@@ -24,8 +24,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Uslugi
         {
             InitializeComponent();
             btnAdd.Text = "Zapisz";
-            label1.Text = "Edytuj kontrahenta";
-            this.Text = "Edytuj kontrahenta";
+            label1.Text = "Edytuj usługę";
+            this.Text = "Edytuj usługę";
             SetDataFromEdited(u);
         }
 

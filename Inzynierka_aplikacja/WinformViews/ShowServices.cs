@@ -20,6 +20,8 @@ namespace Inzynierka_aplikacja.WinformViews
         public event EventHandler AddServiceButtonClicked;
         public event EventHandler EditServiceButtonClicked;
 
+        private bool showAll;
+
 
         protected virtual void ShowServiceClick(EventArgs e)
         {
@@ -53,6 +55,7 @@ namespace Inzynierka_aplikacja.WinformViews
             
             indexesOfRows = new List<int>();
             FindClickNumber = 0;
+            showAll = false;
         }
 
         
@@ -89,7 +92,6 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[2][1].Visible = false;
             MainForm.icons[2][2].Visible = false;
             linklblShow.Enabled = false;
-            linklblEdit.Enabled = false;
         }
 
         private void ShowLabelsAndIcons()
@@ -97,7 +99,6 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[2][1].Visible = true;
             MainForm.icons[2][2].Visible = true;
             linklblShow.Enabled = true;
-            linklblEdit.Enabled = true;
         }
 
 
@@ -142,7 +143,7 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void linklblShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (linklblEdit.Visible)
+            if (showAll)
             {
                 string query =
                 "SELECT su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
@@ -155,14 +156,14 @@ namespace Inzynierka_aplikacja.WinformViews
                 "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
                 "WHERE su.data_oddania IS NULL; ";
 
-                linklblEdit.Visible = false;
+                showAll = false;
 
                 dgvServices.DataSource = SQL.DoQuery(query);
             }
             else
             {
                 LoadServices();
-                linklblEdit.Visible = true;
+                showAll = true;
             }
             
         }
