@@ -20,8 +20,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+                comboBox2.DataSource = db.Serwisant.Where(x=> x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
             }
+            comboBox2.Enabled = false;
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
@@ -37,8 +38,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+                comboBox2.DataSource = db.Serwisant.Where(x => x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
             }
+            comboBox2.Enabled = false;
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
@@ -54,7 +56,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {       
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
+                comboBox2.DataSource = db.Serwisant.Where(x => x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
 
                 comboBox3.DataSource = SQL.GetStates();
 
@@ -63,12 +65,14 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
                 SetDataFromEdited(u, db);
             }
-
+            comboBox2.Enabled = false;
             textBox4.Enabled = false;
             comboBox3.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
-
+            tbxMonths.Text = u.co_ile_przeglad_miesiac.ToString();
+            tbxMonths.Enabled = false;
+            cbxPrzegladTime.Enabled = false;
             btnAdd.Text = "Zapisz";
             label1.Text = "Edytuj urządzenie";
             this.Text = "Edytuj urządzenie";
