@@ -311,7 +311,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                     nr_ewidencyjny = textBox3.Text,
                     data_uruchomienia = dateTimePicker1.Value,
                     ostatni_przeglad = dateTimePicker1.Value,
-                    nastepny_przeglad = nextPrzeglad
+                    nastepny_przeglad = nextPrzeglad,
+                    co_ile_przeglad_miesiac = months
                 };
                 this.DialogResult = DialogResult.OK;
             }

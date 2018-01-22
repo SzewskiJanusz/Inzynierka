@@ -70,8 +70,33 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
 
             if (ds.ShowDialog() == DialogResult.OK)
             {
-                string query = "UPDATE SerwisUrzadzenia SET data_oddania = '" + ds.dtime + "' WHERE serwis_id = " + serv.serwis_id + ";";
+                int months = 0;
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    months = (int)db.Urzadzenie.Where(x => x.urzadzenie_id == serv.urzadzenie_id).Select(x => x.co_ile_przeglad_miesiac).First();
+                }
+
+                DateTime nextPrzeglad = ds.dtime;
+                nextPrzeglad = nextPrzeglad.AddMonths(months);
+
+
+                string query = "UPDATE SerwisUrzadzenia SET data_oddania = '" + ds.dtime + "', cena = " + ds.price + " WHERE serwis_id = " + serv.serwis_id + ";";
+                string query1 = "UPDATE Urzadzenie SET ostatni_przeglad = '" + ds.dtime + "', nastepny_przeglad = '" + nextPrzeglad + "' WHERE urzadzenie_id = " + serv.urzadzenie_id + ";";
                 SQL.DoQuery(query);
+                SQL.DoQuery(query1);
+
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    SerwisUrzadzenia su = new SerwisUrzadzenia()
+                    {
+                        urzadzenie_id = serv.urzadzenie_id,
+                        serwisant_id = serv.serwisant_id,
+                        usluga_id = serv.usluga_id,
+                        data_przyjecia = ds.dtime
+                    };
+                    db.SerwisUrzadzenia.Add(su);
+                    db.SaveChanges();
+                }
             }
         }
     }

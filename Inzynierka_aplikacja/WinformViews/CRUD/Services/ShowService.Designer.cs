@@ -54,9 +54,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(6, 165);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(141, 24);
+            this.label6.Size = new System.Drawing.Size(237, 24);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Data wykonania";
+            this.label6.Text = "Planowana data wykonania";
             // 
             // gbBasics
             // 
@@ -73,14 +73,14 @@
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gbBasics.Location = new System.Drawing.Point(12, 64);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(494, 246);
+            this.gbBasics.Size = new System.Drawing.Size(570, 246);
             this.gbBasics.TabIndex = 15;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Dane usługi";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(193, 211);
+            this.textBox4.Location = new System.Drawing.Point(269, 210);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(295, 23);
             this.textBox4.TabIndex = 32;
@@ -94,14 +94,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(193, 82);
+            this.textBox2.Location = new System.Drawing.Point(268, 82);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(295, 23);
             this.textBox2.TabIndex = 30;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 35);
+            this.textBox1.Location = new System.Drawing.Point(268, 35);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(295, 23);
             this.textBox1.TabIndex = 29;
@@ -118,7 +118,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(193, 165);
+            this.dateTimePicker1.Location = new System.Drawing.Point(268, 165);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(295, 23);
             this.dateTimePicker1.TabIndex = 14;
@@ -196,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 356);
+            this.ClientSize = new System.Drawing.Size(604, 356);
             this.Controls.Add(this.linklblDone);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbBasics);

@@ -59,8 +59,9 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadServices()
         {
             string query =
-            "SELECT su.serwis_id AS 'id', su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
+            "SELECT su.serwis_id AS 'id', su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', " +
+            "usl.nazwa AS 'Nazwa usługi', u.nastepny_przeglad AS 'Termin wykonania' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
@@ -141,18 +142,29 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void linklblShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string query =
-            "SELECT su.data_przyjecia AS 'Planowana data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', s.imie + ' '+ s.nazwisko AS 'Serwisant', usl.nazwa AS 'Nazwa usługi' " +
-            "FROM SerwisUrzadzenia su " +
-            "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
-            "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
-            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
-            "WHERE su.data_oddania IS NULL; ";
+            if (linklblEdit.Visible)
+            {
+                string query =
+                "SELECT su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
+                "u.nr_unikatowy AS 'Numer unikatowy urządzenia', s.imie + ' '+ s.nazwisko AS 'Serwisant', " +
+                "usl.nazwa AS 'Nazwa usługi', u.nastepny_przeglad AS 'Termin przeglądu' " +
+                "FROM SerwisUrzadzenia su " +
+                "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
+                "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+                "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+                "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+                "WHERE su.data_oddania IS NULL; ";
 
-            linklblEdit.Visible = false;
-            dgvServices.DataSource = SQL.DoQuery(query);
+                linklblEdit.Visible = false;
+
+                dgvServices.DataSource = SQL.DoQuery(query);
+            }
+            else
+            {
+                LoadServices();
+                linklblEdit.Visible = true;
+            }
+            
         }
 
         private void tbxFind_TextChanged(object sender, EventArgs e)

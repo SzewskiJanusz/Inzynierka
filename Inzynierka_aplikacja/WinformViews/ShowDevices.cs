@@ -342,5 +342,19 @@ namespace Inzynierka_aplikacja.WinformViews
                 default: break;
             }
         }
+
+        private void dgvDevices_Sorted(object sender, EventArgs e)
+        {
+            if (dgvDevices.Columns["Data likwidacji"].Visible)
+            {
+                foreach (DataGridViewRow row in dgvDevices.Rows)
+                {
+                    if (row.Cells["Data likwidacji"].Value.ToString() != "")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+            }
+        }
     }
 }

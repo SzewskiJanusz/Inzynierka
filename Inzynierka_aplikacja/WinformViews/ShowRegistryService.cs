@@ -13,6 +13,7 @@ namespace Inzynierka_aplikacja.WinformViews
     {
         public event EventHandler ShowServiceButtonClicked;
         public static DataGridViewRow selectedRow;
+        private bool selectedAll;
 
 
         protected virtual void ShowServiceClick(EventArgs e)
@@ -28,13 +29,14 @@ namespace Inzynierka_aplikacja.WinformViews
             this.Dock = DockStyle.Fill;
             LoadRegistry();
             HideLabelsAndIcons();
+            selectedAll = false;
         }
 
         private void LoadRegistry()
         {
             string query =
             "SELECT su.serwis_id AS 'id', su.data_oddania AS 'Data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi' " +
+            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', usl.nazwa AS 'Nazwa usługi', su.cena AS 'Cena brutto' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
@@ -49,17 +51,27 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void linklblShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string query =
-            "SELECT su.serwis_id AS 'id', su.data_oddania AS 'Data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia',s.imie + ' '+ s.nazwisko AS 'Serwisant',  usl.nazwa AS 'Nazwa usługi' " +
-            "FROM SerwisUrzadzenia su " +
-            "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
-            "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
-            "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
-            "WHERE su.data_oddania IS NOT NULL;";
+            if (!selectedAll)
+            {
+                string query =
+                "SELECT su.serwis_id AS 'id', su.data_oddania AS 'Data wykonania', p.nazwa AS 'Nazwa kontrahenta', " +
+                "u.nr_unikatowy AS 'Numer unikatowy urządzenia',s.imie + ' '+ s.nazwisko AS 'Serwisant',  usl.nazwa AS 'Nazwa usługi', su.cena AS 'Cena brutto' " +
+                "FROM SerwisUrzadzenia su " +
+                "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
+                "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
+                "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+                "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+                "WHERE su.data_oddania IS NOT NULL;";
 
-            dgvRegistry.DataSource = SQL.DoQuery(query);
+                dgvRegistry.DataSource = SQL.DoQuery(query);
+                selectedAll = true;
+            }
+            else
+            {
+                LoadRegistry();
+                selectedAll = false;
+            }
+            
         }
 
         private void linklblShow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

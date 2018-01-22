@@ -58,6 +58,7 @@
             this.dgvDevices.TabIndex = 0;
             this.dgvDevices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.dgvDevices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDevices_DataBindingComplete);
+            this.dgvDevices.Sorted += new System.EventHandler(this.dgvDevices_Sorted);
             // 
             // lbl
             // 

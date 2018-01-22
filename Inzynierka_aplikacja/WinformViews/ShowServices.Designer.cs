@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.linklblShow = new System.Windows.Forms.LinkLabel();
-            this.linklblAdd = new System.Windows.Forms.LinkLabel();
             this.linklblEdit = new System.Windows.Forms.LinkLabel();
             this.linklblFind = new System.Windows.Forms.LinkLabel();
             this.dgvServices = new System.Windows.Forms.DataGridView();
@@ -63,20 +62,6 @@
             this.linklblShow.Text = "Wyświetl szczegóły";
             this.linklblShow.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblShow_LinkClicked);
-            // 
-            // linklblAdd
-            // 
-            this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.AutoSize = true;
-            this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(231, 54);
-            this.linklblAdd.Name = "linklblAdd";
-            this.linklblAdd.Size = new System.Drawing.Size(48, 13);
-            this.linklblAdd.TabIndex = 7;
-            this.linklblAdd.TabStop = true;
-            this.linklblAdd.Text = "Zaplanuj";
-            this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblAdd_LinkClicked);
             // 
             // linklblEdit
             // 
@@ -169,7 +154,6 @@
             this.Controls.Add(this.dgvServices);
             this.Controls.Add(this.linklblFind);
             this.Controls.Add(this.linklblEdit);
-            this.Controls.Add(this.linklblAdd);
             this.Controls.Add(this.linklblShow);
             this.Controls.Add(this.label1);
             this.Name = "ShowServices";
@@ -184,7 +168,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linklblShow;
-        private System.Windows.Forms.LinkLabel linklblAdd;
         private System.Windows.Forms.LinkLabel linklblEdit;
         private System.Windows.Forms.LinkLabel linklblFind;
         public System.Windows.Forms.DataGridView dgvServices;
