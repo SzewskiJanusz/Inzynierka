@@ -437,7 +437,10 @@ namespace Inzynierka_aplikacja
             {
                 using(InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
-                    f = new AddDevice(db.Miejsce_instalacji.Where(x=>x.miejsce_id == ShowDevices.miejsceID).First());
+                    f = new AddDevice(
+                        db.Miejsce_instalacji.Where(x => x.miejsce_id == ShowDevices.miejsceID).First(),
+                        db.Podatnik.Where(x => x.podatnik_id == ShowDevices.podatnikID).First()
+                        );
                 }
             }
 

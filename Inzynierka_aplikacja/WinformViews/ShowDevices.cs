@@ -18,7 +18,7 @@ namespace Inzynierka_aplikacja.WinformViews
         public static DataGridViewRow selectedRow;
         private List<int> indexesOfRows = new List<int>();
         private int FindClickNumber;
-        private int podatnikID;
+        public static int podatnikID;
         public static int miejsceID = 0;
         private int QueryUsed;
         private bool ShowVaporated;
@@ -31,6 +31,7 @@ namespace Inzynierka_aplikacja.WinformViews
             LoadDevices(ShowVaporated);
             HideLabelsAndIcons();
             lblClient.Text = "";
+            podatnikID = -1;
         }
 
         public ShowDevices(Podatnik p)
@@ -325,10 +326,12 @@ namespace Inzynierka_aplikacja.WinformViews
             if (ShowVaporated)
             {
                 ShowVaporated = false;
+                linklblEdit.Visible = true;
             }
             else
             {
                 ShowVaporated = true;
+                linklblEdit.Visible = false;
             }
 
             switch (QueryUsed)

@@ -34,14 +34,13 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             InitializeComponent();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
                 comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
             }
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
             comboBox3.DisplayMember = "nazwa";
-            comboBox1.SelectedText = p.nazwa;
             comboBox1.Enabled = false;
             this.Text = "Dodaj urządzenie";
         }
@@ -50,7 +49,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
         {
             InitializeComponent();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-            {
+            {       
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
                 comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
 
@@ -70,15 +69,14 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             btnAdd.Text = "Zapisz";
             label1.Text = "Edytuj urządzenie";
             this.Text = "Edytuj urządzenie";
-
         }
 
-        public AddDevice(Miejsce_instalacji mi)
+        public AddDevice(Miejsce_instalacji mi, Podatnik p)
         {
             InitializeComponent();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
-                comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                comboBox1.DataSource = db.Podatnik.Where(x=>x.podatnik_id == p.podatnik_id).Select(x => x.nazwa).ToList();
                 comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
             }
            
@@ -96,6 +94,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             comboBox3.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
+            comboBox1.Enabled = false;
             this.Text = "Dodaj urządzenie";
         }
 
@@ -106,10 +105,11 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             Miejsce_instalacji mi = new Miejsce_instalacji();
             mi = db.Miejsce_instalacji.Where(x => x.miejsce_id == u.miejsce_id).First();
 
+            string nazwaPod = db.Podatnik.Where(x => x.podatnik_id == u.podatnik_id).Select(x => x.nazwa).First();
             textBox1.Text = u.nr_unikatowy;
             textBox2.Text = u.nr_fabryczny;
             textBox3.Text = u.nr_ewidencyjny;
-            comboBox1.SelectedText = db.Podatnik.Where(x => x.podatnik_id == u.podatnik_id).Select(x=>x.nazwa).First();
+            comboBox1.SelectedIndex = comboBox1.FindStringExact(nazwaPod);
             comboBox2.SelectedText = db.Serwisant.Where(x => x.serwisant_id == u.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
             comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
             textBox4.Text = mi.kraj;

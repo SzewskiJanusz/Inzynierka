@@ -32,6 +32,15 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                     }
                 }
             }
+
+            if (edited.data_likwidacji == null)
+            {
+                linklblVaporate.Visible = true;
+            }
+            else
+            {
+                linklblVaporate.Visible = false;
+            }
         }
 
         private void SetDataFromEdited(Urzadzenie u)

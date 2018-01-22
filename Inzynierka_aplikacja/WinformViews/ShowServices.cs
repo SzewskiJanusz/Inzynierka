@@ -107,12 +107,14 @@ namespace Inzynierka_aplikacja.WinformViews
             {
                 selectedRow = dgvServices.SelectedRows[0];
                 ShowServiceClick(e);
+                LoadServices();
             }
         }
 
         private void linklblAdd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AddServiceClick(e);
+            LoadServices();
         }
 
         private void linklblEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
