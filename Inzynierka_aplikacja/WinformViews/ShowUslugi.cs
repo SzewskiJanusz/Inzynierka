@@ -95,16 +95,16 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void HideLabelsAndIcons()
         {
+            MainForm.icons[4][0].Visible = false;
             MainForm.icons[4][1].Visible = false;
-            MainForm.icons[4][2].Visible = false;
             linklblEdit.Enabled = false;
         }
 
         private void ShowLabelsAndIcons()
         {
             linklblEdit.Enabled = true;
+            MainForm.icons[4][0].Visible = true;
             MainForm.icons[4][1].Visible = true;
-            MainForm.icons[4][2].Visible = true;
         }
 
         private void dgvUslugi_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

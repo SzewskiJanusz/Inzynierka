@@ -10,6 +10,7 @@ namespace Inzynierka_aplikacja
         private ToolStripButton[] devices;
         private ToolStripButton[] registry;
         private ToolStripButton[] services;
+        private ToolStripButton[] uslugi;
 
         private ToolStripButton home;
 
@@ -37,6 +38,7 @@ namespace Inzynierka_aplikacja
             CreateDevicesIcons();
             CreateRegistryIcons();
             CreateServiceIcons();
+            CreateUslugiIcons();
         }
 
         private void CreateClientIcons()
@@ -52,6 +54,9 @@ namespace Inzynierka_aplikacja
             {
                 client[i] = new ToolStripButton(Image.FromFile(images[i]));
             }
+            client[0].ToolTipText = "Dodaj kontrahenta";
+            client[1].ToolTipText = "Edytuj kontrahenta";
+            client[2].ToolTipText = "Szczegóły kontrahenta";
 
         }
 
@@ -73,6 +78,9 @@ namespace Inzynierka_aplikacja
             {
                 devices[i] = new ToolStripButton(Image.FromFile(images[i]));
             }
+            devices[0].ToolTipText = "Dodaj urządzenie";
+            devices[1].ToolTipText = "Edytuj urządzenie";
+            devices[2].ToolTipText = "Szczegóły urządzenia";
         }
 
         public ToolStripButton[] GetDevices()
@@ -89,6 +97,7 @@ namespace Inzynierka_aplikacja
             registry = new ToolStripButton[1];
 
             registry[0] = new ToolStripButton(Image.FromFile(images[0]));
+            registry[0].ToolTipText = "Szczegóły wykonanej usługi";
 
         }
 
@@ -101,15 +110,15 @@ namespace Inzynierka_aplikacja
         {
             string[] images =
             {
-                @"Assets\add.png",
-                @"Assets\edit.png",
                 @"Assets\find.png"
             };
-            services = new ToolStripButton[3];
-            for (int i = 0; i < 3; i++)
+            services = new ToolStripButton[1];
+            for (int i = 0; i < 1; i++)
             {
                 services[i] = new ToolStripButton(Image.FromFile(images[i]));
             }
+
+            services[0].ToolTipText = "Szczegóły usługi";
         }
 
         public ToolStripButton[] GetServices()
@@ -117,6 +126,28 @@ namespace Inzynierka_aplikacja
             return services;
         }
 
+        public void CreateUslugiIcons()
+        {
+            string[] images =
+            {
+                @"Assets\add.png",
+                @"Assets\edit.png",
+
+            };
+            uslugi = new ToolStripButton[2];
+            for (int i = 0; i < 2; i++)
+            {
+                uslugi[i] = new ToolStripButton(Image.FromFile(images[i]));
+            }
+
+            uslugi[0].ToolTipText = "Dodaj usługę";
+            uslugi[1].ToolTipText = "Edytuj usługę";
+        }
+
+        public ToolStripButton[] GetUslugi()
+        {
+            return uslugi;
+        }
 
     }
 }

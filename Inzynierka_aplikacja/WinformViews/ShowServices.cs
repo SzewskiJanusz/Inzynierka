@@ -89,15 +89,13 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void HideLabelsAndIcons()
         {
-            MainForm.icons[2][1].Visible = false;
-            MainForm.icons[2][2].Visible = false;
+            MainForm.icons[2][0].Visible = false;
             linklblShow.Enabled = false;
         }
 
         private void ShowLabelsAndIcons()
         {
-            MainForm.icons[2][1].Visible = true;
-            MainForm.icons[2][2].Visible = true;
+            MainForm.icons[2][0].Visible = true;
             linklblShow.Enabled = true;
         }
 

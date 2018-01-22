@@ -85,7 +85,7 @@ namespace Inzynierka_aplikacja
             icons.Add(ToolstripIcons.GetInstance().GetDevices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetServices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetRegistry().ToList());
-            icons.Add(ToolstripIcons.GetInstance().GetClient().ToList());
+            icons.Add(ToolstripIcons.GetInstance().GetUslugi().ToList());
 
 
             icons[0][0].Click += AddClient;
@@ -255,15 +255,25 @@ namespace Inzynierka_aplikacja
                 case "devices": ShowDevicesIcons(); break;
                 case "registry": ShowRegistryIcons(); break;
                 case "services": ShowServiceIcons(); break;
+                case "uslugi": ShowUslugiIcons(); break;
+            }
+        }
+
+        private void ShowUslugiIcons()
+        {
+            SetDefaultToolStripIcons();
+            icons[4][1].Visible = false;
+            for (int i = 0; i < 2; i++)
+            {
+                toolStrip.Items.Add(icons[4][i]);
             }
         }
 
         private void ShowServiceIcons()
         {
             SetDefaultToolStripIcons();
-            icons[2][1].Visible = false;
-            icons[2][2].Visible = false;
-            for (int i = 0; i < 3; i++)
+            icons[2][0].Visible = false;
+            for (int i = 0; i < 1; i++)
             {
                 toolStrip.Items.Add(icons[2][i]);
             }
@@ -597,7 +607,7 @@ namespace Inzynierka_aplikacja
             su.EditUslugaButtonClicked -= EditUslugaClick;
             su.EditUslugaButtonClicked += EditUslugaClick;
 
-            ShowIcons("clients");
+            ShowIcons("uslugi");
             contentPanel.Controls.Add(su);
         }
 
