@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Inzynierka_aplikacja.MainDB;
 using System.Data.SqlClient;
+using Inzynierka_aplikacja.WinformViews.History;
 
 namespace Inzynierka_aplikacja.WinformViews
 {
@@ -273,11 +274,13 @@ namespace Inzynierka_aplikacja.WinformViews
             MainForm.icons[1][1].Visible = false;
             MainForm.icons[1][2].Visible = false;
             linklblEdit.Enabled = false;
+            linklblHistory.Enabled = false;
         }
 
         private void ShowLabelsAndIcons()
         {
             linklblEdit.Enabled = true;
+            linklblHistory.Enabled = true;
             MainForm.icons[1][1].Visible = true;
             MainForm.icons[1][2].Visible = true;
         }
@@ -354,6 +357,18 @@ namespace Inzynierka_aplikacja.WinformViews
                         row.DefaultCellStyle.BackColor = Color.Red;
                     }
                 }
+            }
+        }
+
+        private void linklblHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgvDevices.SelectedRows.Count != 0)
+            {
+                selectedRow = dgvDevices.SelectedRows[0];
+                string nrUnikatowy = selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
+                ShowDeviceHistory sdh = new ShowDeviceHistory(nrUnikatowy);
+                sdh.ShowDialog();
+                HideLabelsAndIcons();
             }
         }
     }

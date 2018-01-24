@@ -58,7 +58,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                                  where (gn.urzadzenie_id == s.urzadzenie_id && gn.ktory == 1)
                                  select serw.imie+ " "+serw.nazwisko).First();
 
-                dateTimePicker2.Value = db.Urzadzenie.
+                dateTimePicker2.Value = (DateTime)db.Urzadzenie.
                     Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nastepny_przeglad).First();
 
             }

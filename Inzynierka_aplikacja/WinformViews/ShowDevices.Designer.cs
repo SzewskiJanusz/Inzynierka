@@ -37,6 +37,7 @@
             this.linklblAdd = new System.Windows.Forms.LinkLabel();
             this.lblClient = new System.Windows.Forms.Label();
             this.linkVaporated = new System.Windows.Forms.LinkLabel();
+            this.linklblHistory = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,12 +50,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDevices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDevices.Location = new System.Drawing.Point(0, 105);
+            this.dgvDevices.Location = new System.Drawing.Point(0, 127);
             this.dgvDevices.MultiSelect = false;
             this.dgvDevices.Name = "dgvDevices";
             this.dgvDevices.ReadOnly = true;
             this.dgvDevices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevices.Size = new System.Drawing.Size(670, 364);
+            this.dgvDevices.Size = new System.Drawing.Size(670, 342);
             this.dgvDevices.TabIndex = 0;
             this.dgvDevices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevices_CellClick);
             this.dgvDevices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDevices_DataBindingComplete);
@@ -72,7 +73,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(387, 75);
+            this.btnFind.Location = new System.Drawing.Point(387, 95);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(128, 24);
             this.btnFind.TabIndex = 14;
@@ -83,7 +84,7 @@
             // 
             // tbxFind
             // 
-            this.tbxFind.Location = new System.Drawing.Point(206, 75);
+            this.tbxFind.Location = new System.Drawing.Point(206, 98);
             this.tbxFind.Name = "tbxFind";
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 13;
@@ -95,7 +96,7 @@
             this.linklblEdit.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblEdit.AutoSize = true;
             this.linklblEdit.LinkColor = System.Drawing.Color.Black;
-            this.linklblEdit.Location = new System.Drawing.Point(62, 75);
+            this.linklblEdit.Location = new System.Drawing.Point(62, 101);
             this.linklblEdit.Name = "linklblEdit";
             this.linklblEdit.Size = new System.Drawing.Size(43, 13);
             this.linklblEdit.TabIndex = 12;
@@ -109,7 +110,7 @@
             this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblFind.AutoSize = true;
             this.linklblFind.LinkColor = System.Drawing.Color.Black;
-            this.linklblFind.Location = new System.Drawing.Point(128, 75);
+            this.linklblFind.Location = new System.Drawing.Point(129, 101);
             this.linklblFind.Name = "linklblFind";
             this.linklblFind.Size = new System.Drawing.Size(53, 13);
             this.linklblFind.TabIndex = 11;
@@ -123,7 +124,7 @@
             this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.AutoSize = true;
             this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(3, 75);
+            this.linklblAdd.Location = new System.Drawing.Point(3, 101);
             this.linklblAdd.Name = "linklblAdd";
             this.linklblAdd.Size = new System.Drawing.Size(35, 13);
             this.linklblAdd.TabIndex = 10;
@@ -148,7 +149,7 @@
             this.linkVaporated.ActiveLinkColor = System.Drawing.Color.Black;
             this.linkVaporated.AutoSize = true;
             this.linkVaporated.LinkColor = System.Drawing.Color.Black;
-            this.linkVaporated.Location = new System.Drawing.Point(556, 78);
+            this.linkVaporated.Location = new System.Drawing.Point(556, 101);
             this.linkVaporated.Name = "linkVaporated";
             this.linkVaporated.Size = new System.Drawing.Size(103, 13);
             this.linkVaporated.TabIndex = 25;
@@ -157,10 +158,25 @@
             this.linkVaporated.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkVaporated.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkVaporated_LinkClicked);
             // 
+            // linklblHistory
+            // 
+            this.linklblHistory.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linklblHistory.AutoSize = true;
+            this.linklblHistory.LinkColor = System.Drawing.Color.Black;
+            this.linklblHistory.Location = new System.Drawing.Point(3, 72);
+            this.linklblHistory.Name = "linklblHistory";
+            this.linklblHistory.Size = new System.Drawing.Size(99, 13);
+            this.linklblHistory.TabIndex = 26;
+            this.linklblHistory.TabStop = true;
+            this.linklblHistory.Text = "Historia przeglądów";
+            this.linklblHistory.VisitedLinkColor = System.Drawing.Color.Black;
+            this.linklblHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblHistory_LinkClicked);
+            // 
             // ShowDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linklblHistory);
             this.Controls.Add(this.linkVaporated);
             this.Controls.Add(this.lblClient);
             this.Controls.Add(this.btnFind);
@@ -189,5 +205,6 @@
         private System.Windows.Forms.LinkLabel linklblAdd;
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.LinkLabel linkVaporated;
+        private System.Windows.Forms.LinkLabel linklblHistory;
     }
 }

@@ -222,6 +222,12 @@
     <Compile Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.Designer.cs">
       <DependentUpon>AddUsluga.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinformViews\History\ShowDeviceHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\History\ShowDeviceHistory.Designer.cs">
+      <DependentUpon>ShowDeviceHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformViews\Repairers\ChooseRepairer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.resx">
       <DependentUpon>AddUsluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\History\ShowDeviceHistory.resx">
+      <DependentUpon>ShowDeviceHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\Repairers\ChooseRepairer.resx">
       <DependentUpon>ChooseRepairer.cs</DependentUpon>
