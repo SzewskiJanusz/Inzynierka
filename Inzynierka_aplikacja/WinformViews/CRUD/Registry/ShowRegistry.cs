@@ -46,9 +46,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Registry
 
                 textBox3.Text = db.Urzadzenie.
                     Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nr_unikatowy).First();
-
-                textBox4.Text = db.Serwisant.
-                    Where(x => x.serwisant_id == s.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
             }
 
             dateTimePicker1.Value = s.data_przyjecia;

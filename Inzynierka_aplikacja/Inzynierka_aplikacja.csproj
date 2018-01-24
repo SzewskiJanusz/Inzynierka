@@ -80,49 +80,52 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Administrator.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\GrupaNaprawcza.cs">
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Handlowiec.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainDB\MainModel.Context.cs">
+    <Compile Include="MainDB\MainDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MainModel.Context.tt</DependentUpon>
+      <DependentUpon>MainDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainDB\MainModel.cs">
+    <Compile Include="MainDB\MainDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainDB\MainModel.Designer.cs">
+    <Compile Include="MainDB\MainDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MainModel.edmx</DependentUpon>
+      <DependentUpon>MainDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Miejsce_instalacji.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\PamiecLogowania.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Podatnik.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Serwisant.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\SerwisUrzadzenia.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\UrzadSkarbowy.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Urzadzenie.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Uslugi.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
+      <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -218,6 +221,18 @@
     </Compile>
     <Compile Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.Designer.cs">
       <DependentUpon>AddUsluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\Repairers\ChooseRepairer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\Repairers\ChooseRepairer.Designer.cs">
+      <DependentUpon>ChooseRepairer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinformViews\Repairers\ShowRepairers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinformViews\Repairers\ShowRepairers.Designer.cs">
+      <DependentUpon>ShowRepairers.cs</DependentUpon>
     </Compile>
     <Compile Include="WinformViews\ShowClients.cs">
       <SubType>UserControl</SubType>
@@ -322,6 +337,12 @@
     <EmbeddedResource Include="WinformViews\CRUD\UslugiCRUD\AddUsluga.resx">
       <DependentUpon>AddUsluga.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\Repairers\ChooseRepairer.resx">
+      <DependentUpon>ChooseRepairer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinformViews\Repairers\ShowRepairers.resx">
+      <DependentUpon>ShowRepairers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformViews\ShowClients.resx">
       <DependentUpon>ShowClients.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,12 +368,12 @@
       <DependentUpon>ShowUslugi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EntityDeploy Include="MainDB\MainModel.edmx">
+    <EntityDeploy Include="MainDB\MainDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MainModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MainDB\MainModel.edmx.diagram">
-      <DependentUpon>MainModel.edmx</DependentUpon>
+    <None Include="MainDB\MainDB.edmx.diagram">
+      <DependentUpon>MainDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Inzynierka_aplikacja.LoginDB.InzynierkaDBLoginEntities.datasource" />
@@ -380,15 +401,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MainDB\MainModel.Context.tt">
+    <Content Include="MainDB\MainDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MainModel.edmx</DependentUpon>
-      <LastGenOutput>MainModel.Context.cs</LastGenOutput>
+      <DependentUpon>MainDB.edmx</DependentUpon>
+      <LastGenOutput>MainDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MainDB\MainModel.tt">
+    <Content Include="MainDB\MainDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MainModel.edmx</DependentUpon>
-      <LastGenOutput>MainModel.cs</LastGenOutput>
+      <DependentUpon>MainDB.edmx</DependentUpon>
+      <LastGenOutput>MainDB.cs</LastGenOutput>
     </Content>
     <Content Include="SupportLocalDB\Wojewodztwa.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

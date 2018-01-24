@@ -1,4 +1,5 @@
 ﻿using Inzynierka_aplikacja.MainDB;
+using Inzynierka_aplikacja.WinformViews.Repairers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
     public partial class AddDevice : Form
     {
         public Urzadzenie NewDevice;
+        public List<GrupaNaprawcza> Groups;
 
         public AddDevice()
         {
@@ -20,9 +22,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Where(x=> x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
             }
-            comboBox2.Enabled = false;
+
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
@@ -38,9 +39,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Where(x => x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
             }
-            comboBox2.Enabled = false;
+
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
@@ -56,7 +56,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {       
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Where(x => x.serwisant_id == MainForm.serwisantID).Select(x => x.imie + " " + x.nazwisko).ToList();
 
                 comboBox3.DataSource = SQL.GetStates();
 
@@ -65,12 +64,11 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
                 SetDataFromEdited(u, db);
             }
-            comboBox2.Enabled = false;
             textBox4.Enabled = false;
             comboBox3.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
-            tbxMonths.Text = u.co_ile_przeglad_miesiac.ToString();
+            tbxMonths.Text = u.co_ile_przeglad.ToString();
             tbxMonths.Enabled = false;
             cbxPrzegladTime.Enabled = false;
             btnAdd.Text = "Zapisz";
@@ -84,7 +82,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.podatnik_id == p.podatnik_id).Select(x => x.nazwa).ToList();
-                comboBox2.DataSource = db.Serwisant.Select(x => x.imie + " " + x.nazwisko).ToList();
             }
            
             comboBox3.DataSource = SQL.GetStates();
@@ -138,7 +135,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             textBox2.Text = u.nr_fabryczny;
             textBox3.Text = u.nr_ewidencyjny;
             comboBox1.SelectedIndex = comboBox1.FindStringExact(nazwaPod);
-            comboBox2.SelectedText = db.Serwisant.Where(x => x.serwisant_id == u.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
             comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
             textBox4.Text = mi.kraj;
             textBox5.Text = mi.miasto;
@@ -189,9 +185,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             }
 
             // SERWISANT
-            if (comboBox2.Text == "")
+            if (listBoxRepairers.Items.Count == 0)
             {
-                errorPrv.SetError(comboBox2, "Wybierz serwisanta");
+                errorPrv.SetError(listBoxRepairers, "Dodaj serwisanta");
                 check = false;
             }
 
@@ -258,15 +254,11 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             if (ValidateData())
             {
                 int podID = 0;
-                int serID = 0;
                 int miejID = 0;
                 using (InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
                     podID = db.Podatnik.Where(x => x.nazwa == comboBox1.SelectedValue.ToString()).
                         Select(x => x.podatnik_id).First();
-                    serID = db.Serwisant.Where(x => x.imie+" "+x.nazwisko == 
-                        comboBox2.SelectedValue.ToString()).
-                            Select(x => x.serwisant_id).First();
                     try
                     {
                         string woj = comboBox3.SelectedValue.ToString();
@@ -304,11 +296,24 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
 
                 DateTime nextPrzeglad = dateTimePicker1.Value.AddMonths(months);
-
+                int lastDevID = 0;
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    try
+                    {
+                        lastDevID = db.Urzadzenie.Max(x => x.urzadzenie_id);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        lastDevID = 1;
+                    }
+                        
+                }
+                    
                 NewDevice = new Urzadzenie()
                 {
+                    urzadzenie_id = lastDevID,
                     podatnik_id = podID,
-                    serwisant_id = serID,
                     miejsce_id = miejID,
                     nr_unikatowy = textBox1.Text,
                     nr_fabryczny = textBox2.Text,
@@ -316,8 +321,29 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                     data_uruchomienia = dateTimePicker1.Value,
                     ostatni_przeglad = dateTimePicker1.Value,
                     nastepny_przeglad = nextPrzeglad,
-                    co_ile_przeglad_miesiac = months
+                    co_ile_przeglad = months
                 };
+
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    int ktory_serwisant = 1;
+                    Groups = new List<GrupaNaprawcza>();
+                    foreach (string a in listBoxRepairers.Items)
+                    {
+                        GrupaNaprawcza gn = new GrupaNaprawcza()
+                        {
+                            serwisant_id = db.Serwisant.Where(x => x.imie + " " + x.nazwisko == a).Select(x => x.serwisant_id).First(),
+                            urzadzenie_id = NewDevice.urzadzenie_id,
+                            ktory = ktory_serwisant
+                        };
+                        Groups.Add(gn);
+                        ktory_serwisant++;
+                    }
+                }
+                
+                    
+
+
                 this.DialogResult = DialogResult.OK;
             }
         }
@@ -363,6 +389,21 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             {
                 tbxMonths.Visible = false;
             }
+        }
+
+        private void btnChooseRepairers_Click(object sender, EventArgs e)
+        {
+            ChooseRepairer cr = new ChooseRepairer(listBoxRepairers.Items);
+            if (cr.ShowDialog() == DialogResult.OK)
+            {
+                listBoxRepairers.Items.Clear();
+                foreach (string a in cr.repairers)
+                {
+                    listBoxRepairers.Items.Add(a);
+                }
+                listBoxRepairers.Update();
+            }
+
         }
     }
 }

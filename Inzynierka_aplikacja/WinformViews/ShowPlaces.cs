@@ -68,11 +68,14 @@ namespace Inzynierka_aplikacja.WinformViews
                             SerwisUrzadzenia su = new SerwisUrzadzenia()
                             {
                                 urzadzenie_id = f.NewDevice.urzadzenie_id,
-                                serwisant_id = f.NewDevice.serwisant_id,
                                 usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
-                                data_przyjecia = (DateTime)f.NewDevice.nastepny_przeglad
+                                data_przyjecia = DateTime.Now
                             };
                             db.SerwisUrzadzenia.Add(su);
+                            foreach(GrupaNaprawcza g in f.Groups)
+                            {
+                                db.GrupaNaprawcza.Add(g);
+                            }
                             db.SaveChanges();
                         }
                     }

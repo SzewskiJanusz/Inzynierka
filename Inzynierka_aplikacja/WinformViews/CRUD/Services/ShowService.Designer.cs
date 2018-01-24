@@ -44,6 +44,9 @@
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.linklblDone = new System.Windows.Forms.LinkLabel();
+            this.btnShowAllRepairers = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.gbBasics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.SuspendLayout();
@@ -54,12 +57,15 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(6, 165);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(237, 24);
+            this.label6.Size = new System.Drawing.Size(179, 24);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Planowana data wykonania";
+            this.label6.Text = "Data wprowadzenia ";
             // 
             // gbBasics
             // 
+            this.gbBasics.Controls.Add(this.dateTimePicker2);
+            this.gbBasics.Controls.Add(this.label7);
+            this.gbBasics.Controls.Add(this.btnShowAllRepairers);
             this.gbBasics.Controls.Add(this.textBox4);
             this.gbBasics.Controls.Add(this.textBox3);
             this.gbBasics.Controls.Add(this.textBox2);
@@ -73,14 +79,14 @@
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gbBasics.Location = new System.Drawing.Point(12, 64);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(570, 246);
+            this.gbBasics.Size = new System.Drawing.Size(570, 302);
             this.gbBasics.TabIndex = 15;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Dane usługi";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(269, 210);
+            this.textBox4.Location = new System.Drawing.Point(269, 237);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(295, 23);
             this.textBox4.TabIndex = 32;
@@ -110,11 +116,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(6, 210);
+            this.label5.Location = new System.Drawing.Point(6, 234);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 24);
+            this.label5.Size = new System.Drawing.Size(97, 24);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Serwisant";
+            this.label5.Text = "I serwisant";
             // 
             // dateTimePicker1
             // 
@@ -169,7 +175,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(390, 321);
+            this.button1.Location = new System.Drawing.Point(384, 372);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 28;
@@ -192,11 +198,38 @@
             this.linklblDone.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblDone.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblDone_LinkClicked);
             // 
+            // btnShowAllRepairers
+            // 
+            this.btnShowAllRepairers.Location = new System.Drawing.Point(269, 266);
+            this.btnShowAllRepairers.Name = "btnShowAllRepairers";
+            this.btnShowAllRepairers.Size = new System.Drawing.Size(238, 30);
+            this.btnShowAllRepairers.TabIndex = 33;
+            this.btnShowAllRepairers.Text = "Wyświetl wszystkich serwisantów";
+            this.btnShowAllRepairers.UseVisualStyleBackColor = true;
+            this.btnShowAllRepairers.Click += new System.EventHandler(this.btnShowAllRepairers_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(6, 200);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(164, 24);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Termin wykonania";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(269, 201);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(295, 23);
+            this.dateTimePicker2.TabIndex = 35;
+            // 
             // ShowService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 356);
+            this.ClientSize = new System.Drawing.Size(604, 407);
             this.Controls.Add(this.linklblDone);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbBasics);
@@ -227,5 +260,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.LinkLabel linklblDone;
+        private System.Windows.Forms.Button btnShowAllRepairers;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label7;
     }
 }

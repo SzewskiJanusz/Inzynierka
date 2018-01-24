@@ -17,21 +17,18 @@ namespace Inzynierka_aplikacja.MainDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Serwisant()
         {
-            this.SerwisUrzadzenia = new HashSet<SerwisUrzadzenia>();
-            this.Urzadzenie = new HashSet<Urzadzenie>();
+            this.GrupaNaprawcza = new HashSet<GrupaNaprawcza>();
         }
     
         public int serwisant_id { get; set; }
         public string imie { get; set; }
         public string nazwisko { get; set; }
         public string telefon { get; set; }
-        public string email { get; set; }
         public string haslohash { get; set; }
         public string salt { get; set; }
+        public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Urzadzenie> Urzadzenie { get; set; }
+        public virtual ICollection<GrupaNaprawcza> GrupaNaprawcza { get; set; }
     }
 }

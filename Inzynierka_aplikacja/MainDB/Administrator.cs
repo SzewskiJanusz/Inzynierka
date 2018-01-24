@@ -15,7 +15,7 @@ namespace Inzynierka_aplikacja.MainDB
     public partial class Administrator
     {
         public int admin_id { get; set; }
-        public string login { get; set; }
+        public string nazwa { get; set; }
         public string haslohash { get; set; }
         public string salt { get; set; }
     }

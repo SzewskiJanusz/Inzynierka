@@ -12,14 +12,14 @@ namespace Inzynierka_aplikacja.MainDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Handlowiec
+    public partial class GrupaNaprawcza
     {
-        public int handlowiec_id { get; set; }
-        public string imie { get; set; }
-        public string nazwisko { get; set; }
-        public string telefon { get; set; }
-        public string haslohash { get; set; }
-        public string salt { get; set; }
-        public string email { get; set; }
+        public int grupa_id { get; set; }
+        public int serwisant_id { get; set; }
+        public int urzadzenie_id { get; set; }
+        public int ktory { get; set; }
+    
+        public virtual Serwisant Serwisant { get; set; }
+        public virtual Urzadzenie Urzadzenie { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Inzynierka_aplikacja.MainDB;
+using Inzynierka_aplikacja.WinformViews.Repairers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,8 +52,15 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                 textBox3.Text = db.Urzadzenie.
                     Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nr_unikatowy).First();
 
-                textBox4.Text = db.Serwisant.
-                    Where(x => x.serwisant_id == s.serwisant_id).Select(x => x.imie + " " + x.nazwisko).First();
+                textBox4.Text = (from serw in db.Serwisant join
+                                 gn in db.GrupaNaprawcza
+                                 on serw.serwisant_id equals gn.serwisant_id
+                                 where (gn.urzadzenie_id == s.urzadzenie_id && gn.ktory == 1)
+                                 select serw.imie+ " "+serw.nazwisko).First();
+
+                dateTimePicker2.Value = db.Urzadzenie.
+                    Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nastepny_przeglad).First();
+
             }
 
             dateTimePicker1.Value = s.data_przyjecia;
@@ -73,7 +81,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                 int months = 0;
                 using (InzynierkaDBEntities db = new InzynierkaDBEntities())
                 {
-                    months = (int)db.Urzadzenie.Where(x => x.urzadzenie_id == serv.urzadzenie_id).Select(x => x.co_ile_przeglad_miesiac).First();
+                    months = (int)db.Urzadzenie.Where(x => x.urzadzenie_id == serv.urzadzenie_id).Select(x => x.co_ile_przeglad).First();
                 }
 
                 DateTime nextPrzeglad = ds.dtime;
@@ -90,7 +98,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                     SerwisUrzadzenia su = new SerwisUrzadzenia()
                     {
                         urzadzenie_id = serv.urzadzenie_id,
-                        serwisant_id = serv.serwisant_id,
                         usluga_id = serv.usluga_id,
                         data_przyjecia = ds.dtime
                     };
@@ -98,6 +105,12 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Services
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void btnShowAllRepairers_Click(object sender, EventArgs e)
+        {
+            ShowRepairers sr = new ShowRepairers(serv.urzadzenie_id);
+            sr.ShowDialog();
         }
     }
 }

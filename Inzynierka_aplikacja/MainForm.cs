@@ -70,7 +70,7 @@ namespace Inzynierka_aplikacja
 
         private void Init(Administrator admin)
         {
-            lblLogged.Text = admin.login;
+            lblLogged.Text = admin.nazwa;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             SetDefaultToolStripIcons();
@@ -237,7 +237,6 @@ namespace Inzynierka_aplikacja
                     SerwisUrzadzenia su = new SerwisUrzadzenia()
                     {
                         urzadzenie_id = f.NewDevice.urzadzenie_id,
-                        serwisant_id = f.NewDevice.serwisant_id,
                         usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
                         data_przyjecia = (DateTime)f.NewDevice.nastepny_przeglad
                     };
@@ -460,11 +459,14 @@ namespace Inzynierka_aplikacja
                     SerwisUrzadzenia su = new SerwisUrzadzenia()
                     {
                         urzadzenie_id = f.NewDevice.urzadzenie_id,
-                        serwisant_id = f.NewDevice.serwisant_id,
-                        usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x=>x.usluga_id).First(),
+                        usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
                         data_przyjecia = DateTime.Now
                     };
                     db.SerwisUrzadzenia.Add(su);
+                    foreach (GrupaNaprawcza gn in f.Groups)
+                    {
+                        db.GrupaNaprawcza.Add(gn);
+                    }
                     db.SaveChanges();
                 }
             }
@@ -489,7 +491,6 @@ namespace Inzynierka_aplikacja
                 string updateQuery =
                     "UPDATE Urzadzenie SET " +
                     "podatnik_id = " + f.NewDevice.podatnik_id + ", " +
-                    "serwisant_id = '" + f.NewDevice.serwisant_id + "', " +
                     "miejsce_id = '" + f.NewDevice.miejsce_id + "', " +
                     "nr_ewidencyjny = '" + f.NewDevice.nr_ewidencyjny + "', " +
                     "nr_unikatowy = '" + f.NewDevice.nr_unikatowy + "', " +

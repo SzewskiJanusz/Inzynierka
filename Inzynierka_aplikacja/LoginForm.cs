@@ -101,10 +101,10 @@ namespace Inzynierka_aplikacja
                         return true;
                     }
 
-                    bool czyToAdmin = db.Administrator.Any(x => x.login == a.zapamietany);
+                    bool czyToAdmin = db.Administrator.Any(x => x.nazwa == a.zapamietany);
                     if (czyToAdmin)
                     {
-                        AdminToLogin = db.Administrator.Where(x => x.login == a.zapamietany).First();
+                        AdminToLogin = db.Administrator.Where(x => x.nazwa == a.zapamietany).First();
                         return true;
                     }
 
@@ -197,7 +197,7 @@ namespace Inzynierka_aplikacja
 
                 try
                 {
-                    checkA = db.Administrator.Where(x => x.login == user).First();
+                    checkA = db.Administrator.Where(x => x.nazwa == user).First();
                 }
                 catch (InvalidOperationException)
                 {

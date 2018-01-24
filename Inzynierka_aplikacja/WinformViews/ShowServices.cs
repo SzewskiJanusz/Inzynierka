@@ -68,7 +68,8 @@ namespace Inzynierka_aplikacja.WinformViews
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-            "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+            "INNER JOIN GrupaNaprawcza gn ON gn.urzadzenie_id = u.urzadzenie_id " +
+            "INNER JOIN Serwisant s ON gn.serwisant_id = s.serwisant_id " +
             "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
             "WHERE s.serwisant_id = " + MainForm.serwisantID + " AND " +
             "su.data_oddania IS NULL;";
@@ -144,18 +145,19 @@ namespace Inzynierka_aplikacja.WinformViews
             if (showAll)
             {
                 string query =
-                "SELECT su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
-                "u.nr_unikatowy AS 'Numer unikatowy urządzenia', s.imie + ' '+ s.nazwisko AS 'Serwisant', " +
+                "SELECT su.serwis_id AS 'id', su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
+                "u.nr_unikatowy AS 'Numer unikatowy urządzenia', s.imie + ' '+ s.nazwisko AS 'I Serwisant', " +
                 "usl.nazwa AS 'Nazwa usługi', u.nastepny_przeglad AS 'Termin przeglądu' " +
                 "FROM SerwisUrzadzenia su " +
                 "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-                "INNER JOIN Serwisant s ON s.serwisant_id = su.serwisant_id " +
+                "INNER JOIN GrupaNaprawcza gn ON gn.urzadzenie_id = u.urzadzenie_id " +
+                "INNER JOIN Serwisant s ON s.serwisant_id = gn.serwisant_id " +
                 "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
-                "WHERE su.data_oddania IS NULL; ";
+                "WHERE su.data_oddania IS NULL AND gn.ktory = 1; ";
 
                 showAll = false;
-
+                dgvServices.Columns[0].Visible = false;
                 dgvServices.DataSource = SQL.DoQuery(query);
             }
             else

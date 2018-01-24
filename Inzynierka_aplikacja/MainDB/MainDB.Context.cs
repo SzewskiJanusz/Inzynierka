@@ -26,6 +26,7 @@ namespace Inzynierka_aplikacja.MainDB
         }
     
         public virtual DbSet<Administrator> Administrator { get; set; }
+        public virtual DbSet<GrupaNaprawcza> GrupaNaprawcza { get; set; }
         public virtual DbSet<Handlowiec> Handlowiec { get; set; }
         public virtual DbSet<Miejsce_instalacji> Miejsce_instalacji { get; set; }
         public virtual DbSet<PamiecLogowania> PamiecLogowania { get; set; }
