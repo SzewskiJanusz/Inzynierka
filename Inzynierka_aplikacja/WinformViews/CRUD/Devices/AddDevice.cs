@@ -141,6 +141,15 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             textBox3.Text = u.nr_ewidencyjny;
             comboBox1.SelectedIndex = comboBox1.FindStringExact(nazwaPod);
             comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
+            string query = "SELECT s.imie + ' ' + s.nazwisko AS 'serwisant' FROM Serwisant s " +
+                "INNER JOIN GrupaNaprawcza gn ON gn.serwisant_id = s.serwisant_id " +
+                "WHERE gn.urzadzenie_id = "+u.urzadzenie_id+ ";";
+            List<DataRow> sqlList = SQL.DoQuery(query).AsEnumerable().ToList();
+            foreach(DataRow x in sqlList)
+            {
+                listBoxRepairers.Items.Add(x.Field<string>("serwisant"));
+            }
+
             textBox4.Text = mi.kraj;
             textBox5.Text = mi.miasto;
             textBox6.Text = mi.ulica;

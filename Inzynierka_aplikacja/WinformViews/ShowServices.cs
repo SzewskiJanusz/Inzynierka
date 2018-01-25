@@ -62,15 +62,27 @@ namespace Inzynierka_aplikacja.WinformViews
         private void LoadServices()
         {
             string query =
-            "SELECT su.serwis_id AS 'id', su.data_przyjecia AS 'Data stworzenia usługi', p.nazwa AS 'Nazwa kontrahenta', " +
-            "u.nr_unikatowy AS 'Numer unikatowy urządzenia', " +
-            "usl.nazwa AS 'Nazwa usługi', u.nastepny_przeglad AS 'Termin wykonania' " +
+            "SELECT " +
+            "su.serwis_id AS 'id', " +
+            "u.nastepny_przeglad AS 'Data następnego przeglądu', " +
+            "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
+            "p.nazwa AS 'Nazwa kontrahenta', " +
+            "p.telefon AS 'Telefon', " +
+            "p.nip AS 'NIP podatnika', " +
+            "p.miasto AS 'Miasto', " +
+            "mi.ulica AS 'Ulica', " +
+            "s.imie + ' ' + s.nazwisko AS 'Serwisant', " +
+            "mu.nazwa AS 'Model kasy', " +
+            "u.nr_unikatowy AS 'Numer unikatowy', " +
+            "u.nr_fabryczny AS 'Numer fabryczny' " +
             "FROM SerwisUrzadzenia su " +
             "INNER JOIN Urzadzenie u ON u.urzadzenie_id = su.urzadzenie_id " +
             "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
             "INNER JOIN GrupaNaprawcza gn ON gn.urzadzenie_id = u.urzadzenie_id " +
             "INNER JOIN Serwisant s ON gn.serwisant_id = s.serwisant_id " +
             "INNER JOIN Uslugi usl ON usl.usluga_id = su.usluga_id " +
+            "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
+            "INNER JOIN ModelUrzadzenia mu ON mu.model_id = u.model_id " +
             "WHERE s.serwisant_id = " + MainForm.serwisantID + " AND " +
             "su.data_oddania IS NULL;";
 

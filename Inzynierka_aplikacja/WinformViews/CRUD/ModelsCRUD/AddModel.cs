@@ -47,6 +47,12 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.ModelsCRUD
                 check = false;
             }
 
+            if (tbxModel.Text.Length == 0)
+            {
+                errorPrv.SetError(tbxModel, "Wpisz nazwę modelu");
+                check = false;
+            }
+
             return check;
         }
     }

@@ -687,14 +687,11 @@ namespace Inzynierka_aplikacja
             AddModel f = new AddModel(mu);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-                {
-                    string updateQuery =
-                    "UPDATE ModelUrzadzenia SET " +
-                    "nazwa = '" + f.modelUrzadzenia.nazwa + "' " +
-                    "WHERE model_id = " + f.modelUrzadzenia.model_id + ";";
-                    SQL.DoQuery(updateQuery);
-                }
+                string updateQuery =
+                "UPDATE ModelUrzadzenia SET " +
+                "nazwa = '" + f.modelUrzadzenia.nazwa + "' " +
+                "WHERE model_id = " + rowID + ";";
+                SQL.DoQuery(updateQuery);
             }
         }
 

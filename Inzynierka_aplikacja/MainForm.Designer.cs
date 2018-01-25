@@ -71,9 +71,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblLogged = new System.Windows.Forms.Label();
             this.lblTodaysDate = new System.Windows.Forms.Label();
-            this.panelModels = new System.Windows.Forms.Panel();
-            this.pbModels = new System.Windows.Forms.PictureBox();
-            this.lbModels = new System.Windows.Forms.Label();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.modelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panelUslugi.SuspendLayout();
@@ -87,8 +86,6 @@
             this.panelClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panelModels.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbModels)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -148,7 +145,9 @@
             this.najbliższeUsługiToolStripMenuItem,
             this.toolStripSeparator2,
             this.USToolStripMenuItem,
-            this.województwaToolStripMenuItem});
+            this.województwaToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.modelsToolStripMenuItem});
             this.widokToolStripMenuItem.Name = "widokToolStripMenuItem";
             this.widokToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.widokToolStripMenuItem.Text = "Widok";
@@ -156,47 +155,47 @@
             // kontrahenciToolStripMenuItem
             // 
             this.kontrahenciToolStripMenuItem.Name = "kontrahenciToolStripMenuItem";
-            this.kontrahenciToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.kontrahenciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.kontrahenciToolStripMenuItem.Text = "Kontrahenci";
             this.kontrahenciToolStripMenuItem.Click += new System.EventHandler(this.ShowUsersClick);
             // 
             // ądzeniaToolStripMenuItem
             // 
             this.ądzeniaToolStripMenuItem.Name = "ądzeniaToolStripMenuItem";
-            this.ądzeniaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.ądzeniaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.ądzeniaToolStripMenuItem.Text = "Urzadzenia";
             this.ądzeniaToolStripMenuItem.Click += new System.EventHandler(this.ShowDevicesClick);
             // 
             // usługiToolStripMenuItem
             // 
             this.usługiToolStripMenuItem.Name = "usługiToolStripMenuItem";
-            this.usługiToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.usługiToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.usługiToolStripMenuItem.Text = "Historia usług";
             this.usługiToolStripMenuItem.Click += new System.EventHandler(this.ShowRegistry_Click);
             // 
             // najbliższeUsługiToolStripMenuItem
             // 
             this.najbliższeUsługiToolStripMenuItem.Name = "najbliższeUsługiToolStripMenuItem";
-            this.najbliższeUsługiToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.najbliższeUsługiToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.najbliższeUsługiToolStripMenuItem.Text = "Najbliższe usługi";
             this.najbliższeUsługiToolStripMenuItem.Click += new System.EventHandler(this.ShowServices_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
             // 
             // USToolStripMenuItem
             // 
             this.USToolStripMenuItem.Name = "USToolStripMenuItem";
-            this.USToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.USToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.USToolStripMenuItem.Text = "Urzędy skarbowe";
             this.USToolStripMenuItem.Click += new System.EventHandler(this.USToolStripMenuItem_Click);
             // 
             // województwaToolStripMenuItem
             // 
             this.województwaToolStripMenuItem.Name = "województwaToolStripMenuItem";
-            this.województwaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.województwaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.województwaToolStripMenuItem.Text = "Województwa";
             this.województwaToolStripMenuItem.Click += new System.EventHandler(this.województwaToolStripMenuItem_Click);
             // 
@@ -266,7 +265,6 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.leftPanel.Controls.Add(this.panelModels);
             this.leftPanel.Controls.Add(this.panelUslugi);
             this.leftPanel.Controls.Add(this.panelRegistry);
             this.leftPanel.Controls.Add(this.panelPrzeglad);
@@ -336,11 +334,11 @@
             // 
             this.lblRegistry.AutoSize = true;
             this.lblRegistry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblRegistry.Location = new System.Drawing.Point(21, 48);
+            this.lblRegistry.Location = new System.Drawing.Point(12, 48);
             this.lblRegistry.Name = "lblRegistry";
-            this.lblRegistry.Size = new System.Drawing.Size(130, 20);
+            this.lblRegistry.Size = new System.Drawing.Size(156, 20);
             this.lblRegistry.TabIndex = 1;
-            this.lblRegistry.Text = "Wykonane usługi";
+            this.lblRegistry.Text = "Wykonane przeglądy";
             this.lblRegistry.Click += new System.EventHandler(this.ShowRegistry_Click);
             // 
             // panelPrzeglad
@@ -369,11 +367,11 @@
             // 
             this.lblPrzeglad.AutoSize = true;
             this.lblPrzeglad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPrzeglad.Location = new System.Drawing.Point(25, 48);
+            this.lblPrzeglad.Location = new System.Drawing.Point(12, 48);
             this.lblPrzeglad.Name = "lblPrzeglad";
-            this.lblPrzeglad.Size = new System.Drawing.Size(126, 20);
+            this.lblPrzeglad.Size = new System.Drawing.Size(152, 20);
             this.lblPrzeglad.TabIndex = 1;
-            this.lblPrzeglad.Text = "Najbliższe usługi";
+            this.lblPrzeglad.Text = "Najbliższe przeglądy";
             this.lblPrzeglad.Click += new System.EventHandler(this.ShowServices_Click);
             // 
             // panelDevices
@@ -486,38 +484,17 @@
             this.lblTodaysDate.TabIndex = 0;
             this.lblTodaysDate.Text = "test";
             // 
-            // panelModels
+            // toolStripSeparator3
             // 
-            this.panelModels.Controls.Add(this.pbModels);
-            this.panelModels.Controls.Add(this.lbModels);
-            this.panelModels.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelModels.Location = new System.Drawing.Point(0, 385);
-            this.panelModels.Name = "panelModels";
-            this.panelModels.Size = new System.Drawing.Size(170, 77);
-            this.panelModels.TabIndex = 5;
-            this.panelModels.Click += new System.EventHandler(this.ShowModels_Click);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
             // 
-            // pbModels
+            // modelsToolStripMenuItem
             // 
-            this.pbModels.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbModels.ErrorImage")));
-            this.pbModels.Image = ((System.Drawing.Image)(resources.GetObject("pbModels.Image")));
-            this.pbModels.Location = new System.Drawing.Point(60, 3);
-            this.pbModels.Name = "pbModels";
-            this.pbModels.Size = new System.Drawing.Size(43, 42);
-            this.pbModels.TabIndex = 0;
-            this.pbModels.TabStop = false;
-            this.pbModels.Click += new System.EventHandler(this.ShowModels_Click);
-            // 
-            // lbModels
-            // 
-            this.lbModels.AutoSize = true;
-            this.lbModels.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lbModels.Location = new System.Drawing.Point(37, 48);
-            this.lbModels.Name = "lbModels";
-            this.lbModels.Size = new System.Drawing.Size(90, 20);
-            this.lbModels.TabIndex = 1;
-            this.lbModels.Text = "Modele kas";
-            this.lbModels.Click += new System.EventHandler(this.ShowModels_Click);
+            this.modelsToolStripMenuItem.Name = "modelsToolStripMenuItem";
+            this.modelsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.modelsToolStripMenuItem.Text = "Modele urządzeń";
+            this.modelsToolStripMenuItem.Click += new System.EventHandler(this.ShowModels_Click);
             // 
             // MainForm
             // 
@@ -552,9 +529,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClient)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panelModels.ResumeLayout(false);
-            this.panelModels.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbModels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,8 +578,7 @@
         private System.Windows.Forms.Panel panelUslugi;
         private System.Windows.Forms.PictureBox pbUslugi;
         private System.Windows.Forms.Label lblUslugi;
-        private System.Windows.Forms.Panel panelModels;
-        private System.Windows.Forms.PictureBox pbModels;
-        private System.Windows.Forms.Label lbModels;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem modelsToolStripMenuItem;
     }
 }
