@@ -38,6 +38,7 @@
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBoxRepairers = new System.Windows.Forms.ListBox();
             this.btnChooseRepairers = new System.Windows.Forms.Button();
             this.tbxMonths = new System.Windows.Forms.TextBox();
             this.cbxPrzegladTime = new System.Windows.Forms.ComboBox();
@@ -58,7 +59,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.listBoxRepairers = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbxModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbBasics.SuspendLayout();
@@ -141,12 +143,22 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 279);
+            this.groupBox1.Location = new System.Drawing.Point(12, 294);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(569, 191);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane obsługi urządzenia";
+            // 
+            // listBoxRepairers
+            // 
+            this.listBoxRepairers.FormattingEnabled = true;
+            this.listBoxRepairers.ItemHeight = 16;
+            this.listBoxRepairers.Location = new System.Drawing.Point(190, 77);
+            this.listBoxRepairers.Name = "listBoxRepairers";
+            this.listBoxRepairers.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxRepairers.Size = new System.Drawing.Size(242, 68);
+            this.listBoxRepairers.TabIndex = 29;
             // 
             // btnChooseRepairers
             // 
@@ -186,6 +198,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(190, 31);
             this.comboBox1.Name = "comboBox1";
@@ -204,7 +217,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(311, 675);
+            this.btnAdd.Location = new System.Drawing.Point(311, 690);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(133, 28);
             this.btnAdd.TabIndex = 12;
@@ -214,6 +227,8 @@
             // 
             // gbBasics
             // 
+            this.gbBasics.Controls.Add(this.cbxModel);
+            this.gbBasics.Controls.Add(this.label13);
             this.gbBasics.Controls.Add(this.dateTimePicker1);
             this.gbBasics.Controls.Add(this.label6);
             this.gbBasics.Controls.Add(this.textBox3);
@@ -223,9 +238,9 @@
             this.gbBasics.Controls.Add(this.label3);
             this.gbBasics.Controls.Add(this.label2);
             this.gbBasics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gbBasics.Location = new System.Drawing.Point(12, 63);
+            this.gbBasics.Location = new System.Drawing.Point(12, 52);
             this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Size = new System.Drawing.Size(569, 210);
+            this.gbBasics.Size = new System.Drawing.Size(569, 236);
             this.gbBasics.TabIndex = 10;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Dane urządzenia";
@@ -268,7 +283,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 476);
+            this.groupBox2.Location = new System.Drawing.Point(12, 491);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(569, 193);
             this.groupBox2.TabIndex = 13;
@@ -277,6 +292,7 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(190, 84);
             this.comboBox3.Name = "comboBox3";
@@ -344,21 +360,30 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "Kraj";
             // 
-            // listBoxRepairers
+            // label13
             // 
-            this.listBoxRepairers.FormattingEnabled = true;
-            this.listBoxRepairers.ItemHeight = 16;
-            this.listBoxRepairers.Location = new System.Drawing.Point(190, 77);
-            this.listBoxRepairers.Name = "listBoxRepairers";
-            this.listBoxRepairers.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBoxRepairers.Size = new System.Drawing.Size(242, 68);
-            this.listBoxRepairers.TabIndex = 29;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(6, 209);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(160, 24);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Model urządzenia";
+            // 
+            // cbxModel
+            // 
+            this.cbxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxModel.FormattingEnabled = true;
+            this.cbxModel.Location = new System.Drawing.Point(190, 209);
+            this.cbxModel.Name = "cbxModel";
+            this.cbxModel.Size = new System.Drawing.Size(242, 24);
+            this.cbxModel.TabIndex = 26;
             // 
             // AddDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 715);
+            this.ClientSize = new System.Drawing.Size(594, 730);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdd);
@@ -410,5 +435,7 @@
         private System.Windows.Forms.TextBox tbxMonths;
         private System.Windows.Forms.Button btnChooseRepairers;
         private System.Windows.Forms.ListBox listBoxRepairers;
+        private System.Windows.Forms.ComboBox cbxModel;
+        private System.Windows.Forms.Label label13;
     }
 }

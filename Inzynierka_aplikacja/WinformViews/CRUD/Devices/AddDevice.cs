@@ -22,6 +22,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
             }
 
             comboBox3.DataSource = SQL.GetStates();
@@ -39,6 +40,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
+                cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
+
             }
 
             comboBox3.DataSource = SQL.GetStates();
@@ -56,6 +59,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {       
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
+                cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
 
                 comboBox3.DataSource = SQL.GetStates();
 
@@ -82,8 +86,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.podatnik_id == p.podatnik_id).Select(x => x.nazwa).ToList();
+                cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
             }
-           
+
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
@@ -309,12 +314,20 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                     }
                         
                 }
-                    
+
+                int modelID = 0;
+                using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    modelID = db.ModelUrzadzenia.Where(x => x.nazwa == cbxModel.SelectedValue.ToString()).
+                        Select(x=>x.model_id).First();
+                }
+
                 NewDevice = new Urzadzenie()
                 {
                     urzadzenie_id = lastDevID,
                     podatnik_id = podID,
                     miejsce_id = miejID,
+                    model_id = modelID,
                     nr_unikatowy = textBox1.Text,
                     nr_fabryczny = textBox2.Text,
                     nr_ewidencyjny = textBox3.Text,
@@ -403,7 +416,6 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                 }
                 listBoxRepairers.Update();
             }
-
         }
     }
 }

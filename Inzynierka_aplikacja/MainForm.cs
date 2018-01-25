@@ -2,6 +2,7 @@
 using Inzynierka_aplikacja.WinformViews;
 using Inzynierka_aplikacja.WinformViews.CRUD.Clients;
 using Inzynierka_aplikacja.WinformViews.CRUD.Devices;
+using Inzynierka_aplikacja.WinformViews.CRUD.ModelsCRUD;
 using Inzynierka_aplikacja.WinformViews.CRUD.Places;
 using Inzynierka_aplikacja.WinformViews.CRUD.Registry;
 using Inzynierka_aplikacja.WinformViews.CRUD.Services;
@@ -86,7 +87,7 @@ namespace Inzynierka_aplikacja
             icons.Add(ToolstripIcons.GetInstance().GetServices().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetRegistry().ToList());
             icons.Add(ToolstripIcons.GetInstance().GetUslugi().ToList());
-
+            icons.Add(ToolstripIcons.GetInstance().GetModel().ToList());
 
             icons[0][0].Click += AddClient;
             icons[0][1].Click += EditClient;
@@ -103,7 +104,8 @@ namespace Inzynierka_aplikacja
             icons[4][0].Click += AddUslugaClick;
             icons[4][1].Click += EditUslugaClick;
 
-
+            icons[5][0].Click += AddModelClick;
+            icons[5][1].Click += EditModelClick;
 
         }
 
@@ -625,15 +627,12 @@ namespace Inzynierka_aplikacja
             AddUsluga f = new AddUsluga(u);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-                {
-                    string updateQuery =
-                    "UPDATE Uslugi SET " +
-                    "nazwa = '" + f.nowaUsluga.nazwa + "', " +
-                    "koszt_brutto = " + f.nowaUsluga.koszt_brutto + " " +
-                    "WHERE usluga_id = " + u.usluga_id + ";";
-                    SQL.DoQuery(updateQuery);
-                }
+                string updateQuery =
+                "UPDATE Uslugi SET " +
+                "nazwa = '" + f.nowaUsluga.nazwa + "', " +
+                "koszt_brutto = " + f.nowaUsluga.koszt_brutto + " " +
+                "WHERE usluga_id = " + u.usluga_id + ";";
+                SQL.DoQuery(updateQuery);
             }
         }
 
@@ -649,5 +648,56 @@ namespace Inzynierka_aplikacja
                 }
             }
         }
+
+        private void ShowModels_Click(object sender, EventArgs e)
+        {
+            RemoveControls();
+            ShowModels su = new ShowModels();
+            su.AddModelButtonClicked -= AddModelClick;
+            su.AddModelButtonClicked += AddModelClick;
+            su.EditModelButtonClicked -= EditModelClick;
+            su.EditModelButtonClicked += EditModelClick;
+
+            ShowIcons("models");
+            contentPanel.Controls.Add(su);
+        }
+
+        private void AddModelClick(object sender, EventArgs e)
+        {
+            AddModel f = new AddModel();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    db.ModelUrzadzenia.Add(f.modelUrzadzenia);
+                    db.SaveChanges();
+                } 
+            }
+        }
+
+        private void EditModelClick(object sender, EventArgs e)
+        {
+            int rowID = Convert.ToInt32(ShowModels.selectedRow.Cells["id"].Value.ToString());
+            ModelUrzadzenia mu;
+
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                mu = db.ModelUrzadzenia.Where(x => x.model_id == rowID).First();
+            }
+            AddModel f = new AddModel(mu);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    string updateQuery =
+                    "UPDATE ModelUrzadzenia SET " +
+                    "nazwa = '" + f.modelUrzadzenia.nazwa + "' " +
+                    "WHERE model_id = " + f.modelUrzadzenia.model_id + ";";
+                    SQL.DoQuery(updateQuery);
+                }
+            }
+        }
+
+        
     }
 }

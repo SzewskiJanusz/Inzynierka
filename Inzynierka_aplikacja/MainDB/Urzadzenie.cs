@@ -24,6 +24,7 @@ namespace Inzynierka_aplikacja.MainDB
         public int urzadzenie_id { get; set; }
         public int podatnik_id { get; set; }
         public int miejsce_id { get; set; }
+        public int model_id { get; set; }
         public string nr_unikatowy { get; set; }
         public string nr_ewidencyjny { get; set; }
         public string nr_fabryczny { get; set; }
@@ -36,6 +37,7 @@ namespace Inzynierka_aplikacja.MainDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GrupaNaprawcza> GrupaNaprawcza { get; set; }
         public virtual Miejsce_instalacji Miejsce_instalacji { get; set; }
+        public virtual ModelUrzadzenia ModelUrzadzenia { get; set; }
         public virtual Podatnik Podatnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerwisUrzadzenia> SerwisUrzadzenia { get; set; }

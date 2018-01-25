@@ -4,21 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cc5975c6527f4244a0dab214d06afbcc" Name="Diagram1">
-        <EntityTypeShape EntityType="InzDBModel.Administrator" Width="1.5" PointX="7.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.GrupaNaprawcza" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Handlowiec" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Miejsce_instalacji" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.PamiecLogowania" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Podatnik" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Serwisant" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.SerwisUrzadzenia" Width="1.5" PointX="10.5" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.UrzadSkarbowy" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Urzadzenie" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InzDBModel.Uslugi" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="fed63da520084236a54421b4b1008017" Name="Diagram1">
+        <EntityTypeShape EntityType="InzDBModel.Administrator" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.GrupaNaprawcza" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Handlowiec" Width="1.5" PointX="7.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Miejsce_instalacji" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.ModelUrzadzenia" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.PamiecLogowania" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Podatnik" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Serwisant" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.SerwisUrzadzenia" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.UrzadSkarbowy" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Urzadzenie" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="InzDBModel.Uslugi" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="InzDBModel.FK_GRUPANAP_NALEŻY_DO_SERWISAN" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_GRUPANAP_ZAJMUJE_S_URZADZEN" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_URZADZEN_JEST_ZAIN_MIEJSCE_" ManuallyRouted="false" />
+        <AssociationConnector Association="InzDBModel.FK_URZADZEN_MA_MODELURZ" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_PODATNIK_ROZLICZA__URZADSKA" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_URZADZEN_POSIADA_PODATNIK" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_SERWISUR_JEST_NAPR_URZADZEN" ManuallyRouted="false" />

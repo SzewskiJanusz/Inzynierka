@@ -81,20 +81,22 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             string query =
                 "SELECT " +
+                "u.nastepny_przeglad AS 'Termin następnego przeglądu', " +
+                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "p.nazwa AS 'Właściciel urządzenia', " +
-                "mi.kraj AS 'Kraj instalacji', " +
                 "mi.miasto AS 'Miasto', " +
                 "mi.ulica AS 'Ulica', " +
+                "mu.nazwa AS 'Model kasy', " +
+                "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
-                "u.data_likwidacji AS 'Data likwidacji', " +
-                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
-                "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
+                "u.data_likwidacji AS 'Data likwidacji' " +
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
+                "INNER JOIN ModelUrzadzenia mu ON mu.model_id = u.model_id " +
                 "WHERE p.podatnik_id = " + podatnikID + " AND mi.miejsce_id = " + miejsceID + " ";
 
             if (!vaporated)
@@ -129,20 +131,22 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             string query =
                 "SELECT " +
+                "u.nastepny_przeglad AS 'Termin następnego przeglądu', " +
+                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "p.nazwa AS 'Właściciel urządzenia', " +
-                "mi.kraj AS 'Kraj instalacji', " +
                 "mi.miasto AS 'Miasto', " +
                 "mi.ulica AS 'Ulica', " +
+                "mu.nazwa AS 'Model kasy', " +
+                "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
-                "u.data_likwidacji AS 'Data likwidacji', " +
-                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
-                "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
+                "u.data_likwidacji AS 'Data likwidacji' " +
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
                 "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
+                "INNER JOIN ModelUrzadzenia mu ON mu.model_id = u.model_id " +
                 "WHERE p.podatnik_id = " + podatnikID + " ";
 
             if (!vaporated)
@@ -176,20 +180,22 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             string query =
                 "SELECT " +
+                "u.nastepny_przeglad AS 'Termin następnego przeglądu', " +
+                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
                 "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "p.nazwa AS 'Właściciel urządzenia', " +
-                "mi.kraj AS 'Kraj instalacji', " +
                 "mi.miasto AS 'Miasto', " +
                 "mi.ulica AS 'Ulica', " +
+                "mu.nazwa AS 'Model kasy', " +
+                "u.nr_unikatowy AS 'Nr.unikatowy', " +
                 "u.nr_fabryczny AS 'Nr.fabryczny', " +
                 "u.nr_ewidencyjny AS 'Nr.ewidencyjny', " +
                 "u.data_uruchomienia AS 'Data uruchomienia', " +
-                "u.data_likwidacji AS 'Data likwidacji', " +
-                "u.ostatni_przeglad AS 'Data ostatniego przeglądu', " +
-                "u.nastepny_przeglad AS 'Termin następnego przeglądu' " +
+                "u.data_likwidacji AS 'Data likwidacji' " +
                 "FROM Urzadzenie u " +
                 "INNER JOIN Podatnik p ON p.podatnik_id = u.podatnik_id " +
-                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id ";
+                "INNER JOIN Miejsce_instalacji mi ON mi.miejsce_id = u.miejsce_id " +
+                "INNER JOIN ModelUrzadzenia mu ON mu.model_id = u.model_id ";
 
             if (!vaporated)
             {

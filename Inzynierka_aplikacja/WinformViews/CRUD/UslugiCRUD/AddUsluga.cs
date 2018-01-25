@@ -39,10 +39,20 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Uslugi
         {
             if (ValidateData())
             {
+                Decimal? cena;
+                if (tbxCena.Text == "")
+                {
+                    cena = null;
+                }
+                else
+                {
+                    cena = Convert.ToDecimal(tbxCena.Text);
+                }
+
                 nowaUsluga = new MainDB.Uslugi
                 {
                     nazwa = tbxNazwa.Text,
-                    koszt_brutto = Convert.ToDecimal(tbxCena.Text)
+                    koszt_brutto = cena
                 };
                 this.DialogResult = DialogResult.OK;
             }

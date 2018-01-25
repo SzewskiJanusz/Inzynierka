@@ -11,6 +11,7 @@ namespace Inzynierka_aplikacja
         private ToolStripButton[] registry;
         private ToolStripButton[] services;
         private ToolStripButton[] uslugi;
+        private ToolStripButton[] models;
 
         private ToolStripButton home;
 
@@ -39,6 +40,7 @@ namespace Inzynierka_aplikacja
             CreateRegistryIcons();
             CreateServiceIcons();
             CreateUslugiIcons();
+            CreateModelIcons();
         }
 
         private void CreateClientIcons()
@@ -147,6 +149,29 @@ namespace Inzynierka_aplikacja
         public ToolStripButton[] GetUslugi()
         {
             return uslugi;
+        }
+
+        public void CreateModelIcons()
+        {
+            string[] images =
+            {
+                @"Assets\add.png",
+                @"Assets\edit.png",
+
+            };
+            models = new ToolStripButton[2];
+            for (int i = 0; i < 2; i++)
+            {
+                models[i] = new ToolStripButton(Image.FromFile(images[i]));
+            }
+
+            models[0].ToolTipText = "Dodaj model urządzenia";
+            models[1].ToolTipText = "Popraw model urządzenia";
+        }
+
+        public ToolStripButton[] GetModel()
+        {
+            return models;
         }
 
     }
