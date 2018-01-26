@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Inzynierka_aplikacja
@@ -261,17 +262,20 @@ namespace Inzynierka_aplikacja
             }
             return token;
         }
-
+        [STAThread]
         private void ChangeForm()
         {
             System.Threading.Thread t = new System.Threading.Thread
                 (new System.Threading.ThreadStart(ThreadProc));
+            t.SetApartmentState(ApartmentState.STA);
             t.Start();
             this.Close();
         }
 
+        
         private void ThreadProc()
         {
+
             if (HandlowiecToLogin != null) { Application.Run(new MainForm(HandlowiecToLogin)); }
             else if (SerwisantToLogin != null) { Application.Run(new MainForm(SerwisantToLogin)); }
             else if (AdminToLogin != null) { Application.Run(new MainForm(AdminToLogin)); }

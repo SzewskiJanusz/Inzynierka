@@ -69,7 +69,7 @@ namespace Inzynierka_aplikacja.WinformViews
             "p.nazwa AS 'Nazwa kontrahenta', " +
             "p.telefon AS 'Telefon', " +
             "p.nip AS 'NIP podatnika', " +
-            "p.miasto AS 'Miasto', " +
+            "mi.miasto AS 'Miasto', " +
             "mi.ulica AS 'Ulica', " +
             "s.imie + ' ' + s.nazwisko AS 'Serwisant', " +
             "mu.nazwa AS 'Model kasy', " +
