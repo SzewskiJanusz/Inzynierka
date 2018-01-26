@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -14,9 +15,12 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
     {
         public Podatnik nowyPodatnik { get; set; }
 
+        private Dictionary<string,string> city_state;
+
         public AddClient()
         {
             InitializeComponent();
+            SetDictionary();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
@@ -32,6 +36,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
         public AddClient(Podatnik p)
         {
             InitializeComponent();
+            SetDictionary();
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
@@ -48,6 +53,24 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
 
         }
 
+
+        private void SetDictionary()
+        {
+            city_state = new Dictionary<string, string>();
+
+            using (StreamReader sr = new StreamReader("city-state.txt"))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    int indexOfSemicolon = line.IndexOf(':');
+                    string tmpCity = line.Substring(0, indexOfSemicolon);
+                    string tmpState = line.Substring(indexOfSemicolon + 1);
+                    city_state.Add(tmpCity, tmpState);
+                }
+            }
+        }
+
         private void SetDataFromEdited(Podatnik p)
         {
             textBox3.Text = p.nip;
@@ -55,7 +78,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox5.Text = p.symbol;
             textBox6.Text = p.telefon;
             comboBox1.SelectedValue = p.wojewodztwo;
-            textBox7.Text = p.miasto;
+            tbxCity.Text = p.miasto;
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;
             textBox10.Text = p.email;
@@ -121,15 +144,15 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             }
 
             // MIASTO
-            if (textBox7.Text == "")
+            if (tbxCity.Text == "")
             {
-                errorPrv.SetError(textBox7, "Podaj miasto");
+                errorPrv.SetError(tbxCity, "Podaj miasto");
                 check = false;
             }
 
-            if (textBox7.Text.Length > 25)
+            if (tbxCity.Text.Length > 25)
             {
-                errorPrv.SetError(textBox7, "Nazwa miasta jest za długa");
+                errorPrv.SetError(tbxCity, "Nazwa miasta jest za długa");
                 check = false;
             }
 
@@ -181,7 +204,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                     symbol = textBox5.Text,
                     telefon = textBox6.Text,
                     wojewodztwo = comboBox1.SelectedValue.ToString(),
-                    miasto = textBox7.Text,
+                    miasto = tbxCity.Text,
                     ulica = textBox8.Text,
                     kod_pocztowy = textBox9.Text,
                     email = textBox10.Text
@@ -189,5 +212,36 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 this.DialogResult = DialogResult.OK; 
             }
         }
+
+        private void tbxCity_TextChanged(object sender, EventArgs e)
+        {
+            string city = tbxCity.Text;
+
+            if (city != "")
+            {
+                UrzadSkarbowy us;
+                try
+                {
+                    using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                    {
+                        us = db.UrzadSkarbowy.Where(x => x.miasto == city).First();
+                        cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact(us.nazwa);
+                    }
+                } catch (Exception)
+                { }
+                string tmpState;
+
+
+                if (city_state.ContainsKey(city))
+                {
+                    comboBox1.Text = city_state[city];
+                }
+
+
+
+            }
+        }
+
+
     }
 }

@@ -19,6 +19,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
         public AddDevice()
         {
             InitializeComponent();
+            textBox4.Text = "Polska";
+
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
@@ -31,31 +33,36 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             comboBox3.DisplayMember = "nazwa";
 
             PrepareConservationTime();
+            comboBox3.SelectedIndex = comboBox3.FindStringExact("zachodniopomorskie");
+
             this.Text = "Dodaj urządzenie";
         }
 
         public AddDevice(Podatnik p)
         {
             InitializeComponent();
+            textBox4.Text = "Polska";
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
                 cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
 
             }
-
+            
             comboBox3.DataSource = SQL.GetStates();
 
             comboBox3.ValueMember = "nazwa";
             comboBox3.DisplayMember = "nazwa";
             comboBox1.Enabled = false;
             PrepareConservationTime();
+            comboBox3.SelectedIndex = comboBox3.FindStringExact("zachodniopomorskie");
             this.Text = "Dodaj urządzenie";
         }
 
         public AddDevice(Urzadzenie u)
         {
             InitializeComponent();
+
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {       
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
@@ -68,6 +75,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
 
                 SetDataFromEdited(u, db);
             }
+            comboBox3.SelectedIndex = comboBox3.FindStringExact("zachodniopomorskie");
+
             textBox4.Enabled = false;
             comboBox3.Enabled = false;
             textBox5.Enabled = false;
@@ -83,6 +92,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
         public AddDevice(Miejsce_instalacji mi, Podatnik p)
         {
             InitializeComponent();
+            textBox4.Text = "Polska";
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.podatnik_id == p.podatnik_id).Select(x => x.nazwa).ToList();
@@ -425,6 +435,22 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                 }
                 listBoxRepairers.Update();
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nazwa = comboBox1.SelectedValue.ToString();
+            if (nazwa != "")
+            {
+                Podatnik p;
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    p = db.Podatnik.Where(x => x.nazwa == nazwa).First();
+                }
+
+                string woj = p.wojewodztwo;
+                comboBox3.SelectedIndex = comboBox3.FindStringExact(woj);
+            }  
         }
     }
 }

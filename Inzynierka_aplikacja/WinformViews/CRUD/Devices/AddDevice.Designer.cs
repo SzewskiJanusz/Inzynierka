@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.gbBasics = new System.Windows.Forms.GroupBox();
+            this.cbxModel = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbxModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorPrv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbBasics.SuspendLayout();
@@ -204,6 +204,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(242, 24);
             this.comboBox1.TabIndex = 25;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -244,6 +245,25 @@
             this.gbBasics.TabIndex = 10;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Dane urządzenia";
+            // 
+            // cbxModel
+            // 
+            this.cbxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxModel.FormattingEnabled = true;
+            this.cbxModel.Location = new System.Drawing.Point(190, 209);
+            this.cbxModel.Name = "cbxModel";
+            this.cbxModel.Size = new System.Drawing.Size(242, 24);
+            this.cbxModel.TabIndex = 26;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(6, 209);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(160, 24);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Model urządzenia";
             // 
             // dateTimePicker1
             // 
@@ -359,25 +379,6 @@
             this.label9.Size = new System.Drawing.Size(42, 24);
             this.label9.TabIndex = 27;
             this.label9.Text = "Kraj";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(6, 209);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(160, 24);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Model urządzenia";
-            // 
-            // cbxModel
-            // 
-            this.cbxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxModel.FormattingEnabled = true;
-            this.cbxModel.Location = new System.Drawing.Point(190, 209);
-            this.cbxModel.Name = "cbxModel";
-            this.cbxModel.Size = new System.Drawing.Size(242, 24);
-            this.cbxModel.TabIndex = 26;
             // 
             // AddDevice
             // 

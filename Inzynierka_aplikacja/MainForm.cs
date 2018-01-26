@@ -509,18 +509,24 @@ namespace Inzynierka_aplikacja
         private void DeviceDetails(object sender, EventArgs e)
         {
             Urzadzenie edited = new Urzadzenie();
-            String nrUnikatowy = ShowDevices.selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
-            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            try
             {
-                edited =
-                db.Urzadzenie.Where(x => x.nr_unikatowy ==
-                    nrUnikatowy
-                ).First();
-            }
+                String nrUnikatowy = ShowDevices.selectedRow.Cells["Nr.Unikatowy"].Value.ToString();
 
-            ShowDevice f = new ShowDevice(edited);
-            if (f.ShowDialog() == DialogResult.Cancel)
-                f.Dispose();
+
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    edited =
+                    db.Urzadzenie.Where(x => x.nr_unikatowy ==
+                        nrUnikatowy
+                    ).First();
+                }
+            
+                ShowDevice f = new ShowDevice(edited);
+                if (f.ShowDialog() == DialogResult.Cancel)
+                    f.Dispose();
+            }
+            catch (Exception) { }
         }
 
         private void ShowServices_Click(object sender, EventArgs e)

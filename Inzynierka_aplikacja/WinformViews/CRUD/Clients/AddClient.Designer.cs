@@ -31,27 +31,27 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.gbBasics = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboxRevenue = new System.Windows.Forms.ComboBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbxCity = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboxRevenue = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.errorPrv = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbBasics.SuspendLayout();
@@ -74,7 +74,7 @@
             this.gbBasics.Controls.Add(this.comboBox1);
             this.gbBasics.Controls.Add(this.cboxRevenue);
             this.gbBasics.Controls.Add(this.textBox8);
-            this.gbBasics.Controls.Add(this.textBox7);
+            this.gbBasics.Controls.Add(this.tbxCity);
             this.gbBasics.Controls.Add(this.label13);
             this.gbBasics.Controls.Add(this.label11);
             this.gbBasics.Controls.Add(this.textBox9);
@@ -93,33 +93,108 @@
             this.gbBasics.Location = new System.Drawing.Point(18, 70);
             this.gbBasics.Name = "gbBasics";
             this.gbBasics.Size = new System.Drawing.Size(646, 337);
-            this.gbBasics.TabIndex = 6;
+            this.gbBasics.TabIndex = 0;
             this.gbBasics.TabStop = false;
             this.gbBasics.Text = "Podstawowe informacje";
             // 
-            // textBox10
+            // comboBox1
             // 
-            this.textBox10.Location = new System.Drawing.Point(140, 33);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(318, 23);
-            this.textBox10.TabIndex = 18;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(140, 180);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(318, 24);
+            this.comboBox1.TabIndex = 6;
             // 
-            // label12
+            // cboxRevenue
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(7, 30);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(63, 24);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "E-mail";
+            this.cboxRevenue.FormattingEnabled = true;
+            this.cboxRevenue.Location = new System.Drawing.Point(165, 296);
+            this.cboxRevenue.Name = "cboxRevenue";
+            this.cboxRevenue.Size = new System.Drawing.Size(294, 24);
+            this.cboxRevenue.TabIndex = 9;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(140, 141);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(318, 23);
+            this.textBox8.TabIndex = 5;
+            // 
+            // tbxCity
+            // 
+            this.tbxCity.Location = new System.Drawing.Point(140, 103);
+            this.tbxCity.Name = "tbxCity";
+            this.tbxCity.Size = new System.Drawing.Size(318, 23);
+            this.tbxCity.TabIndex = 4;
+            this.tbxCity.TextChanged += new System.EventHandler(this.tbxCity_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(6, 296);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(143, 24);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Urząd skarbowy";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.Location = new System.Drawing.Point(6, 177);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 24);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Województwo";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(165, 259);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(106, 23);
+            this.textBox9.TabIndex = 8;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(544, 67);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(97, 23);
+            this.textBox5.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label8.Location = new System.Drawing.Point(7, 259);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(128, 24);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Kod pocztowy";
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(140, 220);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(149, 23);
-            this.textBox6.TabIndex = 16;
+            this.textBox6.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.Location = new System.Drawing.Point(6, 138);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 24);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Ulica";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(140, 67);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(318, 23);
+            this.textBox4.TabIndex = 2;
             // 
             // label6
             // 
@@ -131,26 +206,12 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Telefon";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(544, 67);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(97, 23);
-            this.textBox5.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(140, 67);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(318, 23);
-            this.textBox4.TabIndex = 13;
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(140, 29);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(130, 23);
-            this.textBox3.TabIndex = 12;
+            this.textBox3.TabIndex = 1;
             // 
             // label7
             // 
@@ -161,6 +222,16 @@
             this.label7.Size = new System.Drawing.Size(73, 24);
             this.label7.TabIndex = 9;
             this.label7.Text = "Symbol";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.Location = new System.Drawing.Point(6, 100);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 24);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Miasto";
             // 
             // label5
             // 
@@ -182,6 +253,23 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "NIP";
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(140, 33);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(318, 23);
+            this.textBox10.TabIndex = 11;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(7, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(63, 24);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "E-mail";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBox10);
@@ -190,96 +278,9 @@
             this.groupBox1.Location = new System.Drawing.Point(18, 413);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(646, 77);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodatkowe informacje";
-            // 
-            // cboxRevenue
-            // 
-            this.cboxRevenue.FormattingEnabled = true;
-            this.cboxRevenue.Location = new System.Drawing.Point(165, 296);
-            this.cboxRevenue.Name = "cboxRevenue";
-            this.cboxRevenue.Size = new System.Drawing.Size(294, 24);
-            this.cboxRevenue.TabIndex = 20;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(6, 296);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(143, 24);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Urząd skarbowy";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(140, 180);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(318, 24);
-            this.comboBox1.TabIndex = 25;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(140, 103);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(318, 23);
-            this.textBox7.TabIndex = 23;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(140, 141);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(318, 23);
-            this.textBox8.TabIndex = 22;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(165, 259);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(106, 23);
-            this.textBox9.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(7, 259);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 24);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Kod pocztowy";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(6, 138);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 24);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Ulica";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(6, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 24);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Miasto";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(6, 177);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 24);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Województwo";
             // 
             // btnAdd
             // 
@@ -328,7 +329,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbxCity;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label8;
