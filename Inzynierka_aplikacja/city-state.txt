@@ -1,0 +1,208 @@
+Barwice:zachodniopomorskie					
+Bia³ogard:zachodniopomorskie		
+Bia³y Bór:zachodniopomorskie		
+Bobolice:zachodniopomorskie		
+Borne Sulinowo:zachodniopomorskie		
+Cedynia:zachodniopomorskie		
+Chociwel:zachodniopomorskie		
+Chojna:zachodniopomorskie		
+Choszczno:zachodniopomorskie		
+Czaplinek:zachodniopomorskie		
+Cz³opa:zachodniopomorskie		
+Dar³owo:zachodniopomorskie		
+Dêbno:zachodniopomorskie		
+Dobra:zachodniopomorskie		
+Dobrzany:zachodniopomorskie		
+Drawno:zachodniopomorskie		
+Drawsko Pomorskie:zachodniopomorskie		
+Golczewo:zachodniopomorskie		
+Goleniów:zachodniopomorskie		
+Gryfice:zachodniopomorskie		
+Gryfino:zachodniopomorskie		
+Iñsko:zachodniopomorskie		
+Kalisz Pomorski:zachodniopomorskie		
+Kamieñ Pomorski:zachodniopomorskie		
+Karlino:zachodniopomorskie		
+Kêpice:zachodniopomorskie		
+Ko³obrzeg:zachodniopomorskie		
+Koszalin:zachodniopomorskie		
+Lipiany:zachodniopomorskie		
+£obez:zachodniopomorskie		
+Maszewo:zachodniopomorskie		
+Mieszkowice:zachodniopomorskie		
+Miêdzyzdroje:zachodniopomorskie		
+Miros³awiec:zachodniopomorskie		
+Moryñ:zachodniopomorskie		
+Myœlibórz:zachodniopomorskie		
+Nowe Warpno:zachodniopomorskie		
+Nowogard:zachodniopomorskie		
+Pe³czyce:zachodniopomorskie		
+P³oty:zachodniopomorskie		
+Polanów:zachodniopomorskie		
+Police:zachodniopomorskie		
+Po³czyn Zdrój:zachodniopomorskie		
+Pyrzyce:zachodniopomorskie		
+Recz:zachodniopomorskie		
+Resko:zachodniopomorskie		
+Sianów:zachodniopomorskie		
+S³awno:zachodniopomorskie		
+Stargard Szczeciñski:zachodniopomorskie		
+Suchañ:zachodniopomorskie		
+Szczecin:zachodniopomorskie		
+Szczecinek:zachodniopomorskie		
+Œwidwin:zachodniopomorskie		
+Œwinoujœcie:zachodniopomorskie		
+Trzciñsko Zdrój:zachodniopomorskie		
+Trzebiatów:zachodniopomorskie		
+Tuczno:zachodniopomorskie		
+Wa³cz:zachodniopomorskie		
+Wêgorzyno:zachodniopomorskie		
+Wolin:zachodniopomorskie		
+Z³ocieniec:zachodniopomorskie		
+Brusy:pomorskie		
+Bytów:pomorskie		
+Chojnice:pomorskie		
+Czarna Woda:pomorskie		
+Czarne:pomorskie		
+Czersk:pomorskie		
+Cz³uchów:pomorskie		
+Debrzno:pomorskie		
+Dzierzgoñ:pomorskie		
+Gdañsk:pomorskie		
+Gdynia:pomorskie		
+Gniew:pomorskie		
+Hel:pomorskie		
+Jastarnia:pomorskie		
+Kartuzy:pomorskie		
+Koœcierzyna:pomorskie		
+Krynica Morska:pomorskie		
+Kwidzyn:pomorskie		
+Lêbork:pomorskie		
+£eba:pomorskie		
+Malbork:pomorskie		
+Miastko:pomorskie		
+Nowy Dwór Gdañski:pomorskie		
+Nowy Staw:pomorskie		
+Pelplin:pomorskie		
+Prabuty:pomorskie		
+Pruszcz Gdañski:pomorskie		
+Puck:pomorskie		
+Reda:pomorskie		
+Rumia:pomorskie		
+Skarszewy:pomorskie		
+Skórcz:pomorskie		
+S³upsk:pomorskie		
+Sopot:pomorskie		
+Starogard Gdañski:pomorskie		
+Sztum:pomorskie		
+Tczew:pomorskie		
+Ustka:pomorskie		
+Wejherowo:pomorskie		
+W³adys³awowo:pomorskie		
+¯ukowo:pomorskie		
+Aleksandrów Kujawski
+Barcin:kujawsko-pomorskie
+Brodnica:kujawsko-pomorskie
+Brzeœæ Kujawski:kujawsko-pomorskie
+Bydgoszcz:kujawsko-pomorskie
+Che³mno:kujawsko-pomorskie
+Che³m¿a:kujawsko-pomorskie
+Chodecz:kujawsko-pomorskie
+Ciechocinek:kujawsko-pomorskie
+Dobrzyñ nad Wis³¹:kujawsko-pomorskie
+Gniewkowo:kujawsko-pomorskie
+Golub-Dobrzyñ:kujawsko-pomorskie
+Górzno:kujawsko-pomorskie
+Grudzi¹dz:kujawsko-pomorskie
+Inowroc³aw:kujawsko-pomorskie
+Izbica Kujawska:kujawsko-pomorskie
+Jab³onowo Pomorskie:kujawsko-pomorskie
+Janikowo:kujawsko-pomorskie
+Janowiec Wielkopolski:kujawsko-pomorskie
+Kamieñ Krajeñski:kujawsko-pomorskie
+Kcynia:kujawsko-pomorskie
+Koronowo:kujawsko-pomorskie
+Kowal:kujawsko-pomorskie
+Kowalewo Pomorskie:kujawsko-pomorskie
+Kruszwica:kujawsko-pomorskie
+Lipno:kujawsko-pomorskie
+Lubieñ Kujawski:kujawsko-pomorskie
+Lubraniec:kujawsko-pomorskie
+£abiszyn:kujawsko-pomorskie
+£asin:kujawsko-pomorskie
+Mogilno:kujawsko-pomorskie
+Mrocza:kujawsko-pomorskie
+Nak³o nad Noteci¹:kujawsko-pomorskie
+Nieszawa:kujawsko-pomorskie
+Nowe:kujawsko-pomorskie
+Pakoœæ:kujawsko-pomorskie
+Piotrków Kujawski:kujawsko-pomorskie
+Radziejów:kujawsko-pomorskie
+Radzyñ Che³miñski:kujawsko-pomorskie
+Rypin:kujawsko-pomorskie
+Sêpólno Krajeñskie:kujawsko-pomorskie
+Skêpe:kujawsko-pomorskie
+Solec Kujawski:kujawsko-pomorskie
+Strzelno:kujawsko-pomorskie
+Szubin:kujawsko-pomorskie
+Œwiecie:kujawsko-pomorskie
+Toruñ:kujawsko-pomorskie
+Tuchola:kujawsko-pomorskie
+W¹brzeŸno:kujawsko-pomorskie
+Wiêcbork:kujawsko-pomorskie
+W³oc³awek:kujawsko-pomorskie
+¯nin:kujawsko-pomorskie
+Barczewo:warmiñsko-mazurskie
+Bartoszyce:warmiñsko-mazurskie
+Bia³a Piska:warmiñsko-mazurskie
+Biskupiec:warmiñsko-mazurskie
+Bisztynek:warmiñsko-mazurskie
+Braniewo:warmiñsko-mazurskie
+Dobre Miasto:warmiñsko-mazurskie
+Dzia³dowo:warmiñsko-mazurskie
+Elbl¹g:warmiñsko-mazurskie
+E³k:warmiñsko-mazurskie
+Frombork:warmiñsko-mazurskie
+Gi¿ycko:warmiñsko-mazurskie
+Go³dap:warmiñsko-mazurskie
+Górowo I³aweckie:warmiñsko-mazurskie
+I³awa:warmiñsko-mazurskie
+Jeziorany:warmiñsko-mazurskie
+Kêtrzyn:warmiñsko-mazurskie
+Kisielice:warmiñsko-mazurskie
+Korsze:warmiñsko-mazurskie
+Lidzbark:warmiñsko-mazurskie
+Lidzbark Warmiñski:warmiñsko-mazurskie
+Lubawa:warmiñsko-mazurskie
+Miko³ajki:warmiñsko-mazurskie
+Mi³akowo:warmiñsko-mazurskie
+Mi³om³yn:warmiñsko-mazurskie
+M³ynary:warmiñsko-mazurskie
+Mor¹g:warmiñsko-mazurskie
+Mr¹gowo:warmiñsko-mazurskie
+Nidzica:warmiñsko-mazurskie
+Nowe Miasto Lubawskie:warmiñsko-mazurskie
+Olecko:warmiñsko-mazurskie
+Olsztyn:warmiñsko-mazurskie
+Olsztynek:warmiñsko-mazurskie
+Orneta:warmiñsko-mazurskie
+Orzysz:warmiñsko-mazurskie
+Ostróda:warmiñsko-mazurskie
+Pas³êk:warmiñsko-mazurskie
+Pasym:warmiñsko-mazurskie
+Pieniê¿no:warmiñsko-mazurskie
+Pisz:warmiñsko-mazurskie
+Reszel:warmiñsko-mazurskie
+Ruciane-Nida:warmiñsko-mazurskie
+Ryn:warmiñsko-mazurskie
+Sêpopol:warmiñsko-mazurskie
+Susz:warmiñsko-mazurskie
+Szczytno:warmiñsko-mazurskie
+Tolkmicko:warmiñsko-mazurskie
+Wêgorzewo:warmiñsko-mazurskie
+Zalewo:warmiñsko-mazurskie
+
+
+
+
+

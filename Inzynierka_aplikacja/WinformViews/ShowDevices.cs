@@ -33,6 +33,7 @@ namespace Inzynierka_aplikacja.WinformViews
             HideLabelsAndIcons();
             lblClient.Text = "";
             podatnikID = -1;
+            miejsceID = 0;
         }
 
         public ShowDevices(Podatnik p)
