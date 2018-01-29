@@ -154,6 +154,10 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void HideLabelsAndIcons()
         {
+            if (MainForm.serwisantID != -1)
+            {
+                MainForm.icons[0][0].Visible = false;
+            }
             MainForm.icons[0][1].Visible = false;
             MainForm.icons[0][2].Visible = false;
             linklblEdit.Enabled = false;
@@ -169,8 +173,7 @@ namespace Inzynierka_aplikacja.WinformViews
                 MainForm.icons[0][1].Visible = true;
                 MainForm.icons[0][2].Visible = true;
             }
-            MainForm.icons[0][1].Visible = true;
-            MainForm.icons[0][2].Visible = true;
+            linkShowLocations.Visible = true;
         }
 
         private void dgvClient_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
