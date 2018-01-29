@@ -67,6 +67,7 @@
             this.linklblEdit.TabIndex = 15;
             this.linklblEdit.TabStop = true;
             this.linklblEdit.Text = "Popraw";
+            this.linklblEdit.Visible = false;
             this.linklblEdit.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblEdit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblEdit_LinkClicked);
             // 
@@ -94,6 +95,7 @@
             this.linklblAdd.TabIndex = 13;
             this.linklblAdd.TabStop = true;
             this.linklblAdd.Text = "Dodaj";
+            this.linklblAdd.Visible = false;
             this.linklblAdd.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblAdd_LinkClicked);
             // 

@@ -140,6 +140,7 @@
             this.linkAddDevice.TabIndex = 24;
             this.linkAddDevice.TabStop = true;
             this.linkAddDevice.Text = "Dodaj nowe";
+            this.linkAddDevice.Visible = false;
             this.linkAddDevice.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkAddDevice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAddDevice_LinkClicked);
             // 
@@ -154,6 +155,7 @@
             this.linkEditDevice.TabIndex = 25;
             this.linkEditDevice.TabStop = true;
             this.linkEditDevice.Text = "Edytuj";
+            this.linkEditDevice.Visible = false;
             this.linkEditDevice.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkEditDevice.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditDevice_LinkClicked);
             // 

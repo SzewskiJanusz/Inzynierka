@@ -40,6 +40,11 @@ namespace Inzynierka_aplikacja.WinformViews
             HideLabelsAndIcons();
             indexesOfRows = new List<int>();
             FindClickNumber = 0;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
         }
 
         public void LoadUslugi()
@@ -102,9 +107,12 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void ShowLabelsAndIcons()
         {
-            linklblEdit.Enabled = true;
-            MainForm.icons[4][0].Visible = true;
-            MainForm.icons[4][1].Visible = true;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblEdit.Enabled = true;
+                MainForm.icons[4][0].Visible = true;
+                MainForm.icons[4][1].Visible = true;
+            }
         }
 
         private void dgvUslugi_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

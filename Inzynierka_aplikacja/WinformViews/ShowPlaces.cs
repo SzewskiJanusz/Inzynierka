@@ -47,6 +47,11 @@ namespace Inzynierka_aplikacja.WinformViews
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linkAddDevice.Visible = true;
+                linkEditDevice.Visible = true;
+            }
             podatnik = p;
             LoadClientPlaces(p);
             HideLabelsAndIcons();

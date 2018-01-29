@@ -34,6 +34,11 @@ namespace Inzynierka_aplikacja.WinformViews
             lblClient.Text = "";
             podatnikID = -1;
             miejsceID = 0;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
         }
 
         public ShowDevices(Podatnik p)
@@ -46,7 +51,11 @@ namespace Inzynierka_aplikacja.WinformViews
             HideLabelsAndIcons();
 
             lbl.Text = "Urządzenia kontrahenta: " + p.nazwa;
-
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
         }
 
         public ShowDevices(Podatnik p, Miejsce_instalacji mi)
@@ -61,7 +70,11 @@ namespace Inzynierka_aplikacja.WinformViews
 
             lbl.Text = "Urządzenia kontrahenta: ";
             lblClient.Text = p.nazwa + " " + mi.miasto + " " + mi.ulica + " " + mi.wojewodztwo;
-
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
         }
 
         protected virtual void AddDeviceClick(EventArgs e)
@@ -278,6 +291,10 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void HideLabelsAndIcons()
         {
+            if (MainForm.handlowiecID != -1)
+            {
+                MainForm.icons[1][0].Visible = false;
+            }
             MainForm.icons[1][1].Visible = false;
             MainForm.icons[1][2].Visible = false;
             linklblEdit.Enabled = false;
@@ -285,11 +302,16 @@ namespace Inzynierka_aplikacja.WinformViews
         }
 
         private void ShowLabelsAndIcons()
-        {
-            linklblEdit.Enabled = true;
-            linklblHistory.Enabled = true;
-            MainForm.icons[1][1].Visible = true;
-            MainForm.icons[1][2].Visible = true;
+        {     
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblEdit.Enabled = true;
+                linklblHistory.Enabled = true;
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+                MainForm.icons[1][1].Visible = true;
+                MainForm.icons[1][2].Visible = true;
+            }
         }
 
         private void dgvDevices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -336,7 +358,10 @@ namespace Inzynierka_aplikacja.WinformViews
             if (ShowVaporated)
             {
                 ShowVaporated = false;
-                linklblEdit.Visible = true;
+                if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+                {
+                    linklblEdit.Visible = true;
+                }
             }
             else
             {

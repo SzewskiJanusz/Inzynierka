@@ -59,6 +59,7 @@
             this.linklblShow.TabIndex = 6;
             this.linklblShow.TabStop = true;
             this.linklblShow.Text = "Wyświetl szczegóły";
+            this.linklblShow.Visible = false;
             this.linklblShow.VisitedLinkColor = System.Drawing.Color.Black;
             this.linklblShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblShow_LinkClicked);
             // 

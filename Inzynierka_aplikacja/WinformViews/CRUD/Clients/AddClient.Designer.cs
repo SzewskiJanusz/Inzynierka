@@ -99,6 +99,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(140, 180);
             this.comboBox1.Name = "comboBox1";
@@ -107,6 +108,7 @@
             // 
             // cboxRevenue
             // 
+            this.cboxRevenue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxRevenue.FormattingEnabled = true;
             this.cboxRevenue.Location = new System.Drawing.Point(165, 296);
             this.cboxRevenue.Name = "cboxRevenue";

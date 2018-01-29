@@ -26,6 +26,8 @@ namespace Inzynierka_aplikacja
         public static List<List<ToolStripButton>> icons;
 
         public static int serwisantID = -1;
+        public static int handlowiecID = -1;
+        public static int adminID = -1;
 
         public MainForm()
         {
@@ -55,7 +57,9 @@ namespace Inzynierka_aplikacja
         {
             lblLogged.Text = handlowiec.imie + " " + handlowiec.nazwisko;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
-
+            handlowiecID = handlowiec.handlowiec_id;
+            serwisantID = -1;
+            adminID = -1;
             SetDefaultToolStripIcons();
             SetAllIcons();
         }
@@ -65,6 +69,8 @@ namespace Inzynierka_aplikacja
             lblLogged.Text = serwisant.imie + " " + serwisant.nazwisko;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             serwisantID = serwisant.serwisant_id;
+            adminID = -1;
+            handlowiecID = -1;
             SetDefaultToolStripIcons();
             SetAllIcons();
         }
@@ -73,7 +79,9 @@ namespace Inzynierka_aplikacja
         {
             lblLogged.Text = admin.nazwa;
             lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
-
+            adminID = admin.admin_id;
+            serwisantID = -1;
+            handlowiecID = -1;
             SetDefaultToolStripIcons();
             SetAllIcons();
         }
@@ -472,6 +480,13 @@ namespace Inzynierka_aplikacja
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void MenuAddDeviceClick(object sender, EventArgs e)
+        {
+            ShowDevices.miejsceID = 0;
+            ShowDevices.podatnikID = 0;
+            AddDeviceClick(sender, e);
         }
 
         private void EditDeviceClick(object sender, EventArgs e)

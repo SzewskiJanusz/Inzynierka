@@ -50,7 +50,10 @@ namespace Inzynierka_aplikacja.WinformViews
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             LoadServices();
-            
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblShow.Visible = true;
+            }
             HideLabelsAndIcons();
             
             indexesOfRows = new List<int>();
@@ -108,7 +111,11 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void ShowLabelsAndIcons()
         {
-            MainForm.icons[2][0].Visible = true;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblShow.Visible = true;
+                MainForm.icons[2][0].Visible = true;
+            }
             linklblShow.Enabled = true;
         }
 

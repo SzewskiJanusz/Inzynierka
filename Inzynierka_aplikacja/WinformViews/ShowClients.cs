@@ -56,6 +56,11 @@ namespace Inzynierka_aplikacja.WinformViews
             HideLabelsAndIcons();
             indexesOfRows = new List<int>();
             FindClickNumber = 0;
+            if (MainForm.handlowiecID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
         }
 
         public void LoadClients()
@@ -157,8 +162,13 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void ShowLabelsAndIcons()
         {
-            linkShowLocations.Visible = true;
-            linklblEdit.Enabled = true;
+            if (MainForm.handlowiecID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+                MainForm.icons[0][1].Visible = true;
+                MainForm.icons[0][2].Visible = true;
+            }
             MainForm.icons[0][1].Visible = true;
             MainForm.icons[0][2].Visible = true;
         }

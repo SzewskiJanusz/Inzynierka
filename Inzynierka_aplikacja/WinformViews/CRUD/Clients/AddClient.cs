@@ -229,16 +229,13 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                     }
                 } catch (Exception)
                 { }
-                string tmpState;
 
 
                 if (city_state.ContainsKey(city))
                 {
-                    comboBox1.Text = city_state[city];
+                    string state = city_state[city];
+                    comboBox1.Text = "pomorskie";
                 }
-
-
-
             }
         }
 
