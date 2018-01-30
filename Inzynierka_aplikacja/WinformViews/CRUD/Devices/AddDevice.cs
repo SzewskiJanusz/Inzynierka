@@ -27,10 +27,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                 cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
             }
 
-            comboBox3.DataSource = SQL.GetStates();
+            comboBox3.DataSource = MainForm.stateList.Select(x=>x.nazwa).ToList();
 
-            comboBox3.ValueMember = "nazwa";
-            comboBox3.DisplayMember = "nazwa";
 
             PrepareConservationTime();
             comboBox3.SelectedIndex = comboBox3.FindStringExact("zachodniopomorskie");
@@ -46,13 +44,9 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
             {
                 comboBox1.DataSource = db.Podatnik.Where(x=>x.nazwa == p.nazwa).Select(x => x.nazwa).ToList();
                 cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
-
             }
-            
-            comboBox3.DataSource = SQL.GetStates();
 
-            comboBox3.ValueMember = "nazwa";
-            comboBox3.DisplayMember = "nazwa";
+            comboBox3.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList(); 
             comboBox1.Enabled = false;
             PrepareConservationTime();
             comboBox3.SelectedIndex = comboBox3.FindStringExact("zachodniopomorskie");
@@ -68,10 +62,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                 comboBox1.DataSource = db.Podatnik.Select(x => x.nazwa).ToList();
                 cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
 
-                comboBox3.DataSource = SQL.GetStates();
-
-                comboBox3.ValueMember = "nazwa";
-                comboBox3.DisplayMember = "nazwa";
+                comboBox3.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList() ;
 
                 SetDataFromEdited(u, db);
             }
@@ -99,10 +90,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Devices
                 cbxModel.DataSource = db.ModelUrzadzenia.Select(x => x.nazwa).ToList();
             }
 
-            comboBox3.DataSource = SQL.GetStates();
-
-            comboBox3.ValueMember = "nazwa";
-            comboBox3.DisplayMember = "nazwa";
+            comboBox3.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList();
 
             textBox4.Text = mi.kraj;
             comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);

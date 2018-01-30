@@ -21,36 +21,28 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
         {
             InitializeComponent();
             SetDictionary();
-            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-            {
-                cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
-                var states = SQL.GetStates();
-                comboBox1.ValueMember = "nazwa";
-                comboBox1.DisplayMember = "nazwa";
-                comboBox1.DataSource = states;
-                this.Text = "Dodaj kontrahenta";
-            }
-           
+            comboBox1.DataSource = MainForm.stateList.Select(x=>x.nazwa).ToList();
+            cboxRevenue.DataSource = MainForm.revenueList.Select(x => x.nazwa).ToList();
+            this.Text = "Dodaj kontrahenta";
         }
 
         public AddClient(Podatnik p)
         {
             InitializeComponent();
             SetDictionary();
-            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-            {
-                cboxRevenue.DataSource = db.UrzadSkarbowy.Select(x => x.nazwa).ToList();
-                cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact(db.UrzadSkarbowy.Where(x => x.urzad_id == p.urzad_id).Select(x => x.nazwa).First());
-                var states = SQL.GetStates();
-                comboBox1.ValueMember = "nazwa";
-                comboBox1.DisplayMember = "nazwa";
-                comboBox1.DataSource = states;
-                SetDataFromEdited(p);
-                btnAdd.Text = "Zapisz";
-                label1.Text = "Edytuj kontrahenta";
-                this.Text = "Edytuj kontrahenta";
-            }
+            comboBox1.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList(); ;
+            cboxRevenue.DataSource = MainForm.revenueList.Select(x => x.nazwa).ToList(); ;
+           
+            // Get ID of proper revenue from database
+            cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact
+                (MainForm.revenueList.Where(x => x.urzad_id == p.urzad_id).
+                Select(x => x.nazwa).First());
+            
 
+            SetDataFromEdited(p);
+            btnAdd.Text = "Zapisz";
+            label1.Text = "Edytuj kontrahenta";
+            this.Text = "Edytuj kontrahenta";
         }
 
 
@@ -191,11 +183,10 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             if (ValidateData())
             {
                 int urzadID = 0;
-                using(InzynierkaDBEntities db = new InzynierkaDBEntities())
-                {
-                    urzadID = db.UrzadSkarbowy.Where(x => x.nazwa == cboxRevenue.SelectedValue.ToString()).
-                        Select(x=>x.urzad_id).First();
-                }
+
+                urzadID = MainForm.revenueList.Where(x => x.nazwa == cboxRevenue.SelectedValue.ToString()).
+                    Select(x=>x.urzad_id).First();
+                
                 nowyPodatnik = new Podatnik()
                 {
                     urzad_id = urzadID,
@@ -222,11 +213,8 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 UrzadSkarbowy us;
                 try
                 {
-                    using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-                    {
-                        us = db.UrzadSkarbowy.Where(x => x.miasto == city).First();
-                        cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact(us.nazwa);
-                    }
+                    us = MainForm.revenueList.Where(x => x.miasto == city).First();
+                    cboxRevenue.SelectedIndex = cboxRevenue.FindStringExact(us.nazwa);
                 } catch (Exception)
                 { }
 

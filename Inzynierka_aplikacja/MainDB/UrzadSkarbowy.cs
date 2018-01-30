@@ -11,7 +11,8 @@ namespace Inzynierka_aplikacja.MainDB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class UrzadSkarbowy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace Inzynierka_aplikacja.MainDB
         }
     
         public int urzad_id { get; set; }
+        [Column("Nazwa")]
         public string nazwa { get; set; }
+        [Column("Miasto")]
         public string miasto { get; set; }
+        [Column("Ulica")]
         public string ulica { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

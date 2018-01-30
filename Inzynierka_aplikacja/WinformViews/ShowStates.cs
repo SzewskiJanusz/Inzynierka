@@ -20,7 +20,7 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void LoadStates()
         {
-            dgvStates.DataSource = SQL.GetStatesWithID();
+            dgvStates.DataSource = MainForm.stateList;
             dgvStates.Columns[0].Visible = false;
             dgvStates.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

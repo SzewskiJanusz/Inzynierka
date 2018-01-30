@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -128,6 +128,9 @@
       <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainDB\Uslugi.cs">
+      <DependentUpon>MainDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDB\Wojewodztwo.cs">
       <DependentUpon>MainDB.tt</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -441,13 +444,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MainDB.edmx</DependentUpon>
       <LastGenOutput>MainDB.cs</LastGenOutput>
-    </Content>
-    <Content Include="SupportLocalDB\Wojewodztwa.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SupportLocalDB\Wojewodztwa_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Wojewodztwa.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

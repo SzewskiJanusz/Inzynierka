@@ -37,5 +37,6 @@ namespace Inzynierka_aplikacja.MainDB
         public virtual DbSet<UrzadSkarbowy> UrzadSkarbowy { get; set; }
         public virtual DbSet<Urzadzenie> Urzadzenie { get; set; }
         public virtual DbSet<Uslugi> Uslugi { get; set; }
+        public virtual DbSet<Wojewodztwo> Wojewodztwo { get; set; }
     }
 }

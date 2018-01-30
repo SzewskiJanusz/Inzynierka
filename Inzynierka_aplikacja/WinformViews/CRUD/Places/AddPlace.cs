@@ -18,7 +18,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Places
         {
             InitializeComponent();
 
-            comboBox3.DataSource = SQL.GetStates();
+            comboBox3.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList(); ;
             comboBox3.ValueMember = "nazwa";
             comboBox3.DisplayMember = "nazwa";
 

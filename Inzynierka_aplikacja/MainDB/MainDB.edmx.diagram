@@ -25,6 +25,7 @@
         <AssociationConnector Association="InzDBModel.FK_URZADZEN_POSIADA_PODATNIK" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_SERWISUR_JEST_NAPR_URZADZEN" ManuallyRouted="false" />
         <AssociationConnector Association="InzDBModel.FK_SERWISUR_WYKONYWAN_USLUGI" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InzDBModel.Wojewodztwo" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

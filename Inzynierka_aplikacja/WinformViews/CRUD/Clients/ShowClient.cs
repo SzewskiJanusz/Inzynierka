@@ -43,12 +43,11 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;
             textBox10.Text = p.email;
-            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
-            {
-                textBox12.Text = db.UrzadSkarbowy.
-                    Where(x => x.urzad_id == p.urzad_id).
-                    Select(x => x.nazwa).First();
-            }
+
+            textBox12.Text = MainForm.revenueList.
+                Where(x => x.urzad_id == p.urzad_id).
+                Select(x => x.nazwa).First();
+            
             
         }
 

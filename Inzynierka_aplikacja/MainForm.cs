@@ -29,6 +29,10 @@ namespace Inzynierka_aplikacja
         public static int handlowiecID = -1;
         public static int adminID = -1;
 
+        public static List<UrzadSkarbowy> revenueList;
+        public static List<Wojewodztwo> stateList;
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -56,34 +60,40 @@ namespace Inzynierka_aplikacja
         private void Init(Handlowiec handlowiec)
         {
             lblLogged.Text = handlowiec.imie + " " + handlowiec.nazwisko;
-            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             handlowiecID = handlowiec.handlowiec_id;
             serwisantID = -1;
             adminID = -1;
-            SetDefaultToolStripIcons();
-            SetAllIcons();
+            SetDetails();
         }
 
         private void Init(Serwisant serwisant)
         {
             lblLogged.Text = serwisant.imie + " " + serwisant.nazwisko;
-            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             serwisantID = serwisant.serwisant_id;
             adminID = -1;
             handlowiecID = -1;
-            SetDefaultToolStripIcons();
-            SetAllIcons();
+            SetDetails();
         }
 
         private void Init(Administrator admin)
         {
             lblLogged.Text = admin.nazwa;
-            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             adminID = admin.admin_id;
             serwisantID = -1;
             handlowiecID = -1;
+            SetDetails();
+        }
+
+        private void SetDetails()
+        {
+            lblTodaysDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             SetDefaultToolStripIcons();
             SetAllIcons();
+            using(InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                stateList = db.Wojewodztwo.ToList();
+                revenueList = db.UrzadSkarbowy.ToList();
+            }
         }
 
         private void SetAllIcons()

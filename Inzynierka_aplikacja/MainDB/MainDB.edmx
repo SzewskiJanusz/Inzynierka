@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InzDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InzDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -132,6 +132,13 @@
           <Property Name="nazwa" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="koszt_brutto" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="Wojewodztwo">
+          <Key>
+            <PropertyRef Name="wojewodztwo_id" />
+          </Key>
+          <Property Name="wojewodztwo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
         <Association Name="FK_GRUPANAP_NALEŻY DO_SERWISAN">
           <End Role="Serwisant" Type="Self.Serwisant" Multiplicity="1" />
           <End Role="GrupaNaprawcza" Type="Self.GrupaNaprawcza" Multiplicity="*" />
@@ -241,6 +248,7 @@
           <EntitySet Name="UrzadSkarbowy" EntityType="Self.UrzadSkarbowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Urzadzenie" EntityType="Self.Urzadzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wojewodztwo" EntityType="Self.Wojewodztwo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_GRUPANAP_NALEŻY DO_SERWISAN" Association="Self.FK_GRUPANAP_NALEŻY DO_SERWISAN">
             <End Role="Serwisant" EntitySet="Serwisant" />
             <End Role="GrupaNaprawcza" EntitySet="GrupaNaprawcza" />
@@ -274,8 +282,7 @@
             <End Role="Urzadzenie" EntitySet="Urzadzenie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InzDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -563,7 +570,15 @@
             <End Role="Uslugi" EntitySet="Uslugi" />
             <End Role="SerwisUrzadzenia" EntitySet="SerwisUrzadzenia" />
           </AssociationSet>
+          <EntitySet Name="Wojewodztwo" EntityType="InzDBModel.Wojewodztwo" />
         </EntityContainer>
+        <EntityType Name="Wojewodztwo">
+          <Key>
+            <PropertyRef Name="wojewodztwo_id" />
+          </Key>
+          <Property Name="wojewodztwo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -706,6 +721,14 @@
                 <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
                 <ScalarProperty Name="nazwa" ColumnName="nazwa" />
                 <ScalarProperty Name="koszt_brutto" ColumnName="koszt_brutto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wojewodztwo">
+            <EntityTypeMapping TypeName="InzDBModel.Wojewodztwo">
+              <MappingFragment StoreEntitySet="Wojewodztwo">
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="wojewodztwo_id" ColumnName="wojewodztwo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

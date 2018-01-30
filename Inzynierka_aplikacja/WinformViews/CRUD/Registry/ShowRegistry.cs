@@ -35,17 +35,28 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Registry
         {
             using (InzynierkaDBEntities db = new InzynierkaDBEntities())
             {
+                var devices = db.Urzadzenie.ToList();
+
                 textBox1.Text = db.Uslugi.
                     Where(x => x.usluga_id == s.usluga_id).Select(x => x.nazwa).First();
 
-                int podID = db.Urzadzenie.
+                int podID = devices.
                     Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.podatnik_id).First();
 
                 textBox2.Text = db.Podatnik.
                     Where(x => x.podatnik_id == podID).Select(x => x.nazwa).First();
 
-                textBox3.Text = db.Urzadzenie.
+                textBox3.Text = devices.
                     Where(x => x.urzadzenie_id == s.urzadzenie_id).Select(x => x.nr_unikatowy).First();
+
+                int deviceID = s.urzadzenie_id;
+
+
+                GrupaNaprawcza gn = db.GrupaNaprawcza.Where(x => x.urzadzenie_id == deviceID).First();
+                textBox4.Text = db.Serwisant.Where(x => x.serwisant_id == gn.serwisant_id && gn.ktory == 1).
+                    Select(x=>x.imie + " "+ x.nazwisko).First();
+
+
             }
 
             dateTimePicker1.Value = s.data_przyjecia;
