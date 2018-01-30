@@ -38,6 +38,11 @@ namespace Inzynierka_aplikacja.WinformViews
         public ShowModels()
         {
             InitializeComponent();
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblAdd.Visible = true;
+                linklblEdit.Visible = true;
+            }
             LoadModels();
             HideLabelsAndIcons();
         }
@@ -79,8 +84,11 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void ShowLabelsAndIcons()
         {
-            linklblEdit.Enabled = true;
-            MainForm.icons[5][1].Visible = true;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                linklblEdit.Enabled = true;
+                MainForm.icons[5][1].Visible = true;
+            }
         }
 
         private void dgvModels_CellClick(object sender, DataGridViewCellEventArgs e)

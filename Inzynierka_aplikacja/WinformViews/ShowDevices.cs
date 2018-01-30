@@ -306,12 +306,12 @@ namespace Inzynierka_aplikacja.WinformViews
             if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
             {
                 linklblEdit.Enabled = true;
-                linklblHistory.Enabled = true;
                 linklblAdd.Visible = true;
                 linklblEdit.Visible = true;
                 MainForm.icons[1][1].Visible = true;
                 MainForm.icons[1][2].Visible = true;
             }
+            linklblHistory.Enabled = true;
         }
 
         private void dgvDevices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

@@ -44,9 +44,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(-3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 31);
+            this.label1.Size = new System.Drawing.Size(284, 31);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Usługi do wykonania";
+            this.label1.Text = "Najbliższe przeglądy";
             // 
             // linklblShow
             // 

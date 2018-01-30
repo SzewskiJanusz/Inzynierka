@@ -716,6 +716,9 @@ namespace Inzynierka_aplikacja
             }
         }
 
-        
+        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

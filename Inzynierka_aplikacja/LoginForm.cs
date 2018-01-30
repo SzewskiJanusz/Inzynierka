@@ -276,9 +276,24 @@ namespace Inzynierka_aplikacja
         private void ThreadProc()
         {
 
-            if (HandlowiecToLogin != null) { Application.Run(new MainForm(HandlowiecToLogin)); }
-            else if (SerwisantToLogin != null) { Application.Run(new MainForm(SerwisantToLogin)); }
-            else if (AdminToLogin != null) { Application.Run(new MainForm(AdminToLogin)); }
+            if (HandlowiecToLogin != null)
+            {
+                MainForm.serwisantID = -1;
+                MainForm.adminID = -1;
+                Application.Run(new MainForm(HandlowiecToLogin)); 
+            }
+            else if (SerwisantToLogin != null)
+            {
+                MainForm.handlowiecID = -1;
+                MainForm.adminID = -1;
+                Application.Run(new MainForm(SerwisantToLogin));
+            }
+            else if (AdminToLogin != null)
+            {
+                MainForm.serwisantID = -1;
+                MainForm.handlowiecID = -1;
+                Application.Run(new MainForm(AdminToLogin));
+            }
 
         }
     }

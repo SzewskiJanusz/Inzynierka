@@ -104,6 +104,10 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void HideLabelsAndIcons()
         {
+            if (MainForm.handlowiecID != -1)
+            {
+                MainForm.icons[1][0].Visible = false;
+            }
             MainForm.icons[1][1].Visible = false;
             MainForm.icons[1][2].Visible = false;
             linklblShowClientDevices.Enabled = false;
@@ -112,10 +116,13 @@ namespace Inzynierka_aplikacja.WinformViews
 
         private void ShowLabelsAndIcons()
         {
-            MainForm.icons[1][1].Visible = true;
-            MainForm.icons[1][2].Visible = true;
+            if (MainForm.serwisantID != -1 || MainForm.adminID != -1)
+            {
+                MainForm.icons[1][1].Visible = true;
+                MainForm.icons[1][2].Visible = true;
+                linkEditDevice.Enabled = true;
+            }
             linklblShowClientDevices.Enabled = true;
-            linkEditDevice.Enabled = true;
         }
 
         private void linklblShowClientDevices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

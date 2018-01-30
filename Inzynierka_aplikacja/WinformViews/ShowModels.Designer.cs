@@ -40,7 +40,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(463, 22);
+            this.btnFind.Location = new System.Drawing.Point(430, 57);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(128, 24);
             this.btnFind.TabIndex = 17;
@@ -50,7 +50,7 @@
             // 
             // tbxFind
             // 
-            this.tbxFind.Location = new System.Drawing.Point(282, 21);
+            this.tbxFind.Location = new System.Drawing.Point(249, 60);
             this.tbxFind.Name = "tbxFind";
             this.tbxFind.Size = new System.Drawing.Size(175, 20);
             this.tbxFind.TabIndex = 16;
@@ -61,7 +61,7 @@
             this.linklblEdit.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblEdit.AutoSize = true;
             this.linklblEdit.LinkColor = System.Drawing.Color.Black;
-            this.linklblEdit.Location = new System.Drawing.Point(424, 60);
+            this.linklblEdit.Location = new System.Drawing.Point(67, 63);
             this.linklblEdit.Name = "linklblEdit";
             this.linklblEdit.Size = new System.Drawing.Size(43, 13);
             this.linklblEdit.TabIndex = 15;
@@ -76,7 +76,7 @@
             this.linklblFind.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblFind.AutoSize = true;
             this.linklblFind.LinkColor = System.Drawing.Color.Black;
-            this.linklblFind.Location = new System.Drawing.Point(490, 60);
+            this.linklblFind.Location = new System.Drawing.Point(133, 63);
             this.linklblFind.Name = "linklblFind";
             this.linklblFind.Size = new System.Drawing.Size(53, 13);
             this.linklblFind.TabIndex = 14;
@@ -89,7 +89,7 @@
             this.linklblAdd.ActiveLinkColor = System.Drawing.Color.Black;
             this.linklblAdd.AutoSize = true;
             this.linklblAdd.LinkColor = System.Drawing.Color.Black;
-            this.linklblAdd.Location = new System.Drawing.Point(365, 60);
+            this.linklblAdd.Location = new System.Drawing.Point(8, 63);
             this.linklblAdd.Name = "linklblAdd";
             this.linklblAdd.Size = new System.Drawing.Size(35, 13);
             this.linklblAdd.TabIndex = 13;

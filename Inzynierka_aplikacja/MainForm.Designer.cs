@@ -33,7 +33,6 @@
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.zmieńHasłoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.widokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontrahenciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +105,6 @@
             this.użytkownikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wylogujToolStripMenuItem,
             this.toolStripSeparator1,
-            this.zmieńHasłoToolStripMenuItem,
             this.zakończToolStripMenuItem});
             this.użytkownikToolStripMenuItem.Name = "użytkownikToolStripMenuItem";
             this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
@@ -115,26 +113,21 @@
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
-            // 
-            // zmieńHasłoToolStripMenuItem
-            // 
-            this.zmieńHasłoToolStripMenuItem.Name = "zmieńHasłoToolStripMenuItem";
-            this.zmieńHasłoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.zmieńHasłoToolStripMenuItem.Text = "Zmień hasło";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
+            this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
             // widokToolStripMenuItem
             // 
@@ -224,21 +217,21 @@
             // kontrahentaToolStripMenuItem
             // 
             this.kontrahentaToolStripMenuItem.Name = "kontrahentaToolStripMenuItem";
-            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kontrahentaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.kontrahentaToolStripMenuItem.Text = "Kontrahenta";
             this.kontrahentaToolStripMenuItem.Click += new System.EventHandler(this.AddClient);
             // 
             // urzadzenieToolStripMenuItem
             // 
             this.urzadzenieToolStripMenuItem.Name = "urzadzenieToolStripMenuItem";
-            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.urzadzenieToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.urzadzenieToolStripMenuItem.Text = "Urzadzenie";
             this.urzadzenieToolStripMenuItem.Click += new System.EventHandler(this.MenuAddDeviceClick);
             // 
             // usługęToolStripMenuItem
             // 
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
-            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
             // 
             // pomocToolStripMenuItem
@@ -542,7 +535,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zmieńHasłoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbClient;
         private System.Windows.Forms.Panel panelClients;
