@@ -222,7 +222,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
                 if (city_state.ContainsKey(city))
                 {
                     string state = city_state[city];
-                    comboBox1.Text = "pomorskie";
+                    comboBox1.Text = state;
                 }
             }
         }

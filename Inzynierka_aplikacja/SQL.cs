@@ -9,15 +9,9 @@ namespace Inzynierka_aplikacja
 {
     public abstract class SQL
     {
-        private const string mainConstr =
-            "Data Source=OLEK\\SQLEXPRESS2016;" +
-            "Initial Catalog=InzDB;" +
-            "User ID=sa";
-
-
-
         public static DataTable DoQuery(String a)
         {
+            string mainConstr = MainForm.connectionString;
             DataTable result = new DataTable(); // deklaracja i utworzenie instancji obiektu DataTable o nazwie dt
             SqlDataReader dr; // deklaracja obiektu SqlDataReader o nazwie dr
             SqlCommand sqlc; // Deklaracja obiektu SqlCOmmand

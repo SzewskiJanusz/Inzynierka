@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.EntityClient;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -32,6 +34,7 @@ namespace Inzynierka_aplikacja
         public static List<UrzadSkarbowy> revenueList;
         public static List<Wojewodztwo> stateList;
 
+        public static string connectionString;
 
         public MainForm()
         {
@@ -94,6 +97,18 @@ namespace Inzynierka_aplikacja
                 stateList = db.Wojewodztwo.ToList();
                 revenueList = db.UrzadSkarbowy.ToList();
             }
+
+            connectionString = GetADOConnectionString();
+        }
+
+        private string GetADOConnectionString()
+        {
+            string aaa = "";
+            using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+            {
+                aaa = db.Database.Connection.ConnectionString;
+            }
+            return aaa;
         }
 
         private void SetAllIcons()
@@ -260,6 +275,11 @@ namespace Inzynierka_aplikacja
                         usluga_id = db.Uslugi.Where(x => x.nazwa == "Przegląd").Select(x => x.usluga_id).First(),
                         data_przyjecia = (DateTime)f.NewDevice.nastepny_przeglad
                     };
+                    foreach(GrupaNaprawcza d in f.Groups)
+                    {
+                        db.GrupaNaprawcza.Add(d);
+                    }
+                    
                     db.SerwisUrzadzenia.Add(su);
                     db.SaveChanges();
                 }
@@ -515,6 +535,17 @@ namespace Inzynierka_aplikacja
             if (f.ShowDialog() == DialogResult.OK)
             {
                 int id = edited.urzadzenie_id;
+                using (InzynierkaDBEntities db = new InzynierkaDBEntities())
+                {
+                    var toDelete = db.GrupaNaprawcza.Where(x => x.urzadzenie_id == id).ToList();
+                    db.GrupaNaprawcza.RemoveRange(toDelete);
+                    foreach (GrupaNaprawcza gn in f.Groups)
+                    {
+                        db.GrupaNaprawcza.Add(gn);
+                    }
+                    db.SaveChanges();
+                }
+
                 string updateQuery =
                     "UPDATE Urzadzenie SET " +
                     "podatnik_id = " + f.NewDevice.podatnik_id + ", " +
