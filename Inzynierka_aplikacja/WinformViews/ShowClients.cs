@@ -170,8 +170,10 @@ namespace Inzynierka_aplikacja.WinformViews
             {
                 linklblAdd.Visible = true;
                 linklblEdit.Visible = true;
+                linklblEdit.Enabled = true;
                 MainForm.icons[0][1].Visible = true;
                 MainForm.icons[0][2].Visible = true;
+
             }
             linkShowLocations.Visible = true;
         }

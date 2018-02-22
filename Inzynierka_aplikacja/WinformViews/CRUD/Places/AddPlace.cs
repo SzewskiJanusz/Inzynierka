@@ -19,9 +19,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Places
             InitializeComponent();
 
             comboBox3.DataSource = MainForm.stateList.Select(x => x.nazwa).ToList(); ;
-            comboBox3.ValueMember = "nazwa";
-            comboBox3.DisplayMember = "nazwa";
-
+            
             comboBox3.SelectedIndex = comboBox3.FindStringExact(mi.wojewodztwo);
             textBox4.Text = mi.kraj;
             textBox5.Text = mi.miasto;

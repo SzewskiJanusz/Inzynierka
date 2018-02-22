@@ -48,9 +48,6 @@
             this.kontrahentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.urzadzenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usługęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.plikPomocyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.leftPanel = new System.Windows.Forms.Panel();
             this.panelUslugi = new System.Windows.Forms.Panel();
@@ -72,6 +69,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblLogged = new System.Windows.Forms.Label();
             this.lblTodaysDate = new System.Windows.Forms.Label();
+            this.informacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.leftPanel.SuspendLayout();
             this.panelUslugi.SuspendLayout();
@@ -233,28 +232,6 @@
             this.usługęToolStripMenuItem.Name = "usługęToolStripMenuItem";
             this.usługęToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.usługęToolStripMenuItem.Text = "Usługę";
-            // 
-            // pomocToolStripMenuItem
-            // 
-            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.plikPomocyToolStripMenuItem,
-            this.informacjeToolStripMenuItem});
-            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
-            // 
-            // plikPomocyToolStripMenuItem
-            // 
-            this.plikPomocyToolStripMenuItem.Name = "plikPomocyToolStripMenuItem";
-            this.plikPomocyToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.plikPomocyToolStripMenuItem.Text = "Plik pomocy";
-            // 
-            // informacjeToolStripMenuItem
-            // 
-            this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
-            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.informacjeToolStripMenuItem.Text = "Informacje";
-            this.informacjeToolStripMenuItem.Click += new System.EventHandler(this.informacjeToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -489,6 +466,21 @@
             this.lblTodaysDate.TabIndex = 0;
             this.lblTodaysDate.Text = "test";
             // 
+            // informacjeToolStripMenuItem
+            // 
+            this.informacjeToolStripMenuItem.Name = "informacjeToolStripMenuItem";
+            this.informacjeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.informacjeToolStripMenuItem.Text = "Informacje";
+            this.informacjeToolStripMenuItem.Click += new System.EventHandler(this.informacjeToolStripMenuItem_Click);
+            // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informacjeToolStripMenuItem});
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "Pomoc";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,9 +491,11 @@
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Aplikacja";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.leftPanel.ResumeLayout(false);
@@ -551,7 +545,6 @@
         private System.Windows.Forms.Label lblPrzeglad;
         private System.Windows.Forms.ToolStripMenuItem widokToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.Label lblLogged;
         private System.Windows.Forms.Label lblTodaysDate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -562,8 +555,6 @@
         private System.Windows.Forms.ToolStripMenuItem kontrahentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem urzadzenieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usługęToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem plikPomocyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem informacjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem USToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem województwaToolStripMenuItem;
@@ -572,5 +563,7 @@
         private System.Windows.Forms.Label lblUslugi;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem modelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informacjeToolStripMenuItem;
     }
 }

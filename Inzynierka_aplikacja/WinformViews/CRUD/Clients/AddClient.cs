@@ -69,7 +69,7 @@ namespace Inzynierka_aplikacja.WinformViews.CRUD.Clients
             textBox4.Text = p.nazwa;
             textBox5.Text = p.symbol;
             textBox6.Text = p.telefon;
-            comboBox1.SelectedValue = p.wojewodztwo;
+            comboBox1.SelectedIndex = comboBox1.FindStringExact(p.wojewodztwo);
             tbxCity.Text = p.miasto;
             textBox8.Text = p.ulica;
             textBox9.Text = p.kod_pocztowy;

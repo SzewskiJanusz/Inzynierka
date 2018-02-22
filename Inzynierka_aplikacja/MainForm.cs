@@ -35,6 +35,7 @@ namespace Inzynierka_aplikacja
         public static List<Wojewodztwo> stateList;
 
         public static string connectionString;
+        int shortcut = -1;
 
         public MainForm()
         {
@@ -109,6 +110,24 @@ namespace Inzynierka_aplikacja
                 aaa = db.Database.Connection.ConnectionString;
             }
             return aaa;
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+                switch (shortcut)
+                {
+                    case 0:
+                        if (handlowiecID != -1 || adminID != -1)
+                            AddClient(sender, e);
+                        break;
+                    case 1:
+                        if (serwisantID != -1 || adminID != -1)
+                            AddDeviceClick(sender, e); break;
+                    case 4: AddUslugaClick(sender, e); break;
+                }
+            }
         }
 
         private void SetAllIcons()
@@ -290,11 +309,12 @@ namespace Inzynierka_aplikacja
         {
             switch (v)
             {
-                case "clients": ShowClientIcons(); break;
-                case "devices": ShowDevicesIcons(); break;
-                case "registry": ShowRegistryIcons(); break;
-                case "services": ShowServiceIcons(); break;
-                case "uslugi": ShowUslugiIcons(); break;
+                case "clients": ShowClientIcons();
+                    shortcut = 0;  break;
+                case "devices": ShowDevicesIcons(); shortcut = 1;  break;
+                case "registry": ShowRegistryIcons(); shortcut = 2; break;
+                case "services": ShowServiceIcons(); shortcut = 3; break;
+                case "uslugi": ShowUslugiIcons(); shortcut = 4; break;
             }
         }
 
